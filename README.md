@@ -8,6 +8,8 @@
 
 ```
 $ npx create-react-app fd_react .
+$ npm i
+$ npm start
 ```
 
 
@@ -16,11 +18,11 @@ $ npx create-react-app fd_react .
 
 ### Branch
 
-- master
-- develop
-- nav
-- router
-- excel
+- master : 배포환경(금요일 update)
+- develop : 개발환경  (by master)
+- feature/router : 작업중   (by develop)
+- feature/nav :작업중       (by develop)
+- feature/excel : 작업중    (by develop)
 
 
 
