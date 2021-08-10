@@ -7,7 +7,7 @@
 ### Get start
 
 ```
-$ npx create-react-app PLMS_react
+$ npx create-react-app fd_react .
 ```
 
 
