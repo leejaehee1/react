@@ -1,9 +1,11 @@
 import React from 'react';
+import NavCss from './component/navbar/NavCss';
+
 
 function App() {
   return (
     <div className="App">
-      <p>start Jsoftware</p>
+      <NavCss />
     </div>
   );
 }
