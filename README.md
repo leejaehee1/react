@@ -35,11 +35,11 @@ $ npm start
 
 ### Branch
 
-- master : 배포환경(금요일 update)
-- develop : 개발환경  (by master)
-- feature/router : 작업중   (by develop)
-- feature/nav :작업중       (by develop)
-- feature/excel : 작업중    (by develop)
+- master         :  배포환경 (매주 금요일 update)
+- develop        :  개발환경 (by master)
+- feature/router :  작업중   (by develop)
+- feature/nav    :  작업완료 (by develop) :star
+- feature/excel  :  작업중   (by develop)
 
 
 
