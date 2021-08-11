@@ -90,7 +90,8 @@ const GridComponent = () => {
                 data={data} 
                 columns={colDefs} 
                 options={{
-                    paginationType: "stepped"
+                    paginationType: "stepped",
+                    columnsButton:true
                 }}
                 components={{
                     Toolbar: props => (

@@ -22,6 +22,7 @@ $ npm install xlsx
 $ npm install material-table @material-ui/core --save
 $ npm install @material-ui/icons
 // $ npm install @material-ui/data-grid
+$ npm install react-admin ra-data-json-server prop-types
 ```
 
 
