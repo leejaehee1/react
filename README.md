@@ -15,8 +15,11 @@ $ npx -v
 
 ### installation
 ```
+// npm i 로 한번에 설치가능 (package.json 참고)
 $ npm i axios
 $ npm install react-router-dom
+$ npm install xlsx
+$ npm install material-table @material-ui/core --save
 ```
 
 
