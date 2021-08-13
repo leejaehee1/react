@@ -15,8 +15,14 @@ $ npx -v
 
 ### installation
 ```
+// npm i 로 한번에 설치가능 (package.json 참고)
 $ npm i axios
 $ npm install react-router-dom
+$ npm install xlsx
+$ npm install material-table @material-ui/core --save
+$ npm install @material-ui/icons
+// $ npm install @material-ui/data-grid
+$ npm install react-admin ra-data-json-server prop-types
 ```
 
 
@@ -35,11 +41,13 @@ $ npm start
 
 ### Branch
 
-- master : 배포환경(금요일 update)
-- develop : 개발환경  (by master)
-- feature/router : 작업중   (by develop)
-- feature/nav :작업중       (by develop)
-- feature/excel : 작업중    (by develop)
+- master                :     배포환경   (매주 금요일 merge)
+- develop               :     개발환경   (by master)
+- feature/pdf_viewer    :     작업준비   (by develop)
+- feature/excel_export  :     작업대기   (by develop)
+- feature/excel_import  :     작업완료   (by develop)
+- feature/nav           :     작업완료   (by develop)
+- feature/router        :     작업완료   (by develop)
 
 
 
@@ -57,3 +65,5 @@ $ npm start
 - [create-react-app](https://ko.reactjs.org/docs/create-a-new-react-app.html#create-react-app)
 - [react-router](https://reactrouter.com/web/api/Hooks)
 - [react-axios](https://www.npmjs.com/package/react-axios)
+- [material-table](https://material-table.com/#/)
+- [Material design](https://material.io/)
