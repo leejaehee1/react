@@ -20,12 +20,13 @@ const dataProvider = fakeDataProvider({
 function App() {
   return (
     <Admin
-      dataProvider={dataProvider}  
+      dataProvider={dataProvider}
+      // layout=
     >
-      <NavCss />
+      {/* <NavCss />
       <BrowserRouter>
         <AppRouter />
-     </BrowserRouter> 
+     </BrowserRouter>  */}
     </Admin>
   );
 }
