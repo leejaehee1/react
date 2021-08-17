@@ -33,7 +33,11 @@ export const PostList = props => (
             {/* <ReferenceField label="User" source="userId" reference="users">
                 <TextField source="name" />
             </ReferenceField> */}
-            <TextField source="title" />
+            <TextField source="PunchID" />
+            <TextField source="ProjectID" />
+            <TextField source="IssueDesp" />
+            <TextField source="CompletedDate" />
+            <TextField source="DrawingID" />
             <EditButton />
             <ShowButton />
         </Datagrid>
