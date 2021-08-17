@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Tabs, Tab, Toolbar, AppBar, Box, Typography } from '@material-ui/core';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { UserMenu, Logout, LoadingIndicator } from 'react-admin';
+import { CodeSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles({
     root: {
@@ -16,8 +17,13 @@ const useStyles = makeStyles({
 
 const Header = () => {
     const classes = useStyles();
-    const match = useRouteMatch(['/contacts', '/companies', '/deals']);
+    // const match = useRouteMatch(['/contacts', '/companies', '/deals']);
+    const match = useRouteMatch(['/list', '/admin', '/deals']);
     const currentPath = match?.path ?? '/';
+    console.log(match)   // 객체 들어옴
+    // console.log(match.path)
+    console.log(currentPath)   //  /admin # 뒷부분 들어옴
+    // const currentPath = '/';
 
     return (
         <nav className={classes.root}>
