@@ -36,6 +36,11 @@ $ npm start
 ```
 
 
+### API
+> Whenever react-admin needs to communicate with the API, it calls methods on the Data Provider object. Thanks to this adapter injection system, react-admin can communicate with any API, whether it uses REST, GraphQL, RPC, or even SOAP, regardless of the dialect it uses. The Data Provider is also the ideal place to add custom HTTP headers, authentication, etc.
+
+![](https://marmelab.com/react-admin/img/data-provider.png)
+
 
 ### Developer
 
