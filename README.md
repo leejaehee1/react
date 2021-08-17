@@ -37,22 +37,6 @@ $ npm start
 
 
 
-
-
-### Branch
-
-- master                :     배포환경   (매주 금요일 merge)
-- develop               :     개발환경   (by master)
-- feature/pdf_viewer    :     작업준비   (by develop)
-- feature/excel_export  :     작업대기   (by develop)
-- feature/excel_import  :     작업완료   (by develop)
-- feature/nav           :     작업완료   (by develop)
-- feature/router        :     작업완료   (by develop)
-
-
-
-
-
 ### Developer
 
 | 이름 | 직책       | 담당     |
