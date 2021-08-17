@@ -5,6 +5,7 @@ import fakeDataProvider from 'ra-data-fakerest';
 import NavCss from './component/navbar/NavCss';
 import AppRouter from './component/router/RouterComponent';
 import { BrowserRouter} from 'react-router-dom';
+import Layout from './component/layout/LayoutComponent';
 
 const dataProvider = fakeDataProvider({
   posts: [
@@ -21,12 +22,12 @@ function App() {
   return (
     <Admin
       dataProvider={dataProvider}
-      // layout=
+      layout={Layout}
     >
-      {/* <NavCss />
+      <NavCss />
       <BrowserRouter>
         <AppRouter />
-     </BrowserRouter>  */}
+     </BrowserRouter> 
     </Admin>
   );
 }
