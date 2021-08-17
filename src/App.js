@@ -24,10 +24,11 @@ function App() {
       dataProvider={dataProvider}
       layout={Layout}
     >
-      <NavCss />
-      <BrowserRouter>
+      <p>dd</p>
+      {/* <NavCss /> */}
+      {/* <BrowserRouter>
         <AppRouter />
-     </BrowserRouter> 
+     </BrowserRouter>  */}
     </Admin>
   );
 }

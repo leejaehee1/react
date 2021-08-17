@@ -5,6 +5,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline, Container } from '@material-ui/core';
 import { CoreLayoutProps } from 'react-admin';
+import Header from './Header';
 
 import { Notification, Error } from 'react-admin';
 
@@ -45,8 +46,11 @@ class Layout extends Component<LayoutProps, LayoutState>  {
             // @ts-ignore
             <ThemeProvider theme={createMuiTheme(theme)}>
                 <CssBaseline />
-                {/* <Header /> */}
+                <Header />
+                <p>여기 어디니~~!!!!!!!!!!!!!!!!!!!!!!!!!!!~</p>
+                
                 <Container>
+                    
                     <main id="main-content">
                         {hasError ? (
                             <Error
@@ -57,6 +61,7 @@ class Layout extends Component<LayoutProps, LayoutState>  {
                         ) : (
                             children
                         )}
+                        <p>여기 어디니~~~~~~~~~~~~~~~~~~~~~~</p>
                     </main>
                 </Container>
                 <Notification />
