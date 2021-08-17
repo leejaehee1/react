@@ -1,11 +1,12 @@
 import React from 'react';
-import { Admin } from 'react-admin';
+import { Admin, Resource } from 'react-admin';
 import fakeDataProvider from 'ra-data-fakerest';
 
 import NavCss from './component/navbar/NavCss';
 import AppRouter from './component/router/RouterComponent';
 import { BrowserRouter} from 'react-router-dom';
 import Layout from './component/layout/LayoutComponent';
+import { PostList } from './posts';
 
 const dataProvider = fakeDataProvider({
   posts: [
@@ -24,7 +25,7 @@ function App() {
       dataProvider={dataProvider}
       layout={Layout}
     >
-      <p>dd</p>
+      <Resource name="posts" list={PostList} />
       {/* <NavCss /> */}
       {/* <BrowserRouter>
         <AppRouter />
