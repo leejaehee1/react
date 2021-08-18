@@ -28,7 +28,7 @@ return (
     <Chart
       data={data}
     //   width={100}
-      // height={200}
+      height={200}
     //   rotated={true}
     >
       <Legend 
@@ -36,13 +36,7 @@ return (
         horizontalAlignment="center"
         // https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.Legend.Font
       />
-      {/* <Label
-            visible={true}
-            position="columns"
-            customizeText={customizeText}>
-            <Font size={16} />
-            <Connector visible={true} width={0.5} />
-          </Label> */}
+
       <PieSeries 
         valueField="value" 
         argumentField="argument" 

@@ -1,5 +1,10 @@
 import PieChart, {
-    Series
+    Series,
+    Tooltip,
+    Title,
+    Subtitle,
+    Legend,
+    AdaptiveLayout,
 } from 'devextreme-react/pie-chart';
  
 const fruits = [
@@ -12,8 +17,25 @@ const fruits = [
  
 export default function Category() {
     return (
-        <PieChart dataSource={fruits}>
+        <PieChart 
+            dataSource={fruits}
+            // title="I am the Title"
+        >
             <Series argumentField="fruit" valueField="count" />
+            <Tooltip enabled={true} />
+            <Title text="I am the Test">
+                    <Subtitle text="I am the Subtitle" />
+            </Title>
+            <Legend
+                    // center/right/left
+                    horizontalAlignment="right" 
+                    // top/bottom
+                    verticalAlignment="top"
+                />
+            <AdaptiveLayout
+                    // height={300}
+                    width={100}
+                />
         </PieChart>
     );
 }
