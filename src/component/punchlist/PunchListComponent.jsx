@@ -17,6 +17,8 @@
 
 import * as React from "react";
 import { Box } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
 // import { Title } from 'react-admin';
@@ -25,12 +27,20 @@ const PunchListComponent = () => {
     //     console.log("rendering test")
     //     return false
     // })
-    const [show, setShow] = React.useState(false)
+    const [show, setShow] = React.useState(true)
 
-    function handleClink() {
-        setShow((prev) => !prev)
-        console.log("찍힘")
-        console.log(show)
+    // function handleClink() {
+    //     setShow((prev) => !prev)
+    //     console.log("찍힘")
+    //     console.log(show)
+    // }
+
+    function handleDashBoard() {
+        setShow(true);
+    }
+
+    function handleStatus() {
+        setShow(false);
     }
 
     return (
@@ -40,14 +50,19 @@ const PunchListComponent = () => {
             <CardContent>Lorem ipsum sic dolor amet...</CardContent>
             </Card> */}
             <br />
-            <button onClick={handleClink}>test1</button>
-            <button onClick={handleClink}>test2</button>
+            <ButtonGroup size="large" variant="text" color="primary" aria-label="large outlined primary button group">
+                <Button onClick={handleDashBoard}>DashBoard</Button>
+                <Button onClick={handleStatus}>Status</Button>
+                {/* <Button>Three</Button> */}
+            </ButtonGroup>
+            {/* <button onClick={handleClink}>DashBoard</button>
+            <button onClick={handleClink}>Status</button> */}
             {
                 show? (
                     <>
                     <Box display="flex" mt="1em"> 
                         <Box bgcolor="palevioletred" flex="4" mr="4em">
-                            {/* <DealsChart /> */}adfasdf
+                            {/* <DealsChart /> */}DashBoard
                         </Box>
                         <Box bgcolor="palevioletred" flex="4" mr="4em">
                             {/* <Welcome /> */}asdfasdf
@@ -61,9 +76,9 @@ const PunchListComponent = () => {
                     <>
                     <Box display="flex" mt="1em"> 
                         <Box bgcolor="success.main" flex="4" mr="4em">
-                            {/* <DealsChart /> */}adfasdf
+                            {/* <DealsChart /> */}Status
                         </Box>
-                        <Box bgcolor="success.main" flex="4" mr="4em">
+                        <Box bgcolor="success.main" flex="2" mr="4em">
                             {/* <Welcome /> */}asdfasdf
                         </Box>
                         <Box bgcolor="success.main" flex="4">
