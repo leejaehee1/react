@@ -47,7 +47,6 @@ class Layout extends Component<LayoutProps, LayoutState>  {
             <ThemeProvider theme={createMuiTheme(theme)}>
                 <CssBaseline />
                 <Header />
-                <p>여기 어디니~~!!!!!!!!!!!!!!!!!!!!!!!!!!!~</p>
                 
                 <Container>
                     
@@ -61,7 +60,6 @@ class Layout extends Component<LayoutProps, LayoutState>  {
                         ) : (
                             children
                         )}
-                        <p>여기 어디니~~~~~~~~~~~~~~~~~~~~~~</p>
                     </main>
                 </Container>
                 <Notification />
