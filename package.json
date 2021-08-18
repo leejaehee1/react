@@ -15,6 +15,8 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
+    "devextreme": "^21.1.5",
+    "devextreme-react": "^21.1.5",
     "material-table": "^1.69.3",
     "prop-types": "^15.7.2",
     "ra-data-fakerest": "^3.13.5",

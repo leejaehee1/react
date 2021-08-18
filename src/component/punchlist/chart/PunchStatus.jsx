@@ -5,8 +5,12 @@ import {
   Legend,
   Chart,
   PieSeries,
-  Title
 } from '@devexpress/dx-react-chart-material-ui';
+import {
+  Animation,
+  EventTracker,
+  HoverState
+} from "@devexpress/dx-react-chart";
 
 // API : https://devexpress.github.io/devextreme-reactive/react/chart/docs/reference/pie-series/
   
@@ -24,18 +28,30 @@ return (
     <Chart
       data={data}
     //   width={100}
-      height={200}
+      // height={200}
     //   rotated={true}
     >
       <Legend 
+        rowItemSpacing={50}
+        horizontalAlignment="center"
         // https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.Legend.Font
       />
+      {/* <Label
+            visible={true}
+            position="columns"
+            customizeText={customizeText}>
+            <Font size={16} />
+            <Connector visible={true} width={0.5} />
+          </Label> */}
       <PieSeries 
         valueField="value" 
         argumentField="argument" 
         innerRadius={0.6}
         // outerRadius={1} 
         />
+        <EventTracker />
+        <HoverState />
+        <Animation />
       {/* <Title text="Studies per day"/> */}
     </Chart>
   </Paper>

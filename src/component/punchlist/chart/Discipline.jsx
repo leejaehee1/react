@@ -7,6 +7,11 @@ import {
   BarSeries,
 //   Title,
 } from '@devexpress/dx-react-chart-material-ui';
+import {
+    Animation,
+    EventTracker,
+    HoverState
+  } from "@devexpress/dx-react-chart";
 
 
 
@@ -32,6 +37,9 @@ const Discipline = () => {
             
                 <BarSeries valueField="value" argumentField="argument" />
                 {/* <Title text="Studies per day"/> */}
+                <EventTracker />
+                <HoverState />
+                <Animation />
             </Chart>
         </Paper>
     )

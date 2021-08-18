@@ -21,6 +21,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Discipline from "./chart/Discipline";
 import PunchStatus from "./chart/PunchStatus";
+import Category from "./chart/Category";
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
 // import { Title } from 'react-admin';
@@ -63,13 +64,14 @@ const PunchListComponent = () => {
                 show? (
                     <>
                     <Box display="flex" mt="1em"> 
-                        <Box bgcolor="palevioletred" flex="3" mr="2em">
+                        <Box flex="3" mr="2em">
                         {/* bgcolor="palevioletred" */}
                             <h3>Punch Status</h3>
                             <PunchStatus />
                         </Box>
-                        <Box bgcolor="palevioletred" flex="3" mr="2em">
-                            {/* <Welcome /> */}asdfasdf
+                        <Box flex="3" mr="2em">
+                            <h3>Category</h3>
+                            <Category />
                         </Box>
                         <Box flex="5">
                             <h3>Discipline</h3>
