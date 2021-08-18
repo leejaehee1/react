@@ -19,6 +19,7 @@ import * as React from "react";
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Discipline from "./chart/Discipline";
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
 // import { Title } from 'react-admin';
@@ -62,13 +63,15 @@ const PunchListComponent = () => {
                     <>
                     <Box display="flex" mt="1em"> 
                         <Box bgcolor="palevioletred" flex="4" mr="4em">
+                        {/* bgcolor="palevioletred" */}
                             {/* <DealsChart /> */}DashBoard
                         </Box>
                         <Box bgcolor="palevioletred" flex="4" mr="4em">
                             {/* <Welcome /> */}asdfasdf
                         </Box>
-                        <Box bgcolor="palevioletred" flex="4">
-                            {/* <Welcome /> */}asdfasdf
+                        <Box flex="4">
+                            <p>Discipline</p>
+                            <Discipline />
                         </Box>
                     </Box>
                     </>
