@@ -5,6 +5,7 @@ import {
   ValueAxis,
   Chart,
   BarSeries,
+//   Title,
 } from '@devexpress/dx-react-chart-material-ui';
 
 
@@ -21,11 +22,16 @@ const Discipline = () => {
         <Paper>
             <Chart
             data={data}
-            >
-            <ArgumentAxis />
-            <ValueAxis />
-        
-            <BarSeries valueField="value" argumentField="argument" />
+            // width={100}
+            height={200}
+            >   
+                {/* 가로축 */}
+                <ArgumentAxis />
+                {/* 세로축   */}
+                <ValueAxis />
+            
+                <BarSeries valueField="value" argumentField="argument" />
+                {/* <Title text="Studies per day"/> */}
             </Chart>
         </Paper>
     )
