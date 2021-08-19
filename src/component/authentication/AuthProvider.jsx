@@ -116,15 +116,48 @@ export default (type, params) => {
 
 
 
+    /*
 
+        Redirecting to the login page whenever a REST response uses a 401 status code is usually not enough, because react-admin keeps data on the client side, and could display stale data while contacting the server - even after the credentials are no longer valid.
 
+        Fortunately, each time the user navigates, react-admin calls the authProvider with the AUTH_CHECK type, so it’s the ideal place to check for credentials.
+
+    */
 
     // called when the user navigates to a new location
     if (type === AUTH_CHECK) {
         return localStorage.getItem('username')
             ? Promise.resolve()
             : Promise.reject();
+
+
+            // localStorage
+            // 거절시 로그인 페이지. 
+        // return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
+
+        // You can override where to redirect the user by passing an argument with a redirectTo property to the rejected promise:
+        // return localStorage.getItem('token') ? Promise.resolve() : Promise.reject({ redirectTo: '/no-access' });
     }
+
+    /*
+        Tip: For the AUTH_CHECK call, the params argument contains the resource name, so you can implement different checks for different resources:
+        즉 위의 AUTH_CHECK은 하나인데 아래는 분기로 user 권한 파악가능하다.
+
+        위랑 같은거다.
+    */
+    if (type === AUTH_CHECK) {
+        const { resource } = params;
+        if (resource === 'posts') {
+            // check credentials for the posts resource
+        }
+        if (resource === 'comments') {
+            // check credentials for the comments resource
+        }
+    }
+
+
+
+
     return Promise.reject('Unknown method');
 };
 
