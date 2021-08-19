@@ -115,7 +115,7 @@ const PunchListComponent = () => {
                     </>
                 )
             }
-            <p>다음글</p>
+            {/* <p>다음글</p> */}
             <Resource name="posts" list={PostList} />
         </>
     )

@@ -1,6 +1,8 @@
 import React from 'react';
-import { Admin, Resource } from 'react-admin';
+import { Admin, Resource, fetchUtils } from 'react-admin';
 import fakeDataProvider from 'ra-data-fakerest';
+import simpleRestProvider from 'ra-data-simple-rest';
+
 
 import NavCss from './component/navbar/NavCss';
 import AppRouter from './component/router/RouterComponent';
@@ -145,6 +147,13 @@ const dataProvider = fakeDataProvider({
   ],
 })
 
+
+
+
+
+
+
+
 function App() {
   return (
     <Admin
@@ -156,7 +165,7 @@ function App() {
       layout={Layout}
       dashboard={PunchListComponent}
 
-      
+
       authProvider={AuthProvider}
     >
       <Resource name="posts" list={PostList} />

@@ -24,6 +24,18 @@
 
 // 위에것은 계속 리다이랙팅 된다.
 
+/*
+    // login
+    Login calls authProvider with the AUTH_LOGIN type, and { login, password } as parameters. 
+    It’s the ideal place to authenticate the user, and store their credentials.
+
+    Upon receiving a 403 response, the admin app shows the Login page. 
+    Once the promise resolves, the login form redirects to the previous page, or to the admin index if the user just arrived.
+*/
+
+
+
+
 
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
 
