@@ -8,7 +8,20 @@ import { BrowserRouter} from 'react-router-dom';
 import Layout from './component/layout/LayoutComponent';
 import { PostList } from './posts';
 import PunchListComponent from './component/punchlist/PunchListComponent';
+import ManagementTamplate from './component/management/ManagementTamplate';
 
+
+// 다국어
+// npm install node-polyglot
+// https://marmelab.com/react-admin/doc/2.8/Translation.html
+import frenchMessages from 'ra-language-french';
+import englishMessages from 'ra-language-english';
+
+const messages = {
+  fr: frenchMessages,
+  en: englishMessages,
+}
+const i18nProvider = locale => messages[locale];
 
 // ex_input format
 // {
@@ -134,11 +147,15 @@ const dataProvider = fakeDataProvider({
 function App() {
   return (
     <Admin
+      // 다국어
+      locale="en" i18nProvider={i18nProvider}
+      
       dataProvider={dataProvider}
       layout={Layout}
       dashboard={PunchListComponent}
     >
       <Resource name="posts" list={PostList} />
+      <Resource name="admin" list={ManagementTamplate} />
       {/* <NavCss />
       <BrowserRouter>
         <AppRouter />
