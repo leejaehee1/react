@@ -14,14 +14,14 @@ import ManagementTamplate from './component/management/ManagementTamplate';
 // 다국어
 // npm install node-polyglot
 // https://marmelab.com/react-admin/doc/2.8/Translation.html
-import frenchMessages from 'ra-language-french';
-import englishMessages from 'ra-language-english';
+// import frenchMessages from 'ra-language-french';
+// import englishMessages from 'ra-language-english';
 
-const messages = {
-  fr: frenchMessages,
-  en: englishMessages,
-}
-const i18nProvider = locale => messages[locale];
+// const messages = {
+//   fr: frenchMessages,
+//   en: englishMessages,
+// }
+// const i18nProvider = locale => messages[locale];
 
 // ex_input format
 // {
@@ -148,7 +148,8 @@ function App() {
   return (
     <Admin
       // 다국어
-      locale="en" i18nProvider={i18nProvider}
+      // locale="en" i18nProvider={i18nProvider}
+      authProvider={}
       
       dataProvider={dataProvider}
       layout={Layout}
