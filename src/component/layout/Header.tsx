@@ -20,9 +20,9 @@ const Header = () => {
     // const match = useRouteMatch(['/contacts', '/companies', '/deals']);
     const match = useRouteMatch(['/list', '/admin', '/deals']);
     const currentPath = match?.path ?? '/';
-    console.log(match)   // 객체 들어옴
+    // console.log(match)   // 객체 들어옴
     // console.log(match.path) // error
-    console.log(currentPath)   //  /admin # 뒷부분 들어옴
+    // console.log(currentPath)   //  /admin # 뒷부분 들어옴
     // const currentPath = '/';
 
     return (

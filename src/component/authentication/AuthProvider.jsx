@@ -41,13 +41,16 @@ import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
 
 // This function receives authentication requests (type, params), and should return a Promise.
 export default (type, params) => {
+
+
+    // alll uset pass!!!!!
     // called when the user attempts to log in
-    // if (type === AUTH_LOGIN) {
-    //     const { username } = params;
-    //     localStorage.setItem('username', username);
-    //     // accept all username/password combinations
-    //     return Promise.resolve();
-    // }
+    if (type === AUTH_LOGIN) {
+        const { username } = params;
+        localStorage.setItem('username', username);
+        // accept all username/password combinations
+        return Promise.resolve();
+    }
 
 
 
@@ -56,29 +59,30 @@ export default (type, params) => {
     Login calls authProvider with the AUTH_LOGIN type,
      and { login, password } as parameters. It’s the ideal place to authenticate the user, 
      and store their credentials.
-
+     
     For instance, to query an authentication route via HTTPS and store the credentials (a token) in local storage, 
     configure authProvider as follows:
 
     */
-    if (type === AUTH_LOGIN) {
-        const { username, password } = params;
-        const request = new Request('https://punchlist.com/authenticate', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: new Headers({ 'Content-Type': 'application/json' }),
-        })
-        return fetch(request)
-            .then(response => {
-                if (response.status < 200 || response.status >= 300) {
-                    throw new Error(response.statusText);
-                }
-                return response.json();
-            })
-            .then(({ token }) => {
-                localStorage.setItem('token', token);
-            });
-    }
+    // if (type === AUTH_LOGIN) {
+    //     const { username, password } = params;
+    //     const request = new Request('https://punchlist.com/authenticate', {
+    //         method: 'POST',
+    //         body: JSON.stringify({ username, password }),
+    //         headers: new Headers({ 'Content-Type': 'application/json' }),
+    //     })
+    //     return fetch(request)
+    //         .then(response => {
+    //             if (response.status < 200 || response.status >= 300) {
+    //                 throw new Error(response.statusText);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(({ token }) => {
+    //             localStorage.setItem('token', token);
+    //         });
+    // }
+
 
 
     // called when the user clicks on the logout button
@@ -86,15 +90,35 @@ export default (type, params) => {
         localStorage.removeItem('username');
         return Promise.resolve();
     }
+
+
+    /*
+        If the API requires authentication, and the user credentials are missing or invalid in the request, 
+        the API usually answers with an error code 401 or 403.
+
+        Fortunately, each time the API returns an error, the authProvider is called with the AUTH_ERROR type.
+
+        For instance, to redirect the user to the login page for both 401 and 403 codes:
+    */
     // called when the API returns an error
     if (type === AUTH_ERROR) {
+        // console.log(params.status);
+        // console.log(params);
         const { status } = params;
+        // const status  = params.status;
         if (status === 401 || status === 403) {
             localStorage.removeItem('username');
             return Promise.reject();
         }
         return Promise.resolve();
     }
+
+
+
+
+
+
+
     // called when the user navigates to a new location
     if (type === AUTH_CHECK) {
         return localStorage.getItem('username')
