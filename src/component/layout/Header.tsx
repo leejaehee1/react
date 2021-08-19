@@ -51,8 +51,8 @@ const Header = () => {
                                 <Tab
                                     label={'Punch LIST'}
                                     component={Link}
-                                    to="/list"
-                                    value="/list"
+                                    to="/"
+                                    value="/"
                                 />
                                 <Tab
                                     label={'Management'}

@@ -23,9 +23,9 @@ export default function Category() {
         >
             <Series argumentField="fruit" valueField="count" />
             <Tooltip enabled={true} />
-            <Title text="I am the Test">
+            {/* <Title text="I am the Test">
                     <Subtitle text="I am the Subtitle" />
-            </Title>
+            </Title> */}
             <Legend
                     // center/right/left
                     horizontalAlignment="right" 
@@ -33,8 +33,8 @@ export default function Category() {
                     verticalAlignment="top"
                 />
             <AdaptiveLayout
-                    // height={300}
-                    width={100}
+                    height={10}
+                    width={50}
                 />
         </PieChart>
     );
