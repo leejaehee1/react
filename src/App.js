@@ -9,6 +9,7 @@ import Layout from './component/layout/LayoutComponent';
 import { PostList } from './posts';
 import PunchListComponent from './component/punchlist/PunchListComponent';
 import ManagementTamplate from './component/management/ManagementTamplate';
+import AuthProvider from './component/authentication/AuthProvider';
 
 
 // 다국어
@@ -149,11 +150,14 @@ function App() {
     <Admin
       // 다국어
       // locale="en" i18nProvider={i18nProvider}
-      authProvider={}
+
       
       dataProvider={dataProvider}
       layout={Layout}
       dashboard={PunchListComponent}
+
+      
+      authProvider={AuthProvider}
     >
       <Resource name="posts" list={PostList} />
       <Resource name="admin" list={ManagementTamplate} />
