@@ -115,7 +115,6 @@ export default (type, params) => {
 
 
 
-
     /*
 
         Redirecting to the login page whenever a REST response uses a 401 status code is usually not enough, because react-admin keeps data on the client side, and could display stale data while contacting the server - even after the credentials are no longer valid.
@@ -145,15 +144,15 @@ export default (type, params) => {
 
         위랑 같은거다.
     */
-    if (type === AUTH_CHECK) {
-        const { resource } = params;
-        if (resource === 'posts') {
-            // check credentials for the posts resource
-        }
-        if (resource === 'comments') {
-            // check credentials for the comments resource
-        }
-    }
+    // if (type === AUTH_CHECK) {
+    //     const { resource } = params;
+    //     if (resource === 'posts') {
+    //         // check credentials for the posts resource
+    //     }
+    //     if (resource === 'comments') {
+    //         // check credentials for the comments resource
+    //     }
+    // }
 
 
 

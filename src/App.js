@@ -12,6 +12,7 @@ import { PostList } from './posts';
 import PunchListComponent from './component/punchlist/PunchListComponent';
 import ManagementTamplate from './component/management/ManagementTamplate';
 import AuthProvider from './component/authentication/AuthProvider';
+import LoginPage from './component/authentication/component/LoginPage';
 
 
 // 다국어
@@ -177,6 +178,7 @@ function App() {
       // 다국어
       // locale="en" i18nProvider={i18nProvider}
 
+      loginPage={LoginPage}
       
       dataProvider={dataProvider} authProvider={AuthProvider}
       layout={Layout}
