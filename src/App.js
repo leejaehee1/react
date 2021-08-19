@@ -1,7 +1,7 @@
 import React from 'react';
 import { Admin, Resource, fetchUtils } from 'react-admin';
 import fakeDataProvider from 'ra-data-fakerest';
-import simpleRestProvider from 'ra-data-simple-rest';
+// import simpleRestProvider from 'ra-data-simple-rest';
 
 
 import NavCss from './component/navbar/NavCss';
@@ -149,8 +149,25 @@ const dataProvider = fakeDataProvider({
 
 
 
+/*
+    To use the credentials when calling a data provider, you have to tweak, 
+    this time, the dataProvider function. As explained in the Data providers documentation, 
+    simpleRestProvider and jsonServerProvider take an httpClient as second parameter. 
+    That’s the place where you can change request headers, cookies, etc.
 
+    For instance, to pass the token obtained during login as an Authorization header, 
+    configure the Data Provider as follows:
+*/
 
+// const httpClient = (url, options = {}) => {
+//   if (!options.headers) {
+//       options.headers = new Headers({ Accept: 'application/json' });
+//   }
+//   const token = localStorage.getItem('token');
+//   options.headers.set('Authorization', `Bearer ${token}`);
+//   return fetchUtils.fetchJson(url, options);
+// }
+// const dataProvider = simpleRestProvider('http://localhost:3000', httpClient);
 
 
 
@@ -161,12 +178,9 @@ function App() {
       // locale="en" i18nProvider={i18nProvider}
 
       
-      dataProvider={dataProvider}
+      dataProvider={dataProvider} authProvider={AuthProvider}
       layout={Layout}
       dashboard={PunchListComponent}
-
-
-      authProvider={AuthProvider}
     >
       <Resource name="posts" list={PostList} />
       <Resource name="admin" list={ManagementTamplate} />

@@ -76,6 +76,9 @@ const Header = () => {
                         </Box>
                         <Box display="flex">
                             <LoadingIndicator />
+
+                            
+                            {/* logout :  redirect login page */}
                             <UserMenu logout={<Logout button />} />
                         </Box>
                     </Box>
