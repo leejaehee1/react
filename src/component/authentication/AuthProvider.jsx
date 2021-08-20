@@ -45,14 +45,14 @@ export default (type, params) => {
 
     // alll uset pass!!!!!
     // called when the user attempts to log in
-    if (type === AUTH_LOGIN) {
-        console.log(params)
-        const { username, password } = params;
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-        // accept all username/password combinations
-        return Promise.resolve();
-    }
+    // if (type === AUTH_LOGIN) {
+    //     console.log(params)
+    //     const { username, password } = params;
+    //     localStorage.setItem('username', username);
+    //     localStorage.setItem('password', password);
+    //     // accept all username/password combinations
+    //     return Promise.resolve();
+    // }
 
     /*
 
@@ -64,24 +64,27 @@ export default (type, params) => {
     configure authProvider as follows:
 
     */
-    // if (type === AUTH_LOGIN) {
-    //     const { username, password } = params;
-    //     const request = new Request('https://punchlist.com/authenticate', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ username, password }),
-    //         headers: new Headers({ 'Content-Type': 'application/json' }),
-    //     })
-    //     return fetch(request)
-    //         .then(response => {
-    //             if (response.status < 200 || response.status >= 300) {
-    //                 throw new Error(response.statusText);
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(({ token }) => {
-    //             localStorage.setItem('token', token);
-    //         });
-    // }
+    if (type === AUTH_LOGIN) {
+        const { username, password } = params;
+        const request = new Request('http://localhost:5000/authenticate', {
+            method: 'POST',
+            body: JSON.stringify({ username, password }),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        })
+        console.log("post 요청 보냈다.")
+        return fetch(request)
+            .then(response => {
+                console.log("response 받음")
+                console.log(response)
+                if (response.status < 200 || response.status >= 300) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(({ token }) => {
+                localStorage.setItem('token', token);
+            });
+    }
 
 
 
