@@ -62,11 +62,28 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginSide() {
   const classes = useStyles();
   const [username, setUsername] = useState('');
-  const [password, serPassword] = useState('');
-//   const login = useLogin();
-  const handleTyping = (event) => {
-      console.log(event.target.value)
+  const [password, setPassword] = useState('');
+  const login = useLogin();
+  const notify = useNotify();
+
+
+  const handleUsername = (event) => {
+    //   console.log(event.target.value)
+    setUsername(event.target.value)
   }
+  const handlePassword = (event) => {
+    //   console.log(event.target.value)
+    setPassword(event.target.value)
+  }
+
+  const submit = (event) => {
+    console.log(event);
+    event.preventDefault(); // 부모 tag로 이벤트 전파를 막아 준다. 화면 새로실행 막음. submit는 동작된다.
+    login({ username, password }).catch(() =>
+    notify('Invalid email or password')
+    );
+  }
+
 
 
   return (
@@ -81,7 +98,7 @@ export default function LoginSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={submit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -93,7 +110,7 @@ export default function LoginSide() {
             //   autoComplete="email"
               autoComplete="username"
               autoFocus
-              onChange={handleTyping}
+              onChange={handleUsername}
             />
             <TextField
               variant="outlined"
@@ -105,7 +122,7 @@ export default function LoginSide() {
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={handleTyping}
+              onChange={handlePassword}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
