@@ -28,20 +28,18 @@ return (
     <Chart
       data={data}
     //   width={100}
-      height={200}
-    //   rotated={true}
+      height={220}
+      rotated={true}
     >
       <Legend 
-        rowItemSpacing={50}
-        horizontalAlignment="center"
         // https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.Legend.Font
       />
 
       <PieSeries 
         valueField="value" 
         argumentField="argument" 
-        innerRadius={0.6}
-        // outerRadius={1} 
+        innerRadius={0.3}
+        outerRadius={0.6} 
         />
         <EventTracker />
         <HoverState />

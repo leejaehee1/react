@@ -28,7 +28,7 @@ const Discipline = () => {
             <Chart
             data={data}
             // width={100}
-            height={200}
+            height={220}
             >   
                 {/* 가로축 */}
                 <ArgumentAxis />

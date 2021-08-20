@@ -86,10 +86,10 @@ const PunchListComponent = () => {
                             <h3>Punch Status</h3>
                             <PunchStatus />
                         </Box>
-                        <Box flex="3" m="2em">
+                        {/* <Box flex="3" m="2em">
                             <h3>Category</h3>
                             <Category />
-                        </Box>
+                        </Box> */}
                         <Box flex="5" m="2em">
                             <h3>Discipline</h3>
                             <Discipline />
