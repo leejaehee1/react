@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "devextreme": "^21.1.5",
     "devextreme-react": "^21.1.5",
+    "jwt-decode": "^3.1.2",
     "material-table": "^1.69.3",
     "node-polyglot": "^2.4.2",
     "prop-types": "^15.7.2",

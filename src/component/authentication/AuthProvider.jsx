@@ -38,6 +38,8 @@
 
 
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
+import decodeJwt from 'jwt-decode';
+
 
 // This function receives authentication requests (type, params), and should return a Promise.
 export default (type, params) => {
@@ -66,23 +68,37 @@ export default (type, params) => {
     */
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        const request = new Request('http://localhost:5000/authenticate', {
+        console.log(username, password);
+        const request = new Request('http://localhost:5000/api/login/', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ userID : username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         })
         console.log("post 요청 보냈다.")
         return fetch(request)
             .then(response => {
-                console.log("response 받음")
-                console.log(response)
+                console.log("response 받음---------")
+                console.log(response.body.locked)
+                console.log(response.status)
                 if (response.status < 200 || response.status >= 300) {
                     throw new Error(response.statusText);
                 }
                 return response.json();
             })
-            .then(({ token }) => {
-                localStorage.setItem('token', token);
+            // .then(({ token }) => {
+            .then((response) => {
+                console.log("token 받음")
+                console.log(response.result)
+                localStorage.setItem('username', username);
+                if (response.result) {
+                    console.log('성공')
+                    return Promise.resolve();
+                } else {
+                    console.log('실패')
+                }
+                // const decodedToken = decodeJwt(token);
+                // localStorage.setItem('token', token);
+                // localStorage.setItem('permissions', decodedToken.permissions);
             });
     }
 
