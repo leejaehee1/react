@@ -1,7 +1,9 @@
 import React from 'react';
+import { useAuthenticated } from 'react-admin';
 import GridComponent from './managementcomponent/GridComponent';
 
 const ManagementTamplate = () => {
+    useAuthenticated(); // redirects to login if not authenticated
     return (
         <div style={{ maxWidth: '100%' }}>
         <br />

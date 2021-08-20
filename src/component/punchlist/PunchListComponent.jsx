@@ -22,6 +22,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Discipline from "./chart/Discipline";
 import PunchStatus from "./chart/PunchStatus";
 import Category from "./chart/Category";
+import { useAuthenticated } from 'react-admin';
+
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
 // import { Title } from 'react-admin';
@@ -42,6 +44,7 @@ const defaultProps = {
 
 
 const PunchListComponent = () => {
+    useAuthenticated()
     // const [show, setShow] = React.useState=(() => {
     //     console.log("rendering test")
     //     return false
