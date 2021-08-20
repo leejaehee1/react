@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useLogin, useNotify, Notification, defaultTheme } from 'react-admin';
+
 
 function Copyright() {
   return (
@@ -59,6 +61,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginSide() {
   const classes = useStyles();
+  const [username, setUsername] = useState('');
+  const [password, serPassword] = useState('');
+//   const login = useLogin();
+  const handleTyping = (event) => {
+      console.log(event.target.value)
+  }
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -78,11 +87,13 @@ export default function LoginSide() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+            //   autoComplete="email"
+              autoComplete="username"
               autoFocus
+              onChange={handleTyping}
             />
             <TextField
               variant="outlined"
@@ -94,6 +105,7 @@ export default function LoginSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleTyping}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
