@@ -46,13 +46,13 @@ export default (type, params) => {
     // alll uset pass!!!!!
     // called when the user attempts to log in
     if (type === AUTH_LOGIN) {
-        const { username } = params;
+        console.log(params)
+        const { username, password } = params;
         localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
         // accept all username/password combinations
         return Promise.resolve();
     }
-
-
 
     /*
 
