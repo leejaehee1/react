@@ -13,6 +13,8 @@ import PunchListComponent from './component/punchlist/PunchListComponent';
 import ManagementTamplate from './component/management/ManagementTamplate';
 import AuthProvider from './component/authentication/AuthProvider';
 import LoginPage from './component/authentication/component/LoginPage';
+import SignUpPage from './component/authentication/component/SignUpPage';
+import customRoutes from './customRoutes';
 
 
 // 다국어
@@ -178,6 +180,8 @@ function App() {
       // 다국어
       // locale="en" i18nProvider={i18nProvider}
 
+      customRoutes={customRoutes}
+
       loginPage={LoginPage}
       
       dataProvider={dataProvider} authProvider={AuthProvider}
@@ -186,6 +190,7 @@ function App() {
     >
       <Resource name="posts" list={PostList} />
       <Resource name="admin" list={ManagementTamplate} />
+      {/* <Resource name="register" list={SignUpPage} /> */}
       {/* <NavCss />
       <BrowserRouter>
         <AppRouter />
