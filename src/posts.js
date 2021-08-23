@@ -35,11 +35,11 @@ export const PostList = props => (
             </ReferenceField> */}
             <TextField source="PunchID" />
             <TextField source="ProjectID" />
-            <TextField source="IssueDesp" />
+            {/* <TextField source="IssueDesp" /> */}
             <TextField source="CompletedDate" />
-            <TextField source="DrawingID" />
-            <EditButton />
-            <ShowButton />
+            {/* <TextField source="DrawingID" /> */}
+            {/* <EditButton /> */}
+            {/* <ShowButton /> */}
         </Datagrid>
     </List>
 );

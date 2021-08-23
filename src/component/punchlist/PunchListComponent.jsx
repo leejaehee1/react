@@ -32,6 +32,7 @@ import { useAuthenticated } from 'react-admin';
 
 import { Admin, Resource } from 'react-admin';
 import { PostList } from "../../posts";
+import DetailComponent from "./components/DetailComponent";
 
 
 // https://material-ui.com/system/borders/
@@ -41,6 +42,7 @@ const defaultProps = {
     border: 1,
     style: { width: '75rem', height: '20rem' },
   };
+
 
 
 const PunchListComponent = () => {
@@ -66,7 +68,7 @@ const PunchListComponent = () => {
     }
 
     return (
-        <>
+        <React.Fragment>
             {/* <Card>
                 <Title title="Welcome to the administration" />
             <CardContent>Lorem ipsum sic dolor amet...</CardContent>
@@ -119,8 +121,18 @@ const PunchListComponent = () => {
                 )
             }
             {/* <p>다음글</p> */}
-            <Resource name="posts" list={PostList} />
-        </>
+
+            <Box display="flex" mt="2em">
+                <Box flex="3" mr="1em">
+                    <Resource name="posts" list={PostList} />
+                </Box>
+                <Box flex="2" display="flex">
+                    <Box flex="1" mr="1em">
+                        <DetailComponent />
+                    </Box>
+                </Box>
+            </Box>
+        </React.Fragment>
     )
 };
 

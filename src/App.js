@@ -179,17 +179,21 @@ function App() {
     <Admin
       // 다국어
       // locale="en" i18nProvider={i18nProvider}
-
-      customRoutes={customRoutes}
-
+      
       loginPage={LoginPage}
+      
       
       dataProvider={dataProvider} authProvider={AuthProvider}
       layout={Layout}
       dashboard={PunchListComponent}
+
+
+      customRoutes={customRoutes}
     >
       <Resource name="posts" list={PostList} />
       <Resource name="admin" list={ManagementTamplate} />
+      {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
+
       {/* <Resource name="register" list={SignUpPage} /> */}
       {/* <NavCss />
       <BrowserRouter>
