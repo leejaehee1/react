@@ -34,6 +34,7 @@ import { Admin, Resource } from 'react-admin';
 import { PostList } from "../../posts";
 import DetailComponent from "./components/DetailComponent";
 import DetailSelector from "./components/DetailSelector";
+import DetailPageComponent from "./components/DetailPageComponent";
 
 
 // https://material-ui.com/system/borders/
@@ -131,6 +132,7 @@ const PunchListComponent = () => {
                     <Box flex="1" mr="1em">
                         <DetailComponent />
                         <DetailSelector />
+                        <DetailPageComponent />
                     </Box>
                 </Box>
             </Box>
