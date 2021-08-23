@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -42,6 +42,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const theme = createTheme({
+  typography: {
+    htmlFontSize: 33,
+    // subtitle1: {
+    //   fontSize: 5,
+    // },
+    // testbody: {
+    //   fontWeight: 500,
+    // },
+    // button: {
+    //   fontStyle: 'italic'
+    // },
+    // h5: {
+    //   fontStyle: 'italic'
+    // },
+  },
+})
+
 
 function DetailPageComponent() {
   const classes = useStyles();
@@ -54,26 +72,43 @@ function DetailPageComponent() {
         </Typography>
         <Grid container spacing={3}>
             <Grid item xs={3}>
-            <Paper elevation={0} className={classes.lpaper}>
-              <p>Issued Date</p>
-              <p>Issued By</p>
-              <p>Completed Data</p>
-              <p>Completed By</p>
+              <Paper elevation={0} className={classes.lpaper}>
+                <ThemeProvider theme={theme}>
+                {/* <Typography variant="subtitle1">subtitle</Typography> */}
+                  <Typography variant="h5">Issued Date</Typography>
+                  <Typography variant="h5">Issued By</Typography>
+                  <Typography variant="h5">Completed Data</Typography>
+                  <Typography variant="h5">Completed By</Typography>
+                </ThemeProvider>
               </Paper>
             </Grid>
             <Grid item xs={3}>
-            <Paper className={classes.rpaper}>
-              <p>2021.07.26</p>
-              <p>John Smith</p>
-              <p>2021.07.26</p>
-              <p>Abdul Habib</p>
-            </Paper>
+              <Paper elevation={0} className={classes.rpaper}>
+                <ThemeProvider theme={theme}>
+                  <Typography variant="h5"><b>2021.07.26</b></Typography>
+                  <Typography variant="h5"><b>John Smith</b></Typography>
+                  <Typography variant="h5"><b>2021.07.26</b></Typography>
+                  <Typography variant="h5"><b>Abdul Habib</b></Typography>
+                </ThemeProvider>
+              </Paper>
             </Grid>
             <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
+              <Paper elevation={0} className={classes.lpaper}>
+                <ThemeProvider theme={theme}>
+                  <Typography variant="h5">Closed Date</Typography>
+                  <Typography variant="h5">Closed By</Typography>
+                  <Typography variant="h5">Client QC</Typography>
+                </ThemeProvider>
+              </Paper>
             </Grid>
             <Grid item xs={3}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
+              <Paper elevation={0} className={classes.rpaper}>
+                <ThemeProvider theme={theme}>
+                  <Typography variant="h5"><b>2021.07.26</b></Typography>
+                  <Typography variant="h5"><b>Robert Junior</b></Typography>
+                  <Typography variant="h5"><b>Abdul Habib</b></Typography>
+                </ThemeProvider>
+              </Paper>
             </Grid>
         </Grid>
 
