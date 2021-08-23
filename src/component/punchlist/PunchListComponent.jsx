@@ -33,6 +33,7 @@ import { useAuthenticated } from 'react-admin';
 import { Admin, Resource } from 'react-admin';
 import { PostList } from "../../posts";
 import DetailComponent from "./components/DetailComponent";
+import DetailSelector from "./components/DetailSelector";
 
 
 // https://material-ui.com/system/borders/
@@ -129,9 +130,11 @@ const PunchListComponent = () => {
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
                         <DetailComponent />
+                        <DetailSelector />
                     </Box>
                 </Box>
             </Box>
+
         </React.Fragment>
     )
 };

@@ -152,19 +152,6 @@ function DetailComponent() {
         </ButtonBase>
       ))}   
 
-      <Box display="flex" mt="2em">
-          <Box flex="1" mr="1em" bgcolor="text.primary" color="background.paper">
-            <Button variant="contained" color="Default">Default</Button>
-              {/* <Resource name="posts" list={PostList} /> */}
-          </Box>
-          <Box flex="1" display="flex">
-              <Box flex="1" mr="1em">
-                <Button variant="outlined" color="secondary">Default</Button>
-                  {/* <DetailComponent /> */}
-              </Box>
-          </Box>
-      </Box>
-
     </>
   )
 }
