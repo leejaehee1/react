@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { Box } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { AutorenewTwoTone } from '@material-ui/icons';
 
 
 
@@ -31,22 +32,22 @@ const images = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
+    display: 'flex',
     // flexWrap: 'wrap',
     // minWidth: 300,
     // // width: '100%',
-    bgcolor: '',
-    background: 'black'
+    justifyContent: 'center',
   },
   image: {
     position: 'relative',
     height: 30,
-    [theme.breakpoints.down('xs')]: {
-      // width: '100% !important', // Overrides inline-style
-      // height: 100,
-      // height: '100% !important', // Overrides inline-style
-      // width: 100,
-    },
+    margin: '10px 10px 0 0',
+    // [theme.breakpoints.down('xs')]: {
+    //   // width: '100% !important', // Overrides inline-style
+    //   // height: 100,
+    //   // height: '100% !important', // Overrides inline-style
+    //   // width: 100,
+    // },
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -114,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
 function DetailComponent() {
   const classes = useStyles();
   return (
-    <>
+    <div className={classes.root}>
       {/* <img src="./static/images/export-all.png" alt="asdf" /> */}
       {images.map((image) => (
         <ButtonBase
@@ -124,6 +125,7 @@ function DetailComponent() {
           focusVisibleClassName={classes.focusVisible}
           style={{
             // width: image.width,
+            margin: '10 10 0 0',
           }}
         >
           {/* <span
@@ -152,7 +154,7 @@ function DetailComponent() {
         </ButtonBase>
       ))}   
 
-    </>
+    </div>
   )
 }
 

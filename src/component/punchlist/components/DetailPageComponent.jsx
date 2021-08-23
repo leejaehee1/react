@@ -25,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
   },
   lpaper: {
     padding: theme.spacing(1),
-    textAlign: 'center',
+    textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
     marginBottom: theme.spacing(1),
   },
   rpaper: {
     padding: theme.spacing(1),
-    textAlign: 'center',
+    textAlign: 'right',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
     marginBottom: theme.spacing(1),
@@ -48,16 +48,26 @@ function DetailPageComponent() {
   return (
     <div className={classes.root}>
       {/* <Paper variant="outlined" square> */}
-      <Paper>
+      <Paper style={{padding: '15px'}}>
         <Typography variant="subtitle1" gutterBottom>
             {/* Material-UI Grid: */}
         </Typography>
         <Grid container spacing={3}>
             <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
+            <Paper elevation={0} className={classes.lpaper}>
+              <p>Issued Date</p>
+              <p>Issued By</p>
+              <p>Completed Data</p>
+              <p>Completed By</p>
+              </Paper>
             </Grid>
             <Grid item xs={3}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
+            <Paper className={classes.rpaper}>
+              <p>2021.07.26</p>
+              <p>John Smith</p>
+              <p>2021.07.26</p>
+              <p>Abdul Habib</p>
+            </Paper>
             </Grid>
             <Grid item xs={3}>
             <Paper className={classes.lpaper}>xs=3</Paper>
