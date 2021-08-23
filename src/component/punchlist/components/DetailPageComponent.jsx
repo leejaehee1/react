@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import DataOne from './detailpagecomponents/DataOne';
 
 
 
@@ -70,47 +71,8 @@ function DetailPageComponent() {
         <Typography variant="subtitle1" gutterBottom>
             {/* Material-UI Grid: */}
         </Typography>
-        <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Paper elevation={0} className={classes.lpaper}>
-                <ThemeProvider theme={theme}>
-                {/* <Typography variant="subtitle1">subtitle</Typography> */}
-                  <Typography variant="h5">Issued Date</Typography>
-                  <Typography variant="h5">Issued By</Typography>
-                  <Typography variant="h5">Completed Data</Typography>
-                  <Typography variant="h5">Completed By</Typography>
-                </ThemeProvider>
-              </Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper elevation={0} className={classes.rpaper}>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5"><b>2021.07.26</b></Typography>
-                  <Typography variant="h5"><b>John Smith</b></Typography>
-                  <Typography variant="h5"><b>2021.07.26</b></Typography>
-                  <Typography variant="h5"><b>Abdul Habib</b></Typography>
-                </ThemeProvider>
-              </Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper elevation={0} className={classes.lpaper}>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5">Closed Date</Typography>
-                  <Typography variant="h5">Closed By</Typography>
-                  <Typography variant="h5">Client QC</Typography>
-                </ThemeProvider>
-              </Paper>
-            </Grid>
-            <Grid item xs={3}>
-              <Paper elevation={0} className={classes.rpaper}>
-                <ThemeProvider theme={theme}>
-                  <Typography variant="h5"><b>2021.07.26</b></Typography>
-                  <Typography variant="h5"><b>Robert Junior</b></Typography>
-                  <Typography variant="h5"><b>Abdul Habib</b></Typography>
-                </ThemeProvider>
-              </Paper>
-            </Grid>
-        </Grid>
+        
+        <DataOne />
 
         <br />
         <Divider className={classes.dxivider} />
