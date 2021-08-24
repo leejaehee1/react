@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import DataOne from './detailpagecomponents/DataOne';
 import DataCheckBox from './detailpagecomponents/DataCheckBox';
+import DataSlider from './detailpagecomponents/DataSlider';
 
 
 
@@ -88,30 +89,13 @@ function DetailPageComponent() {
         <Divider className={classes.divider} />
         <br /> */}
 
-        <Grid container spacing={3}>
-            <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={9}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={9}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={9}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
-            </Grid>
-        </Grid>
+        <DataSlider />
 
-        {/* <br />
-        <Divider className={classes.dxivider} />
-        <br /> */}
+        
+
+        <br />
+          <Divider className={classes.dxivider} />
+        <br />
 
         <h5>Keyword</h5>
 

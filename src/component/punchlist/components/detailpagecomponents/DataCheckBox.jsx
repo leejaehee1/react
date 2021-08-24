@@ -20,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
     gridGap: theme.spacing(0),
   },
   paper: {
-    padding: theme.spacing(0),
+    padding: theme.spacing(1.5),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   lpaper: {
-    padding: theme.spacing(0),
+    padding: theme.spacing(1),
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
