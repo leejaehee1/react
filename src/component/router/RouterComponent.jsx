@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LoginFormComponent from '../account/login/LoginFormComponent';
+// import LoginFormComponent from '../account/login/LoginFormComponent';
 import ManagementTamplate from '../management/ManagementTamplate';
 import PunchListComponent from '../punchlist/PunchListComponent';
 
@@ -10,7 +10,7 @@ const AppRouter = () => {
             <Switch>
                 <Route path="/admin" component={ManagementTamplate} />
                 <Route path="/list" component={PunchListComponent} />
-                <Route path="/" component={LoginFormComponent} />
+                {/* <Route path="/" component={LoginFormComponent} /> */}
             </Switch>
         </div>
     )

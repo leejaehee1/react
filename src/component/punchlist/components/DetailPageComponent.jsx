@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import DataOne from './detailpagecomponents/DataOne';
+import DataCheckBox from './detailpagecomponents/DataCheckBox';
 
 
 
@@ -72,30 +73,20 @@ function DetailPageComponent() {
             {/* Material-UI Grid: */}
         </Typography>
         
+        {/* dataOne */}
         <DataOne />
 
-        <br />
+        {/* <br />
         <Divider className={classes.dxivider} />
-        <br />
+        <br /> */}
         
-        <Grid container spacing={3}>
-            <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-            <Paper className={classes.lpaper}>xs=3</Paper>
-            </Grid>
-            <Grid item xs={3}>
-            <Paper className={classes.rpaper}>xs=3</Paper>
-            </Grid>
-        </Grid>
+        {/* datatwo */}
+        <DataCheckBox />
 
-        <br />
-        <Divider className={classes.dxivider} />
-        <br />
+
+        {/* <br />
+        <Divider className={classes.divider} />
+        <br /> */}
 
         <Grid container spacing={3}>
             <Grid item xs={3}>
@@ -118,9 +109,9 @@ function DetailPageComponent() {
             </Grid>
         </Grid>
 
-        <br />
+        {/* <br />
         <Divider className={classes.dxivider} />
-        <br />
+        <br /> */}
 
         <h5>Keyword</h5>
 
