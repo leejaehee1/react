@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   lpaper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(1.5),
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
@@ -78,9 +78,9 @@ const DataCheckBox = () => {
   return (
     <div>
 
-      <br />
+      {/* <br /> */}
         <Divider className={classes.udivider} />
-      <br />
+      {/* <br /> */}
       <Grid container spacing={3} alignItems="center">
         <Grid item xs={3}>
         {/* elevation={0} */}
@@ -117,7 +117,7 @@ const DataCheckBox = () => {
         </Grid>
       </Grid>
 
-      <br />
+      {/* <br /> */}
         <Divider className={classes.ddivider} />
       <br />
     </div>

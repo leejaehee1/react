@@ -4,9 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import DataOne from './detailpagecomponents/DataOne';
-import DataCheckBox from './detailpagecomponents/DataCheckBox';
-import DataSlider from './detailpagecomponents/DataSlider';
+import DataOne from './detailpages/DataOne';
+import DataSlider from './detailpages/DataSlider';
+import DataCheckBox from './detailpages/DataCheckBox';
+import DataTime from './detailpages/DataTime';
 
 
 
@@ -74,20 +75,13 @@ function DetailPageComponent() {
             {/* Material-UI Grid: */}
         </Typography>
         
-        {/* dataOne */}
         <DataOne />
-
-        {/* <br />
-        <Divider className={classes.dxivider} />
-        <br /> */}
-        
-        {/* datatwo */}
         <DataCheckBox />
+        <DataTime />
 
-
-        {/* <br />
+        {/* <br /> */}
         <Divider className={classes.divider} />
-        <br /> */}
+        {/* <br /> */}
 
         <DataSlider />
 
