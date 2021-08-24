@@ -4,14 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import DataOne from './detailpages/DataOne';
-import DataSlider from './detailpages/DataSlider';
-import DataCheckBox from './detailpages/DataCheckBox';
-import DataTime from './detailpages/DataTime';
-import DataChipsArray from './detailpages/DataChipsArray';
-import DataDescription from './detailpages/DataDescription';
-import DataImage from './detailpages/DataImage';
-
+import RecipeReviewCard from './RecipeReviewCard';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,48 +61,39 @@ const theme = createTheme({
 })
 
 
-function DetailPageComponent() {
+function DataImage() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      {/* <Paper variant="outlined" square> */}
-      <Paper style={{padding: '15px'}}>
-        <Typography variant="subtitle1" gutterBottom>
-            {/* Material-UI Grid: */}
-        </Typography>
-        
-        <DataOne />
-        <DataCheckBox />
-        <DataTime />
-        <Divider className={classes.divider} />
-        <DataSlider />
-        <Divider className={classes.divider} />
-        <DataChipsArray />
-        <Divider className={classes.divider} />
-        <DataDescription />
-        <Divider className={classes.divider} />
-
-
-
-
-        <DataImage />
-
-
-
-
-        <Divider className={classes.divider} />
-
-        <Grid container spacing={3}>
-            <Grid item xs={6}>
-            <Paper className={classes.paper}>Cancel</Paper>
-            </Grid>
-            <Grid item xs={6}>
-            <Paper className={classes.paper}>Save</Paper>
-            </Grid>
+    <>
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <Paper elevation={0} className={classes.lpaper}>
+          <ThemeProvider theme={theme}>
+            <Typography variant="h5">Issued</Typography>
+          </ThemeProvider>
+          <RecipeReviewCard />
+          </Paper>
         </Grid>
-      </Paper>
-    </div>
+        <Grid item xs={6}>
+          <Paper elevation={0} className={classes.lpaper}>
+          <ThemeProvider theme={theme}>
+            <Typography variant="h5">Completed</Typography>
+          </ThemeProvider>
+          <RecipeReviewCard />
+          </Paper>
+        </Grid>
+      </Grid>
+
+
+
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>View Drawing</Paper>
+          {/* <RecipeReviewCard /> */}
+        </Grid>
+      </Grid>
+    </>
   )
 }
 
-export default DetailPageComponent;
+export default DataImage;
