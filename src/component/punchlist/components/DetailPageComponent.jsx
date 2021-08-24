@@ -9,6 +9,7 @@ import DataSlider from './detailpages/DataSlider';
 import DataCheckBox from './detailpages/DataCheckBox';
 import DataTime from './detailpages/DataTime';
 import DataChipsArray from './detailpages/DataChipsArray';
+import DataDescription from './detailpages/DataDescription';
 
 
 
@@ -79,50 +80,19 @@ function DetailPageComponent() {
         <DataOne />
         <DataCheckBox />
         <DataTime />
-
-        {/* <br /> */}
         <Divider className={classes.divider} />
-        {/* <br /> */}
-
         <DataSlider />
-
-        
-
-        {/* <br /> */}
-          <Divider className={classes.divider} />
-        {/* <br /> */}
-
-        {/* <h5>Keyword</h5> */}
-        <DataChipsArray />
-        
-        {/* <br /> */}
         <Divider className={classes.divider} />
-        {/* <br /> */}
+        <DataChipsArray />
+        <Divider className={classes.divider} />
+
+
+        <DataDescription />
+
+        <Divider className={classes.divider} />
 
 
 
-
-        <h5>Issue Description</h5>
-        <Paper variant="outlined" square>
-          KEN-jei-29348 Cable not connected
-          <br />
-          asdf
-        </Paper>
-          
-        <br />
-        <Divider className={classes.dxivider} />
-        <br />
-
-        <h5>Complete Comment</h5>
-        <Paper variant="outlined" square>
-          KEN-jei-29348 Cable not connected
-          <br />
-          asdf
-        </Paper>
-
-        <br />
-        <Divider className={classes.dxivider} />
-        <br />
 
         <Grid container spacing={3}>
             <Grid item xs={6}>
@@ -139,9 +109,7 @@ function DetailPageComponent() {
             </Grid>
         </Grid>
 
-        <br />
-        <Divider className={classes.dxivider} />
-        <br />
+        <Divider className={classes.divider} />
 
         <Grid container spacing={3}>
             <Grid item xs={6}>
