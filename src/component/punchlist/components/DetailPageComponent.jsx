@@ -8,6 +8,7 @@ import DataOne from './detailpages/DataOne';
 import DataSlider from './detailpages/DataSlider';
 import DataCheckBox from './detailpages/DataCheckBox';
 import DataTime from './detailpages/DataTime';
+import DataChipsArray from './detailpages/DataChipsArray';
 
 
 
@@ -87,16 +88,16 @@ function DetailPageComponent() {
 
         
 
-        <br />
-          <Divider className={classes.dxivider} />
-        <br />
+        {/* <br /> */}
+          <Divider className={classes.divider} />
+        {/* <br /> */}
 
         <h5>Keyword</h5>
-
+        <DataChipsArray />
         
-        <br />
-        <Divider className={classes.dxivider} />
-        <br />
+        {/* <br /> */}
+        <Divider className={classes.divider} />
+        {/* <br /> */}
 
         <h5>Issue Description</h5>
         <Paper variant="outlined" square>
