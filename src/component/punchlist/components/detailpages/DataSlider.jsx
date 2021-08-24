@@ -54,18 +54,6 @@ const useStyles = makeStyles((theme) => ({
 const theme = createTheme({
   typography: {
     htmlFontSize: 33,
-    // subtitle1: {
-    //   fontSize: 5,
-    // },
-    // testbody: {
-    //   fontWeight: 500,
-    // },
-    // button: {
-    //   fontStyle: 'italic'
-    // },
-    // h5: {
-    //   fontStyle: 'italic'
-    // },
   },
 })
 
@@ -96,14 +84,14 @@ function DataSlider() {
   return (
     <>
       <Grid container alignItems="center" spacing={3}>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
         <Paper elevation={0} className={classes.lpaper}>
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Difficulty</Typography>
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={8}>
         <Paper elevation={0} className={classes.rpaper}>
           <Slider
             // ValueLabelComponent={ValueLabelComponent}
@@ -123,14 +111,14 @@ function DataSlider() {
           />
         </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
         <Paper elevation={0} className={classes.lpaper}>
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Schedule Impact</Typography>
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={8}>
         <Paper elevation={0} className={classes.rpaper}>
           <Slider
             aria-label="custom thumb label"
@@ -141,14 +129,14 @@ function DataSlider() {
           />
         </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
         <Paper elevation={0} className={classes.lpaper}>
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Cost Impact</Typography>
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={8}>
         <Paper elevation={0} className={classes.rpaper}>
           <Slider
             aria-label="custom thumb label"

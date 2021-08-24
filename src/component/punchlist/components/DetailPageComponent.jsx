@@ -92,12 +92,15 @@ function DetailPageComponent() {
           <Divider className={classes.divider} />
         {/* <br /> */}
 
-        <h5>Keyword</h5>
+        {/* <h5>Keyword</h5> */}
         <DataChipsArray />
         
         {/* <br /> */}
         <Divider className={classes.divider} />
         {/* <br /> */}
+
+
+
 
         <h5>Issue Description</h5>
         <Paper variant="outlined" square>
