@@ -68,7 +68,25 @@ const PunchListContent = () => {
                         </ListItemAvatar> */}
                         <ListItemText
                             primary={`${contact.PunchID}, ${contact.Discipline}, ${contact.BulkName}, ${contact.CostImpact}, ${contact.CompletedBy}`}
-
+                            secondary={
+                                <>
+                                    {contact.IssueDesp} 
+                                    {/* at{' '} */}
+                                    {contact.CompleteDesp}
+                                    {/* <ReferenceField
+                                        record={contact}
+                                        source="company_id"
+                                        reference="companies"
+                                        basePath="/companies"
+                                        link={false}
+                                        >
+                                        <TextField source="IssueDesp" />
+                                    </ReferenceField>{' '} */}
+                                    {/* {contact.nb_notes &&
+                                        `- ${contact.nb_notes} notes `} */}
+                                    {/* <TagsList record={contact} /> */}
+                                </>
+                            }
                         />
                     </ListItem>
                 );
