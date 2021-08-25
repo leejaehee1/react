@@ -13,6 +13,15 @@ const useStyles = makeStyles({
         width: 50,
         height: 43.54,
     },
+    lnav: {
+        background: '#212121',
+    },
+    mnav: {
+        background: '#424242',
+    },
+    rnav: {
+        background: '#ECECEC',
+    },
 });
 
 const Header = () => {
@@ -28,9 +37,9 @@ const Header = () => {
     return (
         <nav className={classes.root}>
             <AppBar position="static" color="primary">
-                <Toolbar variant="dense">
+                <Toolbar className={classes.lnav} variant="dense">
                     <Box flex={1} display="flex" justifyContent="space-between">
-                        <Box display="flex" alignItems="center">
+                        <Box display="flex" className={classes.lnav} flex="3" alignItems="center">
                             <img
                                 className={classes.logo}
                                 src={
@@ -39,11 +48,16 @@ const Header = () => {
                                 }
                                 alt="Bosch Logo"
                             />
-                            <Typography component="span" variant="h5">
-                                PLMS
+                            <Typography component="span" variant="h4">
+                                P.L.M.S
                             </Typography>
                         </Box>
-                        <Box>
+                        <Box display="flex" flex="5" className={classes.mnav} alignItems="center">
+                            <Typography component="span" variant="h6">
+                                &nbsp;&nbsp;&nbsp;Algerial RDPP
+                            </Typography>
+                        </Box>
+                        <Box flex="4">
                             <Tabs
                                 value={currentPath}
                                 aria-label="Navigation Tabs"
@@ -60,7 +74,13 @@ const Header = () => {
                                     to="/admin"
                                     value="/admin"
                                 />
-                                {/* <Tab
+                                <Tab
+                                    label={'Code'}
+                                    // component={Link}
+                                    // to="/admin"
+                                    // value="/admin"
+                                />
+                                {/* <T  ab
                                     label={'Companies'}
                                     component={Link}
                                     to="/companies"
