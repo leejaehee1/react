@@ -63,6 +63,13 @@ const PunchListContent = () => {
                                 }}
                             />
                         </ListItemIcon>
+                        {/* <ListItemAvatar>
+                            <Avatar record={contact} />
+                        </ListItemAvatar> */}
+                        <ListItemText
+                            primary={`${contact.PunchID}, ${contact.Discipline}, ${contact.BulkName}, ${contact.CostImpact}, ${contact.CompletedBy}`}
+
+                        />
                     </ListItem>
                 );
             })}
