@@ -29,14 +29,31 @@ export const PostList = props => (
     // <List {...props} filters={postFilters}>
     <List {...props}>
         <Datagrid>
-            <TextField source="id" />
+            {/* <TextField source="id" /> */}
             {/* <ReferenceField label="User" source="userId" reference="users">
                 <TextField source="name" />
             </ReferenceField> */}
-            <TextField source="PunchID" />
-            <TextField source="ProjectID" />
+            {/* <TextField source="id"  >
+                asadf
+            <p>asdfasdf</p>
+            <p>asdfasdf</p>
+            <p>asdfasdf</p>
+            </TextField> */}
+            {/* <TextField /> */}
+            <div>
+            <TextField source="PunchID" />, 
+            <TextField source="Discipline" />,
+            <TextField source="BulkName" />,
+            <TextField source="CostImpact" />,
+            <TextField source="CompletedBy" />,
+             <br />
+            <TextField source="IssueDesp" />
+            <br />
+            <TextField source="CompleteDesp" />
+         
+            </div>
             {/* <TextField source="IssueDesp" /> */}
-            <TextField source="CompletedDate" />
+            {/* <TextField source="CompletedDate" /> */}
             {/* <TextField source="DrawingID" /> */}
             {/* <EditButton /> */}
             {/* <ShowButton /> */}
