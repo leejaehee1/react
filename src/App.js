@@ -4,7 +4,6 @@ import fakeDataProvider from 'ra-data-fakerest';
 // import simpleRestProvider from 'ra-data-simple-rest';
 
 
-import NavCss from './component/navbar/NavCss';
 import AppRouter from './component/router/RouterComponent';
 import { BrowserRouter} from 'react-router-dom';
 import Layout from './component/layout/LayoutComponent';
