@@ -40,7 +40,8 @@ import { Punchs } from "./Punchs";
 
 // https://material-ui.com/system/borders/
 const defaultProps = {
-    bgcolor: 'background.paper',
+    // bgcolor: 'background.paper',
+    bgcolor: '#ECECEC',
     m: 1,
     border: 1,
     style: { width: '75rem', height: '20rem' },
@@ -87,22 +88,23 @@ const PunchListComponent = () => {
             {
                 show? (
                     <>
-                    <Box borderColor="primary.main" {...defaultProps}>
-                    <Box display="flex" mt="1em"> 
-                        <Box flex="3" m="2em">
-                        {/* bgcolor="palevioletred" */}
-                            <h3>Punch Status</h3>
-                            <PunchStatus />
+                    {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
+                    <Box boxShadow={5} borderColor="#ECECEC" {...defaultProps}>
+                        <Box display="flex" mt="1em"> 
+                            <Box flex="3" m="2em">
+                            {/* bgcolor="palevioletred" */}
+                                <h3>Punch Status</h3>
+                                <PunchStatus />
+                            </Box>
+                            {/* <Box flex="3" m="2em">
+                                <h3>Category</h3>
+                                <Category />
+                            </Box> */}
+                            <Box flex="5" m="2em">
+                                <h3>Discipline</h3>
+                                <Discipline />
+                            </Box>
                         </Box>
-                        {/* <Box flex="3" m="2em">
-                            <h3>Category</h3>
-                            <Category />
-                        </Box> */}
-                        <Box flex="5" m="2em">
-                            <h3>Discipline</h3>
-                            <Discipline />
-                        </Box>
-                    </Box>
                     </Box>
                     </>
                 ) : (
