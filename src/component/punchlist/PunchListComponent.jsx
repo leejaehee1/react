@@ -35,6 +35,7 @@ import { PostList } from "../../posts";
 import DetailComponent from "./components/DetailComponent";
 import DetailSelector from "./components/DetailSelector";
 import DetailPageComponent from "./components/DetailPageComponent";
+import { Punchs } from "./Punchs";
 
 
 // https://material-ui.com/system/borders/
@@ -126,7 +127,7 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    <Resource name="posts" list={PostList} />
+                    <Resource name="list" list={Punchs} />
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
