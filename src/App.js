@@ -15,6 +15,7 @@ import AuthProvider from './component/authentication/AuthProvider';
 import LoginPage from './component/authentication/component/LoginPage';
 import SignUpPage from './component/authentication/component/SignUpPage';
 import customRoutes from './customRoutes';
+import { Punchs } from './component/punchlist/Punchs';
 
 
 // 다국어
@@ -117,6 +118,81 @@ const dataProvider = fakeDataProvider({
        },
       // { id: 1, title: 'FooBar' },
   ],
+  list : [
+    { 
+      ProjectID : 100,
+      PunchID : "PC-2-00-MB-MBP-E-01-001",
+      Category : "C",
+      System : "DFED",
+      Subsystem : "DFFD",
+      Discipline : "A",
+      Status : "R",
+      Unit : "abcdefe",
+      Area : "Algeria RDPP",
+      TagNumber : "tag number",
+      BulkItem : "1",
+      BulkName : "bulk description",
+      Department : "ASB",
+      TargetDate : "2017-12-24",
+      IssuedDate : "2017-11-30",
+      IssuedBy : "2017-11-30",
+      RaisedBy : "changhyun",
+      CompletedDate : "2017-12-24",
+      CompletedBy : "king",
+      ConfirmedDate: "2017-12-24",
+      ConfirmedBy : "John",
+      ClosedDate : "2017-12-24",
+      Closedby : "hyun.kang",
+      ScheduleDate : "2017-12-24",
+      FinishDate : "2017-12-24",
+      DesignChgReq : 1,
+      MeterialReq : 0,
+      IssueDesp : "Le bouchon (stoppeur) du bornler est corrodé 00MBP00GS001 Panneau POP",
+      CompleteDesp : "asdifhnenfjwqknqwkjnfeqjklfnq",
+      Difficulty : 3,
+      ScheduleImpact : 4,
+      CostImpact : 5,
+      DrawingID : "AI99",
+      AWPcode : "UEBK28"
+     },
+     {
+      ProjectID : 100,
+      PunchID : "PC-2-00-MB-MBP-E-01-001",
+      Category : "C",
+      System : "DFED",
+      Subsystem : "DFFD",
+      Discipline : "A",
+      Status : "R",
+      Unit : "abcdefe",
+      Area : "Algeria RDPP",
+      TagNumber : "tag number",
+      BulkItem : "1",
+      BulkName : "bulk description",
+      Department : "ASB",
+      TargetDate : "2017-12-24",
+      IssuedDate : "2017-11-30",
+      IssuedBy : "2017-11-30",
+      RaisedBy : "changhyun",
+      CompletedDate : "2017-12-24",
+      CompletedBy : "king",
+      ConfirmedDate: "2017-12-24",
+      ConfirmedBy : "John",
+      ClosedDate : "2017-12-24",
+      Closedby : "hyun.kang",
+      ScheduleDate : "2017-12-24",
+      FinishDate : "2017-12-24",
+      DesignChgReq : 1,
+      MeterialReq : 0,
+      IssueDesp : "Le bouchon (stoppeur) du bornler est corrodé 00MBP00GS001 Panneau POP",
+      CompleteDesp : "asdifhnenfjwqknqwkjnfeqjklfnq",
+      Difficulty : 3,
+      ScheduleImpact : 4,
+      CostImpact : 5,
+      DrawingID : "AI99",
+      AWPcode : "UEBK28"
+     },
+    // { id: 1, title: 'FooBar' },
+  ],
   dashboard: [
       {
         Open : 30,
@@ -191,6 +267,7 @@ function App() {
       customRoutes={customRoutes}
     >
       <Resource name="posts" list={PostList} />
+      <Resource name="list" list={Punchs} />
       <Resource name="admin" list={ManagementTamplate} />
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 

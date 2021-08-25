@@ -36,8 +36,11 @@ import { Contact } from '../types';
 
 export const Punchs = props => {
     return (
-        <RaList>
+        <RaList
+            {...props}    
+        >
+            
             
         </RaList>
     )
-}
+};
