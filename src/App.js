@@ -1,5 +1,5 @@
 import React from 'react';
-import { Admin, Resource, fetchUtils } from 'react-admin';
+import { Admin, Resource, fetchUtils, ListGuesser } from 'react-admin';
 import fakeDataProvider from 'ra-data-fakerest';
 // import simpleRestProvider from 'ra-data-simple-rest';
 
@@ -15,6 +15,9 @@ import LoginPage from './component/authentication/component/LoginPage';
 import SignUpPage from './component/authentication/component/SignUpPage';
 import customRoutes from './customRoutes';
 import { Punchs } from './component/punchlist/Punchs';
+import simpleRestProvider from 'ra-data-simple-rest';
+
+
 
 
 // 다국어
@@ -258,7 +261,9 @@ function App() {
       loginPage={LoginPage}
       
       
-      dataProvider={dataProvider} authProvider={AuthProvider}
+      // dataProvider={dataProvider} 
+      dataProvider={simpleRestProvider('http://localhost:3000')}
+      authProvider={AuthProvider}
       layout={Layout}
       dashboard={PunchListComponent}
 
@@ -268,6 +273,7 @@ function App() {
       <Resource name="posts" list={PostList} />
       <Resource name="list" list={Punchs} />
       <Resource name="admin" list={ManagementTamplate} />
+      <Resource name="authority" list={ListGuesser} />
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
       {/* <Resource name="register" list={SignUpPage} /> */}
