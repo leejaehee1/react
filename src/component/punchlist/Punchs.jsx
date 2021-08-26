@@ -40,11 +40,15 @@ import { Link } from 'react-router-dom';
 const PunchListContent = () => {
     const { data, ids, loaded, onToggleItem, selectedIds } = useListContext();
     // console.log(ids)
+    // console.log(data)
+    // console.log(ids[0])
     return (
         <List>
             {ids.map(id => {
                 const contact = data[id];;
-                console.log(contact)
+                // console.log(id)
+                // console.log(contact)
+                // console.log(contact.punchID)
                 return (
                     <ListItem
                         // button
@@ -64,17 +68,18 @@ const PunchListContent = () => {
                                 }}
                             />
                         </ListItemIcon>
+                        {/* {contact.punchID} */}
                         {/* <ListItemAvatar>
                             <Avatar record={contact} />
                         </ListItemAvatar> */}
                         <ListItemText
-                            primary={`${contact.PunchID}, ${contact.Discipline}, ${contact.BulkName}, ${contact.CostImpact}, ${contact.CompletedBy}`}
+                            primary={`${contact.punchID}, ${contact.discipline}, ${contact.bulkName}, ${contact.scheduleImpact}, ${contact.completedBy}`}
                             secondary={
                                 <>
-                                    {contact.IssueDesp} 
+                                    {contact.issueDescription} 
                                     {/* at{' '} */}
                                     <br />
-                                    {contact.CompleteDesp}
+                                    {contact.completeComment}
                                     {/* <ReferenceField
                                         record={contact}
                                         source="company_id"

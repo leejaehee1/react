@@ -6,23 +6,25 @@ const httpClient = fetchUtils.fetchJson;
 
 export default {
     getList: (resource, params) => {
-        // const { page, perPage } = params.pagination;
-        // const { field, order } = params.sort;
-        // const query = {
-        //     sort: JSON.stringify([field, order]),
-        //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-        //     filter: JSON.stringify(params.filter),
-        // };
-        // const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        const url = `${apiUrl}/${resource}`;
+        // console.log(params.pagination) // {page: 1, perPage: 10}
+        // console.log(params.sort) // {field: "id", order: "ASC"}
+        const { page, perPage } = params.pagination;
+        const { field, order } = params.sort;
+        const query = {
+            sort: JSON.stringify([field, order]),
+            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+            filter: JSON.stringify(params.filter),
+        };
+        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        httpClient(url).then(({ headers, json }) => {
+            console.log(headers.get('content-range'))
+            console.log(json)
+          });
         return httpClient(url)
         .then(({ headers, json }) => (
-            // console.log(json)
             {
-                
-            // data: json,
             data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
-            // total: parseInt(headers.get('content-range').split('/').pop(), 10),
+            total: parseInt(headers.get('content-range').split('/').pop(), 10),
         }
         ));
     },
