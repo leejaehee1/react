@@ -1,29 +1,36 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'https://my.api.com/';
+const apiUrl = 'http://localhost:5000/api';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
     getList: (resource, params) => {
-        const { page, perPage } = params.pagination;
-        const { field, order } = params.sort;
-        const query = {
-            sort: JSON.stringify([field, order]),
-            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-            filter: JSON.stringify(params.filter),
-        };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
-
-        return httpClient(url).then(({ headers, json }) => ({
-            data: json,
-            total: parseInt(headers.get('content-range').split('/').pop(), 10),
-        }));
+        // const { page, perPage } = params.pagination;
+        // const { field, order } = params.sort;
+        // const query = {
+        //     sort: JSON.stringify([field, order]),
+        //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+        //     filter: JSON.stringify(params.filter),
+        // };
+        // const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `${apiUrl}/${resource}`;
+        return httpClient(url)
+        .then(({ headers, json }) => (
+            // console.log(json)
+            {
+                
+            // data: json,
+            data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
+            // total: parseInt(headers.get('content-range').split('/').pop(), 10),
+        }
+        ));
     },
 
     getOne: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
-            data: json,
+            // data: json,
+            data: { ...json, id: json.punchID },
         })),
 
     getMany: (resource, params) => {
@@ -31,7 +38,11 @@ export default {
             filter: JSON.stringify({ id: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({ data: json }));
+        return httpClient(url).then(({ json }) => ({ 
+            // data: json 
+            data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
+
+        }));
     },
 
     getManyReference: (resource, params) => {
@@ -48,7 +59,9 @@ export default {
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => ({
-            data: json,
+            // data: json,
+            data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
+
             total: parseInt(headers.get('content-range').split('/').pop(), 10),
         }));
     },
@@ -57,7 +70,10 @@ export default {
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ data: json })),
+        }).then(({ json }) => ({ 
+            // data: json 
+            data : { ...json, id: json._id },
+        })),
 
     updateMany: (resource, params) => {
         const query = {
@@ -74,13 +90,18 @@ export default {
             method: 'POST',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({
-            data: { ...params.data, id: json.id },
+            // data: { ...params.data, id: json.id },
+            data: { ...params.data, id: json.punchID },
         })),
 
     delete: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'DELETE',
-        }).then(({ json }) => ({ data: json })),
+        }).then(({ json }) => ({ 
+            // data: json 
+            data : { ...json, id: json._id },
+
+        })),
 
     deleteMany: (resource, params) => {
         const query = {
