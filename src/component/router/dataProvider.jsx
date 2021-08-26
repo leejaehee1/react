@@ -17,6 +17,7 @@ export default {
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         httpClient(url).then(({ headers, json }) => {
+            console.log(headers)
             console.log(headers.get('content-range'))
             console.log(json)
           });
