@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   image: {
     position: 'relative',
     height: 30,
-    margin: '10px 10px 0 0',
+    margin: '10px 10px 20px 0',
     // [theme.breakpoints.down('xs')]: {
     //   // width: '100% !important', // Overrides inline-style
     //   // height: 100,
@@ -95,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.4,
     opacity: 0,
     transition: theme.transitions.create('opacity'),
+    borderRadius: 8,
   },
   imageTitle: {
     // position: 'relative',
@@ -108,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: -2,
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
+    borderRadius: 8,
   },
 }));
 

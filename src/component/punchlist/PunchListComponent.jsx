@@ -23,6 +23,8 @@ import Discipline from "./chart/Discipline";
 import PunchStatus from "./chart/PunchStatus";
 import Category from "./chart/Category";
 import { useAuthenticated } from 'react-admin';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+
 
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
@@ -47,14 +49,51 @@ const defaultProps = {
     style: { width: '75rem', height: '20rem' },
   };
 
+const useStyles = makeStyles({
+    root: {
+        // padding: 10,
+        marginTop: 5,
+        paddingLeft: 7,
+    },
+    lbutton: {
+        //   padding: theme.spacing(1.5),
+        // margin: theme.spacing(1),
+        // width: theme.spacing(16),
+        // height: theme.spacing(16),
+        textAlign: 'center',
+        // color: theme.palette.text.disabled,
+        color: 'white',
+        backgroundColor: '#616161',
+        // background:'black',
+    
+    },
+    rbutton: {
+        //   padding: theme.spacing(1.5),
+        // margin: theme.spacing(1),
+        // width: theme.spacing(16),
+        // height: theme.spacing(16),
+        textAlign: 'center',
+        // color: theme.palette.text.disabled,
+        color: 'black',
+        backgroundColor: '#bdbdbd',
+        // background:'black',
+    
+    },
+});
 
 
 const PunchListComponent = () => {
+    const classes = useStyles();
     useAuthenticated()
     // const [show, setShow] = React.useState=(() => {
     //     console.log("rendering test")
     //     return false
     // })
+
+
+
+
+
     const [show, setShow] = React.useState(true)
 
     // function handleClink() {
@@ -78,9 +117,9 @@ const PunchListComponent = () => {
             <CardContent>Lorem ipsum sic dolor amet...</CardContent>
             </Card> */}
             <br />
-            <ButtonGroup size="large" variant="text" color="primary" aria-label="large outlined primary button group">
-                <Button onClick={handleDashBoard}>DashBoard</Button>
-                <Button onClick={handleStatus}>Status</Button>
+            <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
+                <Button className={classes.lbutton} onClick={handleDashBoard}>DashBoard</Button>
+                <Button className={classes.rbutton} onClick={handleStatus}>Status</Button>
                 {/* <Button>Three</Button> */}
             </ButtonGroup>
             {/* <button onClick={handleClink}>DashBoard</button>

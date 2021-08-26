@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tabs, Tab, Toolbar, AppBar, Box, Typography } from '@material-ui/core';
+import { Tabs, Tab, Toolbar, AppBar, Box, Typography, Divider } from '@material-ui/core';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { UserMenu, Logout, LoadingIndicator } from 'react-admin';
 import { CodeSharp } from '@material-ui/icons';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
@@ -22,7 +22,13 @@ const useStyles = makeStyles({
     rnav: {
         background: '#ECECEC',
     },
-});
+    nlogo: {
+        background: 'white',
+        // margin: theme.spacing(0, 0, 2, 10),
+        padding: 0,
+        margin: 13,
+    }
+}));
 
 const Header = () => {
     const classes = useStyles();
@@ -51,6 +57,7 @@ const Header = () => {
                             <Typography component="span" variant="h4">
                                 P.L.M.S
                             </Typography>
+                            <Divider className={classes.nlogo} variant="middle" orientation="vertical" />
                         </Box>
                         <Box display="flex" flex="5" className={classes.mnav} alignItems="center">
                             <Typography component="span" variant="h6">
