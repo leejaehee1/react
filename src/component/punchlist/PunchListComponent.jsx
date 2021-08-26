@@ -44,16 +44,16 @@ import { Punchs } from "./Punchs";
 const defaultProps = {
     // bgcolor: 'background.paper',
     bgcolor: '#ECECEC',
-    m: 1,
-    border: 1,
-    style: { width: '75rem', height: '20rem' },
+    m: 0,
+    // border: 1,
+    style: { width: '75rem', height: '23rem' },
   };
 
 const useStyles = makeStyles({
     root: {
         // padding: 10,
         marginTop: 5,
-        paddingLeft: 7,
+        paddingLeft: 0,
     },
     lbutton: {
         //   padding: theme.spacing(1.5),
@@ -128,9 +128,9 @@ const PunchListComponent = () => {
                 show? (
                     <>
                     {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
-                    <Box boxShadow={5} borderColor="#ECECEC" {...defaultProps}>
-                        <Box display="flex" mt="1em"> 
-                            <Box flex="3" m="2em">
+                    <Box borderColor="#e0e0e0" {...defaultProps}>
+                        <Box display="flex" > 
+                            <Box flex="3" p={2} m="1em">
                             {/* bgcolor="palevioletred" */}
                                 <h3>Punch Status</h3>
                                 <PunchStatus />
@@ -139,7 +139,7 @@ const PunchListComponent = () => {
                                 <h3>Category</h3>
                                 <Category />
                             </Box> */}
-                            <Box flex="5" m="2em">
+                            <Box flex="5" p={2} m="1em">
                                 <h3>Discipline</h3>
                                 <Discipline />
                             </Box>
@@ -148,7 +148,7 @@ const PunchListComponent = () => {
                     </>
                 ) : (
                     <>
-                    <Box borderColor="grey.500" {...defaultProps}>
+                    <Box boxShadow={5} borderColor="#ECECEC" {...defaultProps}>
                     <Box display="flex" mt="1em"> 
                         <Box bgcolor="success.main" flex="4" m="4em">
                             {/* <DealsChart /> */}Status
