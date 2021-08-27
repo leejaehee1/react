@@ -16,9 +16,14 @@ export default {
             filter: JSON.stringify(params.filter),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        httpClient(url).then(({ headers, json }) => {
+        // GET_LIST => GET http://path.to.my.api/posts?sort=["title","ASC"]&range=[0, 24]&filter={"author_id":12}
+        // const url = `${apiUrl}/${resource}`;
+        httpClient(url)
+        .then(({ headers, json }) => {
             console.log(headers)
+            console.log("efef")
             console.log(headers.get('content-range'))
+            // console.log(parseInt(headers.get('content-range').split('/').pop(), 10))
             console.log(json)
           });
         return httpClient(url)
@@ -26,6 +31,7 @@ export default {
             {
             data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
             total: parseInt(headers.get('content-range').split('/').pop(), 10),
+            // total: 10,
         }
         ));
     },
