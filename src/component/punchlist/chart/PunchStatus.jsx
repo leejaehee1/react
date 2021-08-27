@@ -1,5 +1,7 @@
 
 import React from "react";
+import { useState, useEffect } from 'react';
+
 import Paper from '@material-ui/core/Paper';
 import {
   Legend,
@@ -21,7 +23,14 @@ import { useGetOne, useGetList, SimpleList, useGetIdentity, useGetMany } from 'r
 const PunchStatus = () => {
     
   const { data, ids, loading, error } = useGetList('list', );
-  
+  // console.log(ids, data)
+  console.log("---------------------------------------------------------------")
+  for (const id in data) {
+    console.log(`${data[id].status}`)
+  }
+  console.log(Object.keys(data).length)
+  console.log(typeof(data))
+  console.log(data.length)
   // const { data : punchID, loading, error } = useGetMany(
                                                           // 'list', );
 
