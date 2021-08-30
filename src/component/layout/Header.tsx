@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
     const classes = useStyles();
     // const match = useRouteMatch(['/contacts', '/companies', '/deals']);
-    const match = useRouteMatch(['/list', '/admin', '/deals']);
+    const match = useRouteMatch(['/list', '/admin', '/code']);
     const currentPath = match?.path ?? '/';
     // console.log(match)   // 객체 들어옴
     // console.log(match.path) // error
@@ -83,9 +83,9 @@ const Header = () => {
                                 />
                                 <Tab
                                     label={'Code'}
-                                    // component={Link}
-                                    // to="/admin"
-                                    // value="/admin"
+                                    component={Link}
+                                    to="/code"
+                                    value="/code"
                                 />
                                 {/* <T  ab
                                     label={'Companies'}

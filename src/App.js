@@ -15,6 +15,7 @@ import customRoutes from './customRoutes';
 import { Punchs } from './component/punchlist/Punchs';
 import simpleRestProvider from 'ra-data-simple-rest';
 import dataProvider from './component/router/dataProvider';
+import CodeTamplate from './component/code/CodeTamplate';
 
 
 
@@ -87,6 +88,7 @@ function App() {
       <Resource name="posts" list={PostList} />
       <Resource name="list" list={Punchs} />
       <Resource name="admin" list={ManagementTamplate} />
+      <Resource name="code" list={CodeTamplate} />
       <Resource name="authority" list={ListGuesser} />
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
