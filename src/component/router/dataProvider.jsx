@@ -34,8 +34,7 @@ export default {
             data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
             total: parseInt(headers.get('content-range').split('/').pop(), 10),
             // total: 10,
-        }
-        ));
+        }))
     },
 
     getOne: (resource, params) =>

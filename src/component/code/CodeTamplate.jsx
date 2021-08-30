@@ -1,4 +1,6 @@
 import React from 'react';
+import { Admin, Resource, useGetMany, useGetList, ListGuesser } from 'react-admin';
+
 
 
 import PropTypes from 'prop-types';
@@ -51,10 +53,25 @@ function TabPanel(props) {
     },
   }));
 
+
+
+
+{/* <Resource name="authority" list={ListGuesser} /> */}
 function CodeTamplate() {
     const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
+
+  // const { data: allAuthoritys, ids } = useGetList(
+  //   'authority',
+  //   // { page: 1, perPage: 10 },
+  //   // { field: 'authority', order: 'DESC' }
+  //   );
+    
+  // const { data: authority } = useGetMany('authority', {ids : [1, 2]});
+  // // console.log(allAuthoritys)
+  // console.log(authority)
+
   
     const handleChange = (event, newValue) => {
       // console.log(newValue)
@@ -109,7 +126,7 @@ function CodeTamplate() {
             3
           </TabPanel>
           <TabPanel value={value} index={4} dir={theme.direction}>
-            4
+            {/* <PostTags /> */}
           </TabPanel>
           <TabPanel value={value} index={5} dir={theme.direction}>
             5
