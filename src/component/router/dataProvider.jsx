@@ -1,7 +1,8 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'http://localhost:5000/api';
+// const apiUrl = 'http://localhost:5000/api';
+const apiUrl = 'http://localhost:5000/punchlist';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
@@ -18,14 +19,15 @@ export default {
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         // GET_LIST => GET http://path.to.my.api/posts?sort=["title","ASC"]&range=[0, 24]&filter={"author_id":12}
         // const url = `${apiUrl}/${resource}`;
-        httpClient(url)
-        .then(({ headers, json }) => {
-            console.log(headers)
-            console.log("efef")
-            console.log(headers.get('content-range'))
-            // console.log(parseInt(headers.get('content-range').split('/').pop(), 10))
-            console.log(json)
-          });
+        // console.log(url)
+        // httpClient(url)
+        // .then(({ headers, json }) => {
+        //     console.log(headers)
+        //     console.log("efef")
+        //     console.log(headers.get('content-range'))
+        //     // console.log(parseInt(headers.get('content-range').split('/').pop(), 10))
+        //     console.log(json)
+        //   });
         return httpClient(url)
         .then(({ headers, json }) => (
             {

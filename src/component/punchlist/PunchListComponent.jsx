@@ -166,7 +166,7 @@ const PunchListComponent = () => {
             }
             {/* <p>다음글</p> */}
 
-            {/* <Box display="flex" mt="2em">
+            <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <Resource name="list" list={Punchs} />
                 </Box>
@@ -177,7 +177,7 @@ const PunchListComponent = () => {
                         <DetailPageComponent />
                     </Box>
                 </Box>
-            </Box> */}
+            </Box>
 
         </React.Fragment>
     )

@@ -13,20 +13,35 @@ import {
     HoverState
   } from "@devexpress/dx-react-chart";
 
+import { useGetOne, useGetList, SimpleList, useGetIdentity, useGetMany } from 'react-admin';
 
 
 const Discipline = () => {
-    const data = [
-        { argument: 'Monday', value: 30 },
-        { argument: 'Tuesday', value: 20 },
-        { argument: 'Wednesday', value: 10 },
-        { argument: 'Thursday', value: 50 },
-        { argument: 'Friday', value: 60 },
-      ];
+  const { data, ids, loading, error } = useGetList('list', );
+  const targetData = data
+  // console.log(targetData)
+  // console.log(Object.values(targetData).filter(da => da.discipline==="A"))
+
+  const pipingNum = Object.values(targetData).filter(da => da.discipline==="1").length;
+  const mechnincalNum = Object.values(targetData).filter(da => da.discipline==="2").length;
+  const electricNum = Object.values(targetData).filter(da => da.discipline==="3").length;
+  const instrumentNum = Object.values(targetData).filter(da => da.discipline==="4").length;
+  const civilNum = Object.values(targetData).filter(da => da.discipline==="5").length;
+  const architectureNum = Object.values(targetData).filter(da => da.discipline==="6").length;
+  const structureNum = Object.values(targetData).filter(da => da.discipline==="7").length;
+  const barData = [
+      { argument: 'Piping', value: pipingNum },
+      { argument: 'Mechnincal', value: mechnincalNum },
+      { argument: 'Electric', value: electricNum },
+      { argument: 'Instrument', value: instrumentNum },
+      { argument: 'Civil', value: civilNum },
+      { argument: 'Architecture', value: architectureNum },
+      { argument: 'Structure', value: structureNum },
+    ];
     return (
         <Paper>
             <Chart
-            data={data}
+            data={barData}
             // width={100}
             height={220}
             >   
