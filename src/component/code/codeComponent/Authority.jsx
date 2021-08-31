@@ -1,7 +1,5 @@
-
 import * as React from "react";
-import { List, Datagrid, TextField, EditButton, DateField, SelectField } from 'react-admin';
-// import { EditDialog, CreateDialog } from '@react-admin/ra-form-layout';
+import { List, Datagrid, TextField } from 'react-admin';
 
 
 export const Authority = (props) => (
@@ -10,7 +8,6 @@ export const Authority = (props) => (
             <TextField source="authority" />
             <TextField label="Auth Namee" source="authName" />
             <TextField source="remarks" />
-            {/* <EditButton /> */}
         </Datagrid>
     </List>
 );

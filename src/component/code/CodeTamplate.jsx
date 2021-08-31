@@ -12,6 +12,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Authority from './codeComponent/Authority';
+import Project from './codeComponent/Project';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -105,7 +106,7 @@ function CodeTamplate() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            Item One
+            <Resource name="project" list={Project} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             2
