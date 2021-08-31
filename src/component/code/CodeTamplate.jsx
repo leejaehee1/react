@@ -20,6 +20,7 @@ import Department from './codeComponent/Department';
 import System from './codeComponent/System';
 import Subsystem from './codeComponent/Subsystem';
 import UserCode from './codeComponent/UserCode';
+import Unit from './codeComponent/Unit';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -140,7 +141,8 @@ function CodeTamplate() {
             <Resource name="usercode" list={UserCode} />
           </TabPanel>
           <TabPanel value={value} index={9} dir={theme.direction}>
-            9
+            <Resource name="unit" list={Unit} />
+            
           </TabPanel>
           <TabPanel value={value} index={10} dir={theme.direction}>
             10
