@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { userLogin, Login } from 'react-admin';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { userLogin} from 'react-admin';
+// import { MuiThemeProvider } from '@material-ui/core/styles';
 import LoginSide from './LoginSide';
 
 class LoginPage extends Component {

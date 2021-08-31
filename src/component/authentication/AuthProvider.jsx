@@ -38,7 +38,7 @@
 
 
 import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
-import decodeJwt from 'jwt-decode';
+// import decodeJwt from 'jwt-decode';
 
 
 // This function receives authentication requests (type, params), and should return a Promise.

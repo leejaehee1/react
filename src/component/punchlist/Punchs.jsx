@@ -1,25 +1,25 @@
 import * as React from 'react';
 import {
     List as RaList,
-    ListProps,
-    SimpleListLoading,
-    ReferenceField,
-    TextField,
+    // ListProps,
+    // SimpleListLoading,
+    // ReferenceField,
+    // TextField,
     useListContext,
-    ExportButton,
-    SortButton,
-    TopToolbar,
-    CreateButton,
+    // ExportButton,
+    // SortButton,
+    // TopToolbar,
+    // CreateButton,
     Pagination,
-    useGetIdentity,
+    // useGetIdentity,
     // TextField,
 
-    Datagrid,
+    // Datagrid,
 } from 'react-admin';
 import {
     List,
     ListItem,
-    ListItemAvatar,
+    // ListItemAvatar,
     ListItemIcon,
     ListItemSecondaryAction,
     ListItemText,
@@ -27,8 +27,8 @@ import {
     Typography,
     Box,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+// import { makeStyles } from '@material-ui/core/styles';
+// import { Link } from 'react-router-dom';
 // import { formatDistance } from 'date-fns';
 
 // import { Avatar } from './Avatar';
@@ -38,7 +38,7 @@ import { Link } from 'react-router-dom';
 // import { Contact } from '../types';
 
 const PunchListContent = () => {
-    const { data, ids, loaded, onToggleItem, selectedIds } = useListContext();
+    const { data, ids, onToggleItem, } = useListContext();
     // console.log(ids)
     // console.log(data)
     // console.log(ids[0])

@@ -1,29 +1,29 @@
 import * as React from 'react';
 import {
-    Show,
-    ShowButton,
-    SimpleShowLayout,
-    RichTextField,
-    DateField,
+    // Show,
+    // ShowButton,
+    // SimpleShowLayout,
+    // RichTextField,
+    // DateField,
     List,
-    Edit,
-    Create,
+    // Edit,
+    // Create,
     Datagrid,
-    ReferenceField,
+    // ReferenceField,
     TextField,
-    EditButton,
-    ReferenceInput,
-    SelectInput,
-    SimpleForm,
-    TextInput,
+    // EditButton,
+    // ReferenceInput,
+    // SelectInput,
+    // SimpleForm,
+    // TextInput,
 } from 'react-admin';
 
-const postFilters = [
-    <TextInput source="q" label="Search" alwaysOn />,
-    <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
-        <SelectInput optionText="name" />
-    </ReferenceInput>,
-];
+// const postFilters = [
+//     <TextInput source="q" label="Search" alwaysOn />,
+//     <ReferenceInput source="userId" label="User" reference="users" allowEmpty>
+//         <SelectInput optionText="name" />
+//     </ReferenceInput>,
+// ];
 
 export const PostList = props => (
     // <List {...props} filters={postFilters}>

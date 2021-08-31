@@ -2,21 +2,21 @@ import React from 'react';
 import { Admin, Resource, fetchUtils, ListGuesser } from 'react-admin';
 
 
-import AppRouter from './component/router/RouterComponent';
-import { BrowserRouter} from 'react-router-dom';
+// import AppRouter from './component/router/RouterComponent';
+// import { BrowserRouter} from 'react-router-dom';
 import Layout from './component/layout/LayoutComponent';
 import { PostList } from './posts';
 import PunchListComponent from './component/punchlist/PunchListComponent';
 import ManagementTamplate from './component/management/ManagementTamplate';
 import AuthProvider from './component/authentication/AuthProvider';
 import LoginPage from './component/authentication/component/LoginPage';
-import SignUpPage from './component/authentication/component/SignUpPage';
+// import SignUpPage from './component/authentication/component/SignUpPage';
 import customRoutes from './customRoutes';
 import { Punchs } from './component/punchlist/Punchs';
-import simpleRestProvider from 'ra-data-simple-rest';
+// import simpleRestProvider from 'ra-data-simple-rest';
 import dataProvider from './component/router/dataProvider';
 import CodeTamplate from './component/code/CodeTamplate';
-import { TestAuthority } from './TestAuthority';
+// import { TestAuthority } from './TestAuthority';
 
 
 
@@ -90,7 +90,7 @@ function App() {
       <Resource name="list" list={Punchs} />
       <Resource name="admin" list={ManagementTamplate} />
       <Resource name="code" list={CodeTamplate} />
-      <Resource name="authority" list={TestAuthority} />
+      <Resource name="authority" list={ListGuesser} />
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
       {/* <Resource name="register" list={SignUpPage} /> */}

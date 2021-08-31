@@ -1,4 +1,4 @@
-import * as React from "react";
+// import * as React from "react";
 import Paper from '@material-ui/core/Paper';
 import {
   ArgumentAxis,
@@ -13,11 +13,11 @@ import {
     HoverState
   } from "@devexpress/dx-react-chart";
 
-import { useGetOne, useGetList, SimpleList, useGetIdentity, useGetMany } from 'react-admin';
+import { useGetList } from 'react-admin';
 
 
 const Discipline = () => {
-  const { data, ids, loading, error } = useGetList('list', );
+  const { data } = useGetList('list', );
   const targetData = data
   // console.log(targetData)
   // console.log(Object.values(targetData).filter(da => da.discipline==="A"))

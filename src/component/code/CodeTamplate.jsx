@@ -1,5 +1,5 @@
 import React from 'react';
-import { dataProvider, Admin, Resource, useGetMany, useGetOne, useGetList, ListGuesser, useGetAuthority } from 'react-admin';
+import { Resource, ListGuesser} from 'react-admin';
 
 
 
@@ -11,6 +11,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Authority from './codeComponent/Authority';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,18 +63,6 @@ function CodeTamplate() {
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
 
-  // const { data: allAuthoritys, ids } = useGetList(
-  //   'authority',
-  //   // { page: 1, perPage: 10 },
-  //   // { field: 'authority', order: 'DESC' }
-  //   );
-    
-  // const { data: authority } = useGetMany('authority', {ids : [1, 2]});
-  // // console.log(allAuthoritys)
-  // console.log(authority)
-  
-  // const { data } = useGetMany('authority', {ids : [1, 2]})
-  const { data } = useGetOne('authority', {id : 2})
 
     const handleChange = (event, newValue) => {
       // console.log(newValue)
@@ -129,6 +118,7 @@ function CodeTamplate() {
           </TabPanel>
           <TabPanel value={value} index={4} dir={theme.direction}>
             {/* <PostTags /> */}
+            <Resource name="authority" list={Authority} />
           </TabPanel>
           <TabPanel value={value} index={5} dir={theme.direction}>
             5

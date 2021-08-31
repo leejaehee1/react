@@ -1,8 +1,8 @@
 import PieChart, {
     Series,
     Tooltip,
-    Title,
-    Subtitle,
+    // Title,
+    // Subtitle,
     Legend,
     AdaptiveLayout,
 } from 'devextreme-react/pie-chart';
@@ -15,9 +15,9 @@ const fruits = [
     { fruit: 'Pineapples', count: 3 }
 ];
 
-function onLegendClick(e) {
-    console.log(e.points)
-}
+// function onLegendClick(e) {
+//     console.log(e.points)
+// }
 
 
 // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Pie/React/Light/

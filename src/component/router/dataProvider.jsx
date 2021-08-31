@@ -20,11 +20,12 @@ export default {
         // GET_LIST => GET http://path.to.my.api/posts?sort=["title","ASC"]&range=[0, 24]&filter={"author_id":12}
         // const url = `${apiUrl}/${resource}`;
         // console.log(url)
-        // httpClient(url)
-        // .then(({ headers, json }) => {
-        //     console.dir(json.resultID)
-        //     json.result.map(resource => console.log(resource) )
-        //   });
+        httpClient(url)
+        .then(({ headers, json }) => {
+            console.dir(json.resultID)
+            console.dir(json)
+            // json.result.map(resource => console.log(resource) )
+          });
         return httpClient(url)
         .then(({ headers, json }) => (
             {

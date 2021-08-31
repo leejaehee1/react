@@ -1,6 +1,6 @@
 
-import React from "react";
-import { useState, useEffect, useReducer } from 'react';
+// import React from "react";
+import { useEffect } from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import {
@@ -14,9 +14,8 @@ import {
   HoverState
 } from "@devexpress/dx-react-chart";
 
-import { useGetOne, useGetList, SimpleList, useGetIdentity, useGetMany } from 'react-admin';
-import { func } from "prop-types";
-import { number } from "ra-language-french/node_modules/ra-core";
+import { useGetList } from 'react-admin';
+
 
 
 
@@ -118,7 +117,7 @@ import { number } from "ra-language-french/node_modules/ra-core";
 
 const PunchStatus = () => {
   // const [toCharts, setToCharts] = useState([])
-  const { data, ids, loading, error } = useGetList('list', );
+  const { data } = useGetList('list', );
   const targetData = data
 
 
