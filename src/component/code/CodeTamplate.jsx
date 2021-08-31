@@ -15,6 +15,7 @@ import Authority from './codeComponent/Authority';
 import Project from './codeComponent/Project';
 import Status from './codeComponent/Status';
 import Discipline from './codeComponent/Discipline';
+import Category from './codeComponent/Category';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -117,7 +118,7 @@ function CodeTamplate() {
             <Resource name="discipline" list={Discipline} />
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
-            3
+            <Resource name="category" list={Category} />
           </TabPanel>
           <TabPanel value={value} index={4} dir={theme.direction}>
             <Resource name="authority" list={Authority} />

@@ -19,6 +19,7 @@ import CodeTamplate from './component/code/CodeTamplate';
 import Project from './component/code/codeComponent/Project';
 import Status from './component/code/codeComponent/Status';
 import Discipline from './component/code/codeComponent/Discipline';
+import Category from './component/code/codeComponent/Category';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -99,6 +100,7 @@ function App() {
       <Resource name="project" list={Project} />
       <Resource name="status" list={Status} />
       <Resource name="discipline" list={Discipline} />
+      <Resource name="category" list={Category} />
 
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
