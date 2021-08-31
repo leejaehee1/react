@@ -22,16 +22,14 @@ export default {
         // console.log(url)
         // httpClient(url)
         // .then(({ headers, json }) => {
-        //     console.log(headers)
-        //     console.log("efef")
-        //     console.log(headers.get('content-range'))
-        //     // console.log(parseInt(headers.get('content-range').split('/').pop(), 10))
-        //     console.log(json)
+        //     console.dir(json.resultID)
+        //     json.result.map(resource => console.log(resource) )
         //   });
         return httpClient(url)
         .then(({ headers, json }) => (
             {
-            data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
+            data: json.result.map(resource => ({ ...resource, id: resource[json.resultID] }) ),
+            // data: json,
             total: parseInt(headers.get('content-range').split('/').pop(), 10),
             // total: 10,
         }))
@@ -39,8 +37,8 @@ export default {
 
     getOne: (resource, params) =>
         httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
-            // data: json,
-            data: { ...json, id: json.punchID },
+            data: json,
+            // data: { ...json, id: json.punchID },
         })),
 
     getMany: (resource, params) => {
@@ -48,12 +46,9 @@ export default {
             filter: JSON.stringify({ id: params.ids }),
         };
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
-        return httpClient(url).then(({ json }) => ({ 
-            // data: json 
-            data: json.map(resource => ({ ...resource, id: resource.punchID }) ),
-
-        }));
+        return httpClient(url).then(({ json }) => ({ data: json }));
     },
+
 
     getManyReference: (resource, params) => {
         const { page, perPage } = params.pagination;

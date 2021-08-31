@@ -1,5 +1,5 @@
 import React from 'react';
-import { Admin, Resource, useGetMany, useGetList, ListGuesser } from 'react-admin';
+import { dataProvider, Admin, Resource, useGetMany, useGetOne, useGetList, ListGuesser, useGetAuthority } from 'react-admin';
 
 
 
@@ -71,8 +71,10 @@ function CodeTamplate() {
   // const { data: authority } = useGetMany('authority', {ids : [1, 2]});
   // // console.log(allAuthoritys)
   // console.log(authority)
-
   
+  // const { data } = useGetMany('authority', {ids : [1, 2]})
+  const { data } = useGetOne('authority', {id : 2})
+
     const handleChange = (event, newValue) => {
       // console.log(newValue)
       setValue(newValue);
