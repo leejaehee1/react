@@ -23,6 +23,7 @@ import Category from './component/code/codeComponent/Category';
 import Department from './component/code/codeComponent/Department';
 import System from './component/code/codeComponent/System';
 import Subsystem from './component/code/codeComponent/Subsystem';
+import UserCode from './component/code/codeComponent/UserCode';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -107,6 +108,7 @@ function App() {
       <Resource name="department" list={Department} />
       <Resource name="system" list={System} />
       <Resource name="subsystem" list={Subsystem} />
+      <Resource name="usercode" list={UserCode} />
 
 
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}

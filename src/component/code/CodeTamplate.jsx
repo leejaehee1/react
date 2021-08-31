@@ -19,6 +19,7 @@ import Category from './codeComponent/Category';
 import Department from './codeComponent/Department';
 import System from './codeComponent/System';
 import Subsystem from './codeComponent/Subsystem';
+import UserCode from './codeComponent/UserCode';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -136,7 +137,7 @@ function CodeTamplate() {
             <Resource name="subsystem" list={Subsystem} />
           </TabPanel>
           <TabPanel value={value} index={8} dir={theme.direction}>
-            8
+            <Resource name="usercode" list={UserCode} />
           </TabPanel>
           <TabPanel value={value} index={9} dir={theme.direction}>
             9
