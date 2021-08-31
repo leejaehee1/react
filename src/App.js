@@ -17,6 +17,7 @@ import { Punchs } from './component/punchlist/Punchs';
 import dataProvider from './component/router/dataProvider';
 import CodeTamplate from './component/code/CodeTamplate';
 import Project from './component/code/codeComponent/Project';
+import Status from './component/code/codeComponent/Status';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -91,9 +92,12 @@ function App() {
       <Resource name="list" list={Punchs} />
       <Resource name="admin" list={ManagementTamplate} />
       <Resource name="code" list={CodeTamplate} />
-      
+
+       {/* code page */}
       <Resource name="authority" list={ListGuesser} />
       <Resource name="project" list={Project} />
+      <Resource name="status" list={Status} />
+
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
       {/* <Resource name="register" list={SignUpPage} /> */}

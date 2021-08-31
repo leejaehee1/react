@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Authority from './codeComponent/Authority';
 import Project from './codeComponent/Project';
+import Status from './codeComponent/Status';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -109,7 +110,7 @@ function CodeTamplate() {
             <Resource name="project" list={Project} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            2
+            <Resource name="status" list={Status} />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             2
@@ -118,7 +119,6 @@ function CodeTamplate() {
             3
           </TabPanel>
           <TabPanel value={value} index={4} dir={theme.direction}>
-            {/* <PostTags /> */}
             <Resource name="authority" list={Authority} />
           </TabPanel>
           <TabPanel value={value} index={5} dir={theme.direction}>
