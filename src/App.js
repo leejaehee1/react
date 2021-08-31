@@ -25,6 +25,8 @@ import System from './component/code/codeComponent/System';
 import Subsystem from './component/code/codeComponent/Subsystem';
 import UserCode from './component/code/codeComponent/UserCode';
 import Unit from './component/code/codeComponent/Unit';
+import Area from './component/code/codeComponent/Area';
+import Drawing from './component/code/codeComponent/Drawing';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -111,6 +113,8 @@ function App() {
       <Resource name="subsystem" list={Subsystem} />
       <Resource name="usercode" list={UserCode} />
       <Resource name="unit" list={Unit} />
+      <Resource name="area" list={Area} />
+      <Resource name="drawing" list={Drawing} />
 
 
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}

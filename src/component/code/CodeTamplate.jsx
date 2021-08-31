@@ -21,6 +21,8 @@ import System from './codeComponent/System';
 import Subsystem from './codeComponent/Subsystem';
 import UserCode from './codeComponent/UserCode';
 import Unit from './codeComponent/Unit';
+import Area from './codeComponent/Area';
+import Drawing from './codeComponent/Drawing';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -142,13 +144,12 @@ function CodeTamplate() {
           </TabPanel>
           <TabPanel value={value} index={9} dir={theme.direction}>
             <Resource name="unit" list={Unit} />
-            
           </TabPanel>
           <TabPanel value={value} index={10} dir={theme.direction}>
-            10
+            <Resource name="area" list={Area} />
           </TabPanel>
           <TabPanel value={value} index={11} dir={theme.direction}>
-            11
+            <Resource name="drawing" list={Drawing} />
           </TabPanel>
         </SwipeableViews>
       </div>
