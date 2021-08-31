@@ -18,6 +18,7 @@ import dataProvider from './component/router/dataProvider';
 import CodeTamplate from './component/code/CodeTamplate';
 import Project from './component/code/codeComponent/Project';
 import Status from './component/code/codeComponent/Status';
+import Discipline from './component/code/codeComponent/Discipline';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -97,6 +98,7 @@ function App() {
       <Resource name="authority" list={ListGuesser} />
       <Resource name="project" list={Project} />
       <Resource name="status" list={Status} />
+      <Resource name="discipline" list={Discipline} />
 
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 

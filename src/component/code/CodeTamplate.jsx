@@ -14,6 +14,7 @@ import Box from '@material-ui/core/Box';
 import Authority from './codeComponent/Authority';
 import Project from './codeComponent/Project';
 import Status from './codeComponent/Status';
+import Discipline from './codeComponent/Discipline';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -113,7 +114,7 @@ function CodeTamplate() {
             <Resource name="status" list={Status} />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            2
+            <Resource name="discipline" list={Discipline} />
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
             3
