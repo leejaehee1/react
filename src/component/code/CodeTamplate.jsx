@@ -16,6 +16,7 @@ import Project from './codeComponent/Project';
 import Status from './codeComponent/Status';
 import Discipline from './codeComponent/Discipline';
 import Category from './codeComponent/Category';
+import Department from './codeComponent/Department';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -94,7 +95,7 @@ function CodeTamplate() {
             <Tab label="Discipline" {...a11yProps(2)} />
             <Tab label="Category" {...a11yProps(3)} />
             <Tab label="Authority" {...a11yProps(4)} />
-            <Tab label="Depart" {...a11yProps(5)} />
+            <Tab label="Department" {...a11yProps(5)} />
             <Tab label="System" {...a11yProps(6)} />
             <Tab label="Subsystem" {...a11yProps(7)} />
             <Tab label="Users" {...a11yProps(8)} />
@@ -124,7 +125,7 @@ function CodeTamplate() {
             <Resource name="authority" list={Authority} />
           </TabPanel>
           <TabPanel value={value} index={5} dir={theme.direction}>
-            5
+            <Resource name="department" list={Department} />
           </TabPanel>
           <TabPanel value={value} index={6} dir={theme.direction}>
             6

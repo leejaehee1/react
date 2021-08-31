@@ -20,6 +20,7 @@ import Project from './component/code/codeComponent/Project';
 import Status from './component/code/codeComponent/Status';
 import Discipline from './component/code/codeComponent/Discipline';
 import Category from './component/code/codeComponent/Category';
+import Department from './component/code/codeComponent/Department';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -101,6 +102,7 @@ function App() {
       <Resource name="status" list={Status} />
       <Resource name="discipline" list={Discipline} />
       <Resource name="category" list={Category} />
+      <Resource name="department" list={Department} />
 
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
