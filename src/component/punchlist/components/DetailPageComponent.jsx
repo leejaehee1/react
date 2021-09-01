@@ -11,6 +11,7 @@ import DataTime from './detailpages/DataTime';
 import DataChipsArray from './detailpages/DataChipsArray';
 import DataDescription from './detailpages/DataDescription';
 import DataImage from './detailpages/DataImage';
+// import Button from '@material-ui/core/Button';
 
 
 
@@ -104,7 +105,10 @@ function DetailPageComponent() {
             <Paper className={classes.paper}>Cancel</Paper>
             </Grid>
             <Grid item xs={6}>
-            <Paper className={classes.paper}>Save</Paper>
+            <Paper className={classes.paper}>
+              {/* <Button /> */}
+              Save
+            </Paper>
             </Grid>
         </Grid>
       </Paper>

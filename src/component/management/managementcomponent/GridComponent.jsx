@@ -4,18 +4,51 @@ import XLSX from 'xlsx';
 // import { GridToolbar } from '@material-ui/data-grid';
 // import PublishIcon from '@material-ui/icons/Publish';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { Chip } from "@material-ui/core";
+// import { Chip } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 // import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 // import FolderIcon from '@material-ui/icons/Folder';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Button } from '@material-ui/core';
 
+import { makeStyles } from '@material-ui/core/styles';
 
 
+// color
+
+import blueGrey from '@material-ui/core/colors/red';
+
+
+const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1),
+    },
+    rightButton: {
+        // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        borderRadius: 3,
+        border: 2,
+        color: '#607d8b',
+        borderColor: '#607d8b',
+        height: 48,
+        padding: '0 30px',
+        // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    },
+    baseButton: {
+        // width: 14    0,
+        color: '#607d8b',
+    }
+  }));
+
+const buttonColor = blueGrey[400]
 const EXTENSIONS=['xlsx', 'xls', 'csv'] // 'xlsx', 'xls', 'csv' 세가지 파일만 들어가게 한다.
 const GridComponent = () => {
+    const classes = useStyles();
+
+
 
     const [colDefs, setColDefs] = useState()
     const [data, setData] = useState()
@@ -91,39 +124,31 @@ const GridComponent = () => {
                 columns={colDefs} 
                 options={{
                     paginationType: "stepped",
-                    columnsButton:true
+                    columnsButton:true,
+                    // https://material-table.com/#/docs/features/styling
+                    headerStyle: {
+                        width: 26,
+                        // whiteSpace: 'nowrap',
+                        // textAlign: 'left',
+                        // flexDirection: 'row',
+                        // overflow: 'hidden',
+                        // textOverflow: 'ellipsis',
+                        // paddingLeft: 5,
+                        // paddingRight: 5,
+                        // backgroundColor: "#607d8b",
+                        backgroundColor: "#263238",
+                        fontWeight: 'bold',
+                        color: "white",
+                      },
                 }}
                 components={{
                     Toolbar: props => (
                       <div>
-                        <MTableToolbar {...props} />
                         <div style={{padding:0, width:'100%'}}>
+                        {/* <MTableToolbar {...props} /> */}
                         <Box display="flex" p={1} bgcolor="background.paper">
                             <Box p={1} flexGrow={1} >
-                            {/* <Chip label="Sheet 01" color="secondary" style={{marginRight: 10}}/>
-                            <Chip label="Sheet 02" color="secondary" style={{marginRight: 10}}/>
-                            <Chip label="Sheet 03" color="secondary" style={{marginRight: 5}}/> */}
-                            <Chip avatar={<Avatar>M</Avatar>} label="Sheet 01" style={{marginRight: 10}} />
-                            <Chip avatar={<Avatar>M</Avatar>} label="Sheet 02" style={{marginRight: 10}} />
-                            <Chip avatar={<Avatar>M</Avatar>} label="Sheet 03" style={{marginRight: 10}} />
-                            </Box>
-                            <Box p={1}>
-                                {/* <PublishIcon /> */}
-                                {/* 기본 */}
-                                {/* <input type="file" onChange={importExcel} /> */}
-
-                                {/* <input type="file" style={{ display: 'none' }} onChange={importExcel} />
-                                <label for="input-file">
-                                    <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
-                                </label>
-                                
-                                <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} >
-                                    <input type="file" hidden onChange={importExcel} />
-                                </BottomNavigationAction> */}
-
-
-
-                                    <label htmlFor="upload-photo">
+                                <label htmlFor="upload-photo">
                                     <input
                                         style={{ display: 'none' }}
                                         id="upload-photo"      // 이거 안넣으면 안됨
@@ -131,33 +156,44 @@ const GridComponent = () => {
                                         type="file"
                                         onChange={importExcel}
                                     />
-                                    <Button  
+                                    <Button   style={{textTransform: 'none'}}
+                                        className={classes.margin}
+                                        size="small"  // medium  large
                                         component="span"    // 이거 안넣으면 안됨 
                                         variant="contained"
                                         color="default" 
                                         startIcon={<CloudUploadIcon />}
+                                        
                                         >
-                                        upload
+                                        import
                                     </Button>
-                                    {/* <Button  component="span" >
-                                        <FolderIcon />
-                                        Import <PublishIcon fontSize="large" />
-                                    </Button> */}
-                                    </label>
+                                </label>                   
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span> Remove or change columns before clicking verify data button.</span>
 
-                                
-                                {/* <Button
-                                    variant="contained"
-                                    color="default"
-                                    // className={classes.button}
-                                    startIcon={<CloudUploadIcon />}
-                                >
-                                    Upload
-                                </Button> */}
-                                
-                                <Button>
+                                {/* <Chip avatar={<Avatar>M</Avatar>} label="Sheet 01" style={{marginRight: 10}} />
+                                <Chip avatar={<Avatar>M</Avatar>} label="Sheet 02" style={{marginRight: 10}} />
+                                <Chip avatar={<Avatar>M</Avatar>} label="Sheet 03" style={{marginRight: 10}} /> */}
+                            </Box>
+                            <Box p={1}>
+                                {/* <Button>
                                     <SettingsIcon fontSize="large" />
+                                </Button> */}
+                                &nbsp;&nbsp;&nbsp;
+                                <Button className={classes.baseButton} variant="outlined" style={{textTransform: 'none'}} >
+                                    <b>Column Mapping</b>
                                 </Button>
+                                &nbsp;&nbsp;&nbsp;
+                                <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
+                                    <b>Verify Data</b>
+                                </Button>
+                                &nbsp;&nbsp;&nbsp;
+                                <Button className={classes.baseButton} 
+                                    variant="outlined" 
+                                    style={{textTransform: 'none'}}
+                                >
+                                    <b>Save</b>
+                                </Button>
+                                
                                 
                             </Box>
                         </Box>
