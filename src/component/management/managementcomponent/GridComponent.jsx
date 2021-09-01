@@ -3,7 +3,7 @@ import MaterialTable, { MTableToolbar } from 'material-table';
 import XLSX from 'xlsx';
 // import { GridToolbar } from '@material-ui/data-grid';
 // import PublishIcon from '@material-ui/icons/Publish';
-import SettingsIcon from '@material-ui/icons/Settings';
+// import SettingsIcon from '@material-ui/icons/Settings';
 // import { Chip } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
 // import Avatar from '@material-ui/core/Avatar';
@@ -18,6 +18,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // color
 
 import blueGrey from '@material-ui/core/colors/red';
+import ColumnMappingButton from './ColumnMappingButton';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -179,9 +180,8 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <Button className={classes.baseButton} variant="outlined" style={{textTransform: 'none'}} >
-                                    <b>Column Mapping</b>
-                                </Button>
+                                <ColumnMappingButton />
+
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
                                     <b>Verify Data</b>
