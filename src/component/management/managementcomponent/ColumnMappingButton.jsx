@@ -8,11 +8,24 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
   baseButton: {
       color: '#607d8b',
-  }
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    // color: theme.palette.text.secondary,
+    // width: 400,
+    // height: 600,
+  },
 }));
 
 const styles = (theme) => ({
@@ -75,28 +88,49 @@ const ColumnMappingButton = () => {
       <Button className={classes.baseButton} variant="outlined" style={{textTransform: 'none'}} onClick={handleClickOpen}>
         <b>Column Mapping</b>
       </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <Dialog 
+        onClose={handleClose} 
+        aria-labelledby="customized-dialog-title" 
+        open={open}
+        fullWidth={true} 
+        maxWidth="lg"     // xs, sm, md, lg, xl
+      >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Modal title
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
-          </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
-          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
+              <Paper className={classes.paper}>
+                <Typography gutterBottom>
+                  Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                  in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                </Typography>
+                <Typography gutterBottom>
+                  Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                  in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={2}>
+              <Paper className={classes.paper}>xs=6</Paper>
+            </Grid>
+            <Grid item xs={4}>
+              <Paper className={classes.paper}>
+                <Typography gutterBottom>
+                  Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                  in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
+            Cancel
+          </Button>
+          <Button autoFocus onClick={handleClose} color="primary">
+            Apply
           </Button>
         </DialogActions>
       </Dialog>
