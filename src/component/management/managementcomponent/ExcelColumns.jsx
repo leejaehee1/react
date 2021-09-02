@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -56,7 +57,8 @@ const StyledTableCell = withStyles((theme) => ({
   
   const useStyles = makeStyles({
     table: {
-      minWidth: 500,
+      minWidth: 400,
+      maxWidth: 600,
       maxHeight: 500,
     },
   });
@@ -70,11 +72,11 @@ const ExcelColumns = () => {
                 <Table aria-label="select all desserts">
                     <TableHead>
                         <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-                        <StyledTableCell align="right">Calories</StyledTableCell>
-                        <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+                        <StyledTableCell>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original</StyledTableCell>
+                        <StyledTableCell align="middle">Delete</StyledTableCell>
+                        <StyledTableCell align="middle">Be Changed</StyledTableCell>
+                        {/* <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+                        <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -83,10 +85,10 @@ const ExcelColumns = () => {
                                 <StyledTableCell component="th" scope="row">
                                 {row.name}
                                 </StyledTableCell>
-                                <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                                <StyledTableCell align="middle"><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
                                 <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                                {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                             </StyledTableRow>
                         ))}
                     </TableBody>

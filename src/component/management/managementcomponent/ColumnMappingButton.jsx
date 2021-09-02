@@ -13,6 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import TableColumns from './TableColumns';
 import ExcelColumns from './ExcelColumns';
 
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,7 +118,7 @@ const ColumnMappingButton = () => {
               </Paper>
             </Grid>
             <Grid item xs={2}>
-              <Paper className={classes.paper}>xs=6</Paper>
+              <Paper className={classes.paper}><KeyboardBackspaceIcon style={{ fontSize: 80 }} /></Paper>
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.paper}>

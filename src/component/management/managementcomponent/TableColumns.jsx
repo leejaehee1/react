@@ -117,7 +117,7 @@ const TableColumns = () => {
                 <Table aria-label="select all desserts">
                     <TableHead>
                         <TableRow>
-                        <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+                        <StyledTableCell>DB columns</StyledTableCell>
                         {/* <StyledTableCell align="right">Calories</StyledTableCell> */}
                         {/* <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
                         <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
