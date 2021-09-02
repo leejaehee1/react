@@ -104,14 +104,14 @@ const ColumnMappingButton = () => {
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Paper className={classes.paper}>
-                <Typography gutterBottom>
+                {/* <Typography gutterBottom>
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography>
                 <Typography gutterBottom>
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                </Typography>
+                </Typography> */}
                 <ExcelColumns />
               </Paper>
             </Grid>
