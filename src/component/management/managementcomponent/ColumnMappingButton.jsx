@@ -89,7 +89,7 @@ const ColumnMappingButton = (props) => {
   };
 
   const updateColumn = (tableColumn) => {
-    // console.log("데이터 올라왔다.")
+    console.log(tableColumn +"데이터 올라왔다.")
     // if (tableColumn === "punchID") {
     //   console.log("if 성공이다.")
     // }
