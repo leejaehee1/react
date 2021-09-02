@@ -10,6 +10,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import TableColumns from './TableColumns';
+import ExcelColumns from './ExcelColumns';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -99,7 +101,7 @@ const ColumnMappingButton = () => {
           Modal title
         </DialogTitle>
         <DialogContent dividers>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Paper className={classes.paper}>
                 <Typography gutterBottom>
@@ -110,6 +112,7 @@ const ColumnMappingButton = () => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography>
+                <ExcelColumns />
               </Paper>
             </Grid>
             <Grid item xs={2}>
@@ -117,10 +120,11 @@ const ColumnMappingButton = () => {
             </Grid>
             <Grid item xs={4}>
               <Paper className={classes.paper}>
-                <Typography gutterBottom>
+                {/* <Typography gutterBottom>
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                </Typography>
+                </Typography> */}
+                <TableColumns /> 
               </Paper>
             </Grid>
           </Grid>
