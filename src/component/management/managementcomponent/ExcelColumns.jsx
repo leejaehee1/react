@@ -63,8 +63,10 @@ const StyledTableCell = withStyles((theme) => ({
     },
   });
 
-const ExcelColumns = () => {
+const ExcelColumns = (props) => {
     const classes = useStyles();
+    console.log("--------------------------------------------------------")
+    console.log(props)
     return (
         <>
             <h1>Excel Columns</h1>
@@ -80,10 +82,11 @@ const ExcelColumns = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow hover key={row.name}>
+                        {props.excelColumns.map((row) => (
+                            <StyledTableRow hover key={row}>
                                 <StyledTableCell component="th" scope="row">
-                                {row.name}
+                                {/* {row.name} */}
+                                {row}
                                 </StyledTableCell>
                                 <StyledTableCell align="middle"><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
                                 <StyledTableCell align="right">{row.fat}</StyledTableCell>

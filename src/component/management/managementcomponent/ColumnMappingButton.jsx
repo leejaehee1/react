@@ -73,7 +73,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 
-const ColumnMappingButton = () => {
+const ColumnMappingButton = (props) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -114,7 +114,7 @@ const ColumnMappingButton = () => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns />
+                <ExcelColumns excelColumns={props.excelColumns} />
               </Paper>
             </Grid>
             <Grid item xs={2}>

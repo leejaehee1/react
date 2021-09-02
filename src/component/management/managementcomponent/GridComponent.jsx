@@ -51,7 +51,7 @@ const GridComponent = () => {
 
 
 
-    const [colDefs, setColDefs] = useState()
+    const [colDefs, setColDefs] = useState([])
     const [data, setData] = useState()
 
     const getExention = (file) => {
@@ -115,9 +115,15 @@ const GridComponent = () => {
             setColDefs([])
         }
     }
-    console.log(data)
-    console.log("--------------------------------------------------------------------------------------------------------------------------")
-    console.log(colDefs)
+
+    function titleSelector(value) {
+        return value.title
+    }
+    // console.dir(data)
+    // console.log("--------------------------------------------------------------------------------------------------------------------------")
+    // console.log(colDefs)
+    const columnsDate = Object.values(colDefs).map((a) => a.title)
+    // console.log(columnsDate)
     return (
         <div style={{ maxWidth: '100%' }}>
             {/* <input type="file" onChange={importExcel} ></input> */}
@@ -183,7 +189,7 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton />
+                                <ColumnMappingButton excelColumns={columnsDate} />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
