@@ -115,6 +115,9 @@ const GridComponent = () => {
             setColDefs([])
         }
     }
+    console.log(data)
+    console.log("--------------------------------------------------------------------------------------------------------------------------")
+    console.log(colDefs)
     return (
         <div style={{ maxWidth: '100%' }}>
             {/* <input type="file" onChange={importExcel} ></input> */}

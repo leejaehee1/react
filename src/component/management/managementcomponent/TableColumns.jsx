@@ -1,48 +1,3 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { makeStyles } from '@material-ui/core/styles';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import { FixedSizeList } from 'react-window';
-
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       width: '100%',
-//       height: '100%',
-//       maxWidth: 300,
-//       backgroundColor: theme.palette.background.paper,
-//     },
-//   }));
-  
-//   function renderRow(props) {
-//     const { index, style } = props;
-  
-//     return (
-//       <ListItem button style={style} key={index}>
-//         <ListItemText primary={`Item ${index + 1}`} />
-//       </ListItem>
-//     );
-//   }
-  
-//   renderRow.propTypes = {
-//     index: PropTypes.number.isRequired,
-//     style: PropTypes.object.isRequired,
-//   };
-
-// const TableColumns = () => {
-//     const classes = useStyles();
-//     return (
-//         <div className={classes.root}>
-//             <h1>TableColumns</h1>
-//             <FixedSizeList height={400} width={300} itemSize={46} itemCount={200}>
-//                 {renderRow}
-//             </FixedSizeList>
-//         </div>
-//     )
-// }
-
-// export default TableColumns;
-
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -52,6 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
+import { useGetList } from 'react-admin';
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -110,9 +68,14 @@ const StyledTableCell = withStyles((theme) => ({
 
 const TableColumns = () => {
     const classes = useStyles();
+
+    const { data, ids } = useGetList('list', );
+    const targetData = data
+    const dbColumns = Object.keys(Object.values(data)[0])
+    // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
     return (
         <>
-            <h1>ExcelColumns</h1>
+            <h1>Table Columns</h1>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
@@ -125,10 +88,10 @@ const TableColumns = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow hover key={row.name}>
+                        {dbColumns.slice(0, 40).map((row) => (
+                            <StyledTableRow hover key={row}>
                                 <StyledTableCell component="th" scope="row">
-                                {row.name}
+                                {row}
                                 </StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
                                 <StyledTableCell align="right">{row.fat}</StyledTableCell>

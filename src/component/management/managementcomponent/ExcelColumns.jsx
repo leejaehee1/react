@@ -67,7 +67,7 @@ const ExcelColumns = () => {
     const classes = useStyles();
     return (
         <>
-            <h1>ExcelColumns</h1>
+            <h1>Excel Columns</h1>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
