@@ -76,6 +76,7 @@ const DialogActions = withStyles((theme) => ({
 const ColumnMappingButton = (props) => {
   const classes = useStyles();
   const [excelHook, setexcelHook] = React.useState(props.excelColumns);
+  const [sqlHook, setSqlHook] = React.useState("");
 
   const [open, setOpen] = React.useState(false);
 
@@ -88,8 +89,11 @@ const ColumnMappingButton = (props) => {
   };
 
   const updateColumn = (tableColumn) => {
-    console.log("데이터 올라왔다.")
-    console.log(tableColumn)
+    // console.log("데이터 올라왔다.")
+    // if (tableColumn === "punchID") {
+    //   console.log("if 성공이다.")
+    // }
+    setSqlHook(tableColumn)
   }
 
   return (
@@ -119,7 +123,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={excelHook} />
+                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} />
               </Paper>
             </Grid>
             <Grid item xs={2}>
