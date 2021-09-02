@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { useGetList } from 'react-admin';
+import { PROPERTY_TYPES } from '@babel/types';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -66,13 +67,25 @@ const StyledTableCell = withStyles((theme) => ({
     },
   });
 
-const TableColumns = () => {
+const TableColumns = (props) => {
     const classes = useStyles();
+
+    const [checkTableColumn, setCheckTableColumn] = React.useState("")
 
     const { data, ids } = useGetList('list', );
     const targetData = data
     const dbColumns = Object.keys(Object.values(data)[0])
     // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
+
+    function checka(e) {
+        // console.dir(e.target.innerHTML)
+        setCheckTableColumn(e.target.innerHTML)
+        props.onTable(checkTableColumn)
+    }
+
+
+
+
     return (
         <>
             <h1>Table Columns</h1>
@@ -89,7 +102,7 @@ const TableColumns = () => {
                     </TableHead>
                     <TableBody>
                         {dbColumns.slice(0, 40).map((row) => (
-                            <StyledTableRow hover key={row}>
+                            <StyledTableRow hover key={row} onClick={checka}>
                                 <StyledTableCell component="th" scope="row">
                                 {row}
                                 </StyledTableCell>

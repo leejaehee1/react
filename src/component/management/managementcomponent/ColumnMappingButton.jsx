@@ -75,6 +75,7 @@ const DialogActions = withStyles((theme) => ({
 
 const ColumnMappingButton = (props) => {
   const classes = useStyles();
+  const [excelHook, setexcelHook] = React.useState(props.excelColumns);
 
   const [open, setOpen] = React.useState(false);
 
@@ -86,6 +87,10 @@ const ColumnMappingButton = (props) => {
     setOpen(false);
   };
 
+  const updateColumn = (tableColumn) => {
+    console.log("데이터 올라왔다.")
+    console.log(tableColumn)
+  }
 
   return (
     <>
@@ -114,7 +119,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={props.excelColumns} />
+                <ExcelColumns excelColumns={excelHook} />
               </Paper>
             </Grid>
             <Grid item xs={2}>
@@ -126,7 +131,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <TableColumns /> 
+                <TableColumns onTable={updateColumn}  /> 
               </Paper>
             </Grid>
           </Grid>
