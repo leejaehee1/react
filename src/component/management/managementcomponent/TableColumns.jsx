@@ -52,7 +52,8 @@ const TableColumns = (props) => {
 
     const { data, ids } = useGetList('list', );
     // const targetData = data
-    const [ targetData, setTargetData ] = useState([0, 0])
+    // const [ targetData, setTargetData ] = useState([0, 0])
+    const [ targetData, setTargetData ] = useState(data)
     const [ dbColumns, setDbColumns ] = useState([])
 
 
@@ -63,8 +64,8 @@ const TableColumns = (props) => {
     })
 
     useEffect(()=> {
-        setTargetData(() => data)
-        setDbColumns(() => Object.keys(Object.values(data)[0]))
+        setTargetData(data)
+        setDbColumns(() => Object.keys(Object.values(targetData)[0]))
     }, [data, targetData])
     // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
 

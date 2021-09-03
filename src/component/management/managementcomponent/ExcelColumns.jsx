@@ -51,18 +51,19 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
     const dummyArray = new Array(excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
-    const [deleteArray, setDeletArray] = React.useState(1)
+    const [deleteId, setDeletId] = React.useState(false)
+    const dummyDeleteArray = new Array(excelColumns.length)
+    const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray)
 
 
     function deleteCheck(e) {
         // console.dir(e)
-        // console.dir(deleteArray)
-        const deleteIndex = e.target.id
+        // console.dir(deleteId)
         // console.dir(deleteIndex)
-        setDeletArray(() => {
-            return deleteIndex
+        setDeletId(() => {
+            return e.target.id
         })
-        console.log(deleteArray)
+        console.log(deleteId)
     }
 
     function idCheck(e) {
@@ -74,6 +75,17 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
         // console.log(e.target.id)
         console.log(targetId)
     }
+
+    useEffect(() => {
+        // const deleteIdData = deleteArray
+        // deleteIdData[deleteId] = true
+        const deleteIdData = deleteArray
+        deleteIdData[deleteId] = true
+        // console.log(deleteIdData)            // 이건 바로 찍히는데.............. 밑에 setDeletArray가 안찍힌다.............
+        setDeletArray(() => {
+            return deleteIdData
+        })
+    }, [deleteId])
 
     useEffect(() => {
         setExcelColumnArray(excelColumns)
@@ -98,10 +110,12 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
     return (
         <>
             <h1>Excel Columns</h1>
-            <p>{"deleteArray  :  " + deleteArray}</p>
+            <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + sqlHook}</p>
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
+            <p>{"deleteArray  :  " + deleteArray}</p>
+            <p>{"beChangeArray  :  " + beChangeArray}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
