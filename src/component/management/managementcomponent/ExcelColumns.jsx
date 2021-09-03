@@ -51,29 +51,39 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
     const dummyArray = new Array(excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
+
+
+
     function checkChange(e) {
         // console.log("눌러짐")
-        setTargetId(e.target.id)
+        const excelIndex = e.target.id
+        setTargetId(() => {
+            return excelIndex
+        })
         // console.log(e.target.id)
         console.log(targetId)
     }
 
     useEffect(() => {
-        setSqlColumnData(sqlHook)
+        setExcelColumnArray(excelColumns)
+        // setSqlColumnData(sqlHook)
         if ( sqlColumnData &&  targetId ) {
-            const inputData = beChangeArray
-            inputData[targetId] = sqlColumnData
+            // const inputData = beChangeArray
+            beChangeArray[targetId] = sqlColumnData
             console.log("useEffect")
-            console.log(inputData)
+            console.log(beChangeArray)
             console.log(targetId, sqlColumnData)
             setTargetId(false)
             setSqlColumnData(false)
 
             
         }
-        console.log(targetId)
-        console.log(sqlColumnData)
-    }, [targetId, sqlColumnData, sqlHook])
+    }, [targetId, sqlColumnData])
+
+
+    useEffect(() => {
+        setSqlColumnData(sqlHook)
+    }, [sqlHook])
 
     return (
         <>
@@ -93,14 +103,14 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {excelColumns.map((row, id) => (
+                        {excelColumnArray.map((row, id) => (
                             <StyledTableRow hover key={row}>
                                 <StyledTableCell component="th" scope="row">
                                 {/* {row.name} */}
                                 {row}
                                 </StyledTableCell>
                                 <StyledTableCell align="middle"><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
-                                <StyledTableCell align="right" onClick={checkChange} id={id}></StyledTableCell>
+                                <StyledTableCell align="right" onClick={checkChange} id={id}>{beChangeArray[id]}</StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                 <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                             </StyledTableRow>
