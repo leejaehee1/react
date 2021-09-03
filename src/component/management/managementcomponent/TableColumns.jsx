@@ -63,8 +63,8 @@ const TableColumns = (props) => {
     })
 
     useEffect(()=> {
-        setTargetData(data)
-        setDbColumns(Object.keys(Object.values(targetData)[0]))
+        setTargetData(() => data)
+        setDbColumns(() => Object.keys(Object.values(data)[0]))
     }, [data, targetData])
     // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
 

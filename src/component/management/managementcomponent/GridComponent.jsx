@@ -116,12 +116,15 @@ const GridComponent = () => {
         }
     }
 
+    const dummyData = [{title:"PunchID"}, {title:"Status"}]
+
+
     function titleSelector(value) {
         return value.title
     }
-    // console.dir(data)
-    // console.log("--------------------------------------------------------------------------------------------------------------------------")
-    // console.log(colDefs)
+    console.dir(data)
+    console.log("--------------------------------------------------------------------------------------------------------------------------")
+    console.log(colDefs)
     const columnsDate = Object.values(colDefs).map((a) => a.title)
     // console.log(columnsDate)
     return (
@@ -132,6 +135,7 @@ const GridComponent = () => {
                 title="Punchlist data" 
                 data={data} 
                 columns={colDefs} 
+                // columns={dummyData} 
                 options={{
                     paginationType: "stepped",
                     columnsButton:true,

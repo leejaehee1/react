@@ -51,14 +51,25 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
     const dummyArray = new Array(excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
+    const [deleteArray, setDeletArray] = React.useState(1)
 
 
+    function deleteCheck(e) {
+        // console.dir(e)
+        // console.dir(deleteArray)
+        const deleteIndex = e.target.id
+        // console.dir(deleteIndex)
+        setDeletArray(() => {
+            return deleteIndex
+        })
+        console.log(deleteArray)
+    }
 
-    function checkChange(e) {
+    function idCheck(e) {
         // console.log("눌러짐")
-        const excelIndex = e.target.id
+        // const excelIndex = e.target.id
         setTargetId(() => {
-            return excelIndex
+            return e.target.id
         })
         // console.log(e.target.id)
         console.log(targetId)
@@ -68,11 +79,10 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
         setExcelColumnArray(excelColumns)
         // setSqlColumnData(sqlHook)
         if ( sqlColumnData &&  targetId ) {
-            // const inputData = beChangeArray
-            beChangeArray[targetId] = sqlColumnData
-            console.log("useEffect")
-            console.log(beChangeArray)
-            console.log(targetId, sqlColumnData)
+            
+            const inputData = beChangeArray
+            inputData[targetId] = sqlColumnData
+            setBeChangeArray(inputData)
             setTargetId(false)
             setSqlColumnData(false)
 
@@ -88,9 +98,10 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
     return (
         <>
             <h1>Excel Columns</h1>
-            <p>{targetId}</p>
-            <p>{sqlHook}</p>
-            <p>{sqlColumnData}</p>
+            <p>{"deleteArray  :  " + deleteArray}</p>
+            <p>{"targetId  :  " + targetId}</p>
+            <p>{"sqlHook  :  " + sqlHook}</p>
+            <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
@@ -109,8 +120,8 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
                                 {/* {row.name} */}
                                 {row}
                                 </StyledTableCell>
-                                <StyledTableCell align="middle"><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
-                                <StyledTableCell align="right" onClick={checkChange} id={id}>{beChangeArray[id]}</StyledTableCell>
+                                <StyledTableCell align="middle" onClick={deleteCheck} id={id}><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
+                                <StyledTableCell align="right" onClick={idCheck} id={id}>{beChangeArray[id]}</StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                 <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                             </StyledTableRow>
