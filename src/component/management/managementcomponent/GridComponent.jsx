@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MaterialTable, { MTableToolbar } from 'material-table';
 import XLSX from 'xlsx';
 // import { GridToolbar } from '@material-ui/data-grid';
@@ -125,7 +125,10 @@ const GridComponent = () => {
     console.dir(data)
     console.log("--------------------------------------------------------------------------------------------------------------------------")
     console.log(colDefs)
-    const columnsDate = Object.values(colDefs).map((a) => a.title)
+    let columnsDate = Object.values(colDefs).map((a) => a.title)
+    useEffect(()=> {
+        columnsDate = Object.values(colDefs).map((a) => a.title)
+    }, [colDefs])
     // console.log(columnsDate)
     return (
         <div style={{ maxWidth: '100%' }}>

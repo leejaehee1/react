@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { PROPERTY_TYPES } from '@babel/types';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -40,21 +41,21 @@ const StyledTableCell = withStyles((theme) => ({
     },
   });
 
-const ExcelColumns = ({excelColumns, sqlHook}) => {
+const ExcelColumns = (props) => {
     const classes = useStyles();
     // console.log("--------------------------------------------------------")
     // console.log(props)  // {excelColumns: Array(17), sqlHook: "unit"}
     // excel 클릭한거 useState에 넣기
     // sqlHook이랑 excel click 둘다 값이 있으면, excel columns에 넣기. 이때 가상 배열 하나 (excel 값들어올 때마다 추가) 만들어 두자
-    const [excelColumnArray, setExcelColumnArray] = React.useState(excelColumns)
-    const [sqlColumnData, setSqlColumnData] = React.useState(sqlHook)
-    const dummyArray = new Array(excelColumns.length)
+    const [excelColumnArray, setExcelColumnArray] = React.useState(props.excelColumns)
+    const [sqlColumnData, setSqlColumnData] = React.useState(props.sqlHook)
+    const dummyArray = new Array(props.excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
     const [deleteId, setDeletId] = React.useState(false)
-    const dummyDeleteArray = new Array(excelColumns.length)
-    const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray)
-
+    const dummyDeleteArray = new Array(props.excelColumns.length)
+    const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
+    const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
 
     function deleteCheck(e) {
         // console.dir(e)
@@ -76,20 +77,79 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
         // console.log(targetId)
     }
 
+
+    const accdd = () => {
+        console.log("aaaaaaaaaaaaaaaaadfasdf", excelChangedInit)
+        props.onLogic(excelChangedInit)
+    }
+
+    // useEffect(() => {
+    //     props.onLogic(excelChangedInit)
+    //     console.log(excelChangedInit)
+    // }, [excelChangedInit])
+    // useEffect(() => {
+    //     props.onLogic(deleteArray)
+    //     console.log(deleteArray)
+    // }, [deleteArray])
+
+
     useEffect(() => {
         // const deleteIdData = deleteArray
         // deleteIdData[deleteId] = true
         const deleteIdData = deleteArray
-        deleteIdData[deleteId] = true
+        deleteIdData[deleteId] = !deleteIdData[deleteId]
         // console.log(deleteIdData)            // 이건 바로 찍히는데.............. 밑에 setDeletArray가 안찍힌다.............
         setDeletArray(() => 
             deleteIdData
         )
         setDeletId(false)
+        
+        // if (excelChangedInit){
+        //     console.log(123)
+        //     console.log(excelChangedInit)
+        //     setExcelChangedInit(()=> {excelChangedInit.filter((v, i) => {
+        //         console.log(v, i)
+        //         console.log(deleteArray[i])
+
+        //         if (deleteArray[i]) {
+        //             return v
+        //         }
+        //     })} )
+        // }
     }, [deleteId])
 
     useEffect(() => {
-        setExcelColumnArray(excelColumns)
+        console.log(excelChangedInit)
+        // console.log(Object.values(targetData).filter(da => da.discipline==="A"))
+        if (excelChangedInit){
+            console.log(123)
+            console.log(excelChangedInit)
+            const b = props.excelColumns.map((v, i) => 
+            // deleteArray[i]
+            // v === 'punchID'
+            {if (deleteArray[i]) {
+                // i===3
+            //     if (i===3) {
+            //     console.log(v, i)
+            //     console.log(deleteArray[i])
+                return v
+            }
+            }
+            )
+            setExcelChangedInit(b)
+        }
+        console.log(2)
+        console.log("adfasdf", excelChangedInit)
+    
+        const redata = excelChangedInit
+        return () => {
+            accdd()
+            setExcelChangedInit(excelChangedInit)
+        }
+    }, [deleteArray, deleteId])
+
+    useEffect(() => {
+        setExcelColumnArray(props.excelColumns)
         // setSqlColumnData(sqlHook)
         if ( sqlColumnData &&  targetId ) {
             
@@ -105,18 +165,19 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
 
 
     useEffect(() => {
-        setSqlColumnData(sqlHook)
-    }, [sqlHook])
+        setSqlColumnData(props.sqlHook)
+    }, [props.sqlHook])
 
     return (
         <>
             <h1>Excel Columns</h1>
             <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
-            <p>{"sqlHook  :  " + sqlHook}</p>
+            <p>{"sqlHook  :  " + props.sqlHook}</p>
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <p>{"deleteArray  :  " + deleteArray}</p>
             <p>{"beChangeArray  :  " + beChangeArray}</p>
+            <p>{"excelChangedInit  :  " + excelChangedInit}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>

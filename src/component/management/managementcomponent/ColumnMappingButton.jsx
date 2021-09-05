@@ -96,6 +96,11 @@ const ColumnMappingButton = (props) => {
     setSqlHook(tableColumn)
   }
 
+  const changeColumn = (u) => {
+    console.log(u)
+    // console.log(1111111111111111111)
+  }
+
   return (
     <>
       <Button className={classes.baseButton} variant="outlined" style={{textTransform: 'none'}} onClick={handleClickOpen}>
@@ -123,7 +128,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} />
+                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} onLogic={changeColumn} />
               </Paper>
             </Grid>
             <Grid item xs={2}>

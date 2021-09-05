@@ -30,11 +30,6 @@ const StyledTableCell = withStyles((theme) => ({
     //   },
     },
   }))(TableRow);
-  
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
 
   const useStyles = makeStyles({
     table: {
@@ -55,11 +50,11 @@ const TableColumns = (props) => {
     // const [ targetData, setTargetData ] = useState([0, 0])
     const [ targetData, setTargetData ] = useState(data)
     const [ dbColumns, setDbColumns ] = useState([])
-    
+    // const [dbColumnvalue, setDbColumnvalue] = useState([])
     // if (targetData) {
         //     setDbColumns(Object.keys(Object.values(targetData)[0]))
         // }
-        
+    
     const dbColumnvalue = Object.keys(Object.values(targetData)[0])
     // console.log(data)
     // console.log(dbColumnvalue)
