@@ -63,7 +63,7 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
         setDeletId(() => {
             return e.target.id
         })
-        console.log(deleteId)
+        // console.log(deleteId)
     }
 
     function idCheck(e) {
@@ -73,7 +73,7 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
             return e.target.id
         })
         // console.log(e.target.id)
-        console.log(targetId)
+        // console.log(targetId)
     }
 
     useEffect(() => {
@@ -82,9 +82,10 @@ const ExcelColumns = ({excelColumns, sqlHook}) => {
         const deleteIdData = deleteArray
         deleteIdData[deleteId] = true
         // console.log(deleteIdData)            // 이건 바로 찍히는데.............. 밑에 setDeletArray가 안찍힌다.............
-        setDeletArray(() => {
-            return deleteIdData
-        })
+        setDeletArray(() => 
+            deleteIdData
+        )
+        setDeletId(false)
     }, [deleteId])
 
     useEffect(() => {

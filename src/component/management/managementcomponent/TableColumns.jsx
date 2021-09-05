@@ -55,17 +55,28 @@ const TableColumns = (props) => {
     // const [ targetData, setTargetData ] = useState([0, 0])
     const [ targetData, setTargetData ] = useState(data)
     const [ dbColumns, setDbColumns ] = useState([])
-
-
-    // const dbColumns = Object.keys(Object.values(targetData)[0])
+    
+    // if (targetData) {
+        //     setDbColumns(Object.keys(Object.values(targetData)[0]))
+        // }
+        
+    const dbColumnvalue = Object.keys(Object.values(targetData)[0])
+    // console.log(data)
+    // console.log(dbColumnvalue)
+    // setDbColumns(dbColumnvalue)
+    // console.log(dbColumns)
     
     useEffect(() => {
-
-    })
+        setDbColumns(()=>dbColumnvalue)
+    }, [])
 
     useEffect(()=> {
         setTargetData(data)
-        setDbColumns(() => Object.keys(Object.values(targetData)[0]))
+        setDbColumns(() => {
+            if (data) {
+                Object.keys(Object.values(dbColumnvalue)[0])
+            }
+        })
     }, [data, targetData])
     // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
 
@@ -81,8 +92,8 @@ const TableColumns = (props) => {
         props.onTable(checkTableColumn)
     }, [checkTableColumn])
 
-
-
+    // console.log(dbColumns);
+    // if (!dbColumns) return null;
     return (
         <>
             <h1>Table Columns</h1>
@@ -98,7 +109,8 @@ const TableColumns = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {dbColumns.slice(0, 40).map((row) => (
+                        {/* {dbColumns.slice(0, 40).map((row) => ( */}
+                        {dbColumnvalue.slice(0, 40).map((row) => (
                             <StyledTableRow hover key={row} onClick={checka}>
                                 <StyledTableCell component="th" scope="row">
                                 {row}
