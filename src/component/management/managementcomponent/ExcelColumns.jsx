@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -55,7 +55,8 @@ const ExcelColumns = (props) => {
     const [deleteId, setDeletId] = React.useState(false)
     const dummyDeleteArray = new Array(props.excelColumns.length)
     const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
-    const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
+    // const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
+    const excelChangedInit = useRef(props.excelColumns)
 
     function deleteCheck(e) {
         setDeletId(() => {
@@ -71,7 +72,7 @@ const ExcelColumns = (props) => {
     // Jira TEST
 
     const accdd = () => {
-        props.onLogic(excelChangedInit)
+        props.onLogic(excelChangedInit.current)
     }
 
 
@@ -93,12 +94,11 @@ const ExcelColumns = (props) => {
             }
             }
             )
-            setExcelChangedInit(b)
+            excelChangedInit.current=b
         }
-    
         return () => {
             accdd()
-            setExcelChangedInit(excelChangedInit)
+            // setExcelChangedInit(excelChangedInit)
         }
     }, [deleteArray, deleteId])
 
@@ -131,7 +131,7 @@ const ExcelColumns = (props) => {
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <p>{"deleteArray  :  " + deleteArray}</p>
             <p>{"beChangeArray  :  " + beChangeArray}</p>
-            <p>{"excelChangedInit  :  " + excelChangedInit}</p>
+            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>

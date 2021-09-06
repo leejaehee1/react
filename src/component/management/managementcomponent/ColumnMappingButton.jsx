@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles, withStyles  } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
@@ -79,14 +79,37 @@ const ColumnMappingButton = (props) => {
   const [sqlHook, setSqlHook] = React.useState("");
 
   const [open, setOpen] = React.useState(false);
+  const [modalFlag, setModalFlag] = React.useState(true)
+  const [excelChangedHook, setExcelChangedHook] = React.useState("")
+
 
   const handleClickOpen = () => {
     setOpen(true);
+    setModalFlag(false)
+    return () => {
+    // console.log("open :"+open)
+    // console.log("modalFlag :"+modalFlag)
+  }
   };
 
   const handleClose = () => {
     setOpen(false);
+    setModalFlag(true)
+    // console.log(open)
+    // console.log(modalFlag)
   };
+
+  useEffect(() => {
+
+    console.log("excelChangedHook")
+    console.log(excelChangedHook)
+    // if (modalFlag) {
+    //   console.log("끌때 들어와라")
+    //   props.onexcelChangedColumns(excelChangedHook)
+    //   console.log(excelChangedHook)
+    // }
+    props.onexcelChangedColumns(excelChangedHook)
+  }, [modalFlag, excelChangedHook])
 
   const updateColumn = (tableColumn) => {
     console.log(tableColumn +"데이터 올라왔다.")
@@ -96,10 +119,27 @@ const ColumnMappingButton = (props) => {
     setSqlHook(tableColumn)
   }
 
-  const changeColumn = (u) => {
-    console.log(u)
-    // console.log(1111111111111111111)
+  const inputExcelHook= (excelChangedup) => {
+    return () => {
+      console.log(22222222222222222222222222222222222222)
+      // setExcelChangedHook(excelChangedup)
+      return null
+
+    }
   }
+
+  const changeColumn = (excelChangedup) => {
+
+    console.log("changedcolumn111111111111111111111111")
+    console.log(excelChangedup)
+    if (modalFlag) {
+      console.log("changedcolumn3333333333333333333333")
+    }
+    props.onexcelChangedColumns(excelChangedup)
+    // setExcelChangedHook(excelChangedup)
+
+  }
+
 
   return (
     <>

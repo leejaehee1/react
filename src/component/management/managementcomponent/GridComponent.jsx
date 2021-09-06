@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import MaterialTable, { MTableToolbar } from 'material-table';
 import XLSX from 'xlsx';
 // import { GridToolbar } from '@material-ui/data-grid';
@@ -53,6 +53,8 @@ const GridComponent = () => {
 
     const [colDefs, setColDefs] = useState([])
     const [data, setData] = useState()
+    // const [excelChangedColumns, setExcelChangedColumns] = useState([1])
+    const excelChangedArray = useRef()
 
     const getExention = (file) => {
         const parts=file.name.split('.')
@@ -119,20 +121,42 @@ const GridComponent = () => {
     function titleSelector(value) {
         return value.title
     }
-    console.dir(data)
-    console.log("--------------------------------------------------------------------------------------------------------------------------")
-    console.log(colDefs)
+    // console.dir(data)
+    // console.log("--------------------------------------------------------------------------------------------------------------------------")
+    // console.log(colDefs)
     let columnsDate = Object.values(colDefs).map((a) => a.title)
     useEffect(()=> {
         columnsDate = Object.values(colDefs).map((a) => a.title)
     }, [colDefs])
-    // console.log(columnsDate)
+
+    const onexcelChangedColumns = (excelChangedColumns) => {
+        console.log("excel PAGE------------------------------")
+        console.log(excelChangedColumns)
+        // setExcelChangedColumns(excelChangedColumns)
+        excelChangedArray.current = excelChangedColumns
+        changeColDefs()
+    }
+
+    const changeColDefs = () => {
+        // set
+    }
+
+    useEffect(() => {
+        console.log("최종최종쵲오")
+        console.log(excelChangedArray)
+    }, [excelChangedArray])
+    console.dir(data)
+    console.dir(colDefs)
     return (
         <div style={{ maxWidth: '100%' }}>
+            <p>{excelChangedArray.current}</p>
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
                 columns={colDefs} 
+                // columns={[{title: "ABC", field: "PunchID"}, {title: "Area", field: "Area"}]} 
+                
+
                 // columns={dummyData} 
                 options={{
                     paginationType: "stepped",
@@ -191,7 +215,7 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton excelColumns={columnsDate} />
+                                <ColumnMappingButton excelColumns={columnsDate} onexcelChangedColumns={onexcelChangedColumns} />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
