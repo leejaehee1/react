@@ -46,20 +46,9 @@ const TableColumns = (props) => {
     const [checkTableColumn, setCheckTableColumn] = React.useState("")
 
     const { data, ids } = useGetList('list', );
-    // const targetData = data
-    // const [ targetData, setTargetData ] = useState([0, 0])
     const [ targetData, setTargetData ] = useState(data)
     const [ dbColumns, setDbColumns ] = useState([])
-    // const [dbColumnvalue, setDbColumnvalue] = useState([])
-    // if (targetData) {
-        //     setDbColumns(Object.keys(Object.values(targetData)[0]))
-        // }
-    
     const dbColumnvalue = Object.keys(Object.values(targetData)[0])
-    // console.log(data)
-    // console.log(dbColumnvalue)
-    // setDbColumns(dbColumnvalue)
-    // console.log(dbColumns)
     
     useEffect(() => {
         setDbColumns(()=>dbColumnvalue)
@@ -73,22 +62,17 @@ const TableColumns = (props) => {
             }
         })
     }, [data, targetData])
-    // dbColumns.slice(0, 40).map((key) => console.log(key))  //46
 
     function checka(e) {
-        // console.dir(e.target.innerHTML)
         setCheckTableColumn(() => {
             return e.target.innerHTML
         })
-        // props.onTable(checkTableColumn)
     }
 
     useEffect(() => {
         props.onTable(checkTableColumn)
     }, [checkTableColumn])
 
-    // console.log(dbColumns);
-    // if (!dbColumns) return null;
     return (
         <>
             <h1>Table Columns</h1>

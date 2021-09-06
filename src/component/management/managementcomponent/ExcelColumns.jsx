@@ -58,90 +58,44 @@ const ExcelColumns = (props) => {
     const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
 
     function deleteCheck(e) {
-        // console.dir(e)
-        // console.dir(deleteId)
-        // console.dir(deleteIndex)
         setDeletId(() => {
             return e.target.id
         })
-        // console.log(deleteId)
     }
 
     function idCheck(e) {
-        // console.log("눌러짐")
-        // const excelIndex = e.target.id
         setTargetId(() => {
             return e.target.id
         })
-        // console.log(e.target.id)
-        // console.log(targetId)
     }
     // Jira TEST
 
     const accdd = () => {
-        console.log("aaaaaaaaaaaaaaaaadfasdf", excelChangedInit)
         props.onLogic(excelChangedInit)
     }
 
-    // useEffect(() => {
-    //     props.onLogic(excelChangedInit)
-    //     console.log(excelChangedInit)
-    // }, [excelChangedInit])
-    // useEffect(() => {
-    //     props.onLogic(deleteArray)
-    //     console.log(deleteArray)
-    // }, [deleteArray])
-
 
     useEffect(() => {
-        // const deleteIdData = deleteArray
-        // deleteIdData[deleteId] = true
         const deleteIdData = deleteArray
         deleteIdData[deleteId] = !deleteIdData[deleteId]
-        // console.log(deleteIdData)            // 이건 바로 찍히는데.............. 밑에 setDeletArray가 안찍힌다.............
         setDeletArray(() => 
             deleteIdData
         )
         setDeletId(false)
-        
-        // if (excelChangedInit){
-        //     console.log(123)
-        //     console.log(excelChangedInit)
-        //     setExcelChangedInit(()=> {excelChangedInit.filter((v, i) => {
-        //         console.log(v, i)
-        //         console.log(deleteArray[i])
-
-        //         if (deleteArray[i]) {
-        //             return v
-        //         }
-        //     })} )
-        // }
+ 
     }, [deleteId])
 
     useEffect(() => {
-        console.log(excelChangedInit)
-        // console.log(Object.values(targetData).filter(da => da.discipline==="A"))
         if (excelChangedInit){
-            console.log(123)
-            console.log(excelChangedInit)
             const b = props.excelColumns.map((v, i) => 
-            // deleteArray[i]
-            // v === 'punchID'
             {if (deleteArray[i]) {
-                // i===3
-            //     if (i===3) {
-            //     console.log(v, i)
-            //     console.log(deleteArray[i])
                 return v
             }
             }
             )
             setExcelChangedInit(b)
         }
-        console.log(2)
-        console.log("adfasdf", excelChangedInit)
     
-        const redata = excelChangedInit
         return () => {
             accdd()
             setExcelChangedInit(excelChangedInit)

@@ -62,7 +62,6 @@ const GridComponent = () => {
 
     const convertToJson=(headers, data)=>{
         const rows=[]
-        // console.log(data)
         data.forEach(row => {
             let rowData={}
             row.forEach((element, index)=>{
@@ -70,13 +69,11 @@ const GridComponent = () => {
             })
             rows.push(rowData)
         });
-        // console.log(rows)
         return rows
     }
 
     const importExcel=(e)=>{
         const file = e.target.files[0]
-        
         // console.log(file)
 
         const reader=new FileReader()
@@ -132,8 +129,6 @@ const GridComponent = () => {
     // console.log(columnsDate)
     return (
         <div style={{ maxWidth: '100%' }}>
-            {/* <input type="file" onChange={importExcel} ></input> */}
-            {/* style={{ display: 'none' }} */}
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
