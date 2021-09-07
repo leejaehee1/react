@@ -70,7 +70,7 @@ const ExcelColumns = (props) => {
         })
     }
     // Jira TEST
-
+    
     const accdd = () => {
         props.onLogic(excelChangedInit.current)
     }
@@ -96,10 +96,10 @@ const ExcelColumns = (props) => {
             )
             excelChangedInit.current=b
         }
-        return () => {
-            accdd()
-            // setExcelChangedInit(excelChangedInit)
-        }
+        accdd()
+        // return () => {
+        //     // setExcelChangedInit(excelChangedInit)
+        // }
     }, [deleteArray, deleteId])
 
     useEffect(() => {

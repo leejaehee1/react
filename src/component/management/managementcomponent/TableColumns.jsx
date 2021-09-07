@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -46,16 +46,17 @@ const TableColumns = (props) => {
     const [checkTableColumn, setCheckTableColumn] = React.useState("")
 
     const { data, ids } = useGetList('list', );
-    const [ targetData, setTargetData ] = useState(data)
+    // const [ targetData, setTargetData ] = useState(data)
+    const targetData = useRef(data)
     const [ dbColumns, setDbColumns ] = useState([])
-    const dbColumnvalue = Object.keys(Object.values(targetData)[0])
+    const dbColumnvalue = Object.keys(Object.values(targetData.current)[0])
     
     useEffect(() => {
         setDbColumns(()=>dbColumnvalue)
     }, [])
 
     useEffect(()=> {
-        setTargetData(data)
+        targetData.current = data
         setDbColumns(() => {
             if (data) {
                 Object.keys(Object.values(dbColumnvalue)[0])

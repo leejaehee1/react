@@ -55,6 +55,8 @@ const GridComponent = () => {
     const [data, setData] = useState()
     // const [excelChangedColumns, setExcelChangedColumns] = useState([1])
     const excelChangedArray = useRef()
+    const targetArrayRef = useRef()
+
 
     const getExention = (file) => {
         const parts=file.name.split('.')
@@ -121,35 +123,71 @@ const GridComponent = () => {
     function titleSelector(value) {
         return value.title
     }
-    // console.dir(data)
-    // console.log("--------------------------------------------------------------------------------------------------------------------------")
-    // console.log(colDefs)
-    let columnsDate = Object.values(colDefs).map((a) => a.title)
+
+    var isEmpty = function(value){ 
+        if(  value == null || value == undefined){
+            // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
+            return true 
+        }else{ 
+            return false 
+        } 
+    };
+
+    const columnsDate = useRef( (isEmpty(colDefs)) ? colDefs : Object.values(colDefs).map((a) => a.title))
+
     useEffect(()=> {
-        columnsDate = Object.values(colDefs).map((a) => a.title)
+        columnsDate.current = (isEmpty(colDefs)) ? colDefs : Object.values(colDefs).map((a) => a.title)
     }, [colDefs])
 
     const onexcelChangedColumns = (excelChangedColumns) => {
         console.log("excel PAGE------------------------------")
-        console.log(excelChangedColumns)
-        // setExcelChangedColumns(excelChangedColumns)
-        excelChangedArray.current = excelChangedColumns
-        changeColDefs()
+        if (excelChangedColumns) {
+            let a = excelChangedColumns
+            excelChangedArray.current = a
+            changeColDefs()
+        }
+        
     }
 
     const changeColDefs = () => {
-        // set
+        // const baseComparing = colDefs;
+        const baseComparing = Object.values(colDefs).map((a) => a.title);
+        let targetArray = []
+        for (const a of excelChangedArray.current) {
+
+            if (baseComparing.includes(a)) {
+                let tergetObject = {title: a, field: a}
+                targetArray.push(tergetObject)
+            } else {
+                console.log("없다")
+            }
+        }
+        console.log("targetArray")
+        console.log(targetArray)
+        if (targetArray) {
+            targetArrayRef.current = targetArray
+        }
+        return ()=> {
+
+        }
+
+
     }
 
-    useEffect(() => {
-        console.log("최종최종쵲오")
-        console.log(excelChangedArray)
-    }, [excelChangedArray])
-    console.dir(data)
-    console.dir(colDefs)
+    function settingColDefs(targetArray) {
+        setColDefs(() => targetArray)
+    }
+
+
+
+    // console.dir(data)
+    // console.dir(colDefs)
+    console.dir(excelChangedArray.current)
     return (
         <div style={{ maxWidth: '100%' }}>
+            <p>1</p>
             <p>{excelChangedArray.current}</p>
+            {/* <p>{targetArray}</p> */}
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
@@ -215,7 +253,7 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton excelColumns={columnsDate} onexcelChangedColumns={onexcelChangedColumns} />
+                                <ColumnMappingButton excelColumns={columnsDate.current} onexcelChangedColumns={onexcelChangedColumns} />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
