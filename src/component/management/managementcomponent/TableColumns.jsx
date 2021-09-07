@@ -42,14 +42,26 @@ const StyledTableCell = withStyles((theme) => ({
 
 const TableColumns = (props) => {
     const classes = useStyles();
-
+    
     const [checkTableColumn, setCheckTableColumn] = React.useState("")
 
     const { data, ids } = useGetList('list', );
     // const [ targetData, setTargetData ] = useState(data)
     const targetData = useRef(data)
     const [ dbColumns, setDbColumns ] = useState([])
-    const dbColumnvalue = Object.keys(Object.values(targetData.current)[0])
+
+
+    var isEmpty = function(value){ 
+        if(  value == null || value == undefined){
+            // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
+            return true 
+        }else{ 
+            return false 
+        } 
+    }
+    // const dbColumnvalue = (targetData.current)? Object.keys(Object.values(targetData.current)[0]) : targetData.current;
+    const dbColumnvalue = (isEmpty(targetData.current))? targetData.current : Object.keys(Object.values(targetData.current)[0]);
+
     
     useEffect(() => {
         setDbColumns(()=>dbColumnvalue)

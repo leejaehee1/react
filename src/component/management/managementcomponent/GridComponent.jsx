@@ -56,7 +56,7 @@ const GridComponent = () => {
     // const [excelChangedColumns, setExcelChangedColumns] = useState([1])
     const excelChangedArray = useRef()
     const targetArrayRef = useRef()
-
+    const updateColDefs = useRef()
 
     const getExention = (file) => {
         const parts=file.name.split('.')
@@ -97,6 +97,7 @@ const GridComponent = () => {
             const headers=fileData[0]  // columns만 추출
             const heads=headers.map(head=>({title:head, field:head}))
             setColDefs(heads)
+            updateColDefs.current = heads
             // console.log(heads)
             
 
@@ -133,65 +134,85 @@ const GridComponent = () => {
         } 
     };
 
-    const columnsDate = useRef( (isEmpty(colDefs)) ? colDefs : Object.values(colDefs).map((a) => a.title))
+    // const columnsDate = useRef( (isEmpty(colDefs)) ? setColDefs(data) : Object.values(colDefs).map((a) => a.title))
+    const [columnsData, setColumnsData] = useState()
+    // const columnsData = Object.values(colDefs).map((a) => a.title)
+    // const [columnsData, setColumnsData] = useState(Object.values(colDefs).map((a) => a.title))
+    console.log("columnsData")
+    console.log(columnsData)
+    console.log(colDefs)
+    console.log(Object.values(colDefs).map((a) => a.title))
 
-    useEffect(()=> {
-        columnsDate.current = (isEmpty(colDefs)) ? colDefs : Object.values(colDefs).map((a) => a.title)
-    }, [colDefs])
-
+    
+    
     const onexcelChangedColumns = (excelChangedColumns) => {
         console.log("excel PAGE------------------------------")
+        console.log(excelChangedColumns)
         if (excelChangedColumns) {
             let a = excelChangedColumns
             excelChangedArray.current = a
             changeColDefs()
+            setColDefs((updateColDefs.current===colDefs)?colDefs : targetArrayRef.current)
+            // setColDefs(()=> updateColDefs)
         }
-        
     }
+    
+    useEffect(()=> {
+        console.log("columnsData useEffect")
+        // console.log(columnsData)
+        updateColDefs.current = colDefs
+        setColumnsData(Object.values(colDefs).map((a) => a.title))
+        return ()=> {
+            console.log("columnsData useEffect return")
+        console.log(columnsData)
+        }
+    }, [colDefs])
 
     const changeColDefs = () => {
         // const baseComparing = colDefs;
         const baseComparing = Object.values(colDefs).map((a) => a.title);
         let targetArray = []
+        const compareColumnsData = []
         for (const a of excelChangedArray.current) {
-
             if (baseComparing.includes(a)) {
                 let tergetObject = {title: a, field: a}
                 targetArray.push(tergetObject)
+                compareColumnsData.push(a)
             } else {
                 console.log("없다")
             }
         }
+        console.log("compareColumnsData : ", compareColumnsData)
         console.log("targetArray")
         console.log(targetArray)
         if (targetArray) {
             targetArrayRef.current = targetArray
         }
+        console.dir(targetArrayRef.current)
+        setColDefs((targetArrayRef.current)? targetArrayRef.current : colDefs)
+        console.dir(updateColDefs)
+        console.dir(colDefs)
+        console.dir("+++++++++++++++++++++++++++++++++++++++++")
         return ()=> {
 
         }
-
-
     }
-
-    function settingColDefs(targetArray) {
-        setColDefs(() => targetArray)
-    }
-
 
 
     // console.dir(data)
     // console.dir(colDefs)
-    console.dir(excelChangedArray.current)
+
     return (
         <div style={{ maxWidth: '100%' }}>
             <p>1</p>
             <p>{excelChangedArray.current}</p>
+            {/* <p>{updateColDefs}</p> */}
             {/* <p>{targetArray}</p> */}
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
-                columns={colDefs} 
+                // columns={colDefs} 
+                columns={updateColDefs.current} 
                 // columns={[{title: "ABC", field: "PunchID"}, {title: "Area", field: "Area"}]} 
                 
 
@@ -253,7 +274,7 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton excelColumns={columnsDate.current} onexcelChangedColumns={onexcelChangedColumns} />
+                                <ColumnMappingButton excelColumns={columnsData} onexcelChangedColumns={onexcelChangedColumns} />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
