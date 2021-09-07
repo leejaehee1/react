@@ -104,15 +104,15 @@ const ColumnMappingButton = (props) => {
     setModalFlag(true)
     // console.log(open)
     // console.log(modalFlag)
-    console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
-    console.log(excelChangedHook)
+    // console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
+    // console.log(excelChangedHook)
     props.onApply(excelChangedHook)
   };
 
   useEffect(() => {
 
-    console.log("excelChangedHook")
-    console.log(excelChangedHook)
+    // console.log("excelChangedHook")
+    // console.log(excelChangedHook)
     // if (modalFlag) {
     //   console.log("끌때 들어와라")
     //   props.onexcelChangedColumns(excelChangedHook)
@@ -122,7 +122,7 @@ const ColumnMappingButton = (props) => {
   }, [modalFlag, excelChangedHook])
 
   const updateColumn = (tableColumn) => {
-    console.log(tableColumn +"데이터 올라왔다.")
+    // console.log(tableColumn +"데이터 올라왔다.")
     // if (tableColumn === "punchID") {
     //   console.log("if 성공이다.")
     // }
@@ -131,11 +131,11 @@ const ColumnMappingButton = (props) => {
 
   const changeColumn = (excelChangedup) => {
     setExcelChangedHook(excelChangedup)
-    console.log("changedcolumn111111111111111111111111")
-    console.log(excelChangedup)
-    if (modalFlag) {
-      console.log("changedcolumn3333333333333333333333")
-    }
+    // console.log("changedcolumn111111111111111111111111")
+    // console.log(excelChangedup)
+    // if (modalFlag) {
+    //   console.log("changedcolumn3333333333333333333333")
+    // }
     props.onexcelChangedColumns(excelChangedup)
     // setExcelChangedHook(excelChangedup)
 

@@ -1,14 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import MaterialTable, { MTableToolbar } from 'material-table';
 import XLSX from 'xlsx';
-// import { GridToolbar } from '@material-ui/data-grid';
-// import PublishIcon from '@material-ui/icons/Publish';
-// import SettingsIcon from '@material-ui/icons/Settings';
-// import { Chip } from "@material-ui/core";
 import Box from '@material-ui/core/Box';
-// import Avatar from '@material-ui/core/Avatar';
-// import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-// import FolderIcon from '@material-ui/icons/Folder';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Button } from '@material-ui/core';
 
@@ -53,7 +46,6 @@ const GridComponent = () => {
 
     const [colDefs, setColDefs] = useState([])
     const [data, setData] = useState()
-    // const [excelChangedColumns, setExcelChangedColumns] = useState([1])
     const excelChangedArray = useRef()
     const targetArrayRef = useRef()
     const updateColDefs = useRef()
@@ -78,7 +70,6 @@ const GridComponent = () => {
 
     const importExcel=(e)=>{
         const file = e.target.files[0]
-        // console.log(file)
 
         const reader=new FileReader()
         reader.onload=(event)=> {    // onload는 비동기 때문에 적어주는 거다
@@ -92,13 +83,11 @@ const GridComponent = () => {
             
             // convert to array
             const fileData = XLSX.utils.sheet_to_json(workSheet, {header:1})
-            
-            
+                        
             const headers=fileData[0]  // columns만 추출
             const heads=headers.map(head=>({title:head, field:head}))
             setColDefs(heads)
             updateColDefs.current = heads
-            // console.log(heads)
             
 
             // removing header
@@ -118,58 +107,35 @@ const GridComponent = () => {
         }
     }
 
-    const dummyData = [{title:"PunchID"}, {title:"Status"}]
-
-
     function titleSelector(value) {
         return value.title
     }
 
     var isEmpty = function(value){ 
         if(  value == null || value == undefined){
-            // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
             return true 
         }else{ 
             return false 
         } 
     };
 
-    // const columnsDate = useRef( (isEmpty(colDefs)) ? setColDefs(data) : Object.values(colDefs).map((a) => a.title))
     const [columnsData, setColumnsData] = useState()
-    // const columnsData = Object.values(colDefs).map((a) => a.title)
-    // const [columnsData, setColumnsData] = useState(Object.values(colDefs).map((a) => a.title))
-    // console.log("columnsData")
-    // console.log(columnsData)
-    // console.log(colDefs)
-    // console.log(Object.values(colDefs).map((a) => a.title))
-
-    
-    
+        
     const onexcelChangedColumns = (excelChangedColumns) => {
-        console.log("excel PAGE------------------------------")
-        console.log(excelChangedColumns)
         if (excelChangedColumns) {
             let a = excelChangedColumns
             excelChangedArray.current = a
             changeColDefs()
             setColDefs((updateColDefs.current===colDefs)?colDefs : targetArrayRef.current)
-            // setColDefs(()=> updateColDefs)
         }
     }
     
     useEffect(()=> {
-        console.log("columnsData useEffect")
-        // console.log(columnsData)
         updateColDefs.current = colDefs
         setColumnsData(Object.values(colDefs).map((a) => a.title))
-        return ()=> {
-            console.log("columnsData useEffect return")
-        console.log(columnsData)
-        }
     }, [colDefs])
 
     const changeColDefs = () => {
-        // const baseComparing = colDefs;
         const baseComparing = Object.values(colDefs).map((a) => a.title);
         let targetArray = []
         const compareColumnsData = []
@@ -182,17 +148,10 @@ const GridComponent = () => {
                 console.log("없다")
             }
         }
-        console.log("compareColumnsData : ", compareColumnsData)
-        console.log("targetArray")
-        console.log(targetArray)
         if (targetArray) {
             targetArrayRef.current = targetArray
         }
-        console.dir(targetArrayRef.current)
         setColDefs((targetArrayRef.current)? targetArrayRef.current : colDefs)
-        console.dir(updateColDefs)
-        console.dir(colDefs)
-        console.dir("+++++++++++++++++++++++++++++++++++++++++")
         return ()=> {
 
         }
@@ -200,8 +159,6 @@ const GridComponent = () => {
 
 
     const onApply = (applyData) => {
-        console.log(99909999090999099990909090990099090)
-        console.log(applyData)
         const baseComparing = Object.values(colDefs).map((a) => a.title);
         let targetArray = []
         const compareColumnsData = []
@@ -214,36 +171,18 @@ const GridComponent = () => {
                 console.log("없다")
             }
         }
-        console.log("compareColumnsData : ", compareColumnsData)
-        console.log("targetArray")
-        console.log(targetArray)
-        // if (targetArray) {
-        //     targetArrayRef.current = targetArray
-        // }
-        // console.dir(targetArrayRef.current)
         setColDefs(targetArray)
-        // console.dir(updateColDefs)
-        // console.dir(colDefs)
-        console.dir("----------------------------------------------------")
 
     }
 
-    // console.dir(data)
-    // console.dir(colDefs)
-
     return (
         <div style={{ maxWidth: '100%' }}>
-            <p>1</p>
-            <p>{excelChangedArray.current}</p>
-            {/* <p>{updateColDefs}</p> */}
-            {/* <p>{targetArray}</p> */}
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
                 // columns={colDefs} 
                 columns={updateColDefs.current} 
-                // columns={[{title: "ABC", field: "PunchID"}, {title: "Area", field: "Area"}]} 
-                
+                onRowClick={(event)=> console.log(event)}
 
                 // columns={dummyData} 
                 options={{
