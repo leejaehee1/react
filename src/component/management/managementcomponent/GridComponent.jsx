@@ -138,10 +138,10 @@ const GridComponent = () => {
     const [columnsData, setColumnsData] = useState()
     // const columnsData = Object.values(colDefs).map((a) => a.title)
     // const [columnsData, setColumnsData] = useState(Object.values(colDefs).map((a) => a.title))
-    console.log("columnsData")
-    console.log(columnsData)
-    console.log(colDefs)
-    console.log(Object.values(colDefs).map((a) => a.title))
+    // console.log("columnsData")
+    // console.log(columnsData)
+    // console.log(colDefs)
+    // console.log(Object.values(colDefs).map((a) => a.title))
 
     
     
@@ -198,6 +198,35 @@ const GridComponent = () => {
         }
     }
 
+
+    const onApply = (applyData) => {
+        console.log(99909999090999099990909090990099090)
+        console.log(applyData)
+        const baseComparing = Object.values(colDefs).map((a) => a.title);
+        let targetArray = []
+        const compareColumnsData = []
+        for (const a of applyData) {
+            if (baseComparing.includes(a)) {
+                let tergetObject = {title: a, field: a}
+                targetArray.push(tergetObject)
+                compareColumnsData.push(a)
+            } else {
+                console.log("없다")
+            }
+        }
+        console.log("compareColumnsData : ", compareColumnsData)
+        console.log("targetArray")
+        console.log(targetArray)
+        // if (targetArray) {
+        //     targetArrayRef.current = targetArray
+        // }
+        // console.dir(targetArrayRef.current)
+        setColDefs(targetArray)
+        // console.dir(updateColDefs)
+        // console.dir(colDefs)
+        console.dir("----------------------------------------------------")
+
+    }
 
     // console.dir(data)
     // console.dir(colDefs)
@@ -274,7 +303,7 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton excelColumns={columnsData} onexcelChangedColumns={onexcelChangedColumns} />
+                                <ColumnMappingButton excelColumns={columnsData} onexcelChangedColumns={onexcelChangedColumns} onApply={onApply} />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >

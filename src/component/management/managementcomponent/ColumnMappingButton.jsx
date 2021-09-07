@@ -99,6 +99,16 @@ const ColumnMappingButton = (props) => {
     // console.log(modalFlag)
   };
 
+  const handleCloseApply = () => {
+    setOpen(false);
+    setModalFlag(true)
+    // console.log(open)
+    // console.log(modalFlag)
+    console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
+    console.log(excelChangedHook)
+    props.onApply(excelChangedHook)
+  };
+
   useEffect(() => {
 
     console.log("excelChangedHook")
@@ -119,17 +129,8 @@ const ColumnMappingButton = (props) => {
     setSqlHook(tableColumn)
   }
 
-  const inputExcelHook= (excelChangedup) => {
-    return () => {
-      console.log(22222222222222222222222222222222222222)
-      // setExcelChangedHook(excelChangedup)
-      return null
-
-    }
-  }
-
   const changeColumn = (excelChangedup) => {
-
+    setExcelChangedHook(excelChangedup)
     console.log("changedcolumn111111111111111111111111")
     console.log(excelChangedup)
     if (modalFlag) {
@@ -189,7 +190,7 @@ const ColumnMappingButton = (props) => {
           <Button autoFocus onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleCloseApply} color="primary">
             Apply
           </Button>
         </DialogActions>
