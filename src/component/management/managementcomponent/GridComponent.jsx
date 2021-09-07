@@ -6,7 +6,15 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { Button } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
-
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
 // color
 
@@ -34,14 +42,19 @@ const useStyles = makeStyles((theme) => ({
     baseButton: {
         // width: 14    0,
         color: '#607d8b',
-    }
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
   }));
 
 const buttonColor = blueGrey[400]
 const EXTENSIONS=['xlsx', 'xls', 'csv'] // 'xlsx', 'xls', 'csv' 세가지 파일만 들어가게 한다.
 const GridComponent = () => {
     const classes = useStyles();
-
 
 
     const [colDefs, setColDefs] = useState([])
@@ -175,8 +188,50 @@ const GridComponent = () => {
 
     }
 
+    // drawer
+    const [rightDrawerState, setRightDrawerState] = useState(false)
+    const [anchor, setAnchor] =useState(false)
+
+    const toggleDrawer = (open) => (event) => {
+        if (event.type ==='keydown' && (event.key ==='Tab' || event.key === 'Shift')) {
+            return;
+        }
+        setRightDrawerState(open);
+    }
+
+
+
+
+
     return (
         <div style={{ maxWidth: '100%' }}>
+            <div>
+                <React.Fragment key="right">
+                    <Button onClick={toggleDrawer(true)}>TOPPunchList</Button>
+                    <Drawer anchor="right" open={rightDrawerState} onClose={toggleDrawer(false)}>
+                        {/* {list(anchor)} */}
+                        <div
+                            className={clsx(classes.list, {
+                                [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+                            })}
+                            role="presentation"
+                            onClick={toggleDrawer(false)}
+                            onKeyDown={toggleDrawer(false)}
+                        >
+                            <ListItem button key="Inbox">
+                                <ListItemIcon> <InboxIcon /></ListItemIcon>
+                                <ListItemText primary="Inbox" />
+                            </ListItem>
+                            <p>1</p>
+                            <Divider />
+                            <p>2</p>
+                            <p>3</p>
+                            <p>4</p>
+                            <p>5</p>
+                        </div>
+                    </Drawer>
+                </React.Fragment>
+            </div>
             <MaterialTable 
                 title="Punchlist data" 
                 data={data} 
