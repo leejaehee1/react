@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         color: '#607d8b',
     },
     list: {
-        width: 250,
+        width: 500,
     },
     fullList: {
         width: 'auto',
@@ -191,18 +191,46 @@ const GridComponent = () => {
     // drawer
     const [rightDrawerState, setRightDrawerState] = useState(false)
     const [anchor, setAnchor] =useState(false)
+    // const [eachRowData, setEachRowData] = useState(["빈배열"])
+    const eachRowData = useRef([])
+    // const [eachRowKeyData, setEachRowKeyData] = useState([])
+    const eachRowKeyData = useRef([])
+    // const [eachRowValueData, setEachRowValueData] = useState([])
+    const eachRowValueData = useRef([])
 
     const toggleDrawer = (open) => (event) => {
-        if (event.type ==='keydown' && (event.key ==='Tab' || event.key === 'Shift')) {
-            return;
-        }
+        // // if (event.type ==='keydown' && (event.key ==='Tab' || event.key === 'Shift')) {
+        // //     return;
+        // // }
+        // console.log("adfasdf-------------------------------------------")
+        // console.log(open)
+        // console.log(event.target)
+        // console.log(eachRowKeyData)
+        console.log("toggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawer")
+        console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
+        console.log(eachRowValueData)
         setRightDrawerState(open);
     }
 
+    useEffect(() => {
+        console.log("98912319283612361923691823981")
+    },[eachRowKeyData, eachRowValueData, eachRowData])
 
-
-
-
+    // const drawerDataLogin = () => {
+    //     let htmlKetArray = []
+    //     var htmlValueArray = []
+    //     for(var key in eachRowData){
+    //         htmlKetArray.push(key)
+    //         htmlValueArray.push(eachRowData[key])
+    //     }
+    //     console.log(htmlKetArray)
+    //     console.log(htmlValueArray)
+    //     setEachRowKeyData(()=>htmlKetArray)
+    //     setEachRowValueData(()=>htmlValueArray)
+    // }
+    const rowData = eachRowKeyData.current.map((a) => 
+            <p>{a}</p>
+        )
     return (
         <div style={{ maxWidth: '100%' }}>
             <div>
@@ -220,9 +248,32 @@ const GridComponent = () => {
                         >
                             <ListItem button key="Inbox">
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
-                                <ListItemText primary="Inbox" />
+                                <ListItemText primary="Update Row" />
                             </ListItem>
-                            <p>1</p>
+                            {/* <p>{eachRowKeyData.current}</p>
+                            <p>{eachRowValueData.current}</p> */}
+                            <div>
+                            {eachRowKeyData.current}<br />
+                            {/* {eachRowKeyData.current[0]}<br /> */}
+                            {eachRowKeyData.current.length}<br />
+                            {eachRowValueData.current[0]}<br />
+                            {eachRowValueData.current[1]}<br />
+                            {eachRowValueData.current[2]}<br />
+                            {eachRowValueData.current[3]}<br />
+                            {eachRowValueData.current[4]}<br />
+                            {eachRowValueData.current[5]}<br />
+                            {eachRowValueData.current[6]}<br />
+                            {eachRowValueData.current[7]}<br />
+                            {eachRowValueData.current[8]}<br />
+                            {eachRowValueData.current[9]}<br />
+                            {eachRowValueData.current[10]}<br />
+                            {(eachRowValueData.current[10])? "a":"b"}<br />
+                            {(eachRowValueData.current[11]==="")? "a":"b"}<br />
+                            {(eachRowValueData.current[1]==="")? "a":"b"}<br />
+                            {(eachRowValueData.current[11]==="")? "a":"b"}<br />
+                            {rowData}
+
+                            </div>
                             <Divider />
                             <p>2</p>
                             <p>3</p>
@@ -237,8 +288,38 @@ const GridComponent = () => {
                 data={data} 
                 // columns={colDefs} 
                 columns={updateColDefs.current} 
-                onRowClick={(event)=> console.log(event)}
-
+                onRowClick={(event, rowData)=> {
+                    setRightDrawerState(true)
+                    console.log(1)
+                    console.log(rowData) // 빈값이 안들어온다.
+                    // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
+                    console.log(2)
+                    eachRowData.current = rowData
+                    let htmlKetArray = []
+                    var htmlValueArray = []
+                    for(var key in eachRowData.current){
+                        console.log(3)
+                        htmlKetArray.push(key)
+                        htmlValueArray.push(eachRowData.current[key])
+                    }
+                    console.log(4)
+                    console.log("MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable ")
+                    // console.log(htmlKetArray)
+                    // console.log(htmlValueArray)
+                    console.log(5)
+                    eachRowKeyData.current = htmlKetArray
+                    eachRowValueData.current = htmlValueArray
+                    console.log(eachRowKeyData.current)
+                    console.log(eachRowValueData.current)
+                    // console.log(6)
+                    // console.log(eachRowValueData.current[8])
+                    // console.log(eachRowValueData.current[9])
+                    // console.log(eachRowValueData.current[10])
+                    // console.log(eachRowValueData.current[11])
+                    // console.log(eachRowValueData.current[12])
+                }}
+                // onRowClick={toggleDrawer(true)}
+                // onRowClick={toggleA()}
                 // columns={dummyData} 
                 options={{
                     paginationType: "stepped",
