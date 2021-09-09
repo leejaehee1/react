@@ -255,6 +255,7 @@ const GridComponent = () => {
                             <div>
                             {eachRowKeyData.current}<br />
                             {/* {eachRowKeyData.current[0]}<br /> */}
+                            {excelChangedArray.current}
                             {eachRowKeyData.current.length}<br />
                             {eachRowValueData.current[0]}<br />
                             {eachRowValueData.current[1]}<br />
@@ -266,7 +267,7 @@ const GridComponent = () => {
                             {eachRowValueData.current[7]}<br />
                             {eachRowValueData.current[8]}<br />
                             {eachRowValueData.current[9]}<br />
-                            {eachRowValueData.current[10]}<br />
+                            {eachRowValueData.current[10]}<br /> // 빈값이 안들어온다...........
                             {(eachRowValueData.current[10])? "a":"b"}<br />
                             {(eachRowValueData.current[11]==="")? "a":"b"}<br />
                             {(eachRowValueData.current[1]==="")? "a":"b"}<br />
@@ -291,12 +292,44 @@ const GridComponent = () => {
                 onRowClick={(event, rowData)=> {
                     setRightDrawerState(true)
                     console.log(1)
-                    console.log(rowData) // 빈값이 안들어온다.
+                    console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
                     console.log(2)
+                    console.log(rowData.Area)
+                    console.log(rowData.Area)
+                    //  빈컬럼 추가하는 로직이 필요  //  excelChangedArray
+                    
+                    const targetData = {}
+
+                    console.log(33)
+                    console.log(Object.keys(rowData))
+                    console.log(excelChangedArray.current)
+                    
+                    const updatedData = Object.keys(rowData)
+                    for (let columnName in excelChangedArray.current) {
+                        if (excelChangedArray.current[columnName]) {
+                            console.log(excelChangedArray.current[columnName])
+
+                            if (excelChangedArray.current[columnName] in rowData) {
+                                console.log("그대로 넣어준다.")
+                                targetData[excelChangedArray.current[columnName]] = rowData[excelChangedArray.current[columnName]]
+                            } else {
+                                console.log("빈값으로 넣어준다.")
+                                targetData[excelChangedArray.current[columnName]] = ""
+                            }
+                        }
+                    }
+                    
+                    console.dir(targetData)
+                    console.dir(targetData)
+
+
                     eachRowData.current = rowData
+                    
                     let htmlKetArray = []
                     var htmlValueArray = []
+
+
                     for(var key in eachRowData.current){
                         console.log(3)
                         htmlKetArray.push(key)
