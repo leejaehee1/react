@@ -146,6 +146,7 @@ const GridComponent = () => {
     useEffect(()=> {
         updateColDefs.current = colDefs
         setColumnsData(Object.values(colDefs).map((a) => a.title))
+        excelChangedArray.current = Object.values(colDefs).map((a) => a.title)
     }, [colDefs])
 
     const changeColDefs = () => {
@@ -193,7 +194,8 @@ const GridComponent = () => {
     const [anchor, setAnchor] =useState(false)
     // const [eachRowData, setEachRowData] = useState(["빈배열"])
     const eachRowData = useRef([])
-    // const [eachRowKeyData, setEachRowKeyData] = useState([])
+    const [eachRowKData, setEachRowKData] = useState(["안넣으면k map error", "2번째k 리스트", "3번째kd 리스트"])
+    const [eachRowVData, setEachRowVData] = useState(["안넣으면v map error", "2번째v 리스트", "3번째v 리스트"])
     const eachRowKeyData = useRef([])
     // const [eachRowValueData, setEachRowValueData] = useState([])
     const eachRowValueData = useRef([])
@@ -228,8 +230,11 @@ const GridComponent = () => {
     //     setEachRowKeyData(()=>htmlKetArray)
     //     setEachRowValueData(()=>htmlValueArray)
     // }
-    const rowData = eachRowKeyData.current.map((a) => 
-            <p>{a}</p>
+    const rowData = eachRowKData.map((rData, index) => 
+            <div>
+            <p>{rData}</p>
+            <p>{eachRowVData[index]}</p>
+            </div>
         )
     return (
         <div style={{ maxWidth: '100%' }}>
@@ -253,27 +258,38 @@ const GridComponent = () => {
                             {/* <p>{eachRowKeyData.current}</p>
                             <p>{eachRowValueData.current}</p> */}
                             <div>
-                            {eachRowKeyData.current}<br />
+                            {/* {eachRowKeyData.current}<br /> */}
                             {/* {eachRowKeyData.current[0]}<br /> */}
-                            {excelChangedArray.current}
-                            {eachRowKeyData.current.length}<br />
-                            {eachRowValueData.current[0]}<br />
-                            {eachRowValueData.current[1]}<br />
-                            {eachRowValueData.current[2]}<br />
-                            {eachRowValueData.current[3]}<br />
-                            {eachRowValueData.current[4]}<br />
-                            {eachRowValueData.current[5]}<br />
-                            {eachRowValueData.current[6]}<br />
-                            {eachRowValueData.current[7]}<br />
-                            {eachRowValueData.current[8]}<br />
-                            {eachRowValueData.current[9]}<br />
-                            {eachRowValueData.current[10]}<br /> // 빈값이 안들어온다...........
-                            {(eachRowValueData.current[10])? "a":"b"}<br />
-                            {(eachRowValueData.current[11]==="")? "a":"b"}<br />
-                            {(eachRowValueData.current[1]==="")? "a":"b"}<br />
-                            {(eachRowValueData.current[11]==="")? "a":"b"}<br />
-                            {rowData}
+                            {/* {excelChangedArray.current} */}
+                            {/* {eachRowKeyData.current.length}<br /> */}
+                            {/* {eachRowValueData.current[0]}<br /> */}
+                            {/* {eachRowValueData.current[1]}<br /> */}
+                            {/* {eachRowValueData.current[2]}<br /> */}
+                            {/* {eachRowValueData.current[3]}<br /> */}
+                            {/* {eachRowValueData.current[4]}<br /> */}
+                            {/* {eachRowValueData.current[5]}<br /> */}
+                            {/* {eachRowValueData.current[6]}<br /> */}
+                            {/* {eachRowValueData.current[7]}<br /> */}
+                            {/* {eachRowValueData.current[8]}<br /> */}
+                            {/* {eachRowValueData.current[9]}<br /> */}
+                            {/* {eachRowValueData.current[10]}<br /> // 빈값이 안들어온다........... */}
+                            {/* {(eachRowValueData.current[10])? "a":"b"}<br /> */}
+                            {/* {(eachRowValueData.current[11]==="")? "a":"b"}<br /> */}
+                            {/* {(eachRowValueData.current[1]==="")? "a":"b"}<br /> */}
+                            {/* {(eachRowValueData.current[11]==="")? "a":"b"}<br /> */}
+                            {rowData}<br />aaaaaaaaaaaaaaaaaaaaaaa
+                            {/* {eachRowKData.map((fData, index) => {
+                                console.log(index)
+                                console.log(fData)
+                                return (
+                                    <p key={index}>{fData}a</p>
 
+                                )
+                            } */}
+                                
+                            )
+                        }
+                            {eachRowValueData.current}
                             </div>
                             <Divider />
                             <p>2</p>
@@ -291,59 +307,61 @@ const GridComponent = () => {
                 columns={updateColDefs.current} 
                 onRowClick={(event, rowData)=> {
                     setRightDrawerState(true)
-                    console.log(1)
-                    console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    // console.log(1)
+                    // console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
-                    console.log(2)
-                    console.log(rowData.Area)
-                    console.log(rowData.Area)
+                    // console.log(2)
                     //  빈컬럼 추가하는 로직이 필요  //  excelChangedArray
                     
                     const targetData = {}
 
-                    console.log(33)
-                    console.log(Object.keys(rowData))
-                    console.log(excelChangedArray.current)
+                    // console.log(33)
+                    // console.log(Object.keys(rowData))  // excel NaN값을 제외한 전체 값
+                    // console.log(excelChangedArray.current) // 화면상 보여지는 전체 columns
                     
-                    const updatedData = Object.keys(rowData)
-                    for (let columnName in excelChangedArray.current) {
+                    const updatedData = Object.keys(rowData)  // excel NaN값을 제외한 전체 값
+                    for (let columnName in excelChangedArray.current) { // index값이 나간다.
                         if (excelChangedArray.current[columnName]) {
-                            console.log(excelChangedArray.current[columnName])
+                            // console.log(updatedData)
+                            // console.log(excelChangedArray.current[columnName])
 
-                            if (excelChangedArray.current[columnName] in rowData) {
-                                console.log("그대로 넣어준다.")
+                            if (updatedData.includes(excelChangedArray.current[columnName])) {
+                                // console.log("그대로 넣어준다.")
                                 targetData[excelChangedArray.current[columnName]] = rowData[excelChangedArray.current[columnName]]
                             } else {
-                                console.log("빈값으로 넣어준다.")
+                                // console.log("빈값으로 넣어준다.")
                                 targetData[excelChangedArray.current[columnName]] = ""
                             }
                         }
                     }
                     
-                    console.dir(targetData)
-                    console.dir(targetData)
+                    // console.dir(targetData)
+                    // console.dir(targetData)
 
 
-                    eachRowData.current = rowData
+                    eachRowData.current = targetData
                     
                     let htmlKetArray = []
                     var htmlValueArray = []
 
 
                     for(var key in eachRowData.current){
-                        console.log(3)
+                        // console.log(3)
                         htmlKetArray.push(key)
                         htmlValueArray.push(eachRowData.current[key])
                     }
-                    console.log(4)
-                    console.log("MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable ")
+                    // console.log(4)
+                    // console.log("MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable ")
                     // console.log(htmlKetArray)
                     // console.log(htmlValueArray)
-                    console.log(5)
+                    // console.log(5)
                     eachRowKeyData.current = htmlKetArray
                     eachRowValueData.current = htmlValueArray
-                    console.log(eachRowKeyData.current)
-                    console.log(eachRowValueData.current)
+                    // console.log("111111111111111111111111111111111111111111111111111111111111111111")
+                    // console.log(eachRowKeyData.current)
+                    // console.log(eachRowValueData.current)
+                    setEachRowKData(eachRowKeyData.current)
+                    setEachRowVData(eachRowValueData.current)
                     // console.log(6)
                     // console.log(eachRowValueData.current[8])
                     // console.log(eachRowValueData.current[9])
