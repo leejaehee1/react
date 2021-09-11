@@ -230,10 +230,29 @@ const GridComponent = () => {
     //     setEachRowKeyData(()=>htmlKetArray)
     //     setEachRowValueData(()=>htmlValueArray)
     // }
+
+    const detailUI = {
+        Area : (
+            <>
+                <p>1 Area가 들어갔어요</p>
+            </>
+        ),
+        PunchID : (
+            <>
+                <p>11 PunchId가 들어갔어요</p>
+            </>
+        ),
+        idddd : (
+            <>
+                <p>111</p>
+            </>
+        )
+    }
+
     const rowData = eachRowKData.map((rData, index) => 
             <div>
-            <p>{rData}</p>
-            <p>{eachRowVData[index]}</p>
+            <p>{rData} : {eachRowVData[index]}</p>
+            {detailUI[rData]}
             </div>
         )
     return (
