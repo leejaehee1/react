@@ -39,6 +39,9 @@ import {
   } from '@material-ui/pickers';
   import DateFnsUtils from '@date-io/date-fns';
 
+// Slider
+import Slider from '@material-ui/core/Slider';
+
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -285,14 +288,6 @@ const GridComponent = () => {
                 &nbsp;&nbsp;&nbsp;
                 {/* <Input id="Category-basic" label="Category" defaultValue={eachRowData.current["Category"]} /> */}
                 <Input id="Category" defaultValue="Complete before Pressure Test" />
-                <TextField
-                    id="outlined-multiline-static"
-                    // label="Multiline"
-                    multiline
-                    rows={4}
-                    defaultValue="Default Value"
-                    variant="outlined"
-                />
             </div>
         ),
         System : (
@@ -436,9 +431,9 @@ const GridComponent = () => {
             </div>
         ),
         Unit : (
-            <>
+            <div>
                 <TextField id="Unit-basic" label="Unit" defaultValue={eachRowData.current["Unit"]} />
-            </>
+            </div>
         ),
         Area : (
             <div>
@@ -585,19 +580,49 @@ const GridComponent = () => {
             </div>
         ),
         Difficulty : (
-            <>
-                <TextField id="Difficulty-basic" label="Difficulty" defaultValue={eachRowData.current["Difficulty"]} />
-            </>
+            <div>
+                Difficulty &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+                <Slider
+                    defaultValue={eachRowData.current["Difficulty"]}
+                    // getAriaValueText={valuetext}
+                    // aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks
+                    min={1}
+                    max={5}
+                />
+            </div>
         ),
         ScheduleImpact : (
-            <>
-                <TextField id="ScheduleImpact-basic" label="ScheduleImpact" defaultValue={eachRowData.current["ScheduleImpact"]} />
-            </>
+            <div>
+                ScheduleImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+                <Slider
+                    defaultValue={eachRowData.current["ScheduleImpact"]}
+                    // getAriaValueText={valuetext}
+                    // aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks
+                    min={1}
+                    max={5}
+                />
+            </div>
         ),
         CostImpact : (
-            <>
-                <TextField id="CostImpact-basic" label="CostImpact" defaultValue={eachRowData.current["CostImpact"]} />
-            </>
+            <div>
+                CostImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+                <Slider
+                    defaultValue={eachRowData.current["CostImpact"]}
+                    // getAriaValueText={valuetext}
+                    // aria-labelledby="discrete-slider"
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks
+                    min={1}
+                    max={5}
+                />
+            </div>
         ),
         Keyword1 : (
             <>
@@ -638,11 +663,34 @@ const GridComponent = () => {
     const handleSubmit = (event) => {
         console.dir(event)
         console.dir(event.target.elements.Area.value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     }
     const rowData = eachRowKData.map((rData, index) => 
             
             <>
             {/* <p>{rData} : {eachRowVData[index]}</p> */}
+
+            {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
 
             {detailUI[rData]}
             </>
@@ -667,7 +715,17 @@ const GridComponent = () => {
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
                             </ListItem>
-                            <DataTime />
+                            {/* <Slider
+                                defaultValue={3}
+                                // getAriaValueText={valuetext}
+                                // aria-labelledby="discrete-slider"
+                                valueLabelDisplay="auto"
+                                step={1}
+                                marks
+                                min={1}
+                                max={5}
+                            />
+                            <DataTime /> */}
                             <form className={classes.root}  onSubmit={handleSubmit}>
                                 {rowData}
                                 <button type="submit">submit</button>
