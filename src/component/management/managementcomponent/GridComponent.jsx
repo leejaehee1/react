@@ -661,7 +661,7 @@ const GridComponent = () => {
     }
 
     const handleSubmit = (event) => {
-        console.dir(event)
+        console.dir(event.target)
         console.dir(event.target.elements.Area.value)
 
 
@@ -683,7 +683,7 @@ const GridComponent = () => {
 
 
 
-        
+
     }
     const rowData = eachRowKData.map((rData, index) => 
             
@@ -747,7 +747,8 @@ const GridComponent = () => {
                     // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
                     // console.log(2)
                     //  빈컬럼 추가하는 로직이 필요  //  excelChangedArray
-                    
+                    console.dir(event)
+                    console.dir(rowData.tableData.id)
                     const targetData = {}
 
                     // console.log(33)
