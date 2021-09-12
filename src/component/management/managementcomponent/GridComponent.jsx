@@ -22,6 +22,10 @@ import blueGrey from '@material-ui/core/colors/red';
 import ColumnMappingButton from './ColumnMappingButton';
 
 
+// textField
+import TextField from '@material-ui/core/TextField';
+
+
 const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -48,6 +52,12 @@ const useStyles = makeStyles((theme) => ({
     },
     fullList: {
         width: 'auto',
+    },
+    root: {
+        '& > *': {
+          margin: theme.spacing(1),
+          width: '25ch',
+        },
     },
   }));
 
@@ -232,7 +242,7 @@ const GridComponent = () => {
     // }
 
     const detailUI = {
-        Area : (
+        ProjectID : (
             <>
                 <p>1 Area가 들어갔어요</p>
             </>
@@ -242,11 +252,161 @@ const GridComponent = () => {
                 <p>11 PunchId가 들어갔어요</p>
             </>
         ),
-        idddd : (
+        Category : (
             <>
                 <p>111</p>
             </>
-        )
+        ),
+        System : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Subsystem : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Discipline : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Status : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Unit : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Area : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        TagNumber : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        BulkItem : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        BulkName : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ConfirmedDate : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ConfirmedBy : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ClosedDate : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Closedby : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ScheduleKey : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ScheStartDate : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ScheFinishDate : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        DesignChgReq : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        MeterialReq : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        IssueDescription : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        CompleteComment : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        NotAcceptComment : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Difficulty : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        ScheduleImpact : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        CostImpact : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Keyword1 : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Keyword2 : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Keyword3 : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        Keyword4 : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        DrawingNo : (
+            <>
+                <p>111</p>
+            </>
+        ),
+        AWPcode : (
+            <>
+                <p>111</p>
+            </>
+        ),
     }
 
     const rowData = eachRowKData.map((rData, index) => 
@@ -267,48 +427,17 @@ const GridComponent = () => {
                                 [classes.fullList]: anchor === 'top' || anchor === 'bottom',
                             })}
                             role="presentation"
-                            onClick={toggleDrawer(false)}
-                            onKeyDown={toggleDrawer(false)}
+                            // onClick={toggleDrawer(false)}
+                            // onKeyDown={toggleDrawer(false)}
                         >
                             <ListItem button key="Inbox">
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
                             </ListItem>
-                            {/* <p>{eachRowKeyData.current}</p>
-                            <p>{eachRowValueData.current}</p> */}
+                            <form className={classes.root} noValidate autoComplete="off">
+                                {rowData}
+                            </form>
                             <div>
-                            {/* {eachRowKeyData.current}<br /> */}
-                            {/* {eachRowKeyData.current[0]}<br /> */}
-                            {/* {excelChangedArray.current} */}
-                            {/* {eachRowKeyData.current.length}<br /> */}
-                            {/* {eachRowValueData.current[0]}<br /> */}
-                            {/* {eachRowValueData.current[1]}<br /> */}
-                            {/* {eachRowValueData.current[2]}<br /> */}
-                            {/* {eachRowValueData.current[3]}<br /> */}
-                            {/* {eachRowValueData.current[4]}<br /> */}
-                            {/* {eachRowValueData.current[5]}<br /> */}
-                            {/* {eachRowValueData.current[6]}<br /> */}
-                            {/* {eachRowValueData.current[7]}<br /> */}
-                            {/* {eachRowValueData.current[8]}<br /> */}
-                            {/* {eachRowValueData.current[9]}<br /> */}
-                            {/* {eachRowValueData.current[10]}<br /> // 빈값이 안들어온다........... */}
-                            {/* {(eachRowValueData.current[10])? "a":"b"}<br /> */}
-                            {/* {(eachRowValueData.current[11]==="")? "a":"b"}<br /> */}
-                            {/* {(eachRowValueData.current[1]==="")? "a":"b"}<br /> */}
-                            {/* {(eachRowValueData.current[11]==="")? "a":"b"}<br /> */}
-                            {rowData}<br />aaaaaaaaaaaaaaaaaaaaaaa
-                            {/* {eachRowKData.map((fData, index) => {
-                                console.log(index)
-                                console.log(fData)
-                                return (
-                                    <p key={index}>{fData}a</p>
-
-                                )
-                            } */}
-                                
-                            )
-                        }
-                            {eachRowValueData.current}
                             </div>
                             <Divider />
                             <p>2</p>
@@ -343,7 +472,6 @@ const GridComponent = () => {
                         if (excelChangedArray.current[columnName]) {
                             // console.log(updatedData)
                             // console.log(excelChangedArray.current[columnName])
-
                             if (updatedData.includes(excelChangedArray.current[columnName])) {
                                 // console.log("그대로 넣어준다.")
                                 targetData[excelChangedArray.current[columnName]] = rowData[excelChangedArray.current[columnName]]
@@ -353,44 +481,19 @@ const GridComponent = () => {
                             }
                         }
                     }
-                    
-                    // console.dir(targetData)
-                    // console.dir(targetData)
-
-
-                    eachRowData.current = targetData
-                    
+                    eachRowData.current = targetData        
                     let htmlKetArray = []
                     var htmlValueArray = []
-
-
                     for(var key in eachRowData.current){
                         // console.log(3)
                         htmlKetArray.push(key)
                         htmlValueArray.push(eachRowData.current[key])
                     }
-                    // console.log(4)
-                    // console.log("MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable MaterialTable ")
-                    // console.log(htmlKetArray)
-                    // console.log(htmlValueArray)
-                    // console.log(5)
                     eachRowKeyData.current = htmlKetArray
                     eachRowValueData.current = htmlValueArray
-                    // console.log("111111111111111111111111111111111111111111111111111111111111111111")
-                    // console.log(eachRowKeyData.current)
-                    // console.log(eachRowValueData.current)
                     setEachRowKData(eachRowKeyData.current)
                     setEachRowVData(eachRowValueData.current)
-                    // console.log(6)
-                    // console.log(eachRowValueData.current[8])
-                    // console.log(eachRowValueData.current[9])
-                    // console.log(eachRowValueData.current[10])
-                    // console.log(eachRowValueData.current[11])
-                    // console.log(eachRowValueData.current[12])
                 }}
-                // onRowClick={toggleDrawer(true)}
-                // onRowClick={toggleA()}
-                // columns={dummyData} 
                 options={{
                     paginationType: "stepped",
                     columnsButton:true,
