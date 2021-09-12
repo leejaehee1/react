@@ -24,6 +24,10 @@ import ColumnMappingButton from './ColumnMappingButton';
 
 // textField
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input'; 
+import InputLabel from '@material-ui/core/InputLabel'; 
+import FormHelperText from '@material-ui/core/FormHelperText'; 
+import NativeSelect from '@material-ui/core/NativeSelect'; 
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
           margin: theme.spacing(1),
-          width: '25ch',
+          width: '50ch',
         },
     },
   }));
@@ -241,179 +245,313 @@ const GridComponent = () => {
     //     setEachRowValueData(()=>htmlValueArray)
     // }
 
-    const detailUI = {
-        ProjectID : (
-            <>
-                <p>1 Area가 들어갔어요</p>
-            </>
+    const detailUI =  {
+        ProjectID : (  // PK
+            <div> 
+                ProjectID :&nbsp;&nbsp;&nbsp;
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <Input id="ProjectID" defaultValue={eachRowData.current["ProjectID"]} />
+                <FormHelperText id="ProjectID">We'll never share your email.</FormHelperText>
+            </div>
         ),
-        PunchID : (
-            <>
-                <p>11 PunchId가 들어갔어요</p>
-            </>
+        PunchID : (    // PK
+            <div>
+                PunchID :&nbsp;&nbsp;&nbsp;
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <Input id="PunchID" defaultValue={eachRowData.current["PunchID"]} />
+                <FormHelperText id="PunchID">We'll never share your email.</FormHelperText>
+            </div>
         ),
         Category : (
-            <>
-                <p>111</p>
-            </>
+            <div>
+                {/* <InputLabel htmlFor="select">Age</InputLabel> */}
+                Category : &nbsp;&nbsp;&nbsp;&nbsp; 
+                <NativeSelect id="select">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </NativeSelect>
+                &nbsp;&nbsp;&nbsp;
+                {/* <Input id="Category-basic" label="Category" defaultValue={eachRowData.current["Category"]} /> */}
+                <Input id="Category" defaultValue="Complete before Pressure Test" />
+                <TextField
+                    id="outlined-multiline-static"
+                    // label="Multiline"
+                    multiline
+                    rows={4}
+                    defaultValue="Default Value"
+                    variant="outlined"
+                />
+            </div>
         ),
         System : (
-            <>
-                <p>111</p>
-            </>
+            <div>
+                System : &nbsp;&nbsp;&nbsp;&nbsp; 
+                <NativeSelect id="select">
+                    <option value="UA">UA</option>
+                    <option value="UB">UB</option>
+                    <option value="UC">UC</option>
+                    <option value="UE">UE</option>
+                    <option value="UG">UG</option>
+                    <option value="UH">UH</option>
+                    <option value="UI">UI</option>
+                    <option value="UK">UK</option>
+                    <option value="UL">UL</option>
+                    <option value="UP">UP</option>
+                    <option value="UQ">UQ</option>
+                    <option value="UM">UM</option>
+                    <option value="UR">UR</option>
+                    <option value="US">US</option>
+                    <option value="UT">UT</option>
+                    <option value="UX">UX</option>
+                    <option value="UY">UY</option>
+                    <option value="UZ">UZ</option>
+                </NativeSelect>
+                &nbsp;&nbsp;&nbsp;
+                <Input id="System" defaultValue="Structures for power transmission and auxiliary power supply" />
+            </div>
         ),
         Subsystem : (
-            <>
-                <p>111</p>
-            </>
+            <div>
+                Subsystem : &nbsp;&nbsp;&nbsp;&nbsp; 
+                <NativeSelect id="select">
+                    <option value="UEN">UEN</option>
+                    <option value="UGD">UGD</option>
+                    <option value="UGB">UGB</option>
+                    <option value="UHY-1">UHY-1</option>
+                    <option value="UHY-2">UHY-2</option>
+                    <option value="UHY-3">UHY-3</option>
+                    <option value="UHY-4">UHY-4</option>
+                    <option value="UHY-5">UHY-5</option>
+                    <option value="UHY-6">UHY-6</option>
+                    <option value="UHY-7">UHY-7</option>
+                    <option value="UHY-8">UHY-8</option>
+                    <option value="ULA">ULA</option>
+                    <option value="ULX">ULX</option>
+                    <option value="UMC">UMC</option>
+                    <option value="URD">URD</option>
+                    <option value="UST-1">UST-1</option>
+                    <option value="UST-2">UST-2</option>
+                    <option value="USG">USG</option>
+                    <option value="USX">USX</option>
+                    <option value="UST">UST</option>
+                    <option value="UTG-1">UTG-1</option>
+                    <option value="UTG-2">UTG-2</option>
+                    <option value="UTF">UTF</option>
+                    <option value="UTK">UTK</option>
+                    <option value="UTG">UTG</option>
+                    <option value="UXA">UXA</option>
+                    <option value="UYC">UYC</option>
+                    <option value="UYD">UYD</option>
+                    <option value="UYE">UYE</option>
+                    <option value="UYF">UYF</option>
+                    <option value="UZD">UZD</option>
+                    <option value="UAH">UAH</option>
+                    <option value="UBB">UBB</option>
+                    <option value="UBG">UBG</option>
+                    <option value="UEH">UEH</option>
+                    <option value="UEL">UEL</option>
+                    <option value="UEM-1">UEM-1</option>
+                    <option value="UEM-2">UEM-2</option>
+                    <option value="UEM-3">UEM-3</option>
+                    <option value="UEM-4">UEM-4</option>
+                    <option value="UEM-5">UEM-5</option>
+                    <option value="UEM-6">UEM-6</option>
+                    <option value="UEM-7">UEM-7</option>
+                    <option value="UEM-8">UEM-8</option>
+                    <option value="UEM-9">UEM-9</option>
+                    <option value="UGF">UGF</option>
+                    <option value="UGH-1">UGH-1</option>
+                    <option value="UGH-2">UGH-2</option>
+                    <option value="UHA-1">UHA-1</option>
+                    <option value="UHA-2">UHA-2</option>
+                    <option value="UHY-1">UHY-1</option>
+                    <option value="UHY-2">UHY-2</option>
+                    <option value="UHY-3">UHY-3</option>
+                    <option value="UHY-4">UHY-4</option>
+                    <option value="UHY-5">UHY-5</option>
+                    <option value="UHY-6">UHY-6</option>
+                    <option value="UHY-7">UHY-7</option>
+                    <option value="UHY-8">UHY-8</option>
+                    <option value="UPN-1">UPN-1</option>
+                    <option value="UPN-2">UPN-2</option>
+                    <option value="UQN-1">UQN-1</option>
+                    <option value="UQN-2">UQN-2</option>
+                    <option value="USR-1">USR-1</option>
+                    <option value="USR-2">USR-2</option>
+                    <option value="USR-3">USR-3</option>
+                    <option value="USR-4">USR-4</option>
+                    <option value="USZ">USZ</option>
+                    <option value="UZA-1">UZA-1</option>
+                    <option value="UZA-2">UZA-2</option>
+                    <option value="UZJ-1">UZJ-1</option>
+                    <option value="UZJ-2">UZJ-2</option>
+                    <option value="UZR">UZR</option>
+                    <option value="UZX">UZX</option>
+                </NativeSelect>
+                &nbsp;&nbsp;&nbsp;
+                <Input id="Subsystem" defaultValue="Structures for power transmission and auxiliary power supply" />
+            </div>
         ),
         Discipline : (
             <>
-                <p>111</p>
+                <TextField id="Discipline-basic" label="Discipline" defaultValue={eachRowData.current["Discipline"]} />
             </>
         ),
         Status : (
             <>
-                <p>111</p>
+                <TextField id="Status-basic" label="Status" defaultValue={eachRowData.current["Status"]} />
             </>
         ),
         Unit : (
             <>
-                <p>111</p>
+                <TextField id="Unit-basic" label="Unit" defaultValue={eachRowData.current["Unit"]} />
             </>
         ),
         Area : (
-            <>
-                <p>111</p>
-            </>
+            <div>
+                {/* Area   :   <Input id="Area-basic" label="Area" defaultValue={eachRowData.current["Area"]} /> */}
+                {/* <InputLabel htmlFor="my-input">Email address</InputLabel> */}
+                Area :&nbsp;&nbsp;&nbsp;
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <Input id="Area" defaultValue={eachRowData.current["Area"]} />
+                <FormHelperText id="Area">We'll never share your email.</FormHelperText>
+            </div>
         ),
         TagNumber : (
             <>
-                <p>111</p>
+                <TextField id="TagNumber-basic" label="TagNumber" defaultValue={eachRowData.current["TagNumber"]} />
             </>
         ),
         BulkItem : (
             <>
-                <p>111</p>
+                <TextField id="BulkItem-basic" label="BulkItem" defaultValue={eachRowData.current["BulkItem"]} />
             </>
         ),
         BulkName : (
             <>
-                <p>111</p>
+                <TextField id="BulkName-basic" label="BulkName" defaultValue={eachRowData.current["BulkName"]} />
             </>
         ),
         ConfirmedDate : (
             <>
-                <p>111</p>
+                <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} />
             </>
         ),
         ConfirmedBy : (
             <>
-                <p>111</p>
+                <TextField id="ConfirmedBy-basic" label="ConfirmedBy" defaultValue={eachRowData.current["ConfirmedBy"]} />
             </>
         ),
         ClosedDate : (
             <>
-                <p>111</p>
+                <TextField id="ClosedDate-basic" label="ClosedDate" defaultValue={eachRowData.current["ClosedDate"]} />
             </>
         ),
         Closedby : (
             <>
-                <p>111</p>
+                <TextField id="Closedby-basic" label="Closedby" defaultValue={eachRowData.current["Closedby"]} />
             </>
         ),
         ScheduleKey : (
             <>
-                <p>111</p>
+                <TextField id="ScheduleKey-basic" label="ScheduleKey" defaultValue={eachRowData.current["ScheduleKey"]} />
             </>
         ),
         ScheStartDate : (
             <>
-                <p>111</p>
+                <TextField id="ScheStartDate-basic" label="ScheStartDate" defaultValue={eachRowData.current["ScheStartDate"]} />
             </>
         ),
         ScheFinishDate : (
             <>
-                <p>111</p>
+                <TextField id="ScheFinishDate-basic" label="ScheFinishDate" defaultValue={eachRowData.current["ScheFinishDate"]} />
             </>
         ),
         DesignChgReq : (
             <>
-                <p>111</p>
+                <TextField id="DesignChgReq-basic" label="DesignChgReq" defaultValue={eachRowData.current["DesignChgReq"]} />
             </>
         ),
         MeterialReq : (
             <>
-                <p>111</p>
+                <TextField id="MeterialReq-basic" label="MeterialReq" defaultValue={eachRowData.current["MeterialReq"]} />
             </>
         ),
         IssueDescription : (
             <>
-                <p>111</p>
+                <TextField id="IssueDescription-basic" label="IssueDescription" defaultValue={eachRowData.current["IssueDescription"]} />
             </>
         ),
         CompleteComment : (
             <>
-                <p>111</p>
+                <TextField id="CompleteComment-basic" label="CompleteComment" defaultValue={eachRowData.current["CompleteComment"]} />
             </>
         ),
         NotAcceptComment : (
             <>
-                <p>111</p>
+                <TextField id="NotAcceptComment-basic" label="NotAcceptComment" defaultValue={eachRowData.current["NotAcceptComment"]} />
             </>
         ),
         Difficulty : (
             <>
-                <p>111</p>
+                <TextField id="Difficulty-basic" label="Difficulty" defaultValue={eachRowData.current["Difficulty"]} />
             </>
         ),
         ScheduleImpact : (
             <>
-                <p>111</p>
+                <TextField id="ScheduleImpact-basic" label="ScheduleImpact" defaultValue={eachRowData.current["ScheduleImpact"]} />
             </>
         ),
         CostImpact : (
             <>
-                <p>111</p>
+                <TextField id="CostImpact-basic" label="CostImpact" defaultValue={eachRowData.current["CostImpact"]} />
             </>
         ),
         Keyword1 : (
             <>
-                <p>111</p>
+                <TextField id="Keyword1-basic" label="Keyword1" defaultValue={eachRowData.current["Keyword1"]} />
             </>
         ),
         Keyword2 : (
             <>
-                <p>111</p>
+                <TextField id="Keyword2-basic" label="Keyword2" defaultValue={eachRowData.current["Keyword2"]} />
             </>
         ),
         Keyword3 : (
             <>
-                <p>111</p>
+                <TextField id="Keyword3-basic" label="Keyword3" defaultValue={eachRowData.current["Keyword3"]} />
             </>
         ),
         Keyword4 : (
             <>
-                <p>111</p>
+                <TextField id="Keyword4-basic" label="Keyword4" defaultValue={eachRowData.current["Keyword4"]} />
             </>
         ),
         DrawingNo : (
             <>
-                <p>111</p>
+                <TextField id="DrawingNo-basic" label="DrawingNo" defaultValue={eachRowData.current["DrawingNo"]} />
             </>
         ),
         AWPcode : (
             <>
-                <p>111</p>
+                <TextField id="AWPcode-basic" label="AWPcode" defaultValue={eachRowData.current["AWPcode"]} />
             </>
         ),
     }
 
+    const handleSubmit = (event) => {
+        console.dir(event)
+        console.dir(event.target.elements.Area.value)
+    }
     const rowData = eachRowKData.map((rData, index) => 
-            <div>
-            <p>{rData} : {eachRowVData[index]}</p>
+            
+            <>
+            {/* <p>{rData} : {eachRowVData[index]}</p> */}
             {detailUI[rData]}
-            </div>
+            </>
+            
         )
     return (
         <div style={{ maxWidth: '100%' }}>
@@ -434,16 +572,11 @@ const GridComponent = () => {
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
                             </ListItem>
-                            <form className={classes.root} noValidate autoComplete="off">
+                            <form className={classes.root}  onSubmit={handleSubmit}>
                                 {rowData}
+                                <button type="submit">submit</button>
                             </form>
-                            <div>
-                            </div>
                             <Divider />
-                            <p>2</p>
-                            <p>3</p>
-                            <p>4</p>
-                            <p>5</p>
                         </div>
                     </Drawer>
                 </React.Fragment>
