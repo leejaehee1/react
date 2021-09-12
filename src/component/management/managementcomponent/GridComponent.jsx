@@ -620,14 +620,18 @@ const GridComponent = () => {
             </>
         ),
         DrawingNo : (
-            <>
-                <TextField id="DrawingNo-basic" label="DrawingNo" defaultValue={eachRowData.current["DrawingNo"]} />
-            </>
+            <div>
+                DrawingNo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <Input id="DrawingNo" defaultValue={eachRowData.current["DrawingNo"]} />
+            </div>
         ),
         AWPcode : (
-            <>
-                <TextField id="AWPcode-basic" label="AWPcode" defaultValue={eachRowData.current["AWPcode"]} />
-            </>
+            <div>
+                AWPcode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <Input id="AWPcode" defaultValue={eachRowData.current["AWPcode"]} />
+            </div>
         ),
     }
 
