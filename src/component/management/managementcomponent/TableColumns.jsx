@@ -47,7 +47,7 @@ const TableColumns = (props) => {
 
     const { data, ids } = useGetList('list', );
     // const [ targetData, setTargetData ] = useState(data)
-    const targetData = useRef(data)
+    const targetData = useRef(data? data : [])
     const [ dbColumns, setDbColumns ] = useState([])
 
 
@@ -60,7 +60,7 @@ const TableColumns = (props) => {
         } 
     }
     // const dbColumnvalue = (targetData.current)? Object.keys(Object.values(targetData.current)[0]) : targetData.current;
-    const dbColumnvalue = (isEmpty(targetData.current))? targetData.current : Object.keys(Object.values(targetData.current)[0]);
+    const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
 
     
     useEffect(() => {

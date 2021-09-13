@@ -660,31 +660,41 @@ const GridComponent = () => {
         ),
     }
 
+    const [ selectRowId, setSelectRowId ] = useState(0)
+
     const handleSubmit = (event) => {
+        console.dir(event)
         console.dir(event.target)
-        console.dir(event.target.elements.Area.value)
+        console.dir(event.target.elements.Area.value) // 각 값들
+        console.dir(event.target.elements["Area"]["value"]) // 각 값들
+        console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
+        console.log(selectRowId) // row ID
 
 
+        // console.dir(data)
+        // console.dir(data[0])
+        // console.dir(data[0]["Area"])
+        // console.dir(updateColDefs.current)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        updateColDefs.current.map((a)=> {
+                try {
+                    data[selectRowId][a.title] = event.target.elements[a.title]["value"];
+                    console.log(data[selectRowId][a.title]);
+                } catch (e) {
+                    console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                    alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                }
+            }
+        )
 
 
 
     }
+
+
+
+
+
     const rowData = eachRowKData.map((rData, index) => 
             
             <>
@@ -696,6 +706,10 @@ const GridComponent = () => {
             </>
             
         )
+
+    
+
+
     return (
         <div style={{ maxWidth: '100%' }}>
             <div>
@@ -737,9 +751,19 @@ const GridComponent = () => {
             </div>
             <MaterialTable 
                 title="Punchlist data" 
+
+
+
+
+
                 data={data} 
                 // columns={colDefs} 
                 columns={updateColDefs.current} 
+
+
+
+
+
                 onRowClick={(event, rowData)=> {
                     setRightDrawerState(true)
                     // console.log(1)
@@ -747,8 +771,11 @@ const GridComponent = () => {
                     // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
                     // console.log(2)
                     //  빈컬럼 추가하는 로직이 필요  //  excelChangedArray
-                    console.dir(event)
-                    console.dir(rowData.tableData.id)
+                    // console.dir(event)
+                    // console.dir(rowData.tableData.id)
+                    setSelectRowId(rowData.tableData.id)
+
+
                     const targetData = {}
 
                     // console.log(33)
