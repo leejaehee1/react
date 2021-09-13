@@ -111,8 +111,8 @@ const ColumnMappingButton = (props) => {
 
   useEffect(() => {
 
-    console.log("excelChangedHook")
-    console.log(excelChangedHook)
+    // console.log("excelChangedHook")
+    // console.log(excelChangedHook)
     // if (modalFlag) {
     //   console.log("끌때 들어와라")
     //   props.onexcelChangedColumns(excelChangedHook)
@@ -132,7 +132,8 @@ const ColumnMappingButton = (props) => {
   const changeColumn = (excelChangedup) => {
     setExcelChangedHook(excelChangedup)
     // console.log("changedcolumn111111111111111111111111")
-    console.log(excelChangedup)
+    // console.log("excelChangedup")
+    // console.log(excelChangedup)
     // if (modalFlag) {
     //   console.log("changedcolumn3333333333333333333333")
     // }

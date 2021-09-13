@@ -72,6 +72,14 @@ const ExcelColumns = (props) => {
     // Jira TEST
     
     const accdd = () => {
+        // console.log("excelChangedInit.current111111111111111111111")
+        // console.log(excelChangedInit.current)
+        // console.log(beChangeArray)
+        // beChangeArray.map((b, index) => {
+        //     if (b) {
+        //         excelChangedInit.current[index] = b
+        //     }
+        // })
         props.onLogic(excelChangedInit.current)
     }
 
@@ -86,21 +94,29 @@ const ExcelColumns = (props) => {
  
     }, [deleteId])
 
-    useEffect(() => {
+    useEffect(() => {         //////////////////////////////////////////////
         if (excelChangedInit){
             const b = props.excelColumns.map((v, i) => 
             {if (deleteArray[i]) {
-                return v
+                if (beChangeArray[i]) {
+                    return beChangeArray[i]
+                } else {
+                    return v
+                }
+            } else {
+                // return v
             }
-            }
-            )
+            // console.log(1111111111111111111111111111111)
+        }
+        )
+            // console.log(b)
             excelChangedInit.current=b
         }
         accdd()
         // return () => {
         //     // setExcelChangedInit(excelChangedInit)
         // }
-    }, [deleteArray, deleteId])
+    }, [deleteId, targetId])
 
     useEffect(() => {
         setExcelColumnArray(props.excelColumns)

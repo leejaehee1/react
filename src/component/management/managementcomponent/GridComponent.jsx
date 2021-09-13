@@ -200,18 +200,110 @@ const GridComponent = () => {
 
 
     const onApply = (applyData) => {
-        const baseComparing = Object.values(colDefs).map((a) => a.title);
+        console.log(10000000000000000000000000001)
+        console.log(data)
+        const baseComparing = Object.values(colDefs).map((ab) => ab.title ? ab.title.toLowerCase() : ab.title);
         let targetArray = []
         const compareColumnsData = []
+
+
+        console.log("applyData")    // 변경된 값
+        console.log(applyData)    // 변경된 값
+        console.log("colDef.title")    // 변경된 값
+        console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
+        const colDefTitle = Object.values(colDefs).map((c) => c.title)
+
+        const updateApplyData = []
+        for (var i in applyData) {
+            // console.log(applyData[i])
+            updateApplyData.push(applyData[i] ? applyData[i].toLowerCase() : applyData[i])
+        }
+
+        console.log("updateApplyData") // 변경된 값에서 소문자로 변경된 배열
+        console.log(updateApplyData) // 변경된 값에서 소문자로 변경된 배열
+
+        // delete 로직
         for (const a of applyData) {
-            if (baseComparing.includes(a)) {
+            const indexA = applyData.indexOf(a)
+            // if (baseComparing.includes( a ? a.toLowerCase() : a)) {
+            if (a) {
                 let tergetObject = {title: a, field: a}
                 targetArray.push(tergetObject)
                 compareColumnsData.push(a)
+                // 여기 값을 추가하면 안된다. 왜냐하면, 컬럼은 변경되는데, row값이 지워지고, delete가 안먹힌다.
+                // update columnsName 로직
+
+                const applyDataF = {}
+                const fakeData = data
+                // console.log(fakeData[0])
+                // 둘의 인덱스가 같으면, 넘어간다.
+                // 둘의 인덱스가 다르면, applyData key value를 추가하고,  colDef.title을 제거한다. 
+                if (applyData[indexA] !== colDefTitle[indexA]) {
+                    console.log("먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나")
+                    console.log(applyData[indexA])
+                    console.log(colDefTitle[indexA])
+
+                    // data는 배열이 아니고 객체다.
+
+                    // console.log(data[applyData[indexA]])  ///////////////////// data 가 안 잡힌다..
+                    // console.log(data[colDefTitle[indexA]])  ///////////////////////// data가 안 잡힌다.
+
+                    data.map((row) => {
+                        row[applyData[indexA]] = row[colDefTitle[indexA]]
+                        delete row[colDefTitle[indexA]]
+                    })
+
+                }
+                // console.log(fakeData[0])
+                // setData(fakeData)
+
+
+                // for (let baseTar of Object.values(colDefs).map((c) => c.title)) {
+
+                //     console.log('conparing!!!!!!zx ')
+                //     console.log(baseTar)
+                //     console.log(a)
+                //     // console.log(data)
+
+
+                //     if ( !updateApplyData.includes(baseTar.toLowerCase()) ) {
+                //         const targetDataF = baseTar;
+                //         // 객체 키를 targetDataF로 찾아서 a로 전체 row 당 다 변경을 해준다.
+
+                //         const applyData = {}
+                //         const fakeData = data
+                //         console.log(fakeData[0])
+                //         fakeData.map((row)=> {
+                //             for (var key in row) {
+                //                 if (key === targetDataF) {
+                //                     applyData.a = row[key]
+                //                 } else {
+                //                     applyData.key = row[key]
+                //                 }
+                //             }
+                //         })
+                //         console.log(fakeData[0])
+                //         setData(fakeData)
+                //     }
+                // }
+
+
+
             } else {
                 console.log("없다")
+                if (a) {
+
+                    console.log("1")
+
+
+
+
+
+
+                }
             }
         }
+        console.log(1000000000000123123123213123)
         setColDefs(targetArray)
 
     }
@@ -235,9 +327,9 @@ const GridComponent = () => {
         // console.log(open)
         // console.log(event.target)
         // console.log(eachRowKeyData)
-        console.log("toggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawer")
-        console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
-        console.log(eachRowValueData)
+        // console.log("toggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawer")
+        // console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
+        // console.log(eachRowValueData)
         setRightDrawerState(open);
     }
 
@@ -663,12 +755,12 @@ const GridComponent = () => {
     const [ selectRowId, setSelectRowId ] = useState(0)
 
     const handleSubmit = (event) => {
-        console.dir(event)
-        console.dir(event.target)
-        console.dir(event.target.elements.Area.value) // 각 값들
-        console.dir(event.target.elements["Area"]["value"]) // 각 값들
-        console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
-        console.log(selectRowId) // row ID
+        // console.dir(event)
+        // console.dir(event.target)
+        // console.dir(event.target.elements.Area.value) // 각 값들
+        // console.dir(event.target.elements["Area"]["value"]) // 각 값들
+        // console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
+        // console.log(selectRowId) // row ID
 
 
         // console.dir(data)
@@ -757,8 +849,8 @@ const GridComponent = () => {
 
 
                 data={data} 
-                // columns={colDefs} 
-                columns={updateColDefs.current} 
+                columns={colDefs} 
+                // columns={updateColDefs.current} 
 
 
 
