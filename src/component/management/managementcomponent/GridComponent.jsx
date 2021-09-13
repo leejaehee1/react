@@ -339,7 +339,6 @@ const GridComponent = () => {
     }
 
     useEffect(() => {
-        console.log("98912319283612361923691823981")
     },[eachRowKeyData, eachRowValueData, eachRowData])
 
     // const drawerDataLogin = () => {
@@ -515,18 +514,18 @@ const GridComponent = () => {
                 <Input id="Discipline" defaultValue="Piping" />
             </div>
         ),
-        status : (
-            <Status />
+        status : ( // 변경 완료
+            <Status static={eachRowData.current["status"]} />
         ),
         Unit : (
             <div>
                 <TextField id="Unit-basic" label="Unit" defaultValue={eachRowData.current["Unit"]} />
             </div>
         ),
-        area : (
+        area : ( // 변경 완료
             <div>
                 Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                <Input id="Area" defaultValue={eachRowData.current["area"]} />
+                <Input id="area" defaultValue={eachRowData.current["area"]} />
             </div>
         ),
         TagNumber : (
@@ -750,7 +749,7 @@ const GridComponent = () => {
         // console.dir(event)
         // console.dir(event.target)
         // console.dir(event.target.elements.Area.value) // 각 값들
-        console.dir(event.target.elements.Status.value) // 각 값들
+        // console.dir(event.target.elements.status.value) // 각 값들
         // console.dir(event.target.elements["Area"]["value"]) // 각 값들
         // console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
         // console.log(selectRowId) // row ID
@@ -894,8 +893,8 @@ const GridComponent = () => {
                         htmlKetArray.push(key)
                         htmlValueArray.push(eachRowData.current[key])
                     }
-                    console.log(htmlKetArray)
-                    console.log(htmlValueArray)
+                    // console.log(htmlKetArray)
+                    // console.log(htmlValueArray)
                     eachRowKeyData.current = htmlKetArray
                     eachRowValueData.current = htmlValueArray
                     setEachRowKData(eachRowKeyData.current)
