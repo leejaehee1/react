@@ -43,6 +43,11 @@ import {
 import Slider from '@material-ui/core/Slider';
 
 
+// import code data
+// import { useGetList } from 'react-admin';
+import Status from './inputComponent/Status';
+
+
 const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -200,17 +205,17 @@ const GridComponent = () => {
 
 
     const onApply = (applyData) => {
-        console.log(10000000000000000000000000001)
-        console.log(data)
-        const baseComparing = Object.values(colDefs).map((ab) => ab.title ? ab.title.toLowerCase() : ab.title);
+        // console.log(10000000000000000000000000001)
+        // console.log(data)
+        // const baseComparing = Object.values(colDefs).map((ab) => ab.title ? ab.title.toLowerCase() : ab.title);
         let targetArray = []
         const compareColumnsData = []
 
 
-        console.log("applyData")    // 변경된 값
-        console.log(applyData)    // 변경된 값
-        console.log("colDef.title")    // 변경된 값
-        console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
+        // console.log("applyData")    // 변경된 값
+        // console.log(applyData)    // 변경된 값
+        // console.log("colDef.title")    // 변경된 값
+        // console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
         const colDefTitle = Object.values(colDefs).map((c) => c.title)
 
         const updateApplyData = []
@@ -219,8 +224,8 @@ const GridComponent = () => {
             updateApplyData.push(applyData[i] ? applyData[i].toLowerCase() : applyData[i])
         }
 
-        console.log("updateApplyData") // 변경된 값에서 소문자로 변경된 배열
-        console.log(updateApplyData) // 변경된 값에서 소문자로 변경된 배열
+        // console.log("updateApplyData") // 변경된 값에서 소문자로 변경된 배열
+        // console.log(updateApplyData) // 변경된 값에서 소문자로 변경된 배열
 
         // delete 로직
         for (const a of applyData) {
@@ -239,9 +244,9 @@ const GridComponent = () => {
                 // 둘의 인덱스가 같으면, 넘어간다.
                 // 둘의 인덱스가 다르면, applyData key value를 추가하고,  colDef.title을 제거한다. 
                 if (applyData[indexA] !== colDefTitle[indexA]) {
-                    console.log("먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나")
-                    console.log(applyData[indexA])
-                    console.log(colDefTitle[indexA])
+                    // console.log("먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나")
+                    // console.log(applyData[indexA])
+                    // console.log(colDefTitle[indexA])
 
                     // data는 배열이 아니고 객체다.
 
@@ -303,7 +308,7 @@ const GridComponent = () => {
                 }
             }
         }
-        console.log(1000000000000123123123213123)
+        // console.log(1000000000000123123123213123)
         setColDefs(targetArray)
 
     }
@@ -349,6 +354,9 @@ const GridComponent = () => {
     //     setEachRowKeyData(()=>htmlKetArray)
     //     setEachRowValueData(()=>htmlValueArray)
     // }
+    // console.log(dataStatus)
+    // console.log(statusIds)
+
 
     const detailUI =  {
         ProjectID : (  // PK
@@ -508,19 +516,7 @@ const GridComponent = () => {
             </div>
         ),
         Status : (
-            <div>
-                Status &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-                <NativeSelect id="select">
-                    <option value="1">1 </option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </NativeSelect>
-                &nbsp;&nbsp;&nbsp;
-                <Input id="Status" defaultValue="Requested for Close" />
-            </div>
+            <Status />
         ),
         Unit : (
             <div>
@@ -529,12 +525,8 @@ const GridComponent = () => {
         ),
         Area : (
             <div>
-                {/* Area   :   <Input id="Area-basic" label="Area" defaultValue={eachRowData.current["Area"]} /> */}
-                {/* <InputLabel htmlFor="my-input">Email address</InputLabel> */}
                 Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
                 <Input id="Area" defaultValue={eachRowData.current["Area"]} />
-                {/* <FormHelperText id="Area">We'll never share your email.</FormHelperText> */}
             </div>
         ),
         TagNumber : (
@@ -758,6 +750,7 @@ const GridComponent = () => {
         // console.dir(event)
         // console.dir(event.target)
         // console.dir(event.target.elements.Area.value) // 각 값들
+        console.dir(event.target.elements.Status.value) // 각 값들
         // console.dir(event.target.elements["Area"]["value"]) // 각 값들
         // console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
         // console.log(selectRowId) // row ID
@@ -771,10 +764,10 @@ const GridComponent = () => {
         updateColDefs.current.map((a)=> {
                 try {
                     data[selectRowId][a.title] = event.target.elements[a.title]["value"];
-                    console.log(data[selectRowId][a.title]);
+                    // console.log(data[selectRowId][a.title]);
                 } catch (e) {
                     console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-                    alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                    // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                 }
             }
         )
