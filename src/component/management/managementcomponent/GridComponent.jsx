@@ -218,7 +218,7 @@ const GridComponent = () => {
         // console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
         const colDefTitle = Object.values(colDefs).map((c) => c.title)
 
-        const updateApplyData = []
+        const updateApplyData = [] // 결국 로직에 포함되지 않음
         for (var i in applyData) {
             // console.log(applyData[i])
             updateApplyData.push(applyData[i] ? applyData[i].toLowerCase() : applyData[i])
@@ -310,7 +310,7 @@ const GridComponent = () => {
         }
         // console.log(1000000000000123123123213123)
         setColDefs(targetArray)
-
+        updateColDefs.current = targetArray
     }
 
     // drawer
@@ -515,7 +515,7 @@ const GridComponent = () => {
                 <Input id="Discipline" defaultValue="Piping" />
             </div>
         ),
-        Status : (
+        status : (
             <Status />
         ),
         Unit : (
@@ -523,10 +523,10 @@ const GridComponent = () => {
                 <TextField id="Unit-basic" label="Unit" defaultValue={eachRowData.current["Unit"]} />
             </div>
         ),
-        Area : (
+        area : (
             <div>
                 Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                <Input id="Area" defaultValue={eachRowData.current["Area"]} />
+                <Input id="Area" defaultValue={eachRowData.current["area"]} />
             </div>
         ),
         TagNumber : (
@@ -786,6 +786,7 @@ const GridComponent = () => {
             {/* <p>{rData} : {eachRowVData[index]}</p> */}
 
             {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
+            
 
             {detailUI[rData]}
             </>
@@ -825,6 +826,10 @@ const GridComponent = () => {
                                 max={5}
                             />
                             <DataTime /> */}
+                            <p>
+            아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
+            </p>
+
                             <form className={classes.root}  onSubmit={handleSubmit}>
                                 {rowData}
                                 <button type="submit">submit</button>
@@ -889,6 +894,8 @@ const GridComponent = () => {
                         htmlKetArray.push(key)
                         htmlValueArray.push(eachRowData.current[key])
                     }
+                    console.log(htmlKetArray)
+                    console.log(htmlValueArray)
                     eachRowKeyData.current = htmlKetArray
                     eachRowValueData.current = htmlValueArray
                     setEachRowKData(eachRowKeyData.current)
