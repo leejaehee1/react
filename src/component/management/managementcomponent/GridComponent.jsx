@@ -51,6 +51,7 @@ import Category from './inputComponent/Category';
 import Discipline from './inputComponent/Discipline';
 import Unit from './inputComponent/Unit';
 import SystemID from './inputComponent/SystemID';
+import Subsystem from './inputComponent/Subsystem';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -385,113 +386,9 @@ const GridComponent = () => {
         ),
         systemID : (
             <SystemID static={eachRowData.current["systemID"]} />
-            // <div>
-            //     System &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-            //     <NativeSelect id="select">
-            //         <option value="UA">UA</option>
-            //         <option value="UB">UB</option>
-            //         <option value="UC">UC</option>
-            //         <option value="UE">UE</option>
-            //         <option value="UG">UG</option>
-            //         <option value="UH">UH</option>
-            //         <option value="UI">UI</option>
-            //         <option value="UK">UK</option>
-            //         <option value="UL">UL</option>
-            //         <option value="UP">UP</option>
-            //         <option value="UQ">UQ</option>
-            //         <option value="UM">UM</option>
-            //         <option value="UR">UR</option>
-            //         <option value="US">US</option>
-            //         <option value="UT">UT</option>
-            //         <option value="UX">UX</option>
-            //         <option value="UY">UY</option>
-            //         <option value="UZ">UZ</option>
-            //     </NativeSelect>
-            //     &nbsp;&nbsp;&nbsp;
-            //     <Input id="System" defaultValue="Structures for power transmission and auxiliary power supply" />
-            // </div>
         ),
-        Subsystem : (
-            <div>
-                Subsystem &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp; 
-                <NativeSelect id="select">
-                    <option value="UEN">UEN</option>
-                    <option value="UGD">UGD</option>
-                    <option value="UGB">UGB</option>
-                    <option value="UHY-1">UHY-1</option>
-                    <option value="UHY-2">UHY-2</option>
-                    <option value="UHY-3">UHY-3</option>
-                    <option value="UHY-4">UHY-4</option>
-                    <option value="UHY-5">UHY-5</option>
-                    <option value="UHY-6">UHY-6</option>
-                    <option value="UHY-7">UHY-7</option>
-                    <option value="UHY-8">UHY-8</option>
-                    <option value="ULA">ULA</option>
-                    <option value="ULX">ULX</option>
-                    <option value="UMC">UMC</option>
-                    <option value="URD">URD</option>
-                    <option value="UST-1">UST-1</option>
-                    <option value="UST-2">UST-2</option>
-                    <option value="USG">USG</option>
-                    <option value="USX">USX</option>
-                    <option value="UST">UST</option>
-                    <option value="UTG-1">UTG-1</option>
-                    <option value="UTG-2">UTG-2</option>
-                    <option value="UTF">UTF</option>
-                    <option value="UTK">UTK</option>
-                    <option value="UTG">UTG</option>
-                    <option value="UXA">UXA</option>
-                    <option value="UYC">UYC</option>
-                    <option value="UYD">UYD</option>
-                    <option value="UYE">UYE</option>
-                    <option value="UYF">UYF</option>
-                    <option value="UZD">UZD</option>
-                    <option value="UAH">UAH</option>
-                    <option value="UBB">UBB</option>
-                    <option value="UBG">UBG</option>
-                    <option value="UEH">UEH</option>
-                    <option value="UEL">UEL</option>
-                    <option value="UEM-1">UEM-1</option>
-                    <option value="UEM-2">UEM-2</option>
-                    <option value="UEM-3">UEM-3</option>
-                    <option value="UEM-4">UEM-4</option>
-                    <option value="UEM-5">UEM-5</option>
-                    <option value="UEM-6">UEM-6</option>
-                    <option value="UEM-7">UEM-7</option>
-                    <option value="UEM-8">UEM-8</option>
-                    <option value="UEM-9">UEM-9</option>
-                    <option value="UGF">UGF</option>
-                    <option value="UGH-1">UGH-1</option>
-                    <option value="UGH-2">UGH-2</option>
-                    <option value="UHA-1">UHA-1</option>
-                    <option value="UHA-2">UHA-2</option>
-                    <option value="UHY-1">UHY-1</option>
-                    <option value="UHY-2">UHY-2</option>
-                    <option value="UHY-3">UHY-3</option>
-                    <option value="UHY-4">UHY-4</option>
-                    <option value="UHY-5">UHY-5</option>
-                    <option value="UHY-6">UHY-6</option>
-                    <option value="UHY-7">UHY-7</option>
-                    <option value="UHY-8">UHY-8</option>
-                    <option value="UPN-1">UPN-1</option>
-                    <option value="UPN-2">UPN-2</option>
-                    <option value="UQN-1">UQN-1</option>
-                    <option value="UQN-2">UQN-2</option>
-                    <option value="USR-1">USR-1</option>
-                    <option value="USR-2">USR-2</option>
-                    <option value="USR-3">USR-3</option>
-                    <option value="USR-4">USR-4</option>
-                    <option value="USZ">USZ</option>
-                    <option value="UZA-1">UZA-1</option>
-                    <option value="UZA-2">UZA-2</option>
-                    <option value="UZJ-1">UZJ-1</option>
-                    <option value="UZJ-2">UZJ-2</option>
-                    <option value="UZR">UZR</option>
-                    <option value="UZX">UZX</option>
-                </NativeSelect>
-                &nbsp;&nbsp;&nbsp;
-                <Input id="Subsystem" defaultValue="Structures for power transmission and auxiliary power supply" />
-            </div>
+        subsystem : (
+            <Subsystem static={eachRowData.current["subsystem"]} />
         ),
         discipline : (
             <Discipline static={eachRowData.current["discipline"]} />
@@ -729,6 +626,7 @@ const GridComponent = () => {
     const [ selectRowId, setSelectRowId ] = useState(0)
 
     const handleSubmit = (event) => {
+        event.preventDefault()
         try {
             // console.dir(event)
             console.dir("-----------------------------------")
@@ -736,7 +634,7 @@ const GridComponent = () => {
             // console.dir(event.target.elements.area.value) // 각 값들
             console.dir(event.target.elements.systemID.value) // 각 값들
             // console.dir(event.target.elements.punchID.value) // 각 값들
-            console.dir(event.target.elements.category.value) // 각 값들
+            console.dir(event.target.elements.subsystem.value) // 각 값들
         } catch (e) {
             console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
             // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
@@ -752,16 +650,16 @@ const GridComponent = () => {
         // console.dir(data[0]["Area"])
         // console.dir(updateColDefs.current)
 
-        // updateColDefs.current.map((a)=> {
-        //         try {
-        //             data[selectRowId][a.title] = event.target.elements[a.title]["value"];
-        //             // console.log(data[selectRowId][a.title]);
-        //         } catch (e) {
-        //             console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-        //             // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-        //         }
-        //     }
-        // )
+        updateColDefs.current.map((a)=> {
+                try {
+                    data[selectRowId][a.title] = event.target.elements[a.title]["value"];
+                    // console.log(data[selectRowId][a.title]);
+                } catch (e) {
+                    console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                    // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                }
+            }
+        )
 
 
 
