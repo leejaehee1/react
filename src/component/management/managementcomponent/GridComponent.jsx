@@ -52,6 +52,7 @@ import Discipline from './inputComponent/Discipline';
 import Unit from './inputComponent/Unit';
 import SystemID from './inputComponent/SystemID';
 import Subsystem from './inputComponent/Subsystem';
+import Area from './inputComponent/Area';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -403,10 +404,11 @@ const GridComponent = () => {
             // </div>
         ),
         area : ( // 변경 완료
-            <div>
-                Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                <Input id="area" defaultValue={eachRowData.current["area"]} />
-            </div>
+            <Area static={eachRowData.current["area"]} />
+            // <div>
+            //     Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            //     <Input id="area" defaultValue={eachRowData.current["area"]} />
+            // </div>
         ),
         TagNumber : (
             <div>
