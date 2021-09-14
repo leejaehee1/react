@@ -632,8 +632,9 @@ const GridComponent = () => {
             // console.dir(event)
             console.dir("-----------------------------------")
             console.dir(event.target.elements)
+            console.dir(event.target)
             // console.dir(event.target.elements.area.value) // 각 값들
-            console.dir(event.target.elements.systemID.value) // 각 값들
+            console.dir(event.target.elements[0]["defaultValue"]) // 각 값들
             // console.dir(event.target.elements.punchID.value) // 각 값들
             console.dir(event.target.elements.subsystem.value) // 각 값들
         } catch (e) {
@@ -654,11 +655,18 @@ const GridComponent = () => {
         updateColDefs.current.map((a)=> {
                 try {
                     data[selectRowId][a.title] = event.target.elements[a.title]["value"];
+                    console.log(a.title, "은 table에 반영되었다.")
                     // console.log(data[selectRowId][a.title]);
                 } catch (e) {
                     console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                     // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                 }
+
+                if (a.title === "difficulty") {
+                    console.log("difficulty는 여기서 따로 저장했다.")
+                    data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
+                }
+
             }
         )
 
