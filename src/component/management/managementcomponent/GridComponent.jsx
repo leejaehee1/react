@@ -47,6 +47,7 @@ import Slider from '@material-ui/core/Slider';
 // import { useGetList } from 'react-admin';
 import Status from './inputComponent/Status';
 import ProjectID from './inputComponent/ProjectID';
+import Category from './inputComponent/Category';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -375,20 +376,9 @@ const GridComponent = () => {
                 <FormHelperText id="punchID">We'll never share your email.</FormHelperText>
             </div>
         ),
-        Category : (
-            <div>
-                {/* <InputLabel htmlFor="select">Age</InputLabel> */}
-                Category &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp; 
-                <NativeSelect id="select">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                </NativeSelect>
-                &nbsp;&nbsp;&nbsp;
-                {/* <Input id="Category-basic" label="Category" defaultValue={eachRowData.current["Category"]} /> */}
-                <Input id="Category" defaultValue="Complete before Pressure Test" />
-            </div>
+        category : (
+            <Category static={eachRowData.current["category"]} />
+
         ),
         System : (
             <div>
@@ -751,10 +741,10 @@ const GridComponent = () => {
             // console.dir(event)
             console.dir("-----------------------------------")
             console.dir(event.target.elements)
-            console.dir(event.target.elements.area.value) // 각 값들
+            // console.dir(event.target.elements.area.value) // 각 값들
             console.dir(event.target.elements.projectID.value) // 각 값들
-            console.dir(event.target.elements.punchID.value) // 각 값들
-            console.dir(event.target.elements.area.value) // 각 값들
+            // console.dir(event.target.elements.punchID.value) // 각 값들
+            console.dir(event.target.elements.category.value) // 각 값들
         } catch (e) {
             console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
             // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
