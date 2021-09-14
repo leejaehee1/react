@@ -48,6 +48,7 @@ import Slider from '@material-ui/core/Slider';
 import Status from './inputComponent/Status';
 import ProjectID from './inputComponent/ProjectID';
 import Category from './inputComponent/Category';
+import Discipline from './inputComponent/Discipline';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -489,21 +490,22 @@ const GridComponent = () => {
                 <Input id="Subsystem" defaultValue="Structures for power transmission and auxiliary power supply" />
             </div>
         ),
-        Discipline : (
-            <div>
-                Discipline &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-                <NativeSelect id="select">
-                    <option value="1">1 </option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </NativeSelect>
-                &nbsp;&nbsp;&nbsp;
-                <Input id="Discipline" defaultValue="Piping" />
-            </div>
+        discipline : (
+            <Discipline static={eachRowData.current["discipline"]} />
+            // <div>
+            //     Discipline &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+            //     <NativeSelect id="select">
+            //         <option value="1">1 </option>
+            //         <option value="2">2</option>
+            //         <option value="3">3</option>
+            //         <option value="4">4</option>
+            //         <option value="5">5</option>
+            //         <option value="6">6</option>
+            //         <option value="7">7</option>
+            //     </NativeSelect>
+            //     &nbsp;&nbsp;&nbsp;
+            //     <Input id="Discipline" defaultValue="Piping" />
+            // </div>
         ),
         status : ( // 변경 완료
             <Status static={eachRowData.current["status"]} />
