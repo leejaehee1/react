@@ -53,6 +53,7 @@ import Unit from './inputComponent/Unit';
 import SystemID from './inputComponent/SystemID';
 import Subsystem from './inputComponent/Subsystem';
 import Area from './inputComponent/Area';
+import Department from './inputComponent/Department';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -410,145 +411,143 @@ const GridComponent = () => {
             //     <Input id="area" defaultValue={eachRowData.current["area"]} />
             // </div>
         ),
-        TagNumber : (
+        tagNumber : (
             <div>
                 {/* <TextField id="TagNumber-basic" label="TagNumber" defaultValue={eachRowData.current["TagNumber"]} /> */}
                 TagNumber &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="TagNumber" defaultValue={eachRowData.current["TagNumber"]} />
+                <Input id="tagNumber" defaultValue={eachRowData.current["tagNumber"]} />
+                <FormHelperText id="punchID">We'll never share your email.</FormHelperText>
             </div>
         ),
-        BulkItem : (
+        bulkItem : (
             <div>
                 BulkItem &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="BulkItem" defaultValue={eachRowData.current["BulkItem"]} />
+                <Input id="bulkItem" defaultValue={eachRowData.current["bulkItem"]} />
             </div>
         ),
-        BulkName : (
+        bulkName : (
             <div>
                 BulkName &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="BulkName" defaultValue={eachRowData.current["BulkName"]} />
+                <Input id="bulkName" defaultValue={eachRowData.current["bulkName"]} />
             </div>
         ),
-        Department : (
-            <div>
-                Department &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="Department" defaultValue={eachRowData.current["Department"]} />
-            </div>
+        department : (
+            <Department static={eachRowData.current["department"]} />
         ),
-        ConfirmedDate : (
+        confirmedDate : (
             <div>
                 {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
                 ConfirmedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 <DataTime />
             </div>
         ),
-        ConfirmedBy : (
+        confirmedBy : (
             <div>
                 ConfirmedBy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="ConfirmedBy" defaultValue={eachRowData.current["ConfirmedBy"]} />
+                <Input id="confirmedBy" defaultValue={eachRowData.current["confirmedBy"]} />
             </div>
         ),
-        ClosedDate : (
+        closedDate : (
             <div>
                 {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
                 ClosedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 <DataTime />
             </div>
         ),
-        Closedby : (
+        closedby : (
             <div>
                 Closedby &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="Closedby" defaultValue={eachRowData.current["Closedby"]} />
+                <Input id="closedby" defaultValue={eachRowData.current["closedby"]} />
             </div>
         ),
-        ScheduleKey : (
+        scheduleKey : (
             <div>
                 ScheduleKey &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="ScheduleKey" defaultValue={eachRowData.current["ScheduleKey"]} />
+                <Input id="scheduleKey" defaultValue={eachRowData.current["scheduleKey"]} />
             </div>
         ),
-        ScheStartDate : (
+        scheStartDate : (
             <div>
                 {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
                 ScheStartDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 <DataTime />
             </div>
         ),
-        ScheFinishDate : (
+        scheFinishDate : (
             <div>
                 {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
                 ScheFinishDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 <DataTime />
             </div>
         ),
-        DesignChgReq : ( // defalt : 0
+        designChgReq : ( // defalt : 0
             <div>
                 DesignChgReq &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="DesignChgReq" defaultValue={eachRowData.current["DesignChgReq"]} />
+                <Input id="designChgReq" defaultValue={eachRowData.current["designChgReq"]} />
             </div>
         ),
-        MeterialReq : ( // defalt : 0
+        meterialReq : ( // defalt : 0
             <div>
                 MeterialReq &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="MeterialReq" defaultValue={eachRowData.current["MeterialReq"]} />
+                <Input id="meterialReq" defaultValue={eachRowData.current["meterialReq"]} />
             </div>
         ),
-        IssueDescription : (
+        issueDescription : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
                 IssueDescription &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
                 <TextField
-                    id="IssueDescription"
+                    id="issueDescription"
                     // label="Multiline"
                     multiline
                     rows={4}
-                    defaultValue={eachRowData.current["IssueDescription"]}
+                    defaultValue={eachRowData.current["issueDescription"]}
                     variant="outlined"
                 />
             </div>
         ),
-        CompleteComment : (
+        completeComment : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
                 CompleteComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
                 <TextField
-                    id="CompleteComment"
+                    id="completeComment"
                     // label="Multiline"
                     multiline
                     rows={4}
-                    defaultValue={eachRowData.current["CompleteComment"]}
+                    defaultValue={eachRowData.current["completeComment"]}
                     variant="outlined"
                 />
             </div>
         ),
-        NotAcceptComment : (
+        notAcceptComment : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
                 NotAcceptComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
                 <TextField
-                    id="NotAcceptComment"
+                    id="notAcceptComment"
                     // label="Multiline"
                     multiline
                     rows={4}
-                    defaultValue={eachRowData.current["NotAcceptComment"]}
+                    defaultValue={eachRowData.current["notAcceptComment"]}
                     variant="outlined"
                 />
             </div>
         ),
-        Difficulty : (
+        difficulty : (
             <div>
                 Difficulty &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
                 <Slider
-                    defaultValue={eachRowData.current["Difficulty"]}
+                    id="difficulty"
+                    defaultValue={eachRowData.current["difficulty"]}
                     // getAriaValueText={valuetext}
                     // aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
@@ -559,11 +558,11 @@ const GridComponent = () => {
                 />
             </div>
         ),
-        ScheduleImpact : (
+        scheduleImpact : (
             <div>
                 ScheduleImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
                 <Slider
-                    defaultValue={eachRowData.current["ScheduleImpact"]}
+                    defaultValue={eachRowData.current["scheduleImpact"]}
                     // getAriaValueText={valuetext}
                     // aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
@@ -574,11 +573,11 @@ const GridComponent = () => {
                 />
             </div>
         ),
-        CostImpact : (
+        costImpact : (
             <div>
                 CostImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
                 <Slider
-                    defaultValue={eachRowData.current["CostImpact"]}
+                    defaultValue={eachRowData.current["costImpact"]}
                     // getAriaValueText={valuetext}
                     // aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
@@ -589,38 +588,38 @@ const GridComponent = () => {
                 />
             </div>
         ),
-        Keyword1 : (
+        keyword1 : (
             <>
-                <TextField id="Keyword1-basic" label="Keyword1" defaultValue={eachRowData.current["Keyword1"]} />
+                <TextField id="keyword1" label="keyword1" defaultValue={eachRowData.current["keyword1"]} />
             </>
         ),
-        Keyword2 : (
+        keyword2 : (
             <>
-                <TextField id="Keyword2-basic" label="Keyword2" defaultValue={eachRowData.current["Keyword2"]} />
+                <TextField id="keyword2" label="keyword2" defaultValue={eachRowData.current["keyword2"]} />
             </>
         ),
-        Keyword3 : (
+        keyword3 : (
             <>
-                <TextField id="Keyword3-basic" label="Keyword3" defaultValue={eachRowData.current["Keyword3"]} />
+                <TextField id="keyword3" label="keyword3" defaultValue={eachRowData.current["keyword3"]} />
             </>
         ),
-        Keyword4 : (
+        keyword4 : (
             <>
-                <TextField id="Keyword4-basic" label="Keyword4" defaultValue={eachRowData.current["Keyword4"]} />
+                <TextField id="keyword4" label="keyword4" defaultValue={eachRowData.current["keyword4"]} />
             </>
         ),
-        DrawingNo : (
+        drawingNo : (
             <div>
                 DrawingNo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="DrawingNo" defaultValue={eachRowData.current["DrawingNo"]} />
+                <Input id="drawingNo" defaultValue={eachRowData.current["drawingNo"]} />
             </div>
         ),
-        AWPcode : (
+        awpCode : (
             <div>
                 AWPcode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="AWPcode" defaultValue={eachRowData.current["AWPcode"]} />
+                <Input id="awpCode" defaultValue={eachRowData.current["awpCode"]} />
             </div>
         ),
     }
