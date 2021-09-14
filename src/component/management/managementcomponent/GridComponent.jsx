@@ -562,6 +562,7 @@ const GridComponent = () => {
             <div>
                 ScheduleImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
                 <Slider
+                    id="scheduleImpact"
                     defaultValue={eachRowData.current["scheduleImpact"]}
                     // getAriaValueText={valuetext}
                     // aria-labelledby="discrete-slider"
@@ -663,7 +664,16 @@ const GridComponent = () => {
                 }
 
                 if (a.title === "difficulty") {
+                    console.log("----------------------------------")
                     console.log("difficulty는 여기서 따로 저장했다.")
+                    console.log(event.target.elements[0]["defaultValue"])
+                    data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
+                }
+
+                if (a.title === "scheduleImpact") {
+                    console.log("-----------------------------------")
+                    console.log("scheduleImpact는 여기서 따로 저장했다.")
+                    console.log(event.target.elements[0]["defaultValue"])
                     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
                 }
 
