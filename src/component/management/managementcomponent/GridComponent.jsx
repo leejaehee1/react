@@ -46,7 +46,7 @@ import Slider from '@material-ui/core/Slider';
 // import code data
 // import { useGetList } from 'react-admin';
 import Status from './inputComponent/Status';
-
+import ProjectID from './inputComponent/ProjectID';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -352,26 +352,27 @@ const GridComponent = () => {
     //     console.log(htmlValueArray)
     //     setEachRowKeyData(()=>htmlKetArray)
     //     setEachRowValueData(()=>htmlValueArray)
-    // }
+    // }0316
     // console.log(dataStatus)
     // console.log(statusIds)
 
 
     const detailUI =  {
-        ProjectID : (  // PK
-            <div> 
-                ProjectID :&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="ProjectID" defaultValue={eachRowData.current["ProjectID"]} />
-                <FormHelperText id="ProjectID">We'll never share your email.</FormHelperText>
-            </div>
+        projectID : (  // PK
+            <ProjectID static={eachRowData.current["projectID"]} />
+            // <div> 
+            //     ProjectID :&nbsp;&nbsp;&nbsp;
+            //     {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+            //     <Input id="projectID" defaultValue={eachRowData.current["projectID"]} />
+            //     <FormHelperText id="projectID">We'll never share your email.</FormHelperText>
+            // </div>
         ),
-        PunchID : (    // PK
+        punchID : (    // PK
             <div>
-                PunchID :&nbsp;&nbsp;&nbsp;
+                punchID :&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="PunchID" defaultValue={eachRowData.current["PunchID"]} />
-                <FormHelperText id="PunchID">We'll never share your email.</FormHelperText>
+                <Input id="punchID" defaultValue={eachRowData.current["punchID"]} />
+                <FormHelperText id="punchID">We'll never share your email.</FormHelperText>
             </div>
         ),
         Category : (
@@ -746,9 +747,18 @@ const GridComponent = () => {
     const [ selectRowId, setSelectRowId ] = useState(0)
 
     const handleSubmit = (event) => {
-        // console.dir(event)
-        // console.dir(event.target)
-        // console.dir(event.target.elements.Area.value) // 각 값들
+        try {
+            // console.dir(event)
+            console.dir("-----------------------------------")
+            console.dir(event.target.elements)
+            console.dir(event.target.elements.area.value) // 각 값들
+            console.dir(event.target.elements.projectID.value) // 각 값들
+            console.dir(event.target.elements.punchID.value) // 각 값들
+            console.dir(event.target.elements.area.value) // 각 값들
+        } catch (e) {
+            console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
+            // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
+        }
         // console.dir(event.target.elements.status.value) // 각 값들
         // console.dir(event.target.elements["Area"]["value"]) // 각 값들
         // console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
