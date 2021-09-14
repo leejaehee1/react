@@ -109,7 +109,7 @@ function App() {
       <Resource name="discipline" list={Discipline} />
       <Resource name="category" list={Category} />
       <Resource name="department" list={Department} />
-      <Resource name="system" list={System} />
+      <Resource name="systems" list={System} />
       <Resource name="subsystem" list={Subsystem} />
       <Resource name="usercode" list={UserCode} />
       <Resource name="unit" list={Unit} />

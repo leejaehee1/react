@@ -135,7 +135,7 @@ function CodeTamplate() {
             <Resource name="department" list={Department} />
           </TabPanel>
           <TabPanel value={value} index={6} dir={theme.direction}>
-            <Resource name="system" list={System} />
+            <Resource name="systems" list={System} />
           </TabPanel>
           <TabPanel value={value} index={7} dir={theme.direction}>
             <Resource name="subsystem" list={Subsystem} />

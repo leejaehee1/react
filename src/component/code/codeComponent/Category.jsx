@@ -9,7 +9,7 @@ export const Category = (props) => (
             <TextField source="categoryName" />
             <TextField source="stage" />
             {/* <DateField source="endDate" /> */}
-
+            
         </Datagrid>
     </List>
 );

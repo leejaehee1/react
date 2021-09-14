@@ -6,7 +6,8 @@ export const Subsystem = (props) => (
     <List {...props}>
         <Datagrid>
             <TextField source="subsystem" />
-            <DateField source="subsystemName" />
+            <TextField source="subsystemName" />
+            {/* <DateField source="subsystemName" /> */}
         </Datagrid>
     </List>
 );

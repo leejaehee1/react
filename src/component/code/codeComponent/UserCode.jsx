@@ -6,7 +6,7 @@ export const UserCode = (props) => (
     <List {...props}>
         <Datagrid>
             <TextField source="userID" />
-            <TextField source="password" />
+            {/* <TextField source="password" /> */}
             <TextField source="userName" />
             <TextField source="email" />
             <TextField source="company" />

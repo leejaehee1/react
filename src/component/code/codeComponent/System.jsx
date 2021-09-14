@@ -2,13 +2,16 @@ import * as React from "react";
 import { List, Datagrid, TextField, DateField } from 'react-admin';
 
 
-export const System = (props) => (
+export const Systems = (props) => (
     <List {...props}>
         <Datagrid>
-            <TextField source="system" />
-            <DateField source="systemName" />
+            <TextField source="systemID" />
+            <TextField source="systemName" />
+
+
+            
         </Datagrid>
     </List>
 );
 
-export default System;
+export default Systems; 
