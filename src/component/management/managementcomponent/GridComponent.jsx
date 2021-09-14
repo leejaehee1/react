@@ -50,6 +50,7 @@ import ProjectID from './inputComponent/ProjectID';
 import Category from './inputComponent/Category';
 import Discipline from './inputComponent/Discipline';
 import Unit from './inputComponent/Unit';
+import SystemID from './inputComponent/SystemID';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -382,32 +383,33 @@ const GridComponent = () => {
             <Category static={eachRowData.current["category"]} />
 
         ),
-        System : (
-            <div>
-                System &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-                <NativeSelect id="select">
-                    <option value="UA">UA</option>
-                    <option value="UB">UB</option>
-                    <option value="UC">UC</option>
-                    <option value="UE">UE</option>
-                    <option value="UG">UG</option>
-                    <option value="UH">UH</option>
-                    <option value="UI">UI</option>
-                    <option value="UK">UK</option>
-                    <option value="UL">UL</option>
-                    <option value="UP">UP</option>
-                    <option value="UQ">UQ</option>
-                    <option value="UM">UM</option>
-                    <option value="UR">UR</option>
-                    <option value="US">US</option>
-                    <option value="UT">UT</option>
-                    <option value="UX">UX</option>
-                    <option value="UY">UY</option>
-                    <option value="UZ">UZ</option>
-                </NativeSelect>
-                &nbsp;&nbsp;&nbsp;
-                <Input id="System" defaultValue="Structures for power transmission and auxiliary power supply" />
-            </div>
+        systemID : (
+            <SystemID static={eachRowData.current["systemID"]} />
+            // <div>
+            //     System &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+            //     <NativeSelect id="select">
+            //         <option value="UA">UA</option>
+            //         <option value="UB">UB</option>
+            //         <option value="UC">UC</option>
+            //         <option value="UE">UE</option>
+            //         <option value="UG">UG</option>
+            //         <option value="UH">UH</option>
+            //         <option value="UI">UI</option>
+            //         <option value="UK">UK</option>
+            //         <option value="UL">UL</option>
+            //         <option value="UP">UP</option>
+            //         <option value="UQ">UQ</option>
+            //         <option value="UM">UM</option>
+            //         <option value="UR">UR</option>
+            //         <option value="US">US</option>
+            //         <option value="UT">UT</option>
+            //         <option value="UX">UX</option>
+            //         <option value="UY">UY</option>
+            //         <option value="UZ">UZ</option>
+            //     </NativeSelect>
+            //     &nbsp;&nbsp;&nbsp;
+            //     <Input id="System" defaultValue="Structures for power transmission and auxiliary power supply" />
+            // </div>
         ),
         Subsystem : (
             <div>
@@ -732,7 +734,7 @@ const GridComponent = () => {
             console.dir("-----------------------------------")
             console.dir(event.target.elements)
             // console.dir(event.target.elements.area.value) // 각 값들
-            console.dir(event.target.elements.projectID.value) // 각 값들
+            console.dir(event.target.elements.systemID.value) // 각 값들
             // console.dir(event.target.elements.punchID.value) // 각 값들
             console.dir(event.target.elements.category.value) // 각 값들
         } catch (e) {
@@ -750,16 +752,16 @@ const GridComponent = () => {
         // console.dir(data[0]["Area"])
         // console.dir(updateColDefs.current)
 
-        updateColDefs.current.map((a)=> {
-                try {
-                    data[selectRowId][a.title] = event.target.elements[a.title]["value"];
-                    // console.log(data[selectRowId][a.title]);
-                } catch (e) {
-                    console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-                    // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-                }
-            }
-        )
+        // updateColDefs.current.map((a)=> {
+        //         try {
+        //             data[selectRowId][a.title] = event.target.elements[a.title]["value"];
+        //             // console.log(data[selectRowId][a.title]);
+        //         } catch (e) {
+        //             console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+        //             // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+        //         }
+        //     }
+        // )
 
 
 
