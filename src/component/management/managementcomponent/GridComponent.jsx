@@ -548,8 +548,8 @@ const GridComponent = () => {
                 <Slider
                     id="difficulty"
                     defaultValue={eachRowData.current["difficulty"]}
-                    // getAriaValueText={valuetext}
-                    // aria-labelledby="discrete-slider"
+                    // getAriaValueText={valuetext} // 상단 제목 뜬다.
+                    aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={1}
                     marks
@@ -667,6 +667,7 @@ const GridComponent = () => {
                     console.log("----------------------------------")
                     console.log("difficulty는 여기서 따로 저장했다.")
                     console.log(event.target.elements[0]["defaultValue"])
+                    // console.log(event.target.elements[a.title]["value"])
                     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
                 }
 
@@ -674,6 +675,7 @@ const GridComponent = () => {
                     console.log("-----------------------------------")
                     console.log("scheduleImpact는 여기서 따로 저장했다.")
                     console.log(event.target.elements[0]["defaultValue"])
+                    // console.log(event.target.elements[a.title]["value"])
                     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
                 }
 
