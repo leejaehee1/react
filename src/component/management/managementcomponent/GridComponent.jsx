@@ -57,6 +57,7 @@ import Department from './inputComponent/Department';
 import Difficulty from './inputComponent/Difficulty';
 import ScheduleImpact from './inputComponent/ScheduleImpact';
 import CostImpact from './inputComponent/CostImpact';
+import ClosedDate from './inputComponent/ClosedDate';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -455,11 +456,12 @@ const GridComponent = () => {
             </div>
         ),
         closedDate : (
-            <div>
-                {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-                ClosedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                <DataTime />
-            </div>
+            <ClosedDate static={eachRowData.current["closedDate"]} />
+            // <div>
+            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
+            //     ClosedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            //     <DataTime />
+            // </div>
         ),
         closedby : (
             <div>
@@ -602,7 +604,7 @@ const GridComponent = () => {
             // console.dir(event.target.elements.area.value) // 각 값들
             // console.dir(event.target.elements[0]["defaultValue"]) // 각 값들
             // console.dir(event.target.elements.punchID.value) // 각 값들
-            console.dir(event.target.elements.difficulty.value) // 각 값들
+            console.dir(event.target.elements.closedDate.value) // 각 값들
         } catch (e) {
             console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
             // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
