@@ -54,6 +54,7 @@ import SystemID from './inputComponent/SystemID';
 import Subsystem from './inputComponent/Subsystem';
 import Area from './inputComponent/Area';
 import Department from './inputComponent/Department';
+import Difficulty from './inputComponent/Difficulty';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -543,20 +544,21 @@ const GridComponent = () => {
             </div>
         ),
         difficulty : (
-            <div>
-                Difficulty &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
-                <Slider
-                    id="difficulty"
-                    defaultValue={eachRowData.current["difficulty"]}
-                    // getAriaValueText={valuetext} // 상단 제목 뜬다.
-                    aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks
-                    min={1}
-                    max={5}
-                />
-            </div>
+            <Difficulty static={eachRowData.current["difficulty"]} />
+            // <div>
+            //     Difficulty &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
+            //     <Slider
+            //         id="difficulty"
+            //         defaultValue={eachRowData.current["difficulty"]}
+            //         // getAriaValueText={valuetext} // 상단 제목 뜬다.
+            //         aria-labelledby="discrete-slider"
+            //         valueLabelDisplay="auto"
+            //         step={1}
+            //         marks
+            //         min={1}
+            //         max={5}
+            //     />
+            // </div>
         ),
         scheduleImpact : (
             <div>
@@ -635,9 +637,9 @@ const GridComponent = () => {
             console.dir(event.target.elements)
             console.dir(event.target)
             // console.dir(event.target.elements.area.value) // 각 값들
-            console.dir(event.target.elements[0]["defaultValue"]) // 각 값들
+            // console.dir(event.target.elements[0]["defaultValue"]) // 각 값들
             // console.dir(event.target.elements.punchID.value) // 각 값들
-            console.dir(event.target.elements.subsystem.value) // 각 값들
+            console.dir(event.target.elements.difficulty.value) // 각 값들
         } catch (e) {
             console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
             // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
@@ -663,21 +665,21 @@ const GridComponent = () => {
                     // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                 }
 
-                if (a.title === "difficulty") {
-                    console.log("----------------------------------")
-                    console.log("difficulty는 여기서 따로 저장했다.")
-                    console.log(event.target.elements[0]["defaultValue"])
-                    // console.log(event.target.elements[a.title]["value"])
-                    data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
-                }
+                // if (a.title === "difficulty") {
+                //     console.log("----------------------------------")
+                //     console.log("difficulty는 여기서 따로 저장했다.")
+                //     console.log(event.target.elements[0]["defaultValue"])
+                //     // console.log(event.target.elements[a.title]["value"])
+                //     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
+                // }
 
-                if (a.title === "scheduleImpact") {
-                    console.log("-----------------------------------")
-                    console.log("scheduleImpact는 여기서 따로 저장했다.")
-                    console.log(event.target.elements[0]["defaultValue"])
-                    // console.log(event.target.elements[a.title]["value"])
-                    data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
-                }
+                // if (a.title === "scheduleImpact") {
+                //     console.log("-----------------------------------")
+                //     console.log("scheduleImpact는 여기서 따로 저장했다.")
+                //     console.log(event.target.elements[0]["defaultValue"])
+                //     // console.log(event.target.elements[a.title]["value"])
+                //     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
+                // }
 
             }
         )

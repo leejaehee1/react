@@ -9,17 +9,17 @@ import VolumeUp from '@material-ui/icons/VolumeUp';
 
 const useStyles = makeStyles({
     root: {
-      width: 250,
+      width: 400,
     },
     input: {
-      width: 42,
+      width: 30,
     },
   });
 
 
-const Difficulty = () => {
+const Difficulty = (props) => {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(props.static);
   
     const handleSliderChange = (event, newValue) => {
       setValue(newValue);
@@ -39,31 +39,40 @@ const Difficulty = () => {
 
     return (
         <div className={classes.root}>
-        <Typography id="input-slider" gutterBottom>
-          Volume
-        </Typography>
+        {/* <Typography id="input-slider" gutterBottom>
+            Department
+        </Typography> */}
         <Grid container spacing={2} alignItems="center">
           <Grid item>
-            <VolumeUp />
+            {/* <VolumeUp /> */}
+            Difficulty &nbsp;&nbsp;:  &nbsp;&nbsp;&nbsp;&nbsp;
           </Grid>
           <Grid item xs>
             <Slider
-              value={typeof value === 'number' ? value : 0}
+                // id="difficulty"
+              value={typeof value === 'number' ? value : props.static}
               onChange={handleSliderChange}
-              aria-labelledby="input-slider"
+              defaultValue={props.static}
+            //   aria-labelledby="input-slider"
+              valueLabelDisplay="auto"
+              step={1}
+              marks
+              min={1}
+              max={5}
             />
           </Grid>
           <Grid item>
             <Input
+                id="difficulty"
               className={classes.input}
               value={value}
               margin="dense"
               onChange={handleInputChange}
               onBlur={handleBlur}
               inputProps={{
-                step: 10,
-                min: 0,
-                max: 100,
+                step: 1,
+                min: 1,
+                max: 5,
                 type: 'number',
                 'aria-labelledby': 'input-slider',
               }}
