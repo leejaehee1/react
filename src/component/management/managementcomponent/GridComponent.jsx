@@ -371,12 +371,6 @@ const GridComponent = () => {
     const detailUI =  {
         projectID : (  // PK
             <ProjectID static={eachRowData.current["projectID"]} />
-            // <div> 
-            //     ProjectID :&nbsp;&nbsp;&nbsp;
-            //     {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-            //     <Input id="projectID" defaultValue={eachRowData.current["projectID"]} />
-            //     <FormHelperText id="projectID">We'll never share your email.</FormHelperText>
-            // </div>
         ),
         punchID : (    // PK
             <div>
@@ -404,16 +398,9 @@ const GridComponent = () => {
         ),
         unit : (
             <Unit static={eachRowData.current["unit"]} />
-            // <div>
-            //     <TextField id="Unit-basic" label="Unit" defaultValue={eachRowData.current["Unit"]} />
-            // </div>
         ),
         area : ( // 변경 완료
             <Area static={eachRowData.current["area"]} />
-            // <div>
-            //     Area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <Input id="area" defaultValue={eachRowData.current["area"]} />
-            // </div>
         ),
         tagNumber : (
             <div>
@@ -443,11 +430,6 @@ const GridComponent = () => {
         ),
         confirmedDate : (
             <ClosedDate static={eachRowData.current["confirmedDate"]} rowName={"ConfirmedDate"} rowIndex={"confirmedDate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ConfirmedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         confirmedBy : (
             <div>
@@ -458,11 +440,6 @@ const GridComponent = () => {
         ),
         closedDate : (
             <ClosedDate static={eachRowData.current["closedDate"]} rowName={"ClosedDate"} rowIndex={"closedDate"}/>
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ClosedDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         closedby : (
             <div>
@@ -479,44 +456,22 @@ const GridComponent = () => {
             </div>
         ),
         targetDate : (
-            <ClosedDate static={eachRowData.current["targetdate"]} rowName={"Targetdate"} rowIndex={"targetdate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ScheStartDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
+            <ClosedDate static={eachRowData.current["targetDate"]} rowName={"TargetDate"} rowIndex={"targetDate"} />
+        ),
+        completedDate : (
+            <ClosedDate static={eachRowData.current["completedDate"]} rowName={"CompletedDate"} rowIndex={"completedDate"} />
         ),
         scheStartDate : (
             <ClosedDate static={eachRowData.current["scheStartDate"]} rowName={"ScheStartDate"} rowIndex={"scheStartDate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ScheStartDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         scheFinishDate : (
             <ClosedDate static={eachRowData.current["scheFinishDate"]} rowName={"ScheFinishDate"} rowIndex={"scheFinishDate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ScheFinishDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         confirmedDate : (
             <ClosedDate static={eachRowData.current["confirmedDate"]} rowName={"ConfirmedDate"} rowIndex={"confirmedDate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ScheFinishDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         issuedDate : (
             <ClosedDate static={eachRowData.current["issuedDate"]} rowName={"IssuedDate"} rowIndex={"issuedDate"} />
-            // <div>
-            //     {/* <TextField id="ConfirmedDate-basic" label="ConfirmedDate" defaultValue={eachRowData.current["ConfirmedDate"]} /> */}
-            //     ScheFinishDate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <DataTime />
-            // </div>
         ),
         designChgReq : ( // defalt : 0
             <div>
