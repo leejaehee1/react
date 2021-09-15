@@ -71,11 +71,20 @@ const defaultMaterialTheme = createTheme({
 const ClosedDate = (props) => {
     const classes = useStyles();
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    // const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [selectedDate, setSelectedDate] = React.useState(props.static);
     // const [selectedDate, setSelectedDate] = React.useState(new Date('2021-07-18T21:11:54'));
 
     const handleDateChange = (date) => {
-      setSelectedDate(date);
+      if (props.rowIndex === "targetDate") {
+        if (new Date() >= date) {
+          alert("오늘 이 후의 날짜를 선택하세요")
+        } else {
+          setSelectedDate(date);
+        }
+      } else {
+        setSelectedDate(date);
+      }
     };
     return (
         <>
