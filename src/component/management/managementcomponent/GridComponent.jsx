@@ -56,6 +56,7 @@ import Area from './inputComponent/Area';
 import Department from './inputComponent/Department';
 import Difficulty from './inputComponent/Difficulty';
 import ScheduleImpact from './inputComponent/ScheduleImpact';
+import CostImpact from './inputComponent/CostImpact';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -551,19 +552,7 @@ const GridComponent = () => {
             <ScheduleImpact static={eachRowData.current["scheduleImpact"]} />
         ),
         costImpact : (
-            <div>
-                CostImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
-                <Slider
-                    defaultValue={eachRowData.current["costImpact"]}
-                    // getAriaValueText={valuetext}
-                    // aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks
-                    min={1}
-                    max={5}
-                />
-            </div>
+            <CostImpact static={eachRowData.current["costImpact"]} />
         ),
         keyword1 : (
             <>
