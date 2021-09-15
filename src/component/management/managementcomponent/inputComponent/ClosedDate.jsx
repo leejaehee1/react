@@ -68,7 +68,7 @@ const defaultMaterialTheme = createTheme({
 });
 
 
-const ClosedDate = () => {
+const ClosedDate = (props) => {
     const classes = useStyles();
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -86,7 +86,7 @@ const ClosedDate = () => {
                 {/* <ThemeProvider theme={theme}>
                   <Typography variant="h5">Target Date</Typography>
                 </ThemeProvider> */}
-                ClosedDate :
+                {props.rowName} :
               </Paper>
             </Grid>
             <Grid item xs={9} spacing={-2}>
@@ -100,7 +100,7 @@ const ClosedDate = () => {
                       format="yyyy/MM/dd"
                       //inputVariant="filled"  // outlined // standard
                       // margin="normal"
-                      id="closedDate"
+                      id={props.rowIndex}
                       // label="Date picker inline"
                       value={selectedDate}
                       onChange={handleDateChange}
