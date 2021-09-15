@@ -55,6 +55,7 @@ import Subsystem from './inputComponent/Subsystem';
 import Area from './inputComponent/Area';
 import Department from './inputComponent/Department';
 import Difficulty from './inputComponent/Difficulty';
+import ScheduleImpact from './inputComponent/ScheduleImpact';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -545,36 +546,9 @@ const GridComponent = () => {
         ),
         difficulty : (
             <Difficulty static={eachRowData.current["difficulty"]} />
-            // <div>
-            //     Difficulty &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
-            //     <Slider
-            //         id="difficulty"
-            //         defaultValue={eachRowData.current["difficulty"]}
-            //         // getAriaValueText={valuetext} // 상단 제목 뜬다.
-            //         aria-labelledby="discrete-slider"
-            //         valueLabelDisplay="auto"
-            //         step={1}
-            //         marks
-            //         min={1}
-            //         max={5}
-            //     />
-            // </div>
         ),
         scheduleImpact : (
-            <div>
-                ScheduleImpact &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;
-                <Slider
-                    id="scheduleImpact"
-                    defaultValue={eachRowData.current["scheduleImpact"]}
-                    // getAriaValueText={valuetext}
-                    // aria-labelledby="discrete-slider"
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks
-                    min={1}
-                    max={5}
-                />
-            </div>
+            <ScheduleImpact static={eachRowData.current["scheduleImpact"]} />
         ),
         costImpact : (
             <div>
