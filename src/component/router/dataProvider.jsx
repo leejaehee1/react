@@ -22,8 +22,8 @@ export default {
         // console.log(url)
         httpClient(url)
         .then(({ headers, json }) => {
-            console.dir(json.resultID)
-            console.dir(json)
+            // console.dir(json.resultID)
+            // console.dir(json)
             // json.result.map(resource => console.log(resource) )
           });
         return httpClient(url)

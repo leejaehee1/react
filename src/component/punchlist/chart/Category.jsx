@@ -3,6 +3,8 @@ import PieChart, {
     Tooltip,
     // Title,
     // Subtitle,
+    Type,
+    Size,
     Legend,
     AdaptiveLayout,
 } from 'devextreme-react/pie-chart';
@@ -39,9 +41,19 @@ export default function Category() {
     return (
         <PieChart 
             dataSource={fruits}
+            type="doughnut"
+            palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
         >
-            <Series argumentField="fruit" valueField="count" />
+            <Series 
+                argumentField="fruit" 
+                valueField="count" 
+            />
             <Tooltip enabled={true} />
+            {/* <Type /> */}
+            <Size
+                    height={150}
+                    // width={250}
+                />
             <Legend
                     orientation="vertical"
                     // center/right/left
