@@ -9,17 +9,9 @@ import PieChart, {
     AdaptiveLayout,
 } from 'devextreme-react/pie-chart';
  
-const fruits = [
-    { fruit: 'Apples', count: 10 },
-    { fruit: 'Oranges', count: 12 },
-    { fruit: 'Lemons', count: 15 },
-    { fruit: 'Pears', count: 20 },
-    { fruit: 'Pineapples', count: 3 }
-];
 
-// function onLegendClick(e) {
-//     console.log(e.points)
-// }
+import { useGetList } from 'react-admin';
+
 
 
 // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Pie/React/Light/
@@ -38,15 +30,33 @@ function toggleVisibility(item) {
 }
 
 export default function Category() {
+
+    const { data } = useGetList('list', );
+    const targetData = data
+
+
+    const a = Object.values(targetData).filter(da => da.category==="A").length;
+    const b = Object.values(targetData).filter(da => da.category==="B").length;
+    const c = Object.values(targetData).filter(da => da.category==="C").length;
+    const d = Object.values(targetData).filter(da => da.category==="D").length;
+
+
+
+    const pieData = [
+        { argument: "A", value: a },
+        { argument: "B", value: b },
+        { argument: "C", value: c },
+        { argument: "D", value: d },
+    ];
     return (
         <PieChart 
-            dataSource={fruits}
+            dataSource={pieData}
             type="doughnut"
             palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
         >
             <Series 
-                argumentField="fruit" 
-                valueField="count" 
+                argumentField="argument" 
+                valueField="value" 
             />
             <Tooltip enabled={true} />
             {/* <Type /> */}
