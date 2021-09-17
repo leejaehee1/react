@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { PROPERTY_TYPES } from '@babel/types';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 import { useGetList } from 'react-admin';
 
@@ -198,7 +199,10 @@ const ExcelColumns = (props) => {
                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                 
                                 </StyledTableCell>
-                                <StyledTableCell align="middle" onClick={deleteCheck} id={id}><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
+                                <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
+                                    {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
+                                    {(deleteArray[id]) ? <DeleteOutlineIcon style={{ fontSize: 25 }} /> : <DeleteIcon style={{ fontSize: 25 }} /> }
+                                </StyledTableCell>
                                 <StyledTableCell align="right" onClick={idCheck} id={id}>{beChangeArray[id]}</StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                                 <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
