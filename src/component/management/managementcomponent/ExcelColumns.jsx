@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +9,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { PROPERTY_TYPES } from '@babel/types';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+
+import { useGetList } from 'react-admin';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -41,6 +44,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
   });
 
+
 const ExcelColumns = (props) => {
     const classes = useStyles();
     // console.log("--------------------------------------------------------")
@@ -49,6 +53,7 @@ const ExcelColumns = (props) => {
     // sqlHook이랑 excel click 둘다 값이 있으면, excel columns에 넣기. 이때 가상 배열 하나 (excel 값들어올 때마다 추가) 만들어 두자
     const [excelColumnArray, setExcelColumnArray] = React.useState(props.excelColumns)
     const [sqlColumnData, setSqlColumnData] = React.useState(props.sqlHook)
+    const [sqlColumnDatas, setSqlColumnDatas] = React.useState(props.sqlHooks)
     const dummyArray = new Array(props.excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
@@ -57,6 +62,10 @@ const ExcelColumns = (props) => {
     const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
     // const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
     const excelChangedInit = useRef(props.excelColumns)
+
+    console.log(sqlColumnDatas)
+    console.log(props.sqlHooks)
+
 
     function deleteCheck(e) {
         setDeletId(() => {
@@ -138,6 +147,24 @@ const ExcelColumns = (props) => {
         setSqlColumnData(props.sqlHook)
     }, [props.sqlHook])
 
+    // const { data, ids } = useGetList('list', );
+    // const targetData = useRef(data? data : [])
+    // const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
+
+
+    const [originalFlag, setOriginalFlag] = useState(false)
+    const handleOriginal = (props) => {
+        // setOriginalFlag(false)
+        console.log(props.row)
+        // if (sqlColumnDatas.includes(props.row)) {
+    // }
+        return 
+            <>
+            안나와?
+            </>
+        
+    }
+
     return (
         <>
             <h1>Excel Columns</h1>
@@ -163,8 +190,13 @@ const ExcelColumns = (props) => {
                         {excelColumnArray.map((row, id) => (
                             <StyledTableRow hover key={row}>
                                 <StyledTableCell component="th" scope="row">
+                                    {/* <handleOriginal rowData={row} />
+                                    <handleOriginal /> */}
                                 {/* {row.name} */}
-                                {row}
+                                {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
+                                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
+                                
                                 </StyledTableCell>
                                 <StyledTableCell align="middle" onClick={deleteCheck} id={id}><DeleteIcon style={{ fontSize: 25 }} /></StyledTableCell>
                                 <StyledTableCell align="right" onClick={idCheck} id={id}>{beChangeArray[id]}</StyledTableCell>
@@ -178,5 +210,7 @@ const ExcelColumns = (props) => {
         </>
     )
 }
+
+
 
 export default ExcelColumns;

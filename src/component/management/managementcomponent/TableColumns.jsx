@@ -84,6 +84,7 @@ const TableColumns = (props) => {
 
     useEffect(() => {
         props.onTable(checkTableColumn)
+        props.onTables(dbColumnvalue)
     }, [checkTableColumn])
 
     return (

@@ -77,6 +77,7 @@ const ColumnMappingButton = (props) => {
   const classes = useStyles();
   const [excelHook, setexcelHook] = React.useState(props.excelColumns);
   const [sqlHook, setSqlHook] = React.useState("");
+  const [sqlHooks, setSqlHooks] = React.useState([]);
 
   const [open, setOpen] = React.useState(false);
   const [modalFlag, setModalFlag] = React.useState(true)
@@ -122,11 +123,11 @@ const ColumnMappingButton = (props) => {
   }, [modalFlag, excelChangedHook])
 
   const updateColumn = (tableColumn) => {
-    // console.log(tableColumn +"데이터 올라왔다.")
-    // if (tableColumn === "punchID") {
-    //   console.log("if 성공이다.")
-    // }
     setSqlHook(tableColumn)
+  }
+
+  const updateColumns = (tableColumns) => {
+    setSqlHooks(tableColumns)
   }
 
   const changeColumn = (excelChangedup) => {
@@ -170,7 +171,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} onLogic={changeColumn} />
+                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} sqlHooks={sqlHooks} onLogic={changeColumn} />
               </Paper>
             </Grid>
             <Grid item xs={2}>
@@ -182,7 +183,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <TableColumns onTable={updateColumn}  /> 
+                <TableColumns onTable={updateColumn} onTables={updateColumns}  /> 
               </Paper>
             </Grid>
           </Grid>
