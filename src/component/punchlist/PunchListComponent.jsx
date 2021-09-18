@@ -40,6 +40,10 @@ import DetailPageComponent from "./components/DetailPageComponent";
 import { Punchs } from "./Punchs";
 
 
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+
 // https://material-ui.com/system/borders/
 const defaultProps = {
     // bgcolor: 'background.paper',
@@ -48,14 +52,36 @@ const defaultProps = {
     // marginleft: 5,
     m: 0,
     // border: 1,
-    style: { width: '75rem', height: '18rem' },
+    style: { width: '100%', height: '18rem' },
   };
 
-const useStyles = makeStyles({
+  
+
+const useStyles = makeStyles((theme) => ({
     root: {
         // padding: 10,
         marginTop: 5,
         paddingLeft: 0,
+    },
+    paper: {
+        padding: theme.spacing(0),
+        textAlign: 'center',
+        backgroundColor: '#ECECEC',
+        height: '4rem',
+        // color: theme.palette.text.secondary,
+    },
+    onepaper: {
+        // padding: theme.spacing(0),
+        padding: theme.spacing(3),
+        // width: '5rem',
+        textAlign: 'center',
+        backgroundColor: '#ECECEC',
+        // padding: theme.spacing(1),
+        // textAlign: 'right',
+        // color: theme.palette.text.secondary,
+        // whiteSpace: 'nowrap',
+        // marginBottom: theme.spacing(1),
+        // color: theme.palette.text.secondary,
     },
     lbutton: {
         //   padding: theme.spacing(1.5),
@@ -81,7 +107,7 @@ const useStyles = makeStyles({
         // background:'black',
     
     },
-});
+}));
 
 
 const PunchListComponent = () => {
@@ -154,19 +180,87 @@ const PunchListComponent = () => {
                     // boxShadow={5} 
                     borderColor="#ECECEC" {...defaultProps}>
                         <Box display="flex" 
+                            // width="75rem"
+                            width="100%"
+                            // height="18rem"
+                            height="18rem"
                         // mt="1em"
                         > 
-                            <Box textAlign="center" flex="1" m="4em">
-                                Previous
+                            <Box textAlign="center" flex="1" m="2em">
+                                <h3>Previous</h3>
+                                <Grid item xs={12}>
+                                    <Paper elevation={0} className={classes.onepaper}>
+                                        <h4>전일 Remain</h4>
+                                        <p>40</p>
+                                    </Paper>
+                                </Grid>
                             </Box>
-                            <Box textAlign="center" flex="4" m="4em">
-                                Current Status
+                            <Box textAlign="center" flex="4" m="2em">
+                                <h3>Current Status</h3>
+                                <Grid container spacing={1}>
+                                    <Grid item xs={3}>
+                                        <Paper className={classes.paper} >
+                                            <h4>금일까지 Issue</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Paper className={classes.paper}>
+                                            <h4>금일 Issue</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Paper className={classes.paper}>
+                                            <h4>전일까지 Close</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <Paper className={classes.paper}>
+                                            <h4>금일 Close</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Paper className={classes.paper}>
+                                            <h4>총 Issue Punch 누계</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Paper className={classes.paper}>
+                                            <h4>총 Close Punch 누계</h4>
+                                            <p>40</p>
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
                             </Box>
-                            <Box textAlign="center" flex="1" m="4em">
-                                Remain
+                            <Box textAlign="center" flex="1" m="2em">
+                                <h3>Remain</h3>
+                                <Grid item xs={12}>
+                                    <Paper className={classes.onepaper}>
+                                        <h4>금일 Remain</h4>
+                                        <p>40</p>
+                                    </Paper>
+                                </Grid>
                             </Box>
-                            <Box textAlign="center" flex="1" m="4em">
-                                Progress Tracking
+                            <Box textAlign="center" flex="1" m="2em">
+                                <h3>Progress Tracking</h3>
+                                <Grid container spacing={0}>
+                                    <Grid item xs={12}>
+                                        <Paper className={classes.paper} >
+                                            <h4>Trend</h4>
+                                            <p>6 clear Day</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Paper className={classes.paper}>
+                                            <h4>Schedule 달성분석</h4>
+                                            <p>달성가능/달성불가</p>
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
                             </Box>
                         </Box>
                     </Box>
