@@ -51,11 +51,11 @@ const Discipline = () => {
       />
 
       <Size
-          height={150}
+          height={160}
           // width={250}
       />
       <CommonAxisSettings  
-        tickInterval={10}
+        tickInterval={3}
       >
           {/* <Label 
             format="decimal" 
@@ -63,7 +63,7 @@ const Discipline = () => {
             displayMode="stagger"
           /> */}
           <Label
-                        rotationAngle={45}
+                        rotationAngle={-20}
                         overlappingBehavior="rotate"
           />
       </CommonAxisSettings >

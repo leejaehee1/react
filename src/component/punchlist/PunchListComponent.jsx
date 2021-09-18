@@ -44,9 +44,11 @@ import { Punchs } from "./Punchs";
 const defaultProps = {
     // bgcolor: 'background.paper',
     bgcolor: '#ECECEC',
+    // textAlign: 'center',
+    // marginleft: 5,
     m: 0,
     // border: 1,
-    style: { width: '75rem', height: '23rem' },
+    style: { width: '75rem', height: '18rem' },
   };
 
 const useStyles = makeStyles({
@@ -130,17 +132,17 @@ const PunchListComponent = () => {
                     {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
                     <Box borderColor="#e0e0e0" {...defaultProps}>
                         <Box display="flex" > 
-                            <Box flex="3" p={2} m="1em">
+                            <Box flex="4" p={0} m="1em">
                             {/* bgcolor="palevioletred" */}
-                                <h3>Punch Status</h3>
+                                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
                                 <PunchStatus />
                             </Box>
-                            <Box flex="3" m="2em">
+                            <Box flex="3" m="1em">
                                 <h3>Category</h3>
                                 <Category />
                             </Box>
-                            <Box flex="5" p={2} m="1em">
-                                <h3>Discipline</h3>
+                            <Box flex="5" p={0} m="1em">
+                                <h3>&nbsp;&nbsp;&nbsp;Discipline</h3>
                                 <Discipline />
                             </Box>
                         </Box>
@@ -148,18 +150,25 @@ const PunchListComponent = () => {
                     </>
                 ) : (
                     <>
-                    <Box boxShadow={5} borderColor="#ECECEC" {...defaultProps}>
-                    <Box display="flex" mt="1em"> 
-                        <Box bgcolor="success.main" flex="4" m="4em">
-                            {/* <DealsChart /> */}Status
+                    <Box 
+                    // boxShadow={5} 
+                    borderColor="#ECECEC" {...defaultProps}>
+                        <Box display="flex" 
+                        // mt="1em"
+                        > 
+                            <Box textAlign="center" flex="1" m="4em">
+                                Previous
+                            </Box>
+                            <Box textAlign="center" flex="4" m="4em">
+                                Current Status
+                            </Box>
+                            <Box textAlign="center" flex="1" m="4em">
+                                Remain
+                            </Box>
+                            <Box textAlign="center" flex="1" m="4em">
+                                Progress Tracking
+                            </Box>
                         </Box>
-                        <Box bgcolor="success.main" flex="2" m="4em">
-                            {/* <Welcome /> */}asdfasdf
-                        </Box>
-                        <Box bgcolor="success.main" flex="4" m="4em">
-                            {/* <Welcome /> */}asdfasdf
-                        </Box>
-                    </Box>
                     </Box>
                     </>
                 )
