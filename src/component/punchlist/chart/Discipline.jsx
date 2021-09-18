@@ -1,19 +1,21 @@
 // import * as React from "react";
-import Paper from '@material-ui/core/Paper';
-import {
-  ArgumentAxis,
-  ValueAxis,
-  Chart,
-  BarSeries,
-//   Title,
-} from '@devexpress/dx-react-chart-material-ui';
-import {
-    Animation,
-    EventTracker,
-    HoverState
-  } from "@devexpress/dx-react-chart";
+// import Paper from '@material-ui/core/Paper';
+// import {
+//   ArgumentAxis,
+//   ValueAxis,
+//   Chart,
+//   BarSeries,
+// //   Title,
+// } from '@devexpress/dx-react-chart-material-ui';
+// import {
+//     Animation,
+//     EventTracker,
+//     HoverState
+//   } from "@devexpress/dx-react-chart";
 
 import { useGetList } from 'react-admin';
+
+import { Chart, Series, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings  } from 'devextreme-react/chart';
 
 
 const Discipline = () => {
@@ -39,24 +41,37 @@ const Discipline = () => {
       { argument: 'Structure', value: structureNum },
     ];
     return (
-        <Paper>
-            <Chart
-            data={barData}
-            // width={100}
-            height={220}
-            >   
-                {/* 가로축 */}
-                <ArgumentAxis />
-                {/* 세로축   */}
-                <ValueAxis />
-            
-                <BarSeries valueField="value" argumentField="argument" />
-                {/* <Title text="Studies per day"/> */}
-                <EventTracker />
-                <HoverState />
-                <Animation />
-            </Chart>
-        </Paper>
+      <Chart dataSource={barData}>
+      <Series
+        argumentField="argument"
+        valueField="value"
+        // name="count"
+        type="bar"
+        color="#ffaa66" 
+      />
+
+      <Size
+          height={150}
+          // width={250}
+      />
+      <CommonAxisSettings  
+        tickInterval={10}
+      >
+          {/* <Label 
+            format="decimal" 
+            staggeringSpacing={1}
+            displayMode="stagger"
+          /> */}
+          <Label
+                        rotationAngle={45}
+                        overlappingBehavior="rotate"
+          />
+      </CommonAxisSettings >
+
+      <Legend
+          visible={false}
+        />
+    </Chart>
     )
 }
 

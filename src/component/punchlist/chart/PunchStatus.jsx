@@ -1,118 +1,30 @@
-
-// import React from "react";
-import { useEffect } from 'react';
-
-import Paper from '@material-ui/core/Paper';
-import {
+import PieChart, {
+  Series,
+  Tooltip,
+  // Title,
+  // Subtitle,
+  Type,
+  Size,
   Legend,
-  Chart,
-  PieSeries,
-} from '@devexpress/dx-react-chart-material-ui';
-import {
-  Animation,
-  EventTracker,
-  HoverState
-} from "@devexpress/dx-react-chart";
+  AdaptiveLayout,
+} from 'devextreme-react/pie-chart';
+
 
 import { useGetList } from 'react-admin';
 
+function pointClickHandler(e) {
+  toggleVisibility(e.target);
+}
 
+function legendClickHandler(e) {
+  let arg = e.target;
+  let item = e.component.getAllSeries()[0].getPointsByArg(arg)[0];
+  toggleVisibility(item);
+}
 
-
-
-// function countStatus(num) {
-//   switch (parseInt(num)) {
-//     case 2:
-//       setOpened(opened+1)
-//       console.log("------------------")
-//       console.log(opened)
-//       break;
-//     case 3:
-//       setReadyForReview(readyForReview+1)
-//       console.log("----------------------------------")
-//       break;
-//     case 4:
-//       setRequestedForClose(requestedForClose+1)
-//       console.log("---------------------------------------------")
-//       break;
-//     case 5:
-//       setNotAccepted(notAccepted+1)
-//       console.log("---------------------------------------------------------")
-//       break;
-//     case 6:
-//       setClosed(closed+1)
-//       console.log("-----------------------------------------------------------------------")
-//       // console.log('Mangoes and papayas are $2.79 a pound.');
-//       // expected output: "Mangoes and papayas are $2.79 a pound."
-//       break;
-    // default:
-    //   console.log(`Sorry, we are out of ${data[id].status}.`);
-    //   break;
-//   }
-// }
-
-
-// API : https://devexpress.github.io/devextreme-reactive/react/chart/docs/reference/pie-series/
-
-// function AddCC() {
-//   const [opened, setOpened] = useState(0);
-//   const [readyForReview, setReadyForReview] = useState(0);
-//   const [requestedForClose, setRequestedForClose] = useState(0);
-//   const [notAccepted, setNotAccepted] = useState(0);
-//   const [closed, setClosed] = useState(0)
-  
-//   // console.log(opened, readyForReview, requestedForClose, notAccepted, closed)
-//   const { data, ids, loading, error } = useGetList('list', );
-//   console.log("addCC 들어옴")
-  
-//   useEffect((
-    
-//     ) =>{
-//   for (const id in data) {
-//     // addCC()
-//     console.log(parseInt(data[id].status))
-//     // countStatus(parseInt(data[id].status))
-//     switch (parseInt(data[id].status)) {
-//       case 2:
-//         setOpened(opened => opened+1)
-//         console.log("------------------")
-//         break;
-//       case 3:
-//         setReadyForReview(readyForReview+1)
-//         console.log("----------------------------------")
-//         break;
-//       case 4:
-//         setRequestedForClose(requestedForClose+1)
-//         console.log("---------------------------------------------")
-//         break;
-//       case 5:
-//         setNotAccepted(notAccepted+1)
-//         console.log("---------------------------------------------------------")
-//         break;
-//       case 6:
-//         setClosed(closed+1)
-//         console.log("-----------------------------------------------------------------------")
-//         break;
-//       default:
-//         console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-//         break;
-//       }
-//     }}
-//     , [])
-//   return (
-//     <>
-//       <p>{opened}</p>
-//       <p>{readyForReview}</p>
-//       <p>{requestedForClose}</p>
-//       <p>{notAccepted}</p>
-//       <p>{closed}</p>
-//     </>
-//   )
-// }
-
-
-
-
+function toggleVisibility(item) {
+  item.isVisible() ? item.hide() : item.show();
+}
 
 
 const PunchStatus = () => {
@@ -128,12 +40,6 @@ const PunchStatus = () => {
   const e = Object.values(targetData).filter(da => da.status==="6").length;
 
   
-  
-  useEffect(() => {
-    // ActionLogic()
-    // console.log('마운트 될 때만 실행됩니다.');
-  }, [data]);
-
 
   const pieData = [
     { argument: "opened", value: a },
@@ -144,31 +50,40 @@ const PunchStatus = () => {
   ];
   
   return (
-    <Paper>
+    <PieChart 
+            dataSource={pieData}
+            type="doughnut"
+            palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
+        >
+            <Series 
+                argumentField="argument" 
+                valueField="value" 
+            />
+            <Tooltip enabled={true} />
+            {/* <Type /> */}
+            <Size
+                    height={150}
+                    // width={250}
+                />
+            <Legend
+                    orientation="vertical"
+                    // center/right/left
+                    horizontalAlignment="right" 
+                    // top/bottom
+                    verticalAlignment="top"
+                    
+                    // columnItemSpacing={20}
+                    // rowItemSpacing={30}
 
-      <Chart
-        data={pieData}
-      //   width={100}
-        height={220}
-        rotated={true}
-      >
-        <Legend 
-          // https://docs.devexpress.com/CoreLibraries/DevExpress.XtraCharts.Legend.Font
-        />
 
-        <PieSeries 
-          valueField="value" 
-          argumentField="argument" 
-          innerRadius={0.3}
-          outerRadius={0.8} 
-          />
-          <EventTracker />
-          <HoverState />
-          <Animation />
-        {/* <Title text="Studies per day"/> */}
-      </Chart>
-      
-    </Paper>
+                    onPointClick={pointClickHandler}
+                    onLegendClick={legendClickHandler}
+                />
+            <AdaptiveLayout
+                    // height={10}
+                    // width={50}
+            />
+        </PieChart>
   );
 }
   
