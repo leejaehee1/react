@@ -24,7 +24,7 @@ import PunchStatus from "./chart/PunchStatus";
 import Category from "./chart/Category";
 import { useAuthenticated } from 'react-admin';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
-
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
@@ -268,6 +268,7 @@ const PunchListComponent = () => {
                 )
             }
             {/* <p>다음글</p> */}
+            <ArrowDropUpIcon />
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
