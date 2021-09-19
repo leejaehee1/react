@@ -25,6 +25,7 @@ import Category from "./chart/Category";
 import { useAuthenticated } from 'react-admin';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
@@ -123,6 +124,7 @@ const PunchListComponent = () => {
 
 
     const [show, setShow] = React.useState(true)
+    const [stateShow, setStateShow] = React.useState(true)
 
     // function handleClink() {
     //     setShow((prev) => !prev)
@@ -136,6 +138,14 @@ const PunchListComponent = () => {
 
     function handleStatus() {
         setShow(false);
+    }
+
+    function handleStateOpen() {
+        setStateShow(false);
+    }
+
+    function handleStateClose() {
+        setStateShow(true);
     }
 
     return (
@@ -152,7 +162,8 @@ const PunchListComponent = () => {
             </ButtonGroup>
             {/* <button onClick={handleClink}>DashBoard</button>
             <button onClick={handleClink}>Status</button> */}
-            {
+
+            { stateShow?(
                 show? (
                     <>
                     {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
@@ -265,13 +276,20 @@ const PunchListComponent = () => {
                         </Box>
                     </Box>
                     </>
-                )
+                )) : (<></>)
             }
             {/* <p>다음글</p> */}
             <div style={{ textAlign: "center" }}>
-            <Button variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+                { stateShow?
+                (
+                    <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+                ) : (
+                    <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
+                )
+                }
             </div>
-            {/* <ArrowDropUpIcon fontSize="large" /> */}
+            {/* <ArrowDropUpIcon fontSize="large" />
+            <ArrowDropDownIcon fontSize="large" /> */}
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
