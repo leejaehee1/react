@@ -268,7 +268,10 @@ const PunchListComponent = () => {
                 )
             }
             {/* <p>다음글</p> */}
-            <ArrowDropUpIcon />
+            <div style={{ textAlign: "center" }}>
+            <Button variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+            </div>
+            {/* <ArrowDropUpIcon fontSize="large" /> */}
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
