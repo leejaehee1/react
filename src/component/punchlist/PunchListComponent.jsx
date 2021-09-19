@@ -163,7 +163,7 @@ const PunchListComponent = () => {
                                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
                                 <PunchStatus />
                             </Box>
-                            <Box flex="3" m="1em">
+                            <Box flex="3" p={0} m="1em">
                                 <h3>Category</h3>
                                 <Category />
                             </Box>
@@ -246,7 +246,7 @@ const PunchListComponent = () => {
                                 </Grid>
                             </Box>
                             <Box textAlign="center" flex="1" m="2em">
-                                <h3>Progress Tracking</h3>
+                                <h3 style={{margin: "0rem"}}>Progress Tracking</h3>
                                 <Grid container spacing={0}>
                                     <Grid item xs={12}>
                                         <Paper className={classes.paper} >
