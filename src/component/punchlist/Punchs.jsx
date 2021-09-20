@@ -8,14 +8,18 @@ import {
     useListContext,
     // ExportButton,
     // SortButton,
-    // TopToolbar,
-    // CreateButton,
+    TopToolbar,
+    CreateButton,
+    ExportButton,
     Pagination,
     // useGetIdentity,
     // TextField,
+    Button,
+    ListActions,
 
     // Datagrid,
 } from 'react-admin';
+
 import {
     List,
     ListItem,
@@ -27,28 +31,16 @@ import {
     Typography,
     Box,
 } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
-// import { Link } from 'react-router-dom';
-// import { formatDistance } from 'date-fns';
-
-// import { Avatar } from './Avatar';
-// import { Status } from '../misc/Status';
-// import { TagsList } from './TagsList';
-// import { ContactListFilter } from './ContactListFilter';
-// import { Contact } from '../types';
+import { cloneElement } from 'react';
+import IconEvent from '@material-ui/icons/Event';
 
 const PunchListContent = () => {
     const { data, ids, onToggleItem, } = useListContext();
-    // console.log(ids)
-    // console.log(data)
-    // console.log(ids[0])
     return (
         <List>
+            aaa
             {ids.map(id => {
                 const contact = data[id];;
-                // console.log(id)
-                // console.log(contact)
-                // console.log(contact.punchID)
                 return (
                     <ListItem
                         // button
@@ -64,20 +56,17 @@ const PunchListContent = () => {
                                 // disableRipple
                                 onClick={e => {
                                     // e.stopPropagation();
+                                    console.log(e.target)
+                                    console.log(id)
                                     onToggleItem(id);
                                 }}
                             />
                         </ListItemIcon>
-                        {/* {contact.punchID} */}
-                        {/* <ListItemAvatar>
-                            <Avatar record={contact} />
-                        </ListItemAvatar> */}
-                        <ListItemText
+                        <ListItemText 
                             primary={`${contact.punchID}, ${contact.discipline}, ${contact.bulkName}, ${contact.scheduleImpact}, ${contact.completedBy}`}
                             secondary={
                                 <>
                                     {contact.issueDescription} 
-                                    {/* at{' '} */}
                                     <br />
                                     {contact.completeComment}
                                     {/* <ReferenceField
@@ -95,35 +84,7 @@ const PunchListContent = () => {
                                 </>
                             }
                         />
-{/* 
 
-    import * as React from 'react';
-    import { Box } from '@material-ui/core';
-
-    const getColorFromStatus = (status: string) =>
-        status === 'cold'
-            ? '#7dbde8'
-            : status === 'warm'
-            ? '#e8cb7d'
-            : status === 'hot'
-            ? '#e88b7d'
-            : status === 'in-contract'
-            ? '#a4e87d'
-            : '#000';
-
-    export const Status = ({ status }: { status: string }) => (
-        <Box
-            width={10}
-            height={10}
-            display="inline-block"
-            borderRadius={5}
-            bgcolor={getColorFromStatus(status)}
-            component="span"
-        />
-);
-
-
- */}
 
                         <ListItemSecondaryAction>
                             <Typography variant="body2" color="textSecondary">
@@ -155,15 +116,28 @@ const PunchListContent = () => {
 }
 
 export const Punchs = props => {
-    // console.log(props);
-
+    const ListActions = (props) => (
+        <TopToolbar>
+            {/* {cloneElement(props.filters, { context: 'button' })} */}
+            <CreateButton/>
+            <ExportButton/>
+            {/* Add your custom actions */}
+            <Button
+                onClick={() => { alert('Your custom action'); }}
+                // label="Show calendar"
+            >
+                {/* <IconEvent/> */}
+            </Button>
+        </TopToolbar>
+    );
+    // console.dir(props);
     return (
         <RaList
             {...props} 
-            perPage={25}
+            perPage={10}
             pagination={<Pagination rowsPerPageOptions={[10, 25, 50, 100]} />}   
+            actions={<ListActions/>}
         >
-
             <PunchListContent />
         </RaList>
     )
