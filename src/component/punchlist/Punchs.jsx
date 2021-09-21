@@ -120,9 +120,11 @@ const PunchListContent = () => {
                                 primary={`${contact.punchID}, ${contact.discipline}, ${contact.bulkName}, ${contact.scheduleImpact}, ${contact.completedBy}`}
                                 secondary={
                                     <>
+                                        <p style={{width:"600px", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap"}}>
                                         {contact.issueDescription} 
                                         <br />
                                         {contact.completeComment}
+                                        </p>
                                         {/* <ReferenceField
                                             record={contact}
                                             source="company_id"
