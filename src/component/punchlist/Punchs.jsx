@@ -47,6 +47,7 @@ import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled'
 
 import { cloneElement } from 'react';
 import IconEvent from '@material-ui/icons/Event';
+import StateButton from './board/StateButton';
 // import Button from '@mui/material/Button';
 
 
@@ -150,18 +151,7 @@ const PunchListContent = () => {
                                         now
                                     )}{' '} */}
                                     {/* ago <Status status={contact.status} /> */}
-                                    <Box
-                                        width="90px"
-                                        height={28}
-                                        display="inline-block"
-                                        textAlign="center"
-                                        lineHeight="28px"
-                                        verticalAlign="middle"
-                                        color="white"
-                                        borderRadius={3}
-                                        bgcolor='#e88b7d'
-                                        component="span"
-                                    >Open</Box>
+                                    <StateButton />
                                 </Typography>
                             </ListItemSecondaryAction>
                         </ListItem>
