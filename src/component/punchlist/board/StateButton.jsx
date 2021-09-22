@@ -28,7 +28,8 @@ const StateButton = (props) => {
         // 주어진 버튼 눌렀을 때
         // console.dir(event.currentTarget.textContent)
         setSelectedIndex(index);
-        setEachState(()=>(index+2))
+        // setEachState(()=>(index+2));
+        setEachState(index+2);
         setAnchorEl(null);
     };
     
@@ -45,7 +46,7 @@ const StateButton = (props) => {
     }, [selectedIndex])
     return (
         <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickListItem}>
+            <Button aria-controls="simple-menu" aria-haspopup="true" style={{textTransform:"none"}} onClick={handleClickListItem}>
 
                 <CustomBox stateData={eachState} />
                 {/* {eachState} */}
