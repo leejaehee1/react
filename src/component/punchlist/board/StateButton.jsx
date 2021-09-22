@@ -8,80 +8,63 @@ import {
 import CustomBox from './CustomBox';
 
 const options = [
-    'Show some love to Material-UI',
-    'Show all notification content',
-    'Hide sensitive notification content',
-    'Hide all notification content',
+    'Opened',
+    'Ready for Review',
+    'Requested for Close',
+    'Not Accepted',
+    'Closed',
   ];
 
 const StateButton = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
 
-    // useEffect(()=> {
-    //     if (eachState==="1") {
-    //         setEachState("Draft")
-    //     } else if (eachState=="2") {
-    //         setEachState("Opened")
-    //     } else if (eachState=="3") {
-    //         setEachState("Ready Review")
-    //     } else if (eachState=="4") {
-    //         setEachState("Req for Close")
-    //     } else if (eachState=="5") {
-    //         setEachState("Not Accepted")
-    //     } else if (eachState=="6") {
-    //         setEachState("Closed")
-    //     }
-    // }, [])
     const handleClickListItem = (event) => {
         setAnchorEl(event.currentTarget);
     };
 
     const handleMenuItemClick = (event, index) => {
+        // 주어진 버튼 눌렀을 때
+        // console.dir(event.currentTarget.textContent)
         setSelectedIndex(index);
+        setEachState(()=>(index+2))
         setAnchorEl(null);
     };
-
+    
     const handleClose = () => {
+        // 다른 버튼 눌렀을 때
+        console.log(1)
+        setEachState(selectedIndex+2)
         setAnchorEl(null);
     };
 
+    useEffect(()=> {
+        console.log(eachState)
+
+    }, [selectedIndex])
     return (
         <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickListItem}>
-                
-                {/* <Box
-                    // button
-                    width="110px"
-                    height={28}
-                    display="inline-block"
-                    textAlign="center"
-                    lineHeight="28px"
-                    verticalAlign="middle"
-                    color="white"
-                    borderRadius={3}
-                    bgcolor='#e88b7d'
-                    component="span"
-                >{eachState}</Box> */}
+
                 <CustomBox stateData={eachState} />
-                {/* Open Menu */}
+                {/* {eachState} */}
             </Button>
             <Menu
                 id="lock-menu"
                 anchorEl={anchorEl}
-                keepMounted
+                // keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
                 {options.map((option, index) => (
                 <MenuItem
                     key={option}
-                    disabled={index === 0}
+                    // disabled={index === props.eachState}
                     selected={index === selectedIndex}
                     onClick={(event) => handleMenuItemClick(event, index)}
                 >
-                    <Box
+                    {/* <Box
                         width="90px"
                         height={28}
                         display="inline-block"
@@ -92,8 +75,9 @@ const StateButton = (props) => {
                         borderRadius={3}
                         bgcolor='#e88b7d'
                         component="span"
-                    >Open</Box>
-                    {option}
+                    >Open</Box> */}
+                    {option} 
+                    {/* {index} */}
                 </MenuItem>
                 ))}
             </Menu>
