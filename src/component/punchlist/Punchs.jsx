@@ -151,7 +151,7 @@ const PunchListContent = () => {
                                         now
                                     )}{' '} */}
                                     {/* ago <Status status={contact.status} /> */}
-                                    <StateButton />
+                                    <StateButton eachState={contact.status} />
                                 </Typography>
                             </ListItemSecondaryAction>
                         </ListItem>

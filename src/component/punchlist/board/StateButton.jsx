@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Box,
     Menu,
     MenuItem,
     Button,
 } from '@material-ui/core';
+import CustomBox from './CustomBox';
 
 const options = [
     'Show some love to Material-UI',
@@ -13,10 +14,26 @@ const options = [
     'Hide all notification content',
   ];
 
-const StateButton = () => {
+const StateButton = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [eachState, setEachState] = React.useState(props.eachState);
 
+    // useEffect(()=> {
+    //     if (eachState==="1") {
+    //         setEachState("Draft")
+    //     } else if (eachState=="2") {
+    //         setEachState("Opened")
+    //     } else if (eachState=="3") {
+    //         setEachState("Ready Review")
+    //     } else if (eachState=="4") {
+    //         setEachState("Req for Close")
+    //     } else if (eachState=="5") {
+    //         setEachState("Not Accepted")
+    //     } else if (eachState=="6") {
+    //         setEachState("Closed")
+    //     }
+    // }, [])
     const handleClickListItem = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -29,12 +46,14 @@ const StateButton = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClickListItem}>
-                <Box
-                    button
-                    width="90px"
+                
+                {/* <Box
+                    // button
+                    width="110px"
                     height={28}
                     display="inline-block"
                     textAlign="center"
@@ -44,7 +63,8 @@ const StateButton = () => {
                     borderRadius={3}
                     bgcolor='#e88b7d'
                     component="span"
-                >Open</Box>
+                >{eachState}</Box> */}
+                <CustomBox stateData={eachState} />
                 {/* Open Menu */}
             </Button>
             <Menu
