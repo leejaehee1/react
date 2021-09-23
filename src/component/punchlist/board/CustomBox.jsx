@@ -6,7 +6,8 @@ import {
 const CustomBox = (props) => {
     const [stateValue, setStateValue] = React.useState("")
     const [colorValue, setColorValue] = React.useState("")
-
+    const [allData, setAllData] = React.useState(props.allData)
+    // console.log(props.allData)
     useEffect(()=> {
         if (props.stateData==="1") {
             setStateValue("Draft")

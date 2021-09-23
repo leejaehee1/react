@@ -72,15 +72,15 @@ export default {
         }));
     },
 
-    update: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    update: (resource, params) => {
+        return httpClient(`${apiUrl}/${resource}/${params.id.a}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({ 
-            // data: json 
             data : { ...json, id: json._id },
-        })),
-
+        }));
+    },
+    
     updateMany: (resource, params) => {
         const query = {
             filter: JSON.stringify({ id: params.ids}),

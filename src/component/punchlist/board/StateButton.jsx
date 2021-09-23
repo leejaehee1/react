@@ -7,6 +7,9 @@ import {
 } from '@material-ui/core';
 import CustomBox from './CustomBox';
 
+import {useUpdate} from 'react-admin';
+
+
 const options = [
     'Opened',
     'Ready for Review',
@@ -19,6 +22,8 @@ const StateButton = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
+    const [updataPK, setDataPK] = React.useState(props.allData.punchID)
+    const [update, { loading }] = useUpdate();
 
     const handleClickListItem = (event) => {
         setAnchorEl(event.currentTarget);
@@ -28,27 +33,29 @@ const StateButton = (props) => {
         // 주어진 버튼 눌렀을 때
         // console.dir(event.currentTarget.textContent)
         setSelectedIndex(index);
-        // setEachState(()=>(index+2));
-        setEachState(index+2);
+        setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
         setAnchorEl(null);
+        
     };
     
     const handleClose = () => {
         // 다른 버튼 눌렀을 때
-        console.log(1)
-        setEachState(selectedIndex+2)
+        // setEachState(selectedIndex+2)
         setAnchorEl(null);
+
     };
 
     useEffect(()=> {
-        console.log(eachState)
+        let a = updataPK // "PC-2-00-MB-MBP-E-01-001"
+        let b = eachState // 1
+        update('list', {a:a}, {status : b})
 
-    }, [selectedIndex])
+    }, [eachState])
     return (
         <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" style={{textTransform:"none"}} onClick={handleClickListItem}>
 
-                <CustomBox stateData={eachState} />
+                <CustomBox stateData={eachState} allData={props.allData} />
                 {/* {eachState} */}
             </Button>
             <Menu
