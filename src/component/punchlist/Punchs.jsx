@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
     List as RaList,
     // ListProps,
@@ -88,13 +88,31 @@ function CustomButton(props) {
   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
 }
 
-const PunchListContent = () => {
+const PunchListContent = (props) => {
     const { data, ids, onToggleItem, } = useListContext();
+    const [boardData, setBoardData] = useState("")
+    const dataFlow = useRef("")
+    
+    console.log(boardData)
+    
+    // const throwDataUp = () => {
+    //     props.setboardData(dataFlow.current)
+    // }
+    useEffect(() => {
+        setBoardData(data)
+    }, [data])
+
+    useEffect(() => {
+        dataFlow.current = boardData
+        console.log(11)
+        console.log(dataFlow.current)
+        // throwDataUp()
+    }, [boardData])
     return (
         // <Card>
             <List dense={true}  >
                 {ids.map(id => {
-                    const contact = data[id];;
+                    const contact = boardData[id]?boardData[id]: data[id];
                     return (
                         <>
                         <ListItem
@@ -169,6 +187,11 @@ const PunchListContent = () => {
 }
 
 export const Punchs = props => {
+    // const [ boardData, setboardData] = useState("init data")
+    // useEffect(() => {
+    //     props.boardData(boardData)
+
+    // }, [boardData])
     const ListActions = (props) => (
         <TopToolbar>
             {/* {cloneElement(props.filters, { context: 'button' })} */}
@@ -210,7 +233,9 @@ export const Punchs = props => {
             pagination={<Pagination rowsPerPageOptions={[10, 25, 50, 100]} />}   
             actions={<ListActions/>}
         >
-            <PunchListContent />
+            <PunchListContent 
+                // setboardData={setboardData} 
+            />
         </RaList>
     )
 };

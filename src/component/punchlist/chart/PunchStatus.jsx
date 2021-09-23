@@ -9,6 +9,7 @@ import PieChart, {
   AdaptiveLayout,
 } from 'devextreme-react/pie-chart';
 
+import React, { useEffect } from 'react';
 
 import { useGetList } from 'react-admin';
 
@@ -27,11 +28,17 @@ function toggleVisibility(item) {
 }
 
 
-const PunchStatus = () => {
+const PunchStatus = (props) => {
   // const [toCharts, setToCharts] = useState([])
-  const { data } = useGetList('list', );
-  const targetData = data
-
+  // const { data, ids, loading, error } = useGetList('list', );
+  // const targetData = data
+  const [targetData, setTargetData] = React.useState([])
+  useEffect(()=> {
+    setTargetData(props.allData)
+  }, [props])
+  // if (loading) { return <Loading />; }
+  // if (loading) { return <p>Loading...</p>; }
+  // if (error) { return <p>ERROR</p>; }
 
   const a = Object.values(targetData).filter(da => da.status==="2").length;
   const b = Object.values(targetData).filter(da => da.status==="3").length;

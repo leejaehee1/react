@@ -1,4 +1,4 @@
-// import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 // const PunchListComponent = () => {
 //     return (
@@ -15,7 +15,7 @@
 
 // export default PunchListComponent;
 
-import * as React from "react";
+// import * as React from "react";
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -33,7 +33,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 
-import { Admin, Resource } from 'react-admin';
+import { Admin, Resource, useGetList } from 'react-admin';
 import { PostList } from "../../posts";
 import DetailComponent from "./components/DetailComponent";
 import DetailSelector from "./components/DetailSelector";
@@ -148,6 +148,19 @@ const PunchListComponent = () => {
         setStateShow(true);
     }
 
+    // const { data } = useGetList('list', );
+    // const inputData = React.useRef(data)
+    
+    const resetState = () => {
+        setStateShow(true)
+    }
+    
+    
+    const { data, ids, loading, error } = useGetList('list', );
+    // if (loading) { return <p>Loading...</p>; }
+    const [inputData, setInputData] = React.useState(data)
+    const [boardData, setboardData] = useState("init Data")
+ 
     return (
         <React.Fragment>
             {/* <Card>
@@ -172,7 +185,9 @@ const PunchListComponent = () => {
                             <Box flex="4" p={0} m="1em">
                             {/* bgcolor="palevioletred" */}
                                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
-                                <PunchStatus />
+                                <PunchStatus 
+                                    allData={inputData}
+                                 />
                             </Box>
                             <Box flex="3" p={0} m="1em">
                                 <h3>Category</h3>
@@ -293,7 +308,11 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    <Resource name="list" list={Punchs} />
+                    <Resource 
+                        name="list" 
+                        list={Punchs} 
+                        // boardData={boardData} 
+                    />
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
