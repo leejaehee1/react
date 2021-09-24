@@ -104,8 +104,8 @@ const PunchListContent = (props) => {
 
     useEffect(() => {
         dataFlow.current = boardData
-        console.log(11)
-        console.log(dataFlow.current)
+        // console.log(11)
+        // console.log(dataFlow.current)
         // throwDataUp()
     }, [boardData])
     return (
