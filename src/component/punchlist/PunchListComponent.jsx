@@ -162,13 +162,13 @@ const PunchListComponent = () => {
     const [buttonSix, setButtonSix] = useState(false);
     
 
-    const boardAllData = data
-    const allIndex = ids
-    const allOpenedIdx = ids.filter(id=> data[id].status === '2')
-    const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3')
-    const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4')
-    const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5')
-    const allClosedIdx = ids.filter(id=> data[id].status === '6')
+    const boardAllData = data;
+    const allIndex = ids;
+    const allOpenedIdx = ids.filter(id=> data[id].status === '2');
+    const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3');
+    const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4');
+    const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5');
+    const allClosedIdx = ids.filter(id=> data[id].status === '6');
     
 
 
@@ -180,72 +180,78 @@ const PunchListComponent = () => {
                 break;
             case 'beforeAll':
                 if(!buttonOne) {
-                    setButtonOne(true)
-                    setButtonTwo(false)
-                    setButtonThr(false)
-                    setButtonFour(false)
-                    setButtonFive(false)
-                    setButtonSix(false)
+                    setButtonOne(true);
+                    setButtonTwo(false);
+                    setButtonThr(false);
+                    setButtonFour(false);
+                    setButtonFive(false);
+                    setButtonSix(false);
+                    setBoardIndexData(allIndex);
                 }
                 break;
             case 'afterOpened':
                 break;
             case 'beforeOpened':
                 if(!buttonTwo) {
-                    setButtonOne(false)
-                    setButtonTwo(true)
-                    setButtonThr(false)
-                    setButtonFour(false)
-                    setButtonFive(false)
-                    setButtonSix(false)
+                    setButtonOne(false);
+                    setButtonTwo(true);
+                    setButtonThr(false);
+                    setButtonFour(false);
+                    setButtonFive(false);
+                    setButtonSix(false);
+                    setBoardIndexData(allOpenedIdx);
                 }
                 break;
             case 'afterReadyForReview':
                 break;
             case 'beforeReadyForReview':
                 if(!buttonThr) {
-                    setButtonOne(false)
-                    setButtonTwo(false)
-                    setButtonThr(true)
-                    setButtonFour(false)
-                    setButtonFive(false)
-                    setButtonSix(false)
+                    setButtonOne(false);
+                    setButtonTwo(false);
+                    setButtonThr(true);
+                    setButtonFour(false);
+                    setButtonFive(false);
+                    setButtonSix(false);
+                    setBoardIndexData(allReadyForReviewIdx);
                 }
                 break;
             case 'afterRequestedForClose':
                 break;
             case 'beforeRequestedForClose':
                 if(!buttonFour) {
-                    setButtonOne(false)
-                    setButtonTwo(false)
-                    setButtonThr(false)
-                    setButtonFour(true)
-                    setButtonFive(false)
-                    setButtonSix(false)
+                    setButtonOne(false);
+                    setButtonTwo(false);
+                    setButtonThr(false);
+                    setButtonFour(true);
+                    setButtonFive(false);
+                    setButtonSix(false);
+                    setBoardIndexData(allRequestedForCloseIdx);
                 }
                 break;
             case 'afterNotAccepted':
                 break;
             case 'beforeNotAccepted':
                 if(!buttonFive) {
-                    setButtonOne(false)
-                    setButtonTwo(false)
-                    setButtonThr(false)
-                    setButtonFour(false)
-                    setButtonFive(true)
-                    setButtonSix(false)
+                    setButtonOne(false);
+                    setButtonTwo(false);
+                    setButtonThr(false);
+                    setButtonFour(false);
+                    setButtonFive(true);
+                    setButtonSix(false);
+                    setBoardIndexData(allNotAcceptedIdx);
                 }
                 break;
             case 'afterClosed':
                 break;
             case 'beforeClosed':
                 if(!buttonSix) {
-                    setButtonOne(false)
-                    setButtonTwo(false)
-                    setButtonThr(false)
-                    setButtonFour(false)
-                    setButtonFive(false)
-                    setButtonSix(true)
+                    setButtonOne(false);
+                    setButtonTwo(false);
+                    setButtonThr(false);
+                    setButtonFour(false);
+                    setButtonFive(false);
+                    setButtonSix(true);
+                    setBoardIndexData(allClosedIdx);
                 }
                 break;
             // default:
