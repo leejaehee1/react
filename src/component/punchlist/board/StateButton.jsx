@@ -48,7 +48,7 @@ const StateButton = (props) => {
     useEffect(()=> {
         let a = updataPK // "PC-2-00-MB-MBP-E-01-001"
         let b = eachState // 1
-        update('list', {a:a}, {status : b})
+        // update('list', {a:a}, {status : b})
 
     }, [eachState])
     return (

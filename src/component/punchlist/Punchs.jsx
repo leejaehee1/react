@@ -16,6 +16,8 @@ import {
     // TextField,
     // Button,
     ListActions,
+    
+    useGetList,
 
     // Datagrid,
 } from 'react-admin';
@@ -48,6 +50,7 @@ import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled'
 import { cloneElement } from 'react';
 import IconEvent from '@material-ui/icons/Event';
 import StateButton from './board/StateButton';
+import { connect } from 'react-redux';
 // import Button from '@mui/material/Button';
 
 
@@ -88,18 +91,21 @@ function CustomButton(props) {
   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
 }
 
-const PunchListContent = (props) => {
+const PunchListContent = () => {
     const { data, ids, onToggleItem, } = useListContext();
+    // const { data, ids, loading, error } = useGetList('list', );
     const [boardData, setBoardData] = useState("")
     const dataFlow = useRef("")
     
-    console.log(boardData)
+    // console.log(boardData)
     
     // const throwDataUp = () => {
     //     props.setboardData(dataFlow.current)
     // }
     useEffect(() => {
-        setBoardData(data)
+        if (data) {
+            setBoardData(data)
+        }
     }, [data])
 
     useEffect(() => {
@@ -131,7 +137,7 @@ const PunchListContent = (props) => {
                                         // e.stopPropagation();
                                         console.log(e.target)
                                         console.log(id)
-                                        onToggleItem(id);
+                                        // onToggleItem(id);
                                     }}
                                 />
                             </ListItemIcon>
@@ -186,12 +192,14 @@ const PunchListContent = (props) => {
     )
 }
 
-export const Punchs = props => {
+const Punchs = props => {
     // const [ boardData, setboardData] = useState("init data")
     // useEffect(() => {
     //     props.boardData(boardData)
 
     // }, [boardData])
+    console.log(props)
+    console.log(props.abc)
     const ListActions = (props) => (
         <TopToolbar>
             {/* {cloneElement(props.filters, { context: 'button' })} */}
@@ -239,3 +247,10 @@ export const Punchs = props => {
         </RaList>
     )
 };
+
+// function mapStateToProps(state, ownProps) {
+//     return { toDos: state }
+//   }
+
+// export default connect(mapStateToProps)(Punchs);
+export default Punchs;

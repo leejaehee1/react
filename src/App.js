@@ -12,7 +12,7 @@ import AuthProvider from './component/authentication/AuthProvider';
 import LoginPage from './component/authentication/component/LoginPage';
 // import SignUpPage from './component/authentication/component/SignUpPage';
 import customRoutes from './customRoutes';
-import { Punchs } from './component/punchlist/Punchs';
+import Punchs from './component/punchlist/Punchs';
 // import simpleRestProvider from 'ra-data-simple-rest';
 import dataProvider from './component/router/dataProvider';
 import CodeTamplate from './component/code/CodeTamplate';

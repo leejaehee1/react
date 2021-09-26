@@ -1,20 +1,4 @@
 import React, {useEffect, useState} from 'react';
-
-// const PunchListComponent = () => {
-//     return (
-//         <div>
-//         <br />
-//         <br />
-//         <br />
-//         <br />
-        
-//         <h1>PunchListComponent 페이지 등장</h1>
-//         </div>
-//     )
-// }
-
-// export default PunchListComponent;
-
 // import * as React from "react";
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -38,11 +22,12 @@ import { PostList } from "../../posts";
 import DetailComponent from "./components/DetailComponent";
 import DetailSelector from "./components/DetailSelector";
 import DetailPageComponent from "./components/DetailPageComponent";
-import { Punchs } from "./Punchs";
+import Punchs from "./Punchs.jsx";
 
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import PunchBoard from './PunchBoard.jsx';
 
 
 // https://material-ui.com/system/borders/
@@ -157,10 +142,22 @@ const PunchListComponent = () => {
     
     
     const { data, ids, loading, error } = useGetList('list', );
+    
+    // console.log(data)
     // if (loading) { return <p>Loading...</p>; }
     const [inputData, setInputData] = React.useState(data)
+    const [inputIds, setInputIds] = React.useState(ids)
     const [boardData, setboardData] = useState("init Data")
- 
+    // console.log(1)
+    // console.log(1)
+    // console.log(1)
+    // console.log(1)
+    // console.log("data")
+    // console.log(data)
+    // console.log("inputData")
+    // console.log(inputData)
+    if (!data) return null;
+    if (!ids) return null;
     return (
         <React.Fragment>
             {/* <Card>
@@ -308,11 +305,15 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    <Resource 
+                    {/* <Resource 
                         name="list" 
                         list={Punchs} 
+                        abc="abc"
                         // boardData={boardData} 
-                    />
+                    /> */}
+                    aaaaaaaa
+                    {/* <PunchListContent boardData={data} boardIds={ids}  /> */}
+                    <PunchBoard boardData={data} boardIds={ids} />
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
