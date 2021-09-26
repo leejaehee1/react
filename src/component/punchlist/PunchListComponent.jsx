@@ -152,12 +152,12 @@ const PunchListComponent = () => {
     const [inputIds, setInputIds] = React.useState(ids)
     const [boardData, setboardData] = useState("init Data")
 
-    const [buttonOne, setButtonOne] = useState(true)
-    const [buttonTwo, setButtonTwo] = useState(false)
-    const [buttonThr, setButtonThr] = useState(false)
-    const [buttonFour, setButtonFour] = useState(false)
-    const [buttonFive, setButtonFive] = useState(false)
-    const [buttonSix, setButtonSix] = useState(false)
+    const [buttonOne, setButtonOne] = useState(true);
+    const [buttonTwo, setButtonTwo] = useState(false);
+    const [buttonThr, setButtonThr] = useState(false);
+    const [buttonFour, setButtonFour] = useState(false);
+    const [buttonFive, setButtonFive] = useState(false);
+    const [buttonSix, setButtonSix] = useState(false);
 
     const changeState = (e) => {
         // console.log(e.target.childNodes)
@@ -165,8 +165,51 @@ const PunchListComponent = () => {
         // console.log(e.target.parentNode.nodeName)
         // console.log(e.target.parentNode.parentNode)
         // console.log(e.target.parentElement)
-        console.log(e.target.parentNode.classList.value)
-        let targetClass = e.target.parentNode.classList.value
+        // console.log(e.target.parentNode.classList.value)
+        let targetClass = e.target.parentNode.classList.value;
+
+        switch (targetClass) {
+            case 'afterAll':
+                alert('afterAll');
+                break;
+            case 'beforeAll':
+                alert('beforeAll');
+                break;
+            case 'afterOpened':
+                alert('afterOpened');
+                break;
+            case 'beforeOpened':
+                alert('beforeOpened');
+                break;
+            case 'afterReadyForReview':
+                alert('afterReadyForReview');
+                break;
+            case 'beforeReadyForReview':
+                alert('beforeReadyForReview');
+                break;
+            case 'afterRequestedForClose':
+                alert('afterRequestedForClose');
+                break;
+            case 'beforeRequestedForClose':
+                alert('beforeRequestedForClose');
+                break;
+            case 'afterNotAccepted':
+                alert('afterNotAccepted');
+                break;
+            case 'beforeNotAccepted':
+                alert('beforeNotAccepted');
+                break;
+            case 'afterClosed':
+                alert('afterClosed');
+                break;
+            case 'beforeClosed':
+                alert('beforeClosed');
+                break;
+            default:
+                alert('occuring default')
+
+            
+        }
     }
 
     if (!data) return null;
