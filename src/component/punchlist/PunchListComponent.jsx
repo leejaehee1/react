@@ -151,14 +151,14 @@ const PunchListComponent = () => {
     const [inputData, setInputData] = React.useState(data)
     const [inputIds, setInputIds] = React.useState(ids)
     const [boardData, setboardData] = useState("init Data")
-    // console.log(1)
-    // console.log(1)
-    // console.log(1)
-    // console.log(1)
-    // console.log("data")
-    // console.log(data)
-    // console.log("inputData")
-    // console.log(inputData)
+
+    const [buttonOne, setButtonOne] = useState(true)
+    const [buttonTwo, setButtonTwo] = useState(false)
+    const [buttonThr, setButtonThr] = useState(false)
+    const [buttonFour, setButtonFour] = useState(false)
+    const [buttonFive, setButtonFive] = useState(false)
+    const [buttonSix, setButtonSix] = useState(false)
+
     if (!data) return null;
     if (!ids) return null;
     return (
