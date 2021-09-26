@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 // import * as React from "react";
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -148,24 +148,31 @@ const PunchListComponent = () => {
     
     // console.log(data)
     // if (loading) { return <p>Loading...</p>; }
-    const [inputData, setInputData] = React.useState(data)
-    const [inputIds, setInputIds] = React.useState(ids)
-    const [boardData, setboardData] = useState("init Data")
-
+    
+    // const inputData = useRef(boardAllData)
+    // const [inputIds, setInputIds] = React.useState(ids)
+    const [boardData, setBoardData] = useState([])
+    const [boardIndexData, setBoardIndexData] = useState([])
+    
     const [buttonOne, setButtonOne] = useState(true);
     const [buttonTwo, setButtonTwo] = useState(false);
     const [buttonThr, setButtonThr] = useState(false);
     const [buttonFour, setButtonFour] = useState(false);
     const [buttonFive, setButtonFive] = useState(false);
     const [buttonSix, setButtonSix] = useState(false);
+    
+
+    const boardAllData = data
+    const allIndex = ids
+    const allOpenedIdx = ids.filter(id=> data[id].status === '2')
+    const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3')
+    const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4')
+    const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5')
+    const allClosedIdx = ids.filter(id=> data[id].status === '6')
+    
+
 
     const changeState = (e) => {
-        // console.log(e.target.childNodes)
-        // console.log(e.target.parentNode)
-        // console.log(e.target.parentNode.nodeName)
-        // console.log(e.target.parentNode.parentNode)
-        // console.log(e.target.parentElement)
-        // console.log(e.target.parentNode.classList.value)
         let targetClass = e.target.parentNode.classList.value;
 
         switch (targetClass) {
@@ -241,15 +248,15 @@ const PunchListComponent = () => {
                     setButtonSix(true)
                 }
                 break;
-            default:
-                alert('occuring default')
+            // default:
+            //     alert('occuring default')
 
             
         }
     }
 
-    if (!data) return null;
-    if (!ids) return null;
+    // if (!data) return null;
+    // if (!ids) return null;
     return (
         <React.Fragment>
             <br />
@@ -394,75 +401,77 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    {buttonOne? 
-                    <button className="afterAll" onClick={changeState}>
-                        <p className="title">All</p>
-                        <p>1002</p>
-                    </button>
-                    :
-                    <button className="beforeAll" onClick={changeState}>
-                        <p className="title">All</p>
-                        <p>1002</p>
-                    </button>
-                    }
+                    <>
+                        {buttonOne? 
+                        <button className="afterAll" onClick={changeState}>
+                            <p className="title">All</p>
+                            <p>1002</p>
+                        </button>
+                        :
+                        <button className="beforeAll" onClick={changeState}>
+                            <p className="title">All</p>
+                            <p>1002</p>
+                        </button>
+                        }
 
-                    {buttonTwo?
-                    <button className="afterOpened" onClick={changeState}>
-                        <p className="title">Opened</p>
-                        <p>1002</p>
-                    </button>
-                    :
-                    <button className="beforeOpened" onClick={changeState}>
-                        <p className="title">Opened</p>
-                        <p>1002</p>
-                    </button>
-                    }
-                    {buttonThr?
-                        <button className="afterReadyForReview" onClick={changeState}>
-                            <p className="title">Ready for Review</p>
+                        {buttonTwo?
+                        <button className="afterOpened" onClick={changeState}>
+                            <p className="title">Opened</p>
                             <p>1002</p>
                         </button>
-                    :
-                        <button className="beforeReadyForReview" onClick={changeState}>
-                            <p className="title">Ready for Review</p>
+                        :
+                        <button className="beforeOpened" onClick={changeState}>
+                            <p className="title">Opened</p>
                             <p>1002</p>
                         </button>
-                    }
-                    {buttonFour?
-                        <button className="afterRequestedForClose" onClick={changeState}>
-                            <p className="title">Requested for Close</p>
-                            <p>1002</p>
-                        </button>
-                    :
-                        <button className="beforeRequestedForClose" onClick={changeState}>
-                            <p className="title">Requested for Close</p>
-                            <p>1002</p>
-                        </button>
-                    }
+                        }
+                        {buttonThr?
+                            <button className="afterReadyForReview" onClick={changeState}>
+                                <p className="title">Ready for Review</p>
+                                <p>1002</p>
+                            </button>
+                        :
+                            <button className="beforeReadyForReview" onClick={changeState}>
+                                <p className="title">Ready for Review</p>
+                                <p>1002</p>
+                            </button>
+                        }
+                        {buttonFour?
+                            <button className="afterRequestedForClose" onClick={changeState}>
+                                <p className="title">Requested for Close</p>
+                                <p>1002</p>
+                            </button>
+                        :
+                            <button className="beforeRequestedForClose" onClick={changeState}>
+                                <p className="title">Requested for Close</p>
+                                <p>1002</p>
+                            </button>
+                        }
 
-                    {buttonFive?
-                        <button className="afterNotAccepted" onClick={changeState}>
-                            <p className="title">Not Accepted</p>
-                            <p>1002</p>
-                        </button>
-                    :
-                        <button className="beforeNotAccepted" onClick={changeState}>
-                            <p className="title">Not Accepted</p>
-                            <p>1002</p>
-                        </button>
-                    }
+                        {buttonFive?
+                            <button className="afterNotAccepted" onClick={changeState}>
+                                <p className="title">Not Accepted</p>
+                                <p>1002</p>
+                            </button>
+                        :
+                            <button className="beforeNotAccepted" onClick={changeState}>
+                                <p className="title">Not Accepted</p>
+                                <p>1002</p>
+                            </button>
+                        }
 
-                    {buttonSix?
-                        <button className="afterClosed" onClick={changeState}>
-                            <p className="title">Closed</p>
-                            <p>1002</p>
-                        </button>
-                    :
-                        <button className="beforeClosed" onClick={changeState}>
-                            <p className="title">Closed</p>
-                            <p>1002</p>
-                        </button>
-                    }
+                        {buttonSix?
+                            <button className="afterClosed" onClick={changeState}>
+                                <p className="title">Closed</p>
+                                <p>1002</p>
+                            </button>
+                        :
+                            <button className="beforeClosed" onClick={changeState}>
+                                <p className="title">Closed</p>
+                                <p>1002</p>
+                            </button>
+                        }
+                    </>
                     
                     {/* <Resource 
                         name="list" 
@@ -470,7 +479,7 @@ const PunchListComponent = () => {
                         abc="abc"
                         // boardData={boardData} 
                     /> */}
-                    <PunchBoard boardData={data} boardIds={ids} />
+                    <PunchBoard boardData={boardData.length?boardData:boardAllData} boardIds={boardIndexData.length?boardIndexData:allIndex} />
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
