@@ -305,10 +305,17 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
+                    {buttonOne? 
                     <button className="beforeAll">
                         <p className="title">All</p>
                         <p>1002</p>
                     </button>
+                    :
+                    <button className="afterAll">
+                        <p className="title">All</p>
+                        <p>1002</p>
+                    </button>
+                    }
                     <button className="beforeOpened">
                         <p className="title">Opened</p>
                         <p>1002</p>
