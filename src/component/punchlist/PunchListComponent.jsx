@@ -188,7 +188,9 @@ const PunchListComponent = () => {
                             </Box>
                             <Box flex="3" p={0} m="1em">
                                 <h3>Category</h3>
-                                <Category />
+                                <Category 
+                                    allData={data}
+                                />
                             </Box>
                             <Box flex="5" p={0} m="1em">
                                 <h3>&nbsp;&nbsp;&nbsp;Discipline</h3>

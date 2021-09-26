@@ -29,10 +29,10 @@ function toggleVisibility(item) {
     item.isVisible() ? item.hide() : item.show();
 }
 
-export default function Category() {
+export default function Category(props) {
 
-    const { data } = useGetList('list', );
-    const targetData = data
+    // const { data } = useGetList('list', );
+    const targetData = props.allData
 
 
     const a = Object.values(targetData).filter(da => da.category==="A").length;
