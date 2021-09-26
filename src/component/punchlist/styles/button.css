@@ -1,18 +1,23 @@
 button {
     all: unset;
+    
 }
 button > p {
+    /* width: 30px; */
     margin: 0px;
     font-family: sans-serif;
     text-align: center;
+    font-size: 6px;
 }
 
 button.beforeAll {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -27,11 +32,13 @@ button.beforeAll:hover {
 }
 
 button.afterAll {
+    width: 120px;
+    height: 50px;
     color: #ffffff;
-    background-color: #e9743e;
+    background-color: #202020;
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -40,11 +47,13 @@ button.afterAll {
   }
 
 button.beforeOpened {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -58,12 +67,29 @@ button.beforeOpened:hover {
     cursor: pointer;
 }
 
-button.beforeReadyForReview {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+button.afterOpened {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #202020;
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeReadyForReview {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -77,12 +103,29 @@ button.beforeReadyForReview:hover {
     cursor: pointer;
 }
 
-button.beforeRequestedForClose {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+button.afterReadyForReview {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #202020;
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeRequestedForClose {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -96,12 +139,29 @@ button.beforeRequestedForClose:hover {
     cursor: pointer;
 }
 
-button.beforeNotAccepted {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+button.afterRequestedForClose {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #202020;
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeNotAccepted {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -115,12 +175,29 @@ button.beforeNotAccepted:hover {
     cursor: pointer;
 }
 
-button.beforeClosed {
-    color: #e9743e;
-    background: linear-gradient(#e9743e 12%, #fff 0%);
+button.afterNotAccepted {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #202020;
     box-sizing: border-box;
     border: 0px solid transparent;
-    padding: 15px 50px;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeClosed {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#202020 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
     /* margin-right: 10px; */
     border-radius: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
@@ -133,3 +210,18 @@ button.beforeClosed:hover {
     color: #ffffff;
     cursor: pointer;
 }
+
+button.afterClosed {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #202020;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }

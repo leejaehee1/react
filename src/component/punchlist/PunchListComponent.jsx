@@ -306,36 +306,74 @@ const PunchListComponent = () => {
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     {buttonOne? 
-                    <button className="beforeAll">
-                        <p className="title">All</p>
-                        <p>1002</p>
-                    </button>
-                    :
                     <button className="afterAll">
                         <p className="title">All</p>
                         <p>1002</p>
                     </button>
+                    :
+                    <button className="beforeAll">
+                        <p className="title">All</p>
+                        <p>1002</p>
+                    </button>
                     }
+
+                    {buttonTwo?
+                    <button className="afterOpened">
+                        <p className="title">Opened</p>
+                        <p>1002</p>
+                    </button>
+                    :
                     <button className="beforeOpened">
                         <p className="title">Opened</p>
                         <p>1002</p>
                     </button>
-                    <button className="beforeReadyForReview">
-                        <p className="title">Ready for Review</p>
-                        <p>1002</p>
-                    </button>
-                    <button className="beforeRequestedForClose">
-                        <p className="title">Requested for Close</p>
-                        <p>1002</p>
-                    </button>
-                    <button className="beforeNotAccepted">
-                        <p className="title">Not Accepted</p>
-                        <p>1002</p>
-                    </button>
-                    <button className="beforeClosed">
-                        <p className="title">Closed</p>
-                        <p>1002</p>
-                    </button>
+                    }
+                    {buttonThr?
+                        <button className="afterReadyForReview">
+                            <p className="title">Ready for Review</p>
+                            <p>1002</p>
+                        </button>
+                    :
+                        <button className="beforeReadyForReview">
+                            <p className="title">Ready for Review</p>
+                            <p>1002</p>
+                        </button>
+                    }
+                    {buttonFour?
+                        <button className="afterRequestedForClose">
+                            <p className="title">Requested for Close</p>
+                            <p>1002</p>
+                        </button>
+                    :
+                        <button className="beforeRequestedForClose">
+                            <p className="title">Requested for Close</p>
+                            <p>1002</p>
+                        </button>
+                    }
+
+                    {buttonFive?
+                        <button className="afterNotAccepted">
+                            <p className="title">Not Accepted</p>
+                            <p>1002</p>
+                        </button>
+                    :
+                        <button className="beforeNotAccepted">
+                            <p className="title">Not Accepted</p>
+                            <p>1002</p>
+                        </button>
+                    }
+
+                    {buttonSix?
+                        <button className="afterClosed">
+                            <p className="title">Closed</p>
+                            <p>1002</p>
+                        </button>
+                    :
+                        <button className="beforeClosed">
+                            <p className="title">Closed</p>
+                            <p>1002</p>
+                        </button>
+                    }
                     
                     {/* <Resource 
                         name="list" 
