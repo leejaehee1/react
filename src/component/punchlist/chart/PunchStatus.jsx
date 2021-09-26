@@ -32,13 +32,15 @@ const PunchStatus = (props) => {
   // const [toCharts, setToCharts] = useState([])
   // const { data, ids, loading, error } = useGetList('list', );
   // const targetData = data
-  const [targetData, setTargetData] = React.useState([])
-  useEffect(()=> {
-    setTargetData(props.allData)
-  }, [props])
+  // const [targetData, setTargetData] = React.useState([])
+  // useEffect(()=> {
+  //   setTargetData(props.allData)
+  // }, [props])
+
   // if (loading) { return <Loading />; }
   // if (loading) { return <p>Loading...</p>; }
   // if (error) { return <p>ERROR</p>; }
+  const targetData = props.allData
 
   const a = Object.values(targetData).filter(da => da.status==="2").length;
   const b = Object.values(targetData).filter(da => da.status==="3").length;

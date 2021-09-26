@@ -183,7 +183,7 @@ const PunchListComponent = () => {
                             {/* bgcolor="palevioletred" */}
                                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
                                 <PunchStatus 
-                                    allData={inputData}
+                                    allData={data}
                                  />
                             </Box>
                             <Box flex="3" p={0} m="1em">
@@ -311,7 +311,6 @@ const PunchListComponent = () => {
                         abc="abc"
                         // boardData={boardData} 
                     /> */}
-                    aaaaaaaa
                     {/* <PunchListContent boardData={data} boardIds={ids}  /> */}
                     <PunchBoard boardData={data} boardIds={ids} />
                 </Box>
