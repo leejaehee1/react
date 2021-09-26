@@ -170,40 +170,76 @@ const PunchListComponent = () => {
 
         switch (targetClass) {
             case 'afterAll':
-                alert('afterAll');
                 break;
             case 'beforeAll':
-                alert('beforeAll');
+                if(!buttonOne) {
+                    setButtonOne(true)
+                    setButtonTwo(false)
+                    setButtonThr(false)
+                    setButtonFour(false)
+                    setButtonFive(false)
+                    setButtonSix(false)
+                }
                 break;
             case 'afterOpened':
-                alert('afterOpened');
                 break;
             case 'beforeOpened':
-                alert('beforeOpened');
+                if(!buttonTwo) {
+                    setButtonOne(false)
+                    setButtonTwo(true)
+                    setButtonThr(false)
+                    setButtonFour(false)
+                    setButtonFive(false)
+                    setButtonSix(false)
+                }
                 break;
             case 'afterReadyForReview':
-                alert('afterReadyForReview');
                 break;
             case 'beforeReadyForReview':
-                alert('beforeReadyForReview');
+                if(!buttonThr) {
+                    setButtonOne(false)
+                    setButtonTwo(false)
+                    setButtonThr(true)
+                    setButtonFour(false)
+                    setButtonFive(false)
+                    setButtonSix(false)
+                }
                 break;
             case 'afterRequestedForClose':
-                alert('afterRequestedForClose');
                 break;
             case 'beforeRequestedForClose':
-                alert('beforeRequestedForClose');
+                if(!buttonFour) {
+                    setButtonOne(false)
+                    setButtonTwo(false)
+                    setButtonThr(false)
+                    setButtonFour(true)
+                    setButtonFive(false)
+                    setButtonSix(false)
+                }
                 break;
             case 'afterNotAccepted':
-                alert('afterNotAccepted');
                 break;
             case 'beforeNotAccepted':
-                alert('beforeNotAccepted');
+                if(!buttonFive) {
+                    setButtonOne(false)
+                    setButtonTwo(false)
+                    setButtonThr(false)
+                    setButtonFour(false)
+                    setButtonFive(true)
+                    setButtonSix(false)
+                }
                 break;
             case 'afterClosed':
-                alert('afterClosed');
                 break;
             case 'beforeClosed':
-                alert('beforeClosed');
+                if(!buttonSix) {
+                    setButtonOne(false)
+                    setButtonTwo(false)
+                    setButtonThr(false)
+                    setButtonFour(false)
+                    setButtonFive(false)
+                    setButtonSix(true)
+                }
                 break;
             default:
                 alert('occuring default')
@@ -371,58 +407,58 @@ const PunchListComponent = () => {
                     }
 
                     {buttonTwo?
-                    <button className="afterOpened">
+                    <button className="afterOpened" onClick={changeState}>
                         <p className="title">Opened</p>
                         <p>1002</p>
                     </button>
                     :
-                    <button className="beforeOpened">
+                    <button className="beforeOpened" onClick={changeState}>
                         <p className="title">Opened</p>
                         <p>1002</p>
                     </button>
                     }
                     {buttonThr?
-                        <button className="afterReadyForReview">
+                        <button className="afterReadyForReview" onClick={changeState}>
                             <p className="title">Ready for Review</p>
                             <p>1002</p>
                         </button>
                     :
-                        <button className="beforeReadyForReview">
+                        <button className="beforeReadyForReview" onClick={changeState}>
                             <p className="title">Ready for Review</p>
                             <p>1002</p>
                         </button>
                     }
                     {buttonFour?
-                        <button className="afterRequestedForClose">
+                        <button className="afterRequestedForClose" onClick={changeState}>
                             <p className="title">Requested for Close</p>
                             <p>1002</p>
                         </button>
                     :
-                        <button className="beforeRequestedForClose">
+                        <button className="beforeRequestedForClose" onClick={changeState}>
                             <p className="title">Requested for Close</p>
                             <p>1002</p>
                         </button>
                     }
 
                     {buttonFive?
-                        <button className="afterNotAccepted">
+                        <button className="afterNotAccepted" onClick={changeState}>
                             <p className="title">Not Accepted</p>
                             <p>1002</p>
                         </button>
                     :
-                        <button className="beforeNotAccepted">
+                        <button className="beforeNotAccepted" onClick={changeState}>
                             <p className="title">Not Accepted</p>
                             <p>1002</p>
                         </button>
                     }
 
                     {buttonSix?
-                        <button className="afterClosed">
+                        <button className="afterClosed" onClick={changeState}>
                             <p className="title">Closed</p>
                             <p>1002</p>
                         </button>
                     :
-                        <button className="beforeClosed">
+                        <button className="beforeClosed" onClick={changeState}>
                             <p className="title">Closed</p>
                             <p>1002</p>
                         </button>
