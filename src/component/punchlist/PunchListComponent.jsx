@@ -38,7 +38,7 @@ const defaultProps = {
     // marginleft: 5,
     m: 0,
     // border: 1,
-    style: { width: '100%', height: '18rem' },
+    style: { width: '100%', height: '16rem' },
   };
 
   
@@ -194,7 +194,9 @@ const PunchListComponent = () => {
                             </Box>
                             <Box flex="5" p={0} m="1em">
                                 <h3>&nbsp;&nbsp;&nbsp;Discipline</h3>
-                                <Discipline />
+                                <Discipline 
+                                    allData={data}
+                                />
                             </Box>
                         </Box>
                     </Box>
@@ -307,13 +309,37 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
+                    <button className="before">
+                        <p className="title">All</p>
+                        <p>1002</p>
+                    </button>
+                    <button className="before">
+                        <p className="title">Opened</p>
+                        <p>1002</p>
+                    </button>
+                    <button className="before">
+                        <p className="title">Ready for Review</p>
+                        <p>1002</p>
+                    </button>
+                    <button className="before">
+                        <p className="title">Requested for Close</p>
+                        <p>1002</p>
+                    </button>
+                    <button className="before">
+                        <p className="title">Not Accepted</p>
+                        <p>1002</p>
+                    </button>
+                    <button className="before">
+                        <p className="title">Closed</p>
+                        <p>1002</p>
+                    </button>
+                    
                     {/* <Resource 
                         name="list" 
                         list={Punchs} 
                         abc="abc"
                         // boardData={boardData} 
                     /> */}
-                    {/* <PunchListContent boardData={data} boardIds={ids}  /> */}
                     <PunchBoard boardData={data} boardIds={ids} />
                 </Box>
                 <Box flex="2" display="flex">

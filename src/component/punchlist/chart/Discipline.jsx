@@ -1,28 +1,10 @@
-// import * as React from "react";
-// import Paper from '@material-ui/core/Paper';
-// import {
-//   ArgumentAxis,
-//   ValueAxis,
-//   Chart,
-//   BarSeries,
-// //   Title,
-// } from '@devexpress/dx-react-chart-material-ui';
-// import {
-//     Animation,
-//     EventTracker,
-//     HoverState
-//   } from "@devexpress/dx-react-chart";
-
 import { useGetList } from 'react-admin';
 
-import { Chart, Series, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings  } from 'devextreme-react/chart';
+import { Chart, Series, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip  } from 'devextreme-react/chart';
 
 
-const Discipline = () => {
-  const { data } = useGetList('list', );
-  const targetData = data
-  // console.log(targetData)
-  // console.log(Object.values(targetData).filter(da => da.discipline==="A"))
+const Discipline = (props) => {
+  const targetData = props.allData
 
   const pipingNum = Object.values(targetData).filter(da => da.discipline==="1").length;
   const mechnincalNum = Object.values(targetData).filter(da => da.discipline==="2").length;
@@ -49,6 +31,7 @@ const Discipline = () => {
         type="bar"
         color="#ffaa66" 
       />
+      <Tooltip enabled={true} />
 
       <Size
           height={160}
