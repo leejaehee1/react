@@ -163,19 +163,12 @@ const PunchListComponent = () => {
     if (!ids) return null;
     return (
         <React.Fragment>
-            {/* <Card>
-                <Title title="Welcome to the administration" />
-            <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-            </Card> */}
             <br />
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
                 <Button className={classes.lbutton} onClick={handleDashBoard}>DashBoard</Button>
                 <Button className={classes.rbutton} onClick={handleStatus}>Status</Button>
                 {/* <Button>Three</Button> */}
             </ButtonGroup>
-            {/* <button onClick={handleClink}>DashBoard</button>
-            <button onClick={handleClink}>Status</button> */}
-
             { stateShow?(
                 show? (
                     <>
@@ -312,27 +305,27 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    <button className="before">
+                    <button className="beforeAll">
                         <p className="title">All</p>
                         <p>1002</p>
                     </button>
-                    <button className="before">
+                    <button className="beforeOpened">
                         <p className="title">Opened</p>
                         <p>1002</p>
                     </button>
-                    <button className="before">
+                    <button className="beforeReadyForReview">
                         <p className="title">Ready for Review</p>
                         <p>1002</p>
                     </button>
-                    <button className="before">
+                    <button className="beforeRequestedForClose">
                         <p className="title">Requested for Close</p>
                         <p>1002</p>
                     </button>
-                    <button className="before">
+                    <button className="beforeNotAccepted">
                         <p className="title">Not Accepted</p>
                         <p>1002</p>
                     </button>
-                    <button className="before">
+                    <button className="beforeClosed">
                         <p className="title">Closed</p>
                         <p>1002</p>
                     </button>
