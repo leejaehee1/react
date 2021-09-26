@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import CustomBox from './CustomBox';
 
-import {useUpdate} from 'react-admin';
+import {useUpdate, useRefresh} from 'react-admin';
 
 
 const options = [
@@ -22,8 +22,14 @@ const StateButton = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
-    const [updataPK, setDataPK] = React.useState(props.allData.punchID)
+    // const [updataPK, setDataPK] = React.useState(props.allData.punchID)
+    const updataPK = props.allData.punchID
+    const updataUpPK = props.allData
     const [update, { loading }] = useUpdate();
+
+    const refresh = useRefresh()
+
+
 
     const handleClickListItem = (event) => {
         setAnchorEl(event.currentTarget);
@@ -32,9 +38,24 @@ const StateButton = (props) => {
     const handleMenuItemClick = (event, index) => {
         // 주어진 버튼 눌렀을 때
         // console.dir(event.currentTarget.textContent)
-        setSelectedIndex(index);
-        setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
-        setAnchorEl(null);
+        // setSelectedIndex(index);
+        // setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
+        // setAnchorEl(null);
+        update('list', 
+                {a:updataPK}, 
+                {status : index+2},
+                updataUpPK,
+                {
+                    onSuccess: ()=> {
+                        refresh()
+                        // console.log('들어왔다능')
+                        // setSelectedIndex(index);
+                        // console.log('들어왔다능1')
+                        // setEachState(index+2)
+                        // console.log('들어왔다능2')
+                        // setAnchorEl(null);
+                    },
+                })
         
     };
     
@@ -45,12 +66,12 @@ const StateButton = (props) => {
 
     };
 
-    useEffect(()=> {
-        let a = updataPK // "PC-2-00-MB-MBP-E-01-001"
-        let b = eachState // 1
-        // update('list', {a:a}, {status : b})
+    // useEffect(()=> {
+    //     let a = updataPK // "PC-2-00-MB-MBP-E-01-001"
+    //     let b = eachState // 1
+    //     // update('list', {a:a}, {status : b})
 
-    }, [eachState])
+    // }, [eachState])
     return (
         <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" style={{textTransform:"none"}} onClick={handleClickListItem}>

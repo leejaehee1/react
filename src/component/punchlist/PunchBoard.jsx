@@ -54,7 +54,7 @@ import { connect } from 'react-redux';
 // import Button from '@mui/material/Button';
 
 const PunchBoard = (props) => {
-    console.log("들어왔다.")
+    // console.log("들어왔다.")
     // const { data, ids, loading, error } = useGetList('list', );
     // const { data, ids, onToggleItem, } = useListContext();
     // const [boardData, setBoardData] = useState(props.boardData)
@@ -66,7 +66,7 @@ const PunchBoard = (props) => {
     const boardIds = useRef(b)
     // console.log(props.boardData)
     
-    boardData.current = a
+    boardData.current = a  // 이걸 지우면 애러발생
 
     const inputBoardData = props.boardData.length? props.boardData:boardData.current;
     const inputBoardIds = props.boardIds.length? props.boardIds:boardIds.current;
