@@ -159,6 +159,16 @@ const PunchListComponent = () => {
     const [buttonFive, setButtonFive] = useState(false)
     const [buttonSix, setButtonSix] = useState(false)
 
+    const changeState = (e) => {
+        // console.log(e.target.childNodes)
+        // console.log(e.target.parentNode)
+        // console.log(e.target.parentNode.nodeName)
+        // console.log(e.target.parentNode.parentNode)
+        // console.log(e.target.parentElement)
+        console.log(e.target.parentNode.classList.value)
+        let targetClass = e.target.parentNode.classList.value
+    }
+
     if (!data) return null;
     if (!ids) return null;
     return (
@@ -306,12 +316,12 @@ const PunchListComponent = () => {
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     {buttonOne? 
-                    <button className="afterAll">
+                    <button className="afterAll" onClick={changeState}>
                         <p className="title">All</p>
                         <p>1002</p>
                     </button>
                     :
-                    <button className="beforeAll">
+                    <button className="beforeAll" onClick={changeState}>
                         <p className="title">All</p>
                         <p>1002</p>
                     </button>
