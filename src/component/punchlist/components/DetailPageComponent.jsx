@@ -69,10 +69,13 @@ const theme = createTheme({
 })
 
 
-function DetailPageComponent() {
+function DetailPageComponent(props) {
+  console.log(props.downDetailData)
   const classes = useStyles();
   return (
     <div className={classes.root}>
+      {JSON.stringify(props.downDetailData)}
+      {/* {props.downDetailData} */}
       {/* <Paper variant="outlined" square> */}
       <Paper style={{padding: '15px'}}>
         <Typography variant="subtitle1" gutterBottom>

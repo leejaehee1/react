@@ -70,24 +70,23 @@ const PunchBoard = (props) => {
 
     const inputBoardData = props.boardData.length? props.boardData:boardData.current;
     const inputBoardIds = props.boardIds.length? props.boardIds:boardIds.current;
-    // console.log(props.boardData)
-    // console.log(boardData.current)
-    // console.log(inputBoardData)
 
+    const updateDetailPage = (id) => {
+        props.setUpPunchBoardData(id)
+    }
     
     if (!boardIds) return null;
     return (
         // <Card>
             <List dense={true}  >
-                {/* <>{JSON.stringify(inputBoardData)}</> */}
-                {/* <>{JSON.stringify(props.boardIds)}</> */}
-                {/* <>{JSON.stringify(props.boardData)}</> */}
                 {inputBoardIds.map(id => {
                     return (
                         <>
                         <ListItem
                             button
                             key={id}
+                            onClick={()=> updateDetailPage(id)}
+                            // onClick={()=> props.upPunchBoard(id)}
                             // component={Link}
                             // to={`/contacts/${id}/show`}
                         >

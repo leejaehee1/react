@@ -170,7 +170,7 @@ const PunchListComponent = () => {
     const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5');
     const allClosedIdx = ids.filter(id=> data[id].status === '6');
     
-
+    const [upPunchBoardData, setUpPunchBoardData] = useState('')
 
     const changeState = (e) => {
         let targetClass = e.target.parentNode.classList.value;
@@ -261,8 +261,10 @@ const PunchListComponent = () => {
         }
     }
 
-    // if (!data) return null;
-    // if (!ids) return null;
+    // useEffect(()=> {
+    //     console.log(upPunchBoardData)
+    // },[upPunchBoardData])
+    
     return (
         <React.Fragment>
             <br />
@@ -485,13 +487,19 @@ const PunchListComponent = () => {
                         abc="abc"
                         // boardData={boardData} 
                     /> */}
-                    <PunchBoard boardData={boardData.length?boardData:boardAllData} boardIds={boardIndexData.length?boardIndexData:allIndex} />
+                    <PunchBoard 
+                        boardData={boardData.length?boardData:boardAllData} 
+                        boardIds={boardIndexData.length?boardIndexData:allIndex} 
+                        setUpPunchBoardData={setUpPunchBoardData}
+                    />
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
                         <DetailComponent />
                         <DetailSelector />
-                        <DetailPageComponent />
+                        <DetailPageComponent 
+                            downDetailData={boardAllData[upPunchBoardData]?boardAllData[upPunchBoardData]:boardAllData[allIndex[0]]}
+                        />
                     </Box>
                 </Box>
             </Box>
