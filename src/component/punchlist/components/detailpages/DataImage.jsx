@@ -71,7 +71,7 @@ function DataImage() {
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Issued</Typography>
           </ThemeProvider>
-          <RecipeReviewCard />
+          <RecipeReviewCard imageName="Issued Image" />
           </Paper>
         </Grid>
         <Grid item xs={6}>
@@ -79,7 +79,7 @@ function DataImage() {
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Completed</Typography>
           </ThemeProvider>
-          <RecipeReviewCard />
+          <RecipeReviewCard imageName="Completed Image" />
           </Paper>
         </Grid>
       </Grid>
