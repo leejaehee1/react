@@ -6,18 +6,22 @@ import { Typography } from '@material-ui/core';
 
 import './styles/detailselector.css'
 
-function DetailSelector() {
+function DetailSelector(props) {
   const [issueState, setIssueState] = useState(false)
   const [historyState, setHistoryState] = useState(true)
   
   const changeIssueState = () => {
     setIssueState(false)
     setHistoryState(true)
+    props.setIssueShow(true)
+    props.setHistoryShow(false)
   }
 
   const changeHistoryState = () => {
     setIssueState(true)
     setHistoryState(false)
+    props.setIssueShow(false)
+    props.setHistoryShow(true)
   }
   
   return (
@@ -41,12 +45,12 @@ function DetailSelector() {
       </button>
       }
       <div className="files">
-        <button>
+        {/* <button>
           <p>excel</p>
         </button>
         <button>
           <p>pdf</p>
-        </button>
+        </button> */}
       </div>
     </div>
   )

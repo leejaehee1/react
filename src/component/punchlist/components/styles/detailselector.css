@@ -1,11 +1,13 @@
 button.beforeIssue {
+    width: 170px;
+    height: 60px;
+    border-radius: 7px;
     color: #424242;
     background: #ffffff;
     box-sizing: border-box;
     border: 0px solid transparent;
     padding: 15px 50px;
-    /* margin-right: 10px; */
-    border-radius: 3px;
+    margin-right: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -17,13 +19,15 @@ button.beforeIssue {
   }
   
   button.afterIssue {
+    width: 170px;
+    height: 60px;
+    border-radius: 7px;
     color: #ffffff;
     background-color: #424242;
     box-sizing: border-box;
     border: 0px solid transparent;
     padding: 15px 50px;
-    /* margin-right: 10px; */
-    border-radius: 3px;
+    margin-right: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
@@ -40,13 +44,15 @@ button.beforeIssue {
 
 
   button.beforeHistory {
+    width: 170px;
+    height: 60px;
+    border-radius: 7px;
     color: #424242;
     background: #ffffff;
     box-sizing: border-box;
     border: 0px solid transparent;
     padding: 15px 50px;
-    /* margin-right: 10px; */
-    border-radius: 3px;
+    margin-right: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -58,13 +64,15 @@ button.beforeIssue {
   }
   
   button.afterHistory {
+    width: 170px;
+    height: 60px;
+    border-radius: 7px;
     color: #ffffff;
     background-color: #424242;
     box-sizing: border-box;
     border: 0px solid transparent;
     padding: 15px 50px;
-    /* margin-right: 10px; */
-    border-radius: 3px;
+    margin-right: 10px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
