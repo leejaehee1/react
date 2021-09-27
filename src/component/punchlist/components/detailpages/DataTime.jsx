@@ -13,6 +13,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import { PROPERTY_TYPES } from '@babel/types';
 // css
 // import { createMuiTheme } from "@material-ui/core";
 // import { DateTimePicker } from "@material-ui/pickers";
@@ -68,7 +69,7 @@ const defaultMaterialTheme = createTheme({
 });
 
 
-function DataTime() {
+function DataTime(props) {
     const classes = useStyles();
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
@@ -101,7 +102,7 @@ function DataTime() {
                       // margin="normal"
                       id="date-picker-inline"
                       // label="Date picker inline"
-                      value={selectedDate}
+                      value={props.dataOne?.targetDate}
                       onChange={handleDateChange}
                       KeyboardButtonProps={{
                         'aria-label': 'change date',

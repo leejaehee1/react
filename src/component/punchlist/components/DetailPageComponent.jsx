@@ -11,6 +11,7 @@ import DataTime from './detailpages/DataTime';
 import DataChipsArray from './detailpages/DataChipsArray';
 import DataDescription from './detailpages/DataDescription';
 import DataImage from './detailpages/DataImage';
+import ClosedDate from '../../management/managementcomponent/inputComponent/ClosedDate';
 // import Button from '@material-ui/core/Button';
 
 
@@ -73,9 +74,12 @@ function DetailPageComponent(props) {
   // console.log("props.downDetailData")
   // console.log(props.downDetailData)
   const classes = useStyles();
+
+  let a = props.downDetailData?.difficulty 
+  let b = props.downDetailData?.scheduleImpact 
   return (
     <div className={classes.root}>
-      {/* {JSON.stringify(props.downDetailData)} */}
+      {JSON.stringify(props.downDetailData)}
       {/* {props.downDetailData} */}
       {/* <Paper variant="outlined" square> */}
       <Paper style={{padding: '15px'}}>
@@ -84,12 +88,24 @@ function DetailPageComponent(props) {
         </Typography>
         
         <DataOne dataOne={props.downDetailData} />
-        <DataCheckBox />
-        <DataTime />
+        <DataCheckBox dataOne={props.downDetailData} />
+        <DataTime dataOne={props.downDetailData} />
         <Divider className={classes.divider} />
-        <DataSlider />
+
+        {/* difficulty */}
+        <DataSlider dataName="Difficulty" dataOne={a} />
+
+        {/* schedule impact */}
+        <DataSlider dataName="Schedule Impact" dataOne={3} />
+
+        {/* cost Impact316 */}
+        <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} />
+
+
         <Divider className={classes.divider} />
+        
         <DataChipsArray />
+
         <Divider className={classes.divider} />
         <DataDescription />
         <Divider className={classes.divider} />
@@ -100,7 +116,9 @@ function DetailPageComponent(props) {
 
         <Grid container spacing={3}>
             <Grid item xs={6}>
-            <Paper className={classes.paper}>Cancel</Paper>
+            <Paper className={classes.paper}>
+              Cancel
+            </Paper>
             </Grid>
             <Grid item xs={6}>
             <Paper className={classes.paper}>

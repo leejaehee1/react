@@ -11,6 +11,8 @@ import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles
 import Slider from '@material-ui/core/Slider';
 // import Tooltip from '@material-ui/core/Tooltip';
 
+import React from 'react';
+import Input from '@material-ui/core/Input';
 
 
 
@@ -73,82 +75,84 @@ const theme = createTheme({
 //   value: PropTypes.number.isRequired,
 // };
 
-function DataSlider() {
+function DataSlider(props) {
   const classes = useStyles();
 
   // function onChange(e, v) {
   //   console.log(e) // event
   //   console.log(v) // 숫자
   // }
+  const [value, setValue] = React.useState(props.dataOne);
+
+  const handleSliderChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleInputChange = (event) => {
+    setValue(event.target.value === '' ? '' : Number(event.target.value));
+  };
+
+  const handleBlur = () => {
+    if (value < 1) {
+      setValue(1);
+    } else if (value > 5) {
+      setValue(5);
+    }
+  };
+
+  // console.log(props?.dataOne)
+  // const numValue = props?.dataOne
 
   return (
     <>
-      <Grid container alignItems="center" spacing={3}>
+      <Grid container alignItems="center" spacing={6}>
         <Grid item xs={4}>
         <Paper elevation={0} className={classes.lpaper}>
           <ThemeProvider theme={theme}>
-            <Typography variant="h5">Difficulty</Typography>
+            <Typography variant="h5">{props.dataName}</Typography>
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
         <Paper elevation={0} className={classes.rpaper}>
-          <Slider
-            // ValueLabelComponent={ValueLabelComponent}
-            // ValueLabelComponent={
-            //   <Tooltip open={true} enterTouchDelay={0} placement="top" title="slider">
-            //     {/* {children} */}
-            //     <button>adsf</button>
-            //   </Tooltip>
-            // }
+          {/* <Slider
             aria-label="custom thumb label"
             color="primary"
-            // color="secondary"
-            defaultValue={20}
-            // onChange={onChange}
-            track="normal"//"inverted"//"normal"// 
-            valueLabelDisplay="auto"
-          />
-        </Paper>
-        </Grid>
-        <Grid item xs={4}>
-        <Paper elevation={0} className={classes.lpaper}>
-          <ThemeProvider theme={theme}>
-            <Typography variant="h5">Schedule Impact</Typography>
-          </ThemeProvider>
-        </Paper>
-        </Grid>
-        <Grid item xs={8}>
-        <Paper elevation={0} className={classes.rpaper}>
-          <Slider
-            aria-label="custom thumb label"
-            color="primary"
-            defaultValue={90}
-            track="normal"//"inverted"//"normal"// 
-            valueLabelDisplay="auto"
-          />
-        </Paper>
-        </Grid>
-        <Grid item xs={4}>
-        <Paper elevation={0} className={classes.lpaper}>
-          <ThemeProvider theme={theme}>
-            <Typography variant="h5">Cost Impact</Typography>
-          </ThemeProvider>
-        </Paper>
-        </Grid>
-        <Grid item xs={8}>
-        <Paper elevation={0} className={classes.rpaper}>
-          <Slider
-            aria-label="custom thumb label"
-            color="primary"
-            // color="secondary"
             defaultValue={60}
-            // onChange={onChange}
             track="normal"//"inverted"//"normal"// 
             valueLabelDisplay="auto"
+          /> */}
+          <Slider
+                // id="difficulty"
+              value={typeof value === 'number' ? value : parseInt(props.dataOne)}
+              onChange={handleSliderChange}
+              defaultValue={props.dataOne}
+            //   aria-labelledby="input-slider"
+              valueLabelDisplay="auto"
+              step={1}
+              marks
+              min={1}
+              max={5}
           />
         </Paper>
         </Grid>
+        <Grid item>
+            <Input
+                id="difficulty"
+              className={classes.input}
+              value={value}
+              margin="dense"
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+              inputProps={{
+                step: 1,
+                min: 1,
+                max: 5,
+                type: 'number',
+                'aria-labelledby': 'input-slider',
+              }}
+            />
+          </Grid>
       </Grid>
     </>
   )

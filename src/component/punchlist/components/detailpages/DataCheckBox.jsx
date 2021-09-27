@@ -67,7 +67,7 @@ const theme = createTheme({
 
 
 
-const DataCheckBox = () => {
+const DataCheckBox = (props) => {
   const [checked, setChecked] = useState(true);
   const classes = useStyles();
 
@@ -93,7 +93,8 @@ const DataCheckBox = () => {
         <Grid item xs={3}>
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
-              defaultChecked
+              // defaultChecked
+              checked={(props.dataOne?.designChgReq === "1"?true: false)}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
@@ -109,7 +110,7 @@ const DataCheckBox = () => {
         <Grid item xs={3}>
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
-              defaultChecked
+              checked={(props.dataOne?.materialReq === "1"?true: false)}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />

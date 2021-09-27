@@ -60,25 +60,6 @@ const theme = createTheme({
 
 function DataOne(props) {
   const classes = useStyles();
-  // if (!props.object || !props.array || props.array.length ===0) return null;
-  // if (!props.object || Object.keys(props).length ===0) return null;
-  if (props == undefined) return null;
-  console.log(!props.object)
-  console.log(props.array)
-  // const detailData = () => props.dataOne
-  // let detailIssuedDate = () => detailData["issuedDate"]
-  // let detailIssuedDate = 'aaaaaaaaaaaaa'
-  // try{
-  //   let detailIssuedDate = detailData["issuedDate"]
-  // } catch (e) {
-  //   return null
-  // }
-  // console.log(props.dataOne.status)
-  // console.log(props.dataOne.projectID)
-  // if (!Object.keys(props.dataOne).length) return null;
-  // console.log(props.dataOne.issuedDate)
-  // console.log(detailIssuedDate)
-  // console.log(detailData)
   return (
     <>
       <Grid container spacing={3}>
@@ -99,9 +80,9 @@ function DataOne(props) {
             <ThemeProvider theme={theme}>
               {/* <Typography variant="h5"><b>aaaaaaaaaaaaaaaaaaa</b></Typography> */}
               <Typography variant="h5"><b>{props.dataOne?.issuedDate}</b></Typography>
-              <Typography variant="h5"><b>John Smith</b></Typography>
-              <Typography variant="h5"><b>2021.07.26</b></Typography>
-              <Typography variant="h5"><b>Abdul Habib</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.issuedBy}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.completedDate}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.completedBy}</b></Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
@@ -113,16 +94,16 @@ function DataOne(props) {
             <ThemeProvider theme={theme}>
               <Typography variant="h5">Closed Date</Typography>
               <Typography variant="h5">Closed By</Typography>
-              <Typography variant="h5">Client QC</Typography>
+              <Typography variant="h5">Raised On</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
         <Grid item xs={3}>
           <Paper elevation={0} className={classes.rpaper}>
             <ThemeProvider theme={theme}>
-              <Typography variant="h5"><b>2021.07.26</b></Typography>
-              <Typography variant="h5"><b>Robert Junior</b></Typography>
-              <Typography variant="h5"><b>Abdul Habib</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.closedDate}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.closedBy}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.raisedBy}</b></Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
