@@ -86,12 +86,11 @@ function DataImage() {
 
 
 
-      <Grid container spacing={3}>
+      {/* <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>View Drawing</Paper>
-          {/* <RecipeReviewCard /> */}
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   )
 }

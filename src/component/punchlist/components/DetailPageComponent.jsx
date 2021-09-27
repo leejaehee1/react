@@ -12,6 +12,7 @@ import DataChipsArray from './detailpages/DataChipsArray';
 import DataDescription from './detailpages/DataDescription';
 import DataImage from './detailpages/DataImage';
 import ClosedDate from '../../management/managementcomponent/inputComponent/ClosedDate';
+import ViewDrawingButton from './detailpages/ViewDrawingButton';
 // import Button from '@material-ui/core/Button';
 
 
@@ -112,8 +113,15 @@ function DetailPageComponent(props) {
 
         {/* modal */}
         <DataImage />
+        
+        
+        
+        
+        <ViewDrawingButton />
+
 
         <Divider className={classes.divider} />
+
 
         <Grid container spacing={3}>
             <Grid item xs={6}>
