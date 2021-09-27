@@ -113,7 +113,7 @@ function DataSlider(props) {
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
         <Paper elevation={0} className={classes.rpaper}>
           {/* <Slider
             aria-label="custom thumb label"
@@ -136,7 +136,7 @@ function DataSlider(props) {
           />
         </Paper>
         </Grid>
-        <Grid item>
+        <Grid item xs={3}>
             <Input
                 id="difficulty"
               className={classes.input}

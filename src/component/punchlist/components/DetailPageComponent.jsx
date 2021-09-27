@@ -75,13 +75,9 @@ function DetailPageComponent(props) {
   // console.log(props.downDetailData)
   const classes = useStyles();
 
-  let a = props.downDetailData?.difficulty 
-  let b = props.downDetailData?.scheduleImpact 
   return (
     <div className={classes.root}>
-      {JSON.stringify(props.downDetailData)}
-      {/* {props.downDetailData} */}
-      {/* <Paper variant="outlined" square> */}
+      {/* {JSON.stringify(props.downDetailData)} */}
       <Paper style={{padding: '15px'}}>
         <Typography variant="subtitle1" gutterBottom>
             {/* Material-UI Grid: */}
@@ -93,10 +89,10 @@ function DetailPageComponent(props) {
         <Divider className={classes.divider} />
 
         {/* difficulty */}
-        <DataSlider dataName="Difficulty" dataOne={a} />
+        <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} />
 
         {/* schedule impact */}
-        <DataSlider dataName="Schedule Impact" dataOne={3} />
+        <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} />
 
         {/* cost Impact316 */}
         <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} />

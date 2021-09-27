@@ -264,6 +264,9 @@ const PunchListComponent = () => {
     // useEffect(()=> {
     //     console.log(upPunchBoardData)
     // },[upPunchBoardData])
+
+    const [issueShow, setIssueShow] = useState(true)
+    const [historyShow, setHistoryShow] = useState(false)
     
     return (
         <React.Fragment>
@@ -502,7 +505,7 @@ const PunchListComponent = () => {
                 </Box>
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
-                        <DetailComponent />
+                        {/* <DetailComponent /> */}
                         <DetailSelector />
                         <DetailPageComponent 
                             downDetailData={
