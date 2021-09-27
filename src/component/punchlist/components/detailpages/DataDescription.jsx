@@ -54,31 +54,22 @@ const theme = createTheme({
 
 
 
-function DataDescription() {
+function DataDescription(props) {
   const classes = useStyles();
   return (
     <>
+      <br />
       {/* <h5>Issue Description</h5> */}
       <ThemeProvider theme={theme}>
         <Typography variant="h5">Issue Description</Typography>
       </ThemeProvider>
       <Paper variant="outlined" className={classes.lpaper} square>
-        jei-29348 Cable not connected
-        <br />
-        pass
+        {props.dataOne}
       </Paper>
         
       <br />
 
-      {/* <h5>Complete Comment</h5> */}
-      <ThemeProvider theme={theme}>
-        <Typography variant="h5">Complete Comment</Typography>
-      </ThemeProvider>
-      <Paper variant="outlined" className={classes.lpaper} square>
-        PlS-29348 Cable not connected
-        <br />
-        you should check this site
-      </Paper>
+
     </>   
   )
 }

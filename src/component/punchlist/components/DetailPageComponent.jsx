@@ -103,11 +103,15 @@ function DetailPageComponent(props) {
 
 
         <Divider className={classes.divider} />
-        
+
         <DataChipsArray />
 
         <Divider className={classes.divider} />
-        <DataDescription />
+
+        <DataDescription dataOne={props.downDetailData?.issueDescription} />
+
+        <DataDescription dataOne={props.downDetailData?.completeComment} />
+
         <Divider className={classes.divider} />
 
         <DataImage />
