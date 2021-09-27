@@ -70,11 +70,12 @@ const theme = createTheme({
 
 
 function DetailPageComponent(props) {
-  console.log(props.downDetailData)
+  // console.log("props.downDetailData")
+  // console.log(props.downDetailData)
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {JSON.stringify(props.downDetailData)}
+      {/* {JSON.stringify(props.downDetailData)} */}
       {/* {props.downDetailData} */}
       {/* <Paper variant="outlined" square> */}
       <Paper style={{padding: '15px'}}>
@@ -82,7 +83,7 @@ function DetailPageComponent(props) {
             {/* Material-UI Grid: */}
         </Typography>
         
-        <DataOne />
+        <DataOne dataOne={props.downDetailData} />
         <DataCheckBox />
         <DataTime />
         <Divider className={classes.divider} />
@@ -93,13 +94,7 @@ function DetailPageComponent(props) {
         <DataDescription />
         <Divider className={classes.divider} />
 
-
-
-
         <DataImage />
-
-
-
 
         <Divider className={classes.divider} />
 

@@ -2,8 +2,17 @@ import { useGetList } from 'react-admin';
 
 import { Chart, Series, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip  } from 'devextreme-react/chart';
 
+// boardData={boardData.length?boardData:boardAllData} 
+// boardIds={boardIndexData.length?boardIndexData:allIndex} 
 
 const Discipline = (props) => {
+  // console.log(props.boardData[props.boardIds[0]])
+
+  // for(var i of props.boardIds) {
+  //   console.log(i)
+  // }
+
+
   const targetData = props.allData
 
   const pipingNum = Object.values(targetData).filter(da => da.discipline==="1").length;

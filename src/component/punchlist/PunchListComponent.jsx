@@ -170,7 +170,7 @@ const PunchListComponent = () => {
     const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5');
     const allClosedIdx = ids.filter(id=> data[id].status === '6');
     
-    const [upPunchBoardData, setUpPunchBoardData] = useState('')
+    const [upPunchBoardData, setUpPunchBoardData] = useState(0)
 
     const changeState = (e) => {
         let targetClass = e.target.parentNode.classList.value;
@@ -277,25 +277,32 @@ const PunchListComponent = () => {
                 show? (
                     <>
                     {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
+
+                    {/* boardData={boardData.length?boardData:boardAllData} 
+                    boardIds={boardIndexData.length?boardIndexData:allIndex}  */}
+
+
                     <Box borderColor="#e0e0e0" {...defaultProps}>
                         <Box display="flex" > 
                             <Box flex="4" p={0} m="1em">
                             {/* bgcolor="palevioletred" */}
                                 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
                                 <PunchStatus 
-                                    allData={data}
+                                    allData={boardAllData}
                                  />
                             </Box>
                             <Box flex="3" p={0} m="1em">
                                 <h3>Category</h3>
                                 <Category 
-                                    allData={data}
+                                    allData={boardAllData}
                                 />
                             </Box>
                             <Box flex="5" p={0} m="1em">
                                 <h3>&nbsp;&nbsp;&nbsp;Discipline</h3>
                                 <Discipline 
-                                    allData={data}
+                                    allData={boardData.length?boardData:boardAllData}
+                                    // boardData={boardData.length?boardData:boardAllData} 
+                                    // boardIds={boardIndexData.length?boardIndexData:allIndex} 
                                 />
                             </Box>
                         </Box>
@@ -498,7 +505,10 @@ const PunchListComponent = () => {
                         <DetailComponent />
                         <DetailSelector />
                         <DetailPageComponent 
-                            downDetailData={boardAllData[upPunchBoardData]?boardAllData[upPunchBoardData]:boardAllData[allIndex[0]]}
+                            downDetailData={
+                                boardAllData[upPunchBoardData]
+                                ?boardAllData[upPunchBoardData]
+                                :boardAllData[allIndex[0]]}
                         />
                     </Box>
                 </Box>
