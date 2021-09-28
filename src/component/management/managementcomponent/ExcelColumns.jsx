@@ -76,6 +76,20 @@ const ExcelColumns = (props) => {
     // console.log(props.sqlHooks)
 
 
+    // dbcolumns logic
+    var isEmpty = function(value){ 
+        if(  value == null || value == undefined){
+            // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
+            return true 
+        }else{ 
+            return false 
+        } 
+    }
+    const { data, ids } = useGetList('list', );
+    const targetData = useRef(data? data : [])
+    const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
+
+
     function deleteCheck(e) {
         setDeletId(() => {
             return e.target.id
@@ -181,6 +195,9 @@ const ExcelColumns = (props) => {
 
     const searchMappingColumns = () => {
         alert("autoMapping을 시작합니다")
+        console.log(dbColumnvalue)
+        console.log(excelChangedInit.current)
+
     }
 
     return (
@@ -190,11 +207,11 @@ const ExcelColumns = (props) => {
                 <Alert severity="error">This is an error alert — check it out!</Alert>
                 <Alert severity="warning">This is a warning alert — check it out!</Alert>
                 <Alert severity="info">This is an info alert — check it out!</Alert>
-                <Alert severity="success">This is a success alert — check it out!</Alert>
+                <Alert severity="success">This is a    alert — check it out!</Alert>
                 <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert>
             </Collapse>
-            <p>{"deleteId  :  " + deleteId}</p>
-            <p>{"targetId  :  " + targetId}</p>
+            {/* <p>{"deleteId  :  " + deleteId}</p> */}
+            {/* <p>{"targetId  :  " + targetId}</p> */}
             <p>{"sqlHook  :  " + props.sqlHook}</p>
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <p>{"deleteArray  :  " + deleteArray}</p>

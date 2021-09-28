@@ -66,7 +66,7 @@ const TableColumns = (props) => {
     }
     // const dbColumnvalue = (targetData.current)? Object.keys(Object.values(targetData.current)[0]) : targetData.current;
     const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
-
+    
     
     useEffect(() => {
         setDbColumns(()=>dbColumnvalue)
