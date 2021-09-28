@@ -18,6 +18,7 @@ import HttpsIcon from '@material-ui/icons/Https';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 import './styles/excelcolumns.css'
 
@@ -77,7 +78,7 @@ const ExcelColumns = (props) => {
     const dummyDeleteArray = new Array(props.excelColumns.length)
     const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
     const excelChangedInit = useRef(props.excelColumns)
-
+    const eTargetId = useRef("")
     // console.log(sqlColumnDatas)
     // console.log(props.sqlHooks)
 
@@ -96,10 +97,35 @@ const ExcelColumns = (props) => {
     const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
 
 
-    function deleteCheck(e) {
-        setDeletId(() => {
-            return e.target.id
-        })
+    const deleteCheck= (e) => {
+        // setDeletId(e.target.id)
+        // return () => {
+        //     setDeletId(false)
+        // }
+        // console.log(e.target.id)
+        if (e.target.id) {
+            // console.log("asdfasdfasdfsdfadfdsfsadf")
+            eTargetId.current = e.target.id
+        }
+        // let deleteIdData = deleteArray
+        // console.log("deleteIdData")
+        // console.log(deleteArray)
+        // deleteIdData[e.target.id] = !deleteIdData[e.target.id]
+        let deleteIdData = deleteArray.map((v, i) => {
+            // console.log(i);
+            if(i===parseInt(eTargetId.current)){
+                // return !v
+                // console.log("들어오니")
+                return !v
+            }else{
+                return v
+            }});
+        // console.log(deleteIdData)
+        // console.log(deleteArray)
+        setDeletArray(deleteIdData)
+        return () => {
+            setDeletId(false);
+        }
     }
 
     function idCheck(e) {
@@ -122,15 +148,13 @@ const ExcelColumns = (props) => {
     }
 
 
-    useEffect(() => {
-        const deleteIdData = deleteArray
-        deleteIdData[deleteId] = !deleteIdData[deleteId]
-        setDeletArray(() => 
-            deleteIdData
-        )
-        setDeletId(false)
+    // useEffect(() => {
+    //     const deleteIdData = deleteArray
+    //     deleteIdData[deleteId] = !deleteIdData[deleteId]
+    //     setDeletArray(deleteIdData)
+    //     setDeletId(false)
  
-    }, [deleteId])
+    // }, [deleteId])
 
     useEffect(() => {         //////////////////////////////////////////////
         if (excelChangedInit){
@@ -154,7 +178,7 @@ const ExcelColumns = (props) => {
         // return () => {
         //     // setExcelChangedInit(excelChangedInit)
         // }
-    }, [deleteId, targetId])
+    }, [deleteId, targetId, deleteArray])
 
     useEffect(() => {
         // setExcelColumnArray(props.excelColumns)
@@ -234,7 +258,7 @@ const ExcelColumns = (props) => {
 
     return (
         <>
-            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}>AutoMapping</button></h1>
+            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}><FindInPageIcon/>AutoMapping</button></h1>
             <Collapse in={alertOpen}>
                 <Alert severity="error">This is an error alert — check it out!</Alert>
                 <Alert severity="warning">This is a warning alert — check it out!</Alert>
@@ -246,8 +270,8 @@ const ExcelColumns = (props) => {
             {/* <p>{"targetId  :  " + targetId}</p> */}
             {/* <p>{"sqlHook  :  " + props.sqlHook}</p> */}
             {/* <p>{"sqlColumnData  :  " + sqlColumnData}</p> */}
-            {/* <p>{"deleteArray  :  " + deleteArray}</p> */}
-            {/* <p>{"beChangeArray  :  " + beChangeArray}</p> */}
+            <p>{"deleteArray  :  " + deleteArray}</p>
+            <p>{"beChangeArray  :  " + beChangeArray}</p>
             {/* <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
             {/* <p>{"excelColumnArray  :  " + excelColumnArray}</p> */}
             <TableContainer className={classes.table} component={Paper}>
@@ -287,13 +311,13 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                             
                                             </StyledTableCell>
-                                            <StyledTableCell align="middle" id={id}>
+                                            <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
                                                 {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
-                                                <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
+                                                <IconButton aria-label="delete" id={id}>
                                                     {(deleteArray[id]) ? 
-                                                        <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
+                                                        <DeleteOutlineIcon id={id} style={{ fontSize: 25 }} /> 
                                                         : 
-                                                        <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
+                                                        <DeleteIcon id={id} style={{ fontSize: 25 }} 
                                                     /> }
                                                     {/* <DeleteIcon /> */}
                                                 </IconButton>
@@ -319,17 +343,17 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                                     <NotInterestedIcon />
                                                     <RemoveCircleOutlineIcon />
                                                 </> 
-                                            }
+                                            } 
                                             {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                         
                                         </StyledTableCell>
-                                        <StyledTableCell align="middle" id={id}>
+                                        <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
                                             {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
-                                            <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
+                                            <IconButton aria-label="delete" id={id}>
                                                 {(deleteArray[id]) ? 
-                                                    <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
+                                                    <DeleteOutlineIcon id={id} style={{ fontSize: 25 }} /> 
                                                     : 
-                                                    <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
+                                                    <DeleteIcon id={id} style={{ fontSize: 25 }} 
                                                 /> }
                                                 {/* <DeleteIcon /> */}
                                             </IconButton>

@@ -202,7 +202,7 @@ const GridComponent = () => {
                 targetArray.push(tergetObject)
                 compareColumnsData.push(a)
             } else {
-                console.log("없다")
+                // console.log("없다")
             }
         }
         if (targetArray) {
@@ -306,7 +306,7 @@ const GridComponent = () => {
 
 
             } else {
-                console.log("없다")
+                // console.log("없다")
                 if (a) {
 
                     console.log("1")

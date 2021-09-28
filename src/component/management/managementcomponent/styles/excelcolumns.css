@@ -1,5 +1,5 @@
 button.excelColumns {
-    width: 100px;
+    width: 130px;
     height: 10px;
     border-radius: 13px;
     color: #424242;
@@ -7,9 +7,9 @@ button.excelColumns {
     /* box-sizing: border-box; */
     border: 0px solid transparent;
     /* padding: 15px 50px; */
-    padding: 15px 15px 22px 15px;
+    padding: 15px 15px 25px 15px;
     /* margin-right: 10px; */
-    box-shadow: 0px 2px 5px #a0a0a0;
+    box-shadow: 0px 1px 2px #a0a0a0;
     /* margin: 0px; */
     font-family: sans-serif;
     text-align: center;
