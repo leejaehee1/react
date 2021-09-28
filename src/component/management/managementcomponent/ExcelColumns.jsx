@@ -171,7 +171,7 @@ const ExcelColumns = (props) => {
 
     return (
         <>
-            <h1>Excel Columns</h1>
+            <h1>Excel Columns</h1>{targetId}
             <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>
@@ -192,31 +192,66 @@ const ExcelColumns = (props) => {
                     </TableHead>
                     <TableBody>
                         {excelColumnArray.map((row, id) => (
-                            <StyledTableRow hover key={row}>
-                                <StyledTableCell component="th" scope="row">
-                                    {/* <handleOriginal rowData={row} />
-                                    <handleOriginal /> */}
-                                {/* {row.name} */}
-                                {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
-                                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
+                            <>
+                                {id===parseInt(targetId)?
+                                        <StyledTableRow hover key={row} style={{background: "#e0e0e0"}}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {/* <handleOriginal rowData={row} />
+                                                <handleOriginal /> */}
+                                                {/* {row.name} */}
+                                                {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                                {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
+                                                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
+                                            
+                                            </StyledTableCell>
+                                            <StyledTableCell align="middle" id={id}>
+                                                {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
+                                                <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
+                                                    {(deleteArray[id]) ? 
+                                                        <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
+                                                        : 
+                                                        <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
+                                                    /> }
+                                                    {/* <DeleteIcon /> */}
+                                                </IconButton>
+                                            </StyledTableCell>
+                                            <StyledTableCell align="right" onClick={idCheck} id={id}>
+                                                {beChangeArray[id]}
+                                            </StyledTableCell>
+                                            {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                            <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
+                                        </StyledTableRow>
+                                    :
+                                    <StyledTableRow hover key={row} >
+                                        <StyledTableCell component="th" scope="row">
+                                            {/* <handleOriginal rowData={row} />
+                                            <handleOriginal /> */}
+                                            {/* {row.name} */}
+                                            {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                            {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
+                                            {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
+                                        
+                                        </StyledTableCell>
+                                        <StyledTableCell align="middle" id={id}>
+                                            {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
+                                            <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
+                                                {(deleteArray[id]) ? 
+                                                    <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
+                                                    : 
+                                                    <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
+                                                /> }
+                                                {/* <DeleteIcon /> */}
+                                            </IconButton>
+                                        </StyledTableCell>
+                                        <StyledTableCell align="right" onClick={idCheck} id={id}>
+                                            {beChangeArray[id]}
+                                        </StyledTableCell>
+                                        {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                                        <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
+                                    </StyledTableRow>
+                                }
                                 
-                                </StyledTableCell>
-                                <StyledTableCell align="middle" id={id}>
-                                    {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
-                                    <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
-                                        {(deleteArray[id]) ? 
-                                                <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
-                                            : 
-                                                <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
-                                        /> }
-                                        {/* <DeleteIcon /> */}
-                                    </IconButton>
-                                </StyledTableCell>
-                                <StyledTableCell align="right" onClick={idCheck} id={id}>{beChangeArray[id]}</StyledTableCell>
-                                {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
-                            </StyledTableRow>
+                            </>
                         ))}
                     </TableBody>
                 </Table>

@@ -124,7 +124,7 @@ const TableColumns = (props) => {
                                     </StyledTableCell>
                                     <StyledTableCell align="left">
                                         {row==='projectID' || row==='punchID'?
-                                                <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                                                <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
                                             :
                                                 null
                                         }
@@ -137,7 +137,7 @@ const TableColumns = (props) => {
                                     </StyledTableCell>
                                     <StyledTableCell align="left">
                                         {row==='projectID' || row==='punchID'?
-                                                <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                                                <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
                                             :
                                                 null
                                         }
