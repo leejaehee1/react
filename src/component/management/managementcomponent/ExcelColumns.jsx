@@ -14,6 +14,11 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import IconButton from '@material-ui/core/IconButton';
 import './styles/excelcolumns.css'
 
+//alert
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
+
+
 
 import { useGetList } from 'react-admin';
 
@@ -172,9 +177,22 @@ const ExcelColumns = (props) => {
         
     }
 
+    const [alertOpen, setAlertOpen] = useState(true);
+
+    const searchMappingColumns = () => {
+        alert("autoMapping을 시작합니다")
+    }
+
     return (
         <>
-            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns">AutoMapping</button></h1>
+            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}>AutoMapping</button></h1>
+            <Collapse in={alertOpen}>
+                <Alert severity="error">This is an error alert — check it out!</Alert>
+                <Alert severity="warning">This is a warning alert — check it out!</Alert>
+                <Alert severity="info">This is an info alert — check it out!</Alert>
+                <Alert severity="success">This is a success alert — check it out!</Alert>
+                <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert>
+            </Collapse>
             <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>
