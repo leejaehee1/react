@@ -195,8 +195,50 @@ const ExcelColumns = (props) => {
 
     const searchMappingColumns = () => {
         alert("autoMapping을 시작합니다")
-        console.log(dbColumnvalue)
+        // console.log(dbColumnvalue)
+        // console.log(excelChangedInit.current)
+
+
+
+        let updateSampleData = []
+        for (var excelCol of excelChangedInit.current) {
+            // console.log(excelCol.toLowerCase())
+            // console.log(excelCol)
+            for (var DbCol of dbColumnvalue) {
+                if (excelCol.toLowerCase() === DbCol.toLowerCase()){
+                    updateSampleData.push(DbCol);
+                    break;
+                }else {
+                    if(DbCol === dbColumnvalue[dbColumnvalue.length-1]){
+                        updateSampleData.push(excelCol);
+                        break;
+                    }
+                }
+            }
+        }
         console.log(excelChangedInit.current)
+        excelChangedInit.current = updateSampleData
+        console.log(excelChangedInit.current)
+        // if (excelChangedInit){
+        //     const b = props.excelColumns.map((v, i) => 
+        //     {if (deleteArray[i]) {
+        //         if (beChangeArray[i]) {
+        //             return beChangeArray[i]
+        //         } else {
+        //             return v
+        //         }
+        //     } else {
+        //         // return v
+        //     }
+        //     // console.log(1111111111111111111111111111111)
+        // }
+        // )
+        //     // console.log(b)
+        //     excelChangedInit.current=b
+        // }
+
+
+        accdd()
 
     }
 
