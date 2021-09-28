@@ -69,7 +69,6 @@ const ExcelColumns = (props) => {
     const [deleteId, setDeletId] = React.useState(false)
     const dummyDeleteArray = new Array(props.excelColumns.length)
     const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
-    // const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
     const excelChangedInit = useRef(props.excelColumns)
 
     // console.log(sqlColumnDatas)
@@ -128,7 +127,7 @@ const ExcelColumns = (props) => {
 
     useEffect(() => {         //////////////////////////////////////////////
         if (excelChangedInit){
-            const b = props.excelColumns.map((v, i) => 
+            const b = excelChangedInit.current.map((v, i) => 
             {if (deleteArray[i]) {
                 if (beChangeArray[i]) {
                     return beChangeArray[i]
@@ -151,7 +150,7 @@ const ExcelColumns = (props) => {
     }, [deleteId, targetId])
 
     useEffect(() => {
-        setExcelColumnArray(props.excelColumns)
+        // setExcelColumnArray(props.excelColumns)
         // setSqlColumnData(sqlHook)
         if ( sqlColumnData &&  targetId ) {
             
@@ -216,29 +215,13 @@ const ExcelColumns = (props) => {
                 }
             }
         }
-        console.log(excelChangedInit.current)
+        // console.log(excelChangedInit.current)
         excelChangedInit.current = updateSampleData
-        console.log(excelChangedInit.current)
-        // if (excelChangedInit){
-        //     const b = props.excelColumns.map((v, i) => 
-        //     {if (deleteArray[i]) {
-        //         if (beChangeArray[i]) {
-        //             return beChangeArray[i]
-        //         } else {
-        //             return v
-        //         }
-        //     } else {
-        //         // return v
-        //     }
-        //     // console.log(1111111111111111111111111111111)
-        // }
-        // )
-        //     // console.log(b)
-        //     excelChangedInit.current=b
-        // }
-
-
+        // console.log(excelChangedInit.current)
         accdd()
+        setExcelColumnArray(excelChangedInit.current)
+        // return () => {
+        // }
 
     }
 
@@ -254,11 +237,12 @@ const ExcelColumns = (props) => {
             </Collapse>
             {/* <p>{"deleteId  :  " + deleteId}</p> */}
             {/* <p>{"targetId  :  " + targetId}</p> */}
-            <p>{"sqlHook  :  " + props.sqlHook}</p>
-            <p>{"sqlColumnData  :  " + sqlColumnData}</p>
-            <p>{"deleteArray  :  " + deleteArray}</p>
-            <p>{"beChangeArray  :  " + beChangeArray}</p>
+            {/* <p>{"sqlHook  :  " + props.sqlHook}</p> */}
+            {/* <p>{"sqlColumnData  :  " + sqlColumnData}</p> */}
+            {/* <p>{"deleteArray  :  " + deleteArray}</p> */}
+            {/* <p>{"beChangeArray  :  " + beChangeArray}</p> */}
             <p>{"excelChangedInit  :  " + excelChangedInit.current}</p>
+            <p>{"excelColumnArray  :  " + excelColumnArray}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
