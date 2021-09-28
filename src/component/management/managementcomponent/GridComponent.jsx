@@ -59,6 +59,10 @@ import ScheduleImpact from './inputComponent/ScheduleImpact';
 import CostImpact from './inputComponent/CostImpact';
 import ClosedDate from './inputComponent/ClosedDate';
 
+
+// css
+import './styles/GridComponent.css'
+
 const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -242,8 +246,16 @@ const GridComponent = () => {
         for (const a of applyData) {
             const indexA = applyData.indexOf(a)
             // if (baseComparing.includes( a ? a.toLowerCase() : a)) {
-            if (a) {
-                let tergetObject = {title: a, field: a}
+            if (a) {     
+                                    // apply 누를 시 적용 되는 부분-------------------------------------------------------------------------------------------
+                if (a==="DESCRIPTION #1"){
+                    var tergetObject = {title: a, field: a, width: "10%"}
+                    console.log('asdfasfd')
+                }else {
+                    var tergetObject = {title: a, field: a}
+                }
+                // let tergetObject = {title: a, field: a}
+
                 targetArray.push(tergetObject)
                 compareColumnsData.push(a)
                 // 여기 값을 추가하면 안된다. 왜냐하면, 컬럼은 변경되는데, row값이 지워지고, delete가 안먹힌다.
@@ -319,7 +331,7 @@ const GridComponent = () => {
                 }
             }
         }
-        // console.log(1000000000000123123123213123)
+        console.log(targetArray)
         setColDefs(targetArray)
         updateColDefs.current = targetArray
     }
@@ -643,17 +655,14 @@ const GridComponent = () => {
             
             <>
             {/* <p>{rData} : {eachRowVData[index]}</p> */}
-
             {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
-            
-
             {detailUI[rData]}
             </>
             
         )
 
-    
-
+    // material-table    
+    const [selectedRow, setSelectedRow] = useState(null);
 
     return (
         <div style={{ maxWidth: '100%' }}>
@@ -661,37 +670,27 @@ const GridComponent = () => {
                 <React.Fragment key="right">
                     <Button onClick={toggleDrawer(true)}>TOPPunchList</Button>
                     <Drawer anchor="right" open={rightDrawerState} onClose={toggleDrawer(false)}>
-                        {/* {list(anchor)} */}
                         <div
                             className={clsx(classes.list, {
                                 [classes.fullList]: anchor === 'top' || anchor === 'bottom',
                             })}
                             role="presentation"
-                            // onClick={toggleDrawer(false)}
-                            // onKeyDown={toggleDrawer(false)}
+
                         >
                             <ListItem button key="Inbox">
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
                             </ListItem>
-                            {/* <Slider
-                                defaultValue={3}
-                                // getAriaValueText={valuetext}
-                                // aria-labelledby="discrete-slider"
-                                valueLabelDisplay="auto"
-                                step={1}
-                                marks
-                                min={1}
-                                max={5}
-                            />
-                            <DataTime /> */}
+
                             <p>
-            아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
-            </p>
+                                아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
+                            </p>
+                            
+
 
                             <form className={classes.root}  onSubmit={handleSubmit}>
                                 {rowData}
-                                <button type="submit">submit</button>
+                                <button className="updateRowButton" type="submit">submit</button>
                             </form>
                             <Divider />
                         </div>
@@ -700,20 +699,14 @@ const GridComponent = () => {
             </div>
             <MaterialTable 
                 title="Punchlist data" 
-
-
-
-
-
                 data={data} 
                 columns={colDefs} 
-                // columns={updateColDefs.current} 
-
-
-
-
 
                 onRowClick={(event, rowData)=> {
+                    // 클릭 시 배경
+                    setSelectedRow(rowData.punchID)
+                    console.dir(rowData)
+
                     setRightDrawerState(true)
                     // console.log(1)
                     // console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -761,28 +754,39 @@ const GridComponent = () => {
                     setEachRowVData(eachRowValueData.current)
                 }}
                 options={{
+                    // rowStyle: rowData => ({  // 렉폭팔
+                    //     backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'
+                    //   }),
+                    // rowStyle: (rowData) => {
+                    //     return {
+                    //         backgroundColor: (selectedRow === rowData.tableData.id)? '#EEE' : '#FFF',
+                    //     }
+                    // },
                     paginationType: "stepped",
                     columnsButton:true,
                     // https://material-table.com/#/docs/features/styling
                     headerStyle: {
-                        width: 26,
+                        backgroundColor: '#616161',
+                        width: '260px',
+                        height: '5px',
                         // whiteSpace: 'nowrap',
                         // textAlign: 'left',
                         // flexDirection: 'row',
-                        // overflow: 'hidden',
+                        overflow: 'hidden',
                         // textOverflow: 'ellipsis',
                         // paddingLeft: 5,
                         // paddingRight: 5,
                         // backgroundColor: "#607d8b",
-                        backgroundColor: "#263238",
+                        // backgroundColor: "#263238",
                         fontWeight: 'bold',
                         color: "white",
                       },
+                    tableLayout: 'fixed',
                 }}
                 components={{
                     Toolbar: props => (
                       <div>
-                        <div style={{padding:0, width:'100%'}}>
+                        <div style={{padding:3, width:'100%'}}>
                         {/* <MTableToolbar {...props} /> */}
                         <Box display="flex" p={1} bgcolor="background.paper">
                             <Box p={1} flexGrow={1} >

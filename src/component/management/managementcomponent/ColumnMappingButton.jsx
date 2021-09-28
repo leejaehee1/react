@@ -106,6 +106,7 @@ const ColumnMappingButton = (props) => {
   const handleClose = () => {
     setOpen(false);
     setModalFlag(true)
+    setAlertOpen(false);
     // console.log(open)
     // console.log(modalFlag)
   };
@@ -118,12 +119,14 @@ const ColumnMappingButton = (props) => {
       return null
     }
     setOpen(false);
-    setModalFlag(true)
+    setModalFlag(true);
+    setAlertOpen(false);
     // console.log(open)
     // console.log(modalFlag)
     // console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
     // console.log(excelChangedHook)
     props.onApply(excelChangedHook)
+    
   };
 
   useEffect(() => {
