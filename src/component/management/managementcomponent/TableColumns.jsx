@@ -52,6 +52,7 @@ const TableColumns = (props) => {
     // const [ targetData, setTargetData ] = useState(data)
     const targetData = useRef(data? data : [])
     const [ dbColumns, setDbColumns ] = useState([])
+    // const [checkedClickColumns, setCheckedClickColumns] = useState("")
 
 
     var isEmpty = function(value){ 
@@ -83,20 +84,23 @@ const TableColumns = (props) => {
         setCheckTableColumn(() => {
             return e.target.innerHTML
         })
+        // if(checkedClickColumns === e.target.innerHTML) {
+            
+        // } else {
+        //     setCheckedClickColumns(e.target.innerHTML)
+        // }
     }
 
     useEffect(() => {
         props.onTable(checkTableColumn)
         props.onTables(dbColumnvalue)
-        return ()=> {
-            setCheckTableColumn("")
-        }
     }, [checkTableColumn])
 
     return (
         <>
             <h1>Table Columns</h1>
-            {checkTableColumn}
+            {/* {checkTableColumn} */}
+            {/* {checkedClickColumns} */}
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
@@ -112,18 +116,49 @@ const TableColumns = (props) => {
                     <TableBody>
                         {/* {dbColumns.slice(0, 40).map((row) => ( */}
                         {dbColumnvalue.slice(0, 40).map((row) => (
-                            <StyledTableRow hover key={row} onClick={checka} style={{background: "#e0e0e0"}}>
-                                <StyledTableCell component="th" scope="row">
-                                    {row}  
-                                </StyledTableCell>
-                                <StyledTableCell align="left">
-                                    {row==='projectID' || row==='punchID'?
-                                            <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
-                                        :
-                                            null
-                                    }
-                                </StyledTableCell>
-                            </StyledTableRow>
+                            <>
+                            { row===checkTableColumn?
+                                <StyledTableRow hover key={row} onClick={checka} style={{background: "#e0e0e0"}}>
+                                    <StyledTableCell component="th" scope="row">
+                                        {row}  
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">
+                                        {row==='projectID' || row==='punchID'?
+                                                <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                                            :
+                                                null
+                                        }
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                                :
+                                <StyledTableRow hover key={row} onClick={checka} >
+                                    <StyledTableCell component="th" scope="row">
+                                        {row}  
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">
+                                        {row==='projectID' || row==='punchID'?
+                                                <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                                            :
+                                                null
+                                        }
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            }
+                            </>
+
+
+                            // <StyledTableRow hover key={row} onClick={checka} style={{background: "#e0e0e0"}}>
+                            //     <StyledTableCell component="th" scope="row">
+                            //         {row}  
+                            //     </StyledTableCell>
+                            //     <StyledTableCell align="left">
+                            //         {row==='projectID' || row==='punchID'?
+                            //                 <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                            //             :
+                            //                 null
+                            //         }
+                            //     </StyledTableCell>
+                            // </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
