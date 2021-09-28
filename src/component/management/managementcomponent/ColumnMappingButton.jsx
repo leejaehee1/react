@@ -16,7 +16,9 @@ import ExcelColumns from './ExcelColumns';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import './styles/excelcolumns.css'
 
-
+//alert
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,6 +90,9 @@ const ColumnMappingButton = (props) => {
 
   const [checkExcelToTable, setCheckExcelToTable] = React.useState(false)
 
+  //alert
+  const [alertOpen, setAlertOpen] = React.useState(false);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -106,6 +111,12 @@ const ColumnMappingButton = (props) => {
   };
 
   const handleCloseApply = () => {
+    console.log(excelChangedHook)
+    if (!excelChangedHook.includes('projectID') || !excelChangedHook.includes('punchID')){
+      // alert('PK 포함 안되어 있다. 아무 반응 없다.');
+      setAlertOpen(true)
+      return null
+    }
     setOpen(false);
     setModalFlag(true)
     // console.log(open)
@@ -165,6 +176,13 @@ const ColumnMappingButton = (props) => {
           Column Mapping
         </DialogTitle>
         <DialogContent dividers>
+        <Collapse in={alertOpen}>
+          <Alert severity="error" onClose={() => {setAlertOpen(false)}}>This is an error alert — check Primary-Key columns!</Alert>
+          {/* <Alert severity="warning">This is a warning alert — check it out!</Alert> */}
+          {/* <Alert severity="info">This is an info alert — check it out!</Alert> */}
+          {/* <Alert severity="success">This is a    alert — check it out!</Alert> */}
+          {/* <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert> */}
+        </Collapse>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Paper className={classes.paper} elevation={0}>
@@ -176,7 +194,14 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} sqlHooks={sqlHooks} onLogic={changeColumn} setCheckExcelToTable={setCheckExcelToTable} />
+                <ExcelColumns 
+                    excelColumns={excelHook} 
+                    sqlHook={sqlHook} 
+                    sqlHooks={sqlHooks} 
+                    onLogic={changeColumn} 
+                    setCheckExcelToTable={setCheckExcelToTable} 
+                    // setAlertOpen={setAlertOpen}
+                />
               </Paper>
             </Grid>
             <Grid item xs={2}>

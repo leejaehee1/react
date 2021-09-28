@@ -23,8 +23,8 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 import './styles/excelcolumns.css'
 
 //alert
-import { Alert, AlertTitle } from '@material-ui/lab';
-import Collapse from '@material-ui/core/Collapse';
+// import { Alert, AlertTitle } from '@material-ui/lab';
+// import Collapse from '@material-ui/core/Collapse';
 
 
 
@@ -221,7 +221,7 @@ const ExcelColumns = (props) => {
         
     }
 
-    const [alertOpen, setAlertOpen] = useState(true);
+    // const [alertOpen, setAlertOpen] = useState(true);
 
     const searchMappingColumns = () => {
         alert("autoMapping을 시작합니다")
@@ -259,19 +259,19 @@ const ExcelColumns = (props) => {
     return (
         <>
             <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}><FindInPageIcon/>AutoMapping</button></h1>
-            <Collapse in={alertOpen}>
+            {/* <Collapse in={alertOpen}>
                 <Alert severity="error">This is an error alert — check it out!</Alert>
                 <Alert severity="warning">This is a warning alert — check it out!</Alert>
                 <Alert severity="info">This is an info alert — check it out!</Alert>
                 <Alert severity="success">This is a    alert — check it out!</Alert>
                 <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert>
-            </Collapse>
+            </Collapse> */}
             {/* <p>{"deleteId  :  " + deleteId}</p> */}
             {/* <p>{"targetId  :  " + targetId}</p> */}
             {/* <p>{"sqlHook  :  " + props.sqlHook}</p> */}
             {/* <p>{"sqlColumnData  :  " + sqlColumnData}</p> */}
-            <p>{"deleteArray  :  " + deleteArray}</p>
-            <p>{"beChangeArray  :  " + beChangeArray}</p>
+            {/* <p>{"deleteArray  :  " + deleteArray}</p> */}
+            {/* <p>{"beChangeArray  :  " + beChangeArray}</p> */}
             {/* <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
             {/* <p>{"excelColumnArray  :  " + excelColumnArray}</p> */}
             <TableContainer className={classes.table} component={Paper}>
