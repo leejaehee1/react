@@ -67,8 +67,8 @@ const ExcelColumns = (props) => {
     // const [excelChangedInit, setExcelChangedInit] = React.useState(props.excelColumns)
     const excelChangedInit = useRef(props.excelColumns)
 
-    console.log(sqlColumnDatas)
-    console.log(props.sqlHooks)
+    // console.log(sqlColumnDatas)
+    // console.log(props.sqlHooks)
 
 
     function deleteCheck(e) {
@@ -141,8 +141,12 @@ const ExcelColumns = (props) => {
             setBeChangeArray(inputData)
             setTargetId(false)
             setSqlColumnData(false)
+            props.setCheckExcelToTable(true)
 
             
+        }
+        return () => {
+            props.setCheckExcelToTable(false)
         }
     }, [targetId, sqlColumnData])
 
@@ -159,7 +163,6 @@ const ExcelColumns = (props) => {
     const [originalFlag, setOriginalFlag] = useState(false)
     const handleOriginal = (props) => {
         // setOriginalFlag(false)
-        console.log(props.row)
         // if (sqlColumnDatas.includes(props.row)) {
     // }
         return 
@@ -171,7 +174,7 @@ const ExcelColumns = (props) => {
 
     return (
         <>
-            <h1>Excel Columns</h1>{targetId}
+            <h1>Excel Columns</h1>
             <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>

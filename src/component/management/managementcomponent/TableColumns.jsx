@@ -54,6 +54,7 @@ const TableColumns = (props) => {
     const [ dbColumns, setDbColumns ] = useState([])
     // const [checkedClickColumns, setCheckedClickColumns] = useState("")
 
+  
 
     var isEmpty = function(value){ 
         if(  value == null || value == undefined){
@@ -69,7 +70,14 @@ const TableColumns = (props) => {
     
     useEffect(() => {
         setDbColumns(()=>dbColumnvalue)
+        // if(props.checkExcelToTable){
+        //     setCheckTableColumn("")
+        // }
     }, [])
+
+    useEffect(() => {
+        setCheckTableColumn("")
+    }, [props.checkExcelToTable])
 
     useEffect(()=> {
         targetData.current = data

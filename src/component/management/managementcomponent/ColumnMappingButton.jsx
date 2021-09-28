@@ -84,6 +84,9 @@ const ColumnMappingButton = (props) => {
   const [excelChangedHook, setExcelChangedHook] = React.useState("")
 
 
+  const [checkExcelToTable, setCheckExcelToTable] = React.useState(false)
+
+
   const handleClickOpen = () => {
     setOpen(true);
     setModalFlag(false)
@@ -171,7 +174,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} sqlHooks={sqlHooks} onLogic={changeColumn} />
+                <ExcelColumns excelColumns={excelHook} sqlHook={sqlHook} sqlHooks={sqlHooks} onLogic={changeColumn} setCheckExcelToTable={setCheckExcelToTable} />
               </Paper>
             </Grid>
             <Grid item xs={2}>
@@ -185,7 +188,7 @@ const ColumnMappingButton = (props) => {
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
                 </Typography> */}
-                <TableColumns onTable={updateColumn} onTables={updateColumns}  /> 
+                <TableColumns onTable={updateColumn} onTables={updateColumns} checkExcelToTable={checkExcelToTable} /> 
               </Paper>
             </Grid>
           </Grid>
