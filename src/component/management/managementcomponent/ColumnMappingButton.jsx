@@ -157,7 +157,7 @@ const ColumnMappingButton = (props) => {
         maxWidth="lg"     // xs, sm, md, lg, xl
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
+          Column Mapping
         </DialogTitle>
         <DialogContent dividers>
           <Grid container spacing={3} alignItems="center">

@@ -11,6 +11,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { PROPERTY_TYPES } from '@babel/types';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+import IconButton from '@material-ui/core/IconButton';
+
+
 
 import { useGetList } from 'react-admin';
 
@@ -169,13 +172,13 @@ const ExcelColumns = (props) => {
     return (
         <>
             <h1>Excel Columns</h1>
-            <p>{"deleteId  :  " + deleteId}</p>
+            {/* <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <p>{"deleteArray  :  " + deleteArray}</p>
             <p>{"beChangeArray  :  " + beChangeArray}</p>
-            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p>
+            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
@@ -199,9 +202,16 @@ const ExcelColumns = (props) => {
                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                 
                                 </StyledTableCell>
-                                <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
+                                <StyledTableCell align="middle" id={id}>
                                     {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
-                                    {(deleteArray[id]) ? <DeleteOutlineIcon style={{ fontSize: 25 }} /> : <DeleteIcon style={{ fontSize: 25 }} /> }
+                                    <IconButton aria-label="delete" onClick={deleteCheck} id={id}>
+                                        {(deleteArray[id]) ? 
+                                                <DeleteOutlineIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} /> 
+                                            : 
+                                                <DeleteIcon onClick={deleteCheck} id={id} style={{ fontSize: 25 }} 
+                                        /> }
+                                        {/* <DeleteIcon /> */}
+                                    </IconButton>
                                 </StyledTableCell>
                                 <StyledTableCell align="right" onClick={idCheck} id={id}>{beChangeArray[id]}</StyledTableCell>
                                 {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
