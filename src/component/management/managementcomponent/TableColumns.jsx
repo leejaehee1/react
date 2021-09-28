@@ -11,6 +11,9 @@ import Paper from '@material-ui/core/Paper';
 import { useGetList } from 'react-admin';
 import { PROPERTY_TYPES } from '@babel/types';
 
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -85,17 +88,22 @@ const TableColumns = (props) => {
     useEffect(() => {
         props.onTable(checkTableColumn)
         props.onTables(dbColumnvalue)
+        return ()=> {
+            setCheckTableColumn("")
+        }
     }, [checkTableColumn])
 
     return (
         <>
             <h1>Table Columns</h1>
+            {checkTableColumn}
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
                         <TableRow>
                         <StyledTableCell>DB columns</StyledTableCell>
-                        {/* <StyledTableCell align="right">Calories</StyledTableCell> */}
+                        {/* 가상 columns */}
+                        <StyledTableCell align="right"></StyledTableCell> 
                         {/* <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
                         <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
                         <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell> */}
@@ -104,14 +112,17 @@ const TableColumns = (props) => {
                     <TableBody>
                         {/* {dbColumns.slice(0, 40).map((row) => ( */}
                         {dbColumnvalue.slice(0, 40).map((row) => (
-                            <StyledTableRow hover key={row} onClick={checka}>
+                            <StyledTableRow hover key={row} onClick={checka} style={{background: "#e0e0e0"}}>
                                 <StyledTableCell component="th" scope="row">
-                                {row}
+                                    {row}  
                                 </StyledTableCell>
-                                {/* <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
+                                <StyledTableCell align="left">
+                                    {row==='projectID' || row==='punchID'?
+                                            <Chip avatar={<Avatar>FK</Avatar>} label="Check Required" />
+                                        :
+                                            null
+                                    }
+                                </StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>

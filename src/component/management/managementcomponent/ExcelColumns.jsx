@@ -172,13 +172,13 @@ const ExcelColumns = (props) => {
     return (
         <>
             <h1>Excel Columns</h1>
-            {/* <p>{"deleteId  :  " + deleteId}</p>
+            <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>
             <p>{"sqlColumnData  :  " + sqlColumnData}</p>
             <p>{"deleteArray  :  " + deleteArray}</p>
             <p>{"beChangeArray  :  " + beChangeArray}</p>
-            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
+            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p>
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>

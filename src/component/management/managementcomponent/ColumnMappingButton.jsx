@@ -162,7 +162,7 @@ const ColumnMappingButton = (props) => {
         <DialogContent dividers>
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} elevation={0}>
                 {/* <Typography gutterBottom>
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -175,10 +175,12 @@ const ColumnMappingButton = (props) => {
               </Paper>
             </Grid>
             <Grid item xs={2}>
-              <Paper className={classes.paper}><KeyboardBackspaceIcon style={{ fontSize: 80 }} /></Paper>
+              <Paper className={classes.paper} elevation={0}>
+                <KeyboardBackspaceIcon style={{ fontSize: 80 }} />
+              </Paper>
             </Grid>
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
+            <Grid item xs={4} elevation={0}>
+              <Paper className={classes.paper} elevation={0}>
                 {/* <Typography gutterBottom>
                   Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
                   in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
