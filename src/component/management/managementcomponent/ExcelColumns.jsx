@@ -12,6 +12,13 @@ import { PROPERTY_TYPES } from '@babel/types';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import IconButton from '@material-ui/core/IconButton';
+
+// search Icon
+import HttpsIcon from '@material-ui/icons/Https';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+
 import './styles/excelcolumns.css'
 
 //alert
@@ -241,8 +248,8 @@ const ExcelColumns = (props) => {
             {/* <p>{"sqlColumnData  :  " + sqlColumnData}</p> */}
             {/* <p>{"deleteArray  :  " + deleteArray}</p> */}
             {/* <p>{"beChangeArray  :  " + beChangeArray}</p> */}
-            <p>{"excelChangedInit  :  " + excelChangedInit.current}</p>
-            <p>{"excelColumnArray  :  " + excelColumnArray}</p>
+            {/* <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
+            {/* <p>{"excelColumnArray  :  " + excelColumnArray}</p> */}
             <TableContainer className={classes.table} component={Paper}>
                 <Table aria-label="select all desserts">
                     <TableHead>
@@ -255,6 +262,11 @@ const ExcelColumns = (props) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+
+                    {/* import HttpsIcon from '@material-ui/icons/Https';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */}
                         {excelColumnArray.map((row, id) => (
                             <>
                                 {id===parseInt(targetId)?
@@ -264,7 +276,14 @@ const ExcelColumns = (props) => {
                                                 <handleOriginal /> */}
                                                 {/* {row.name} */}
                                                 {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                                {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
+                                                {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:
+                                                    <>
+                                                    <HttpsIcon />
+                                                    <HighlightOffIcon /> 
+                                                    <NotInterestedIcon />
+                                                    <RemoveCircleOutlineIcon />
+                                                    </>
+                                                    }
                                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                             
                                             </StyledTableCell>
@@ -292,7 +311,15 @@ const ExcelColumns = (props) => {
                                             <handleOriginal /> */}
                                             {/* {row.name} */}
                                             {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                            {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:"(columns변경)" }
+                                            {(props.sqlHooks.includes(row))? <DoneOutlineIcon />
+                                            :
+                                                <>
+                                                    <HttpsIcon />
+                                                    <HighlightOffIcon /> 
+                                                    <NotInterestedIcon />
+                                                    <RemoveCircleOutlineIcon />
+                                                </> 
+                                            }
                                             {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                         
                                         </StyledTableCell>
