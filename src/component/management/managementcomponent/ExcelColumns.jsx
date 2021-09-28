@@ -12,7 +12,7 @@ import { PROPERTY_TYPES } from '@babel/types';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import IconButton from '@material-ui/core/IconButton';
-
+import './styles/excelcolumns.css'
 
 
 import { useGetList } from 'react-admin';
@@ -167,14 +167,14 @@ const ExcelColumns = (props) => {
     // }
         return 
             <>
-            안나와?
+                안나와?
             </>
         
     }
 
     return (
         <>
-            <h1>Excel Columns</h1>
+            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns">AutoMapping</button></h1>
             <p>{"deleteId  :  " + deleteId}</p>
             <p>{"targetId  :  " + targetId}</p>
             <p>{"sqlHook  :  " + props.sqlHook}</p>

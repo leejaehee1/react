@@ -14,6 +14,8 @@ import TableColumns from './TableColumns';
 import ExcelColumns from './ExcelColumns';
 
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import './styles/excelcolumns.css'
+
 
 
 const useStyles = makeStyles((theme) => ({
