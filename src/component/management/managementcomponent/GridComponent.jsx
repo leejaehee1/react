@@ -15,6 +15,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
+
 
 // color
 
@@ -781,11 +783,15 @@ const GridComponent = () => {
                             role="presentation"
 
                         >
+                            <br />
                             <ListItem button key="Inbox">
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
+                                <button className="updateRowColumnCodeData"><FindInPageIcon/>AutoMapping</button>
                             </ListItem>
 
+                            <hr style={{width:'460px'}} />
+                            <br />
                             <p>
                                 아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
                             </p>

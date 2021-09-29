@@ -32,7 +32,7 @@ const Status = (props) => {
   return (
     <div>
       Status &nbsp;&nbsp; : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <NativeSelect id="status"  onChange={changeStatus}>
+      <NativeSelect id="status" variant="outlined"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
           if (a.status !== props.static){ 
@@ -45,10 +45,10 @@ const Status = (props) => {
       {
         (state==="Change this value" || state==="select button")
         ?<span style={{color:"red", fontSize:"15px", float:'right',  // 아래가 줄 짤리는 로직
-                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                      width:'100px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
                     }}>{state}</span>
         :<span style={{color:"black", fontSize:"15px", float:'right', 
-                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                      width:'100px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
                     }}>{state}</span>
       }
     </div>
