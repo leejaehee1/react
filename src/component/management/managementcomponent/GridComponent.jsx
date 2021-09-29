@@ -413,11 +413,18 @@ const GridComponent = () => {
     // }0316
     // console.log(dataStatus)
     // console.log(statusIds)
+
+    // change all projectID
+    const [allProjectTargetData, setAllProjectTargetData] = useState("");
+    useEffect(()=> {
+        console.log("allProjectTargetData")
+        console.log(allProjectTargetData)
+    }, [allProjectTargetData])
  
 
     const detailUI =  {
         projectID : (  // PK
-            <ProjectID static={eachRowData.current["projectID"]} />
+            <ProjectID static={eachRowData.current["projectID"]} setAllProjectTargetData={setAllProjectTargetData} />
         ),
         punchID : (    // PK
             <div style={{display:'inline-block'}}>
