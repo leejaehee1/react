@@ -311,7 +311,7 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                             
                                             </StyledTableCell>
-                                            <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
+                                            <StyledTableCell align="middle" onClickCapture={deleteCheck} id={id}>
                                                 {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
                                                 <IconButton aria-label="delete" id={id}>
                                                     {(deleteArray[id]) ? 
@@ -347,7 +347,7 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                             {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
                                         
                                         </StyledTableCell>
-                                        <StyledTableCell align="middle" onClick={deleteCheck} id={id}>
+                                        <StyledTableCell align="middle" onClickCapture={deleteCheck} id={id}>
                                             {/* <DeleteIcon style={{ fontSize: 25 }} /><DeleteOutlineIcon style={{ fontSize: 25 }} /> */}
                                             <IconButton aria-label="delete" id={id}>
                                                 {(deleteArray[id]) ? 

@@ -249,7 +249,7 @@ const GridComponent = () => {
             if (a) {     
                                     // apply 누를 시 적용 되는 부분-------------------------------------------------------------------------------------------
                 if (a==="DESCRIPTION #1"){
-                    var tergetObject = {title: a, field: a, width: "10%"}
+                    var tergetObject = {title: a, field: a, cellStyle: {height: "10px", maxHeight: "10px", overflow: "hidden"},}
                     console.log('asdfasfd')
                 }else {
                     var tergetObject = {title: a, field: a}
@@ -767,12 +767,12 @@ const GridComponent = () => {
                     // https://material-table.com/#/docs/features/styling
                     headerStyle: {
                         backgroundColor: '#616161',
-                        width: '260px',
+                        width: '10px',
                         height: '5px',
                         // whiteSpace: 'nowrap',
                         // textAlign: 'left',
                         // flexDirection: 'row',
-                        overflow: 'hidden',
+                        // overflow: 'hidden',
                         // textOverflow: 'ellipsis',
                         // paddingLeft: 5,
                         // paddingRight: 5,
