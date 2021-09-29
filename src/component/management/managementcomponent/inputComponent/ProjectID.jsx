@@ -34,9 +34,18 @@ const ProjectID = (props) => {
     }
   }, [])
 
+  const updateAllProjectID = () => {
+    // 변경할 데이터를 올려 줘야한다. 그말은 현재 위치하고 있는 값을 넣어줘야한다.
+    // 1. 적혀있는 데이터를 잘 가져오는지 console.log()로 찍는다.
+    // 2. 위에 있는 값이 DB에 있는지 없는지 로직 분기.
+    // 2-1. DB에 없으면 alert 띄워준다.
+    // 2-2. DB에 있으면 alert띄워주기 + props로 올린다.
+    // 3. props에 들어갈 데이터는 punchID랑 변경될 값을 넣어준다.
+  }
+
   return (
     <div style={{display:'inline-block'}}>
-      projectID &nbsp;&nbsp; :  <button type="button">change all data </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      projectID &nbsp;&nbsp; :  <button type="button" onClick={updateAllProjectID}>change all data </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <NativeSelect id="projectID"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
