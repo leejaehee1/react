@@ -697,10 +697,40 @@ const GridComponent = () => {
     // material-table    
     const [selectedRow, setSelectedRow] = useState(null);
 
+
+    // db columns는 column mapping 적용하면 생긴다. 그리고 생긴 것은 
+    const dbColumns = useRef("")
+    const compareDbColumns = (data) => {
+        console.log("data")
+        if(data.length){
+            // console.log("있다")
+            // console.log(data)
+            dbColumns.current = data
+        } else {
+            // console.log("없다")
+            // console.log(data)
+        }
+    }
+
+
+
     // alert
     const [alertOpen, setAlertOpen] = useState(false);
     const handleVerifyButton = () => {
-        setAlertOpen(true)
+        // columns checking validation
+        console.log("updateColDefs.current")
+        console.log(updateColDefs.current)
+        console.log("dbColumns.current")
+        console.log(dbColumns.current)
+        for (var updataVal of updateColDefs.current) {
+            if(dbColumns.current.includes(updataVal.title)){
+                console.log("있다.")
+            }else{
+                setAlertOpen(true)
+                return null
+            }
+        }
+
         return () => {
             setAlertOpen(false)
         }
@@ -874,7 +904,12 @@ const GridComponent = () => {
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
                                 &nbsp;&nbsp;&nbsp;
-                                <ColumnMappingButton excelColumns={columnsData} onexcelChangedColumns={onexcelChangedColumns} onApply={onApply} />
+                                <ColumnMappingButton 
+                                    excelColumns={columnsData} 
+                                    onexcelChangedColumns={onexcelChangedColumns} 
+                                    onApply={onApply} 
+                                    compareDbColumns={compareDbColumns}
+                                />
 
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton}  variant="outlined" onClick={handleVerifyButton}

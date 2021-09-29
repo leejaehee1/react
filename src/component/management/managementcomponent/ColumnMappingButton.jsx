@@ -149,6 +149,10 @@ const ColumnMappingButton = (props) => {
     setSqlHooks(tableColumns)
   }
 
+  useEffect(()=> {
+    props.compareDbColumns(sqlHooks)
+  }, [sqlHooks])
+
   const changeColumn = (excelChangedup) => {
     setExcelChangedHook(excelChangedup)
     // console.log("changedcolumn111111111111111111111111")
