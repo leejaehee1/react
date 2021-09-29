@@ -95,8 +95,14 @@ const ColumnMappingButton = (props) => {
 
 
   const handleClickOpen = () => {
-    setOpen(true);
-    setModalFlag(false)
+    if(excelHook.length){
+      setOpen(true);
+      setModalFlag(false)
+    } else {
+      alert("neet to import excel : ColumnMappingButton 102")
+    }
+    // console.log("excelHook")
+    // console.log(excelHook)
     return () => {
     // console.log("open :"+open)
     // console.log("modalFlag :"+modalFlag)

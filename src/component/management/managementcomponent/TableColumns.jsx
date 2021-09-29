@@ -89,9 +89,10 @@ const TableColumns = (props) => {
     }, [data, targetData])
 
     function checka(e) {
-        setCheckTableColumn(() => {
-            return e.target.innerHTML
-        })
+        // setCheckTableColumn(() => {
+        //     return e.target.innerHTML
+        // })
+        setCheckTableColumn(e.target.innerHTML)
         // if(checkedClickColumns === e.target.innerHTML) {
             
         // } else {
@@ -134,7 +135,7 @@ const TableColumns = (props) => {
                                         {row==='projectID' || row==='punchID'?
                                                 <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
                                             :
-                                                null
+                                                <></>
                                         }
                                     </StyledTableCell>
                                 </StyledTableRow>
@@ -147,7 +148,7 @@ const TableColumns = (props) => {
                                         {row==='projectID' || row==='punchID'?
                                                 <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
                                             :
-                                                null
+                                                <></>
                                         }
                                     </StyledTableCell>
                                 </StyledTableRow>

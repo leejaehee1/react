@@ -8,6 +8,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 // get API
 import { useGetList } from 'react-admin';
+import { Size } from 'devextreme-react/chart';
 
 const Area = (props) => {
   const { data, ids } = useGetList("area", );
@@ -34,8 +35,8 @@ const Area = (props) => {
 
   return (
     <div>
-      Area &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-      <NativeSelect id="area"  onChange={changeStatus}>
+      area &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+      <NativeSelect id="area" onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
           if (a.area !== props.static){ 
@@ -45,7 +46,12 @@ const Area = (props) => {
         }
         )}
       </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px"}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px"}}>{state}</span>
+      }
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )

@@ -698,10 +698,10 @@ const GridComponent = () => {
     const [selectedRow, setSelectedRow] = useState(null);
 
 
-    // db columns는 column mapping 적용하면 생긴다. 그리고 생긴 것은 
+    // db columns는 column mapping 적용하면 생긴다. 
     const dbColumns = useRef("")
     const compareDbColumns = (data) => {
-        console.log("data")
+        // console.log("data")
         if(data.length){
             // console.log("있다")
             // console.log(data)
@@ -716,20 +716,34 @@ const GridComponent = () => {
 
     // alert
     const [alertOpen, setAlertOpen] = useState(false);
+    const [alertImportOpen, setAlertImportOpen] = useState(false);
     const handleVerifyButton = () => {
         // columns checking validation
-        console.log("updateColDefs.current")
-        console.log(updateColDefs.current)
-        console.log("dbColumns.current")
-        console.log(dbColumns.current)
+        // console.log("updateColDefs.current")
+        // console.log(updateColDefs.current)
+        // console.log("dbColumns.current")
+        // console.log(dbColumns.current)
+
+        // excel import validation
+        if(updateColDefs.current.length){
+            // console.log('s')
+        } else {
+            // console.log('f')
+            // alert => excel import을 넣어주세요
+            setAlertImportOpen(true)
+            return null
+        }
+
+
         for (var updataVal of updateColDefs.current) {
             if(dbColumns.current.includes(updataVal.title)){
-                console.log("있다.")
+                // console.log("있다.")
             }else{
                 setAlertOpen(true)
                 return null
             }
         }
+        alert('성공')
 
         return () => {
             setAlertOpen(false)
@@ -867,7 +881,10 @@ const GridComponent = () => {
                     Toolbar: props => (
                       <div>
                         <Collapse in={alertOpen}>
-                            <Alert severity="error" onClose={() => {setAlertOpen(false)}}>Please check Column Mapping again.</Alert>
+                            <Alert severity="error" onClose={() => {setAlertOpen(false)}}>Please check Column Mapping.</Alert>
+                        </Collapse>
+                        <Collapse in={alertImportOpen}>
+                            <Alert severity="error" onClose={() => {setAlertImportOpen(false)}}>Please check Excel Import.</Alert>
                         </Collapse>
                         <div style={{padding:'0', width:'100%'}}>
                         {/* <MTableToolbar {...props} /> */}
