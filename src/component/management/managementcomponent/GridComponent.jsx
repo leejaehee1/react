@@ -59,6 +59,10 @@ import ScheduleImpact from './inputComponent/ScheduleImpact';
 import CostImpact from './inputComponent/CostImpact';
 import ClosedDate from './inputComponent/ClosedDate';
 
+// alert
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
+
 
 // css
 import './styles/GridComponent.css'
@@ -145,7 +149,14 @@ const GridComponent = () => {
             const fileData = XLSX.utils.sheet_to_json(workSheet, {header:1})
                         
             const headers=fileData[0]  // columns만 추출
-            const heads=headers.map(head=>({title:head, field:head}))
+            const heads=headers.map(head=>({title:head, 
+                                            field:head, 
+                                            cellStyle: {
+                                                // width: 20, 
+                                                // maxHWidth: 30, 
+                                                whiteSpace: 'nowrap',  // 이거 안넣으면 안된다.
+                                                overflow: "hidden"
+                                            },}))
             setColDefs(heads)
             updateColDefs.current = heads
             
@@ -202,7 +213,14 @@ const GridComponent = () => {
         const compareColumnsData = []
         for (const a of excelChangedArray.current) {
             if (baseComparing.includes(a)) {
-                let tergetObject = {title: a, field: a}
+                let tergetObject = {title: a, 
+                                    field: a,
+                                    cellStyle: {
+                                        // width: 20, 
+                                        // maxHWidth: 30, 
+                                        whiteSpace: 'nowrap',  // 이거 안넣으면 안된다.
+                                        overflow: "hidden"
+                                    },}
                 targetArray.push(tergetObject)
                 compareColumnsData.push(a)
             } else {
@@ -249,10 +267,25 @@ const GridComponent = () => {
             if (a) {     
                                     // apply 누를 시 적용 되는 부분-------------------------------------------------------------------------------------------
                 if (a==="DESCRIPTION #1"){
-                    var tergetObject = {title: a, field: a, cellStyle: {height: "10px", maxHeight: "10px", overflow: "hidden"},}
+                    var tergetObject = {title: a, field: a, 
+                                        cellStyle: {
+                                                    // width: 20, 
+                                                    // maxHWidth: 30, 
+                                                    whiteSpace: 'nowrap',  // 이거 안넣으면 안된다.
+                                                    overflow: "hidden"
+                                                },
+                                        width: "20%"
+                                        }
                     console.log('asdfasfd')
                 }else {
-                    var tergetObject = {title: a, field: a}
+                    var tergetObject = {title: a, field: a,
+                                        cellStyle: {
+                                            width: 20, 
+                                            maxHWidth: 30, 
+                                            whiteSpace: 'nowrap',  // 이거 안넣으면 안된다.
+                                            overflow: "hidden"
+                                        },
+                                        width: "10%"}
                 }
                 // let tergetObject = {title: a, field: a}
 
@@ -654,9 +687,9 @@ const GridComponent = () => {
     const rowData = eachRowKData.map((rData, index) => 
             
             <>
-            {/* <p>{rData} : {eachRowVData[index]}</p> */}
-            {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
-            {detailUI[rData]}
+                {/* <p>{rData} : {eachRowVData[index]}</p> */}
+                {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
+                {detailUI[rData]}
             </>
             
         )
@@ -664,11 +697,28 @@ const GridComponent = () => {
     // material-table    
     const [selectedRow, setSelectedRow] = useState(null);
 
+    // alert
+    const [alertOpen, setAlertOpen] = useState(false);
+    const handleVerifyButton = () => {
+        setAlertOpen(true)
+        return () => {
+            setAlertOpen(false)
+        }
+    }
+
     return (
-        <div style={{ maxWidth: '100%' }}>
+        <div style={{
+                    width: '100vw', 
+                    // width: '150vw',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    // padding: '0px -30px 0px -30px',        //위 우 아래 좌
+                    margin: '0px -350px',
+                    }}>
             <div>
                 <React.Fragment key="right">
-                    <Button onClick={toggleDrawer(true)}>TOPPunchList</Button>
+                    {/* <Button onClick={toggleDrawer(true)}>TOPPunchList</Button> */}
                     <Drawer anchor="right" open={rightDrawerState} onClose={toggleDrawer(false)}>
                         <div
                             className={clsx(classes.list, {
@@ -786,10 +836,13 @@ const GridComponent = () => {
                 components={{
                     Toolbar: props => (
                       <div>
-                        <div style={{padding:3, width:'100%'}}>
+                        <Collapse in={alertOpen}>
+                            <Alert severity="error" onClose={() => {setAlertOpen(false)}}>Please check Column Mapping again.</Alert>
+                        </Collapse>
+                        <div style={{padding:'0', width:'100%'}}>
                         {/* <MTableToolbar {...props} /> */}
                         <Box display="flex" p={1} bgcolor="background.paper">
-                            <Box p={1} flexGrow={1} >
+                            <Box p={0} flexGrow={1} >
                                 <label htmlFor="upload-photo">
                                     <input
                                         style={{ display: 'none' }}
@@ -816,7 +869,7 @@ const GridComponent = () => {
                                 <Chip avatar={<Avatar>M</Avatar>} label="Sheet 02" style={{marginRight: 10}} />
                                 <Chip avatar={<Avatar>M</Avatar>} label="Sheet 03" style={{marginRight: 10}} /> */}
                             </Box>
-                            <Box p={1}>
+                            <Box pt={0.5}>
                                 {/* <Button>
                                     <SettingsIcon fontSize="large" />
                                 </Button> */}
@@ -824,7 +877,11 @@ const GridComponent = () => {
                                 <ColumnMappingButton excelColumns={columnsData} onexcelChangedColumns={onexcelChangedColumns} onApply={onApply} />
 
                                 &nbsp;&nbsp;&nbsp;
-                                <Button className={classes.baseButton}  variant="outlined" style={{textTransform: 'none'}} >
+                                <Button className={classes.baseButton}  variant="outlined" onClick={handleVerifyButton}
+                                    style={{
+                                        textTransform: 'none'    // upper case button => lower case button
+                                    }}
+                                >
                                     <b>Verify Data</b>
                                 </Button>
                                 &nbsp;&nbsp;&nbsp;

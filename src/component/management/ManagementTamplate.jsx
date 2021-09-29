@@ -5,7 +5,13 @@ import GridComponent from './managementcomponent/GridComponent';
 const ManagementTamplate = () => {
     useAuthenticated(); // redirects to login if not authenticated
     return (
-        <div style={{ maxWidth: '100%' }}>
+        <div 
+            style={{ 
+                        // maxWidth: '100%',
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center', 
+                    }}>
         <br />
         <br />
         <br />
