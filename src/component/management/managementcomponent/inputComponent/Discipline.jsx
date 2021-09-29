@@ -36,8 +36,8 @@ const Discipline = (props) => {
   }, [])
 
   return (
-    <div>
-      Discipline &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+    <div style={{display:'inline-block'}}>
+      Discipline &nbsp;&nbsp; :  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <NativeSelect id="discipline"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
@@ -48,7 +48,15 @@ const Discipline = (props) => {
         }
         )}
       </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px", float:'right',  // 아래가 줄 짤리는 로직
+                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                    }}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', 
+                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                    }}>{state}</span>
+      }
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )

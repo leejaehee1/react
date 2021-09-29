@@ -90,7 +90,12 @@ const ClosedDate = (props) => {
       }
     };
     return (
-        <div style={{paddingTop:"5px", paddingBottom:"5px"}}>
+        <div style={{
+                  // paddingTop:"5px", 
+                  // paddingBottom:"5px", 
+                  display:'inline-block'
+                  }}>
+                    
           <span style={{}}>
             {props.rowName} &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
           </span>

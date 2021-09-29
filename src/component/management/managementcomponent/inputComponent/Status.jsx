@@ -31,7 +31,7 @@ const Status = (props) => {
 
   return (
     <div>
-      Status &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+      Status &nbsp;&nbsp; : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <NativeSelect id="status"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
@@ -42,8 +42,15 @@ const Status = (props) => {
         }
         )}
       </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
-      {/* <Input id="Status" defaultValue="select button"></Input> */}
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px", float:'right',  // 아래가 줄 짤리는 로직
+                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                    }}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', 
+                      // width:'80px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'
+                    }}>{state}</span>
+      }
     </div>
   )
 }

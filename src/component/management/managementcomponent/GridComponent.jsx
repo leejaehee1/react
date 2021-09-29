@@ -411,17 +411,24 @@ const GridComponent = () => {
     // }0316
     // console.log(dataStatus)
     // console.log(statusIds)
-
+ 
 
     const detailUI =  {
         projectID : (  // PK
             <ProjectID static={eachRowData.current["projectID"]} />
         ),
         punchID : (    // PK
-            <div>
-                punchID :&nbsp;&nbsp;&nbsp;
+            <div style={{display:'inline-block'}}>
+                <span style={{
+                    // paddingBottom:'500px'
+                    // margin: '10px'
+                }}>
+                punchID :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <span style={{float:'right'}}>
                 <Input id="punchID" defaultValue={eachRowData.current["punchID"]} />
+                </span>
                 {/* <FormHelperText id="punchID">We'll never share your email.</FormHelperText> */}
             </div>
         ),
@@ -516,7 +523,7 @@ const GridComponent = () => {
             <ClosedDate static={eachRowData.current["confirmedDate"]} rowName={"ConfirmedDate"} rowIndex={"confirmedDate"} />
         ),
         issuedDate : (
-            <ClosedDate static={eachRowData.current["issuedDate"]} rowName={"IssuedDate"} rowIndex={"issuedDate"} />
+            <ClosedDate  static={eachRowData.current["issuedDate"]} rowName={"IssuedDate"} rowIndex={"issuedDate"} />
         ),
         designChgReq : ( // defalt : 0
             <div>
@@ -549,8 +556,11 @@ const GridComponent = () => {
         completeComment : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
-                CompleteComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
+                <span style={{}}>
+                    CompleteComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
+                </span>
                 <TextField
+                    style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
                     id="completeComment"
                     // label="Multiline"
                     multiline
