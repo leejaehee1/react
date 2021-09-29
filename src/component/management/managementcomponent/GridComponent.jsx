@@ -422,7 +422,7 @@ const GridComponent = () => {
                 punchID :&nbsp;&nbsp;&nbsp;
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
                 <Input id="punchID" defaultValue={eachRowData.current["punchID"]} />
-                <FormHelperText id="punchID">We'll never share your email.</FormHelperText>
+                {/* <FormHelperText id="punchID">We'll never share your email.</FormHelperText> */}
             </div>
         ),
         category : (

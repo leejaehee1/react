@@ -36,7 +36,7 @@ const ProjectID = (props) => {
 
   return (
     <div>
-      ProjectID &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+      projectID &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
       <NativeSelect id="projectID"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
@@ -47,7 +47,12 @@ const ProjectID = (props) => {
         }
         )}
       </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px"}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px"}}>{state}</span>
+      }
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )
