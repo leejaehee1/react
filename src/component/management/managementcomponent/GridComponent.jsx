@@ -74,6 +74,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 // css
 import './styles/GridComponent.css'
+import GridComponentStepper from './inputComponent/GridComponentStepper';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -828,9 +829,10 @@ const GridComponent = () => {
                                 <div className={classes.container}>
                                     <Collapse in={codeMappingChecked}><br /><br />
                                     <Paper elevation={0} className={classes.paper}>
-                                        <svg className={classes.svg}>
+                                        {/* <svg className={classes.svg}>
                                         <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-                                        </svg>
+                                        </svg> */}
+                                        <GridComponentStepper />
                                     </Paper>
                                     </Collapse>
                                     {/* <Collapse in={codeMappingChecked} collapsedSize={40}>
@@ -846,6 +848,8 @@ const GridComponent = () => {
                             <br />
                             <p>
                                 아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
+
+                                {eachRowKData}
                             </p>
                             
 
