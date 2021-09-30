@@ -66,6 +66,12 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 import Collapse from '@material-ui/core/Collapse';
 
 
+// codeMapping
+import Switch from '@material-ui/core/Switch';
+import Paper from '@material-ui/core/Paper';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+
 // css
 import './styles/GridComponent.css'
 
@@ -773,6 +779,15 @@ const GridComponent = () => {
         }
     }
 
+
+    // codeMapping
+    const [codeMappingChecked, setCodeMappingChecked] = React.useState(false);
+
+    const handleChangeCodeMapping = () => {
+        // console.log(prev)
+        setCodeMappingChecked((prev) => !prev);
+    };
+
     return (
         <div style={{
                     width: '100vw', 
@@ -795,11 +810,37 @@ const GridComponent = () => {
 
                         >
                             <br />
-                            <ListItem button key="Inbox">
+                            <ListItem 
+                                // button 
+                                key="Inbox"
+                            >
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 <ListItemText primary="Update Row" />
-                                <button className="updateRowColumnCodeData"><FindInPageIcon/>AutoMapping</button>
+                                <button className="updateRowColumnCodeData"><FindInPageIcon/>CodeMapping</button>
+
+                                {/* codeMapping page */}
+                                <FormControlLabel
+                                    control={<Switch checked={codeMappingChecked} onChange={handleChangeCodeMapping} />}
+                                    label="Show"
+                                />
+                            
                             </ListItem>
+                                <div className={classes.container}>
+                                    <Collapse in={codeMappingChecked}><br /><br />
+                                    <Paper elevation={0} className={classes.paper}>
+                                        <svg className={classes.svg}>
+                                        <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
+                                        </svg>
+                                    </Paper>
+                                    </Collapse>
+                                    {/* <Collapse in={codeMappingChecked} collapsedSize={40}>
+                                    <Paper elevation={4} className={classes.paper}>
+                                        <svg className={classes.svg}>
+                                        <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
+                                        </svg>
+                                    </Paper>
+                                    </Collapse> */}
+                                </div>
 
                             <hr style={{width:'460px'}} />
                             <br />
