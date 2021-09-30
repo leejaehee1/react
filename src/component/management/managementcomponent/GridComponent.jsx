@@ -417,8 +417,12 @@ const GridComponent = () => {
     // change all projectID
     const [allProjectTargetData, setAllProjectTargetData] = useState("");
     useEffect(()=> {
-        console.log("allProjectTargetData")
-        console.log(allProjectTargetData)
+        // console.log("allProjectTargetData")
+        // console.log(allProjectTargetData)
+        // console.log(data)
+        for (var d in data){
+            data[d].projectID = allProjectTargetData
+        }
     }, [allProjectTargetData])
  
 

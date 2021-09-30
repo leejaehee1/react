@@ -5,6 +5,7 @@ import React, {useEffect, useRef, useState} from 'react';
 // import InputLabel from '@material-ui/core/InputLabel'; 
 // import FormHelperText from '@material-ui/core/FormHelperText'; 
 import NativeSelect from '@material-ui/core/NativeSelect'; 
+import './styles/projectID.css'
 
 // get API
 import { useGetList } from 'react-admin';
@@ -62,7 +63,7 @@ const ProjectID = (props) => {
 
   return (
     <div style={{display:'inline-block'}}>
-      projectID &nbsp;&nbsp; :  <button type="button" onClick={updateAllProjectID}>change all data </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      projectID :  <button className='projectIDButton' type="button" onClick={updateAllProjectID}>change all data </button>&nbsp;&nbsp;&nbsp;
       <NativeSelect id="projectID"  onChange={changeStatus}>
         <option value={props.static} selected={true}>{props.static}</option>
         {Object.values(data).map((a) => {
