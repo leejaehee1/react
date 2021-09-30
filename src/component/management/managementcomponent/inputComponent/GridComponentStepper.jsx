@@ -33,17 +33,18 @@ const useStyles = makeStyles((theme) => ({
 function getSteps() {
     return ['Select column to update', 'input rowdata', 'Select CodeData'];
   }
-  
-const GetStepContent = ({activeStep}) => {
+
+const GetStepContent = (props) => {
     const classes = useStyles();
     const [column, setColumn] = React.useState('');
 
     const handleChange = (event) => {
         setColumn(event.target.value);
+        console.log(event.target.value)
       };
     // console.dir(activeStep)
-
-    switch (activeStep) {
+    // console.log(props.selectedColumns)
+    switch (props.activeStep) {
       case 0:
         return (
             <div style={{height:'100px'}}>
@@ -61,9 +62,12 @@ const GetStepContent = ({activeStep}) => {
                 <MenuItem value="">
                     <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
+                {props.selectedColumns.map((value) => 
+                    <MenuItem value={value}>{value}</MenuItem>
+                )}
+                {/* <MenuItem value={10}>Ten</MenuItem>
                 <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem> */}
                 </Select>
             </FormControl>
             </div>
@@ -90,7 +94,7 @@ const GetStepContent = ({activeStep}) => {
     }
 }
 
-const GridComponentStepper = () => {
+const GridComponentStepper = (props) => {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
@@ -107,6 +111,8 @@ const GridComponentStepper = () => {
         setActiveStep(0);
     };
 
+    // console.log(props.selectedColumns)
+
     return (
         <div className={classes.root}>
             <Stepper activeStep={activeStep} alternativeLabel>
@@ -117,6 +123,7 @@ const GridComponentStepper = () => {
                 ))}
             </Stepper>
             <div>
+                {props.selectedColumns}
                 {activeStep === steps.length ? (
                 <div>
                     <div style={{textAlign:"center", height:"100px"}} >
@@ -130,7 +137,7 @@ const GridComponentStepper = () => {
                     <div style={{textAlign:"center", height:"100px"}}>
                         <Typography className={classes.instructions}>
                             {/* {getStepContent(activeStep)} */}
-                            <GetStepContent activeStep={activeStep} />
+                            <GetStepContent activeStep={activeStep} selectedColumns={props.selectedColumns} />
                         </Typography>
                     </div>
                     <br />

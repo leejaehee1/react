@@ -944,6 +944,14 @@ const GridComponent = () => {
         
     };
 
+
+    // codeMapping Stepper
+    // {eachRowKData}
+    // {Object.keys(detailUI)}
+    const selectedColumns = eachRowKData.filter((col) => (Object.keys(detailUI).includes(col)))
+                                                // {if(Object.keys(detailUI).includes(col)){
+                                                //     return col
+                                                // }else {}})
     return (
         <div style={{
                     width: '100vw', 
@@ -991,10 +999,7 @@ const GridComponent = () => {
                                 <div className={classes.container}>
                                     <Collapse in={codeMappingChecked}><br /><br />
                                     <Paper elevation={0} className={classes.paper}>
-                                        {/* <svg className={classes.svg}>
-                                        <polygon points="0,100 50,00, 100,100" className={classes.polygon} />
-                                        </svg> */}
-                                        <GridComponentStepper />
+                                        <GridComponentStepper selectedColumns={selectedColumns} /> 
                                     </Paper>
                                     </Collapse>
                                     {/* <Collapse in={codeMappingChecked} collapsedSize={40}>
@@ -1005,13 +1010,12 @@ const GridComponent = () => {
                                     </Paper>
                                     </Collapse> */}
                                 </div>
-
+                            
                             <hr style={{width:'460px'}} />
                             <br />
                             {/* <p>
                                 아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
 
-                                {eachRowKData}
                             </p> */}
                             
 
