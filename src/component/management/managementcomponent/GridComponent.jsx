@@ -718,17 +718,20 @@ const GridComponent = () => {
 
     const rowData = eachRowKData.map((rData, index) => 
             
-            <>
+            <div style={{width:'100%', padding:'5px'}}>
                 {/* <p>{rData} : {eachRowVData[index]}</p> */}
                 {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
                 {detailUI[rData]
                 ?detailUI[rData]
                 :
-                <div style={{display:'inline-block'}}>
-                    {rData} : <span style={{color:"red"}}> <WarningIcon /> Column not to exist in the database.</span>
+                <div style={{display:'flex'}}>
+                    <div style={{width:"30%"}}>
+                    {rData} : 
+                    </div>
+                    <div style={{color:"red", flexGrow: 1}}> <WarningIcon /> Column not to exist in the database.</div>
                 </div>
                 }
-            </>
+            </div>
             
         )
 
