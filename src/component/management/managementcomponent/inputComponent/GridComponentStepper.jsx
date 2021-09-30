@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +46,7 @@ const GetStepContent = ({activeStep}) => {
     switch (activeStep) {
       case 0:
         return (
-            <>
+            <div style={{height:'100px'}}>
             {/* 'Select campaign settings...'{a} */}
             Select the column you want to change<br />
             <FormControl variant="outlined" className={classes.formControl}>
@@ -65,12 +66,25 @@ const GetStepContent = ({activeStep}) => {
                 <MenuItem value={30}>Thirty</MenuItem>
                 </Select>
             </FormControl>
-            </>
-            );
+            </div>
+        );
       case 1:
-        return 'What is an ad group anyways?';
+        return (
+            <div style={{height:'100px'}}>
+                {/* 'What is an ad group anyways?'<br /> */}
+                What data will be changed?<br />
+                <TextField id="outlined-basic" label="Existing data" style={{minWidth:"400px"}} variant="outlined" />
+            </div>
+        )
       case 2:
-        return 'This is the bit I really care about!';
+        // return 'This is the bit I really care about!';
+        return (
+            <div style={{height:'100px'}}>
+                {/* 'What is an ad group anyways?'<br /> */}
+                What data do you want to change?<br />
+                <TextField id="outlined-basic" label="Data to change" style={{minWidth:"400px"}} variant="outlined" />
+            </div>
+        )
       default:
         return 'Unknown stepIndex';
     }
@@ -105,7 +119,7 @@ const GridComponentStepper = () => {
             <div>
                 {activeStep === steps.length ? (
                 <div>
-                    <div style={{textAlign:"center"}}>
+                    <div style={{textAlign:"center", height:"100px"}} >
                         <Typography className={classes.instructions}>All steps completed</Typography>
                     </div>
                     <br />
@@ -113,7 +127,7 @@ const GridComponentStepper = () => {
                 </div>
                 ) : (
                 <div>
-                    <div style={{textAlign:"center"}}>
+                    <div style={{textAlign:"center", height:"100px"}}>
                         <Typography className={classes.instructions}>
                             {/* {getStepContent(activeStep)} */}
                             <GetStepContent activeStep={activeStep} />

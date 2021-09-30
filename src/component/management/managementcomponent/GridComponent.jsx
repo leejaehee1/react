@@ -401,6 +401,7 @@ const GridComponent = () => {
         // console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
         // console.log(eachRowValueData)
         setRightDrawerState(open);
+        setCodeMappingChecked(false)
     }
 
     useEffect(() => {
@@ -787,6 +788,7 @@ const GridComponent = () => {
     const handleChangeCodeMapping = () => {
         // console.log(prev)
         setCodeMappingChecked((prev) => !prev);
+        
     };
 
     return (
