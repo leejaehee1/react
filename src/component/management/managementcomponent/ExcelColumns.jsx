@@ -266,12 +266,12 @@ const ExcelColumns = (props) => {
                 <Alert severity="success">This is a    alert — check it out!</Alert>
                 <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert>
             </Collapse> */}
-            {/* <p>{"deleteId  :  " + deleteId}</p> */}
-            {/* <p>{"targetId  :  " + targetId}</p> */}
-            {/* <p>{"sqlHook  :  " + props.sqlHook}</p> */}
-            {/* <p>{"sqlColumnData  :  " + sqlColumnData}</p> */}
-            {/* <p>{"deleteArray  :  " + deleteArray}</p> */}
-            {/* <p>{"beChangeArray  :  " + beChangeArray}</p> */}
+            {/* <p>{"deleteId  :  " + deleteId}</p>
+            <p>{"targetId  :  " + targetId}</p>
+            <p>{"sqlHook  :  " + props.sqlHook}</p>
+            <p>{"sqlColumnData  :  " + sqlColumnData}</p>
+            <p>{"deleteArray  :  " + deleteArray}</p>
+            <p>{"beChangeArray  :  " + beChangeArray}</p> */}
             {/* <p>{"excelChangedInit  :  " + excelChangedInit.current}</p> */}
             {/* <p>{"excelColumnArray  :  " + excelColumnArray}</p> */}
             <TableContainer className={classes.table} component={Paper}>
@@ -302,8 +302,8 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                                 {row}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                                                 {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:
                                                     <>
-                                                    <HttpsIcon />
-                                                    {/* <HighlightOffIcon /> 
+                                                    {/* <HttpsIcon />
+                                                    <HighlightOffIcon /> 
                                                     <NotInterestedIcon />
                                                     <RemoveCircleOutlineIcon /> */}
                                                     </>
@@ -338,8 +338,8 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                             {(props.sqlHooks.includes(row))? <DoneOutlineIcon />
                                             :
                                                 <>
-                                                    <HttpsIcon />
-                                                    {/* <HighlightOffIcon /> 
+                                                    {/* <HttpsIcon />
+                                                    <HighlightOffIcon /> 
                                                     <NotInterestedIcon />
                                                     <RemoveCircleOutlineIcon /> */}
                                                 </> 

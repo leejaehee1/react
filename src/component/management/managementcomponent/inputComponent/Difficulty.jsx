@@ -38,17 +38,14 @@ const Difficulty = (props) => {
     };
 
     return (
-        <div className={classes.root}>
-        {/* <Typography id="input-slider" gutterBottom>
-            Department
-        </Typography> */}
-        <Grid container spacing={2} alignItems="center">
-          <Grid item>
+        <div style={{display:'flex'}}>
+          <div style={{width:"30%"}}>
             {/* <VolumeUp /> */}
-            Difficulty &nbsp;&nbsp;:  &nbsp;&nbsp;&nbsp;&nbsp;
-          </Grid>
-          <Grid item xs>
+            Difficulty &nbsp;&nbsp;: 
+          </div>
+          <div style={{flexGrow: 1}}>
             <Slider
+              style={{width:"250px"}}
                 // id="difficulty"
               value={typeof value === 'number' ? value : props.static}
               onChange={handleSliderChange}
@@ -60,26 +57,25 @@ const Difficulty = (props) => {
               min={1}
               max={5}
             />
-          </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Input
                 id="difficulty"
-              className={classes.input}
-              value={value}
-              margin="dense"
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-              inputProps={{
-                step: 1,
-                min: 1,
-                max: 5,
-                type: 'number',
-                'aria-labelledby': 'input-slider',
-              }}
-            />
-          </Grid>
-        </Grid>
-      </div>
+                className={classes.input}
+                value={value}
+                margin="dense"
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                inputProps={{
+                  step: 1,
+                  min: 1,
+                  max: 5,
+                  type: 'number',
+                  'aria-labelledby': 'input-slider',
+                }}
+                />
+          </Grid> */}
+          </div>
+        </div>
     )
 }
 

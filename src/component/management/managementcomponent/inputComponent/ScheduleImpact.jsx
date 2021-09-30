@@ -38,17 +38,14 @@ const ScheduleImpact = (props) => {
     };
 
     return (
-        <div className={classes.root}>
-        {/* <Typography id="input-slider" gutterBottom>
-            Department
-        </Typography> */}
-        <Grid container spacing={2} alignItems="center">
-          <Grid item>
-            {/* <VolumeUp /> */}
-            ScheduleImpact &nbsp;&nbsp;:  &nbsp;&nbsp;&nbsp;&nbsp;
-          </Grid>
-          <Grid item xs>
+      <div style={{display:'flex'}}>
+        <div style={{width:"30%"}}>
+          {/* <VolumeUp /> */}
+          ScheduleImpact &nbsp;&nbsp;:  &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div style={{flexGrow: 1}}>
             <Slider
+            style={{width:"250px"}}
                 // id="difficulty"
               value={typeof value === 'number' ? value : props.static}
               onChange={handleSliderChange}
@@ -60,8 +57,7 @@ const ScheduleImpact = (props) => {
               min={1}
               max={5}
             />
-          </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Input
                 id="scheduleImpact"
               className={classes.input}
@@ -77,8 +73,8 @@ const ScheduleImpact = (props) => {
                 'aria-labelledby': 'input-slider',
               }}
             />
-          </Grid>
-        </Grid>
+          </Grid> */}
+        </div>
       </div>
     )
 }

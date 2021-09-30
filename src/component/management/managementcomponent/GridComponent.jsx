@@ -440,17 +440,18 @@ const GridComponent = () => {
             <ProjectID static={eachRowData.current["projectID"]} setAllProjectTargetData={setAllProjectTargetData} />
         ),
         punchID : (    // PK
-            <div style={{display:'inline-block'}}>
-                <span style={{
+            <div style={{display:'flex'}}>
+                <div style={{
                     // paddingBottom:'500px'
                     // margin: '10px'
+                    width: "30%"
                 }}>
-                punchID :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
+                punchID &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <span style={{float:'right'}}>
-                <Input id="punchID" defaultValue={eachRowData.current["punchID"]} />
-                </span>
+                <div style={{flexGrow: 1}}>
+                <Input id="punchID" style={{width:"250px"}} defaultValue={eachRowData.current["punchID"]} />
+                </div>
                 {/* <FormHelperText id="punchID">We'll never share your email.</FormHelperText> */}
             </div>
         ),
@@ -477,26 +478,107 @@ const GridComponent = () => {
             <Area static={eachRowData.current["area"]} />
         ),
         tagNumber : (
-            <div>
-                {/* <TextField id="TagNumber-basic" label="TagNumber" defaultValue={eachRowData.current["TagNumber"]} /> */}
-                TagNumber &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                TagNumber &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="tagNumber" defaultValue={eachRowData.current["tagNumber"]} />
-                <FormHelperText id="punchID">We'll never share your email.</FormHelperText>
+                <div style={{flexGrow: 1}}>
+                    <Input id="tagNumber" style={{width:"250px"}} defaultValue={eachRowData.current["tagNumber"]} />
+                {/* <FormHelperText id="punchID">We'll never share your email.</FormHelperText> */}
+                </div>
             </div>
         ),
         bulkItem : (
-            <div>
-                BulkItem &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="bulkItem" defaultValue={eachRowData.current["bulkItem"]} />
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                BulkItem &nbsp;&nbsp; :
+                </div>
+                <div style={{flexGrow: 1}}>
+                    <Input id="bulkItem" style={{width:"250px"}} defaultValue={eachRowData.current["bulkItem"]} />
+                </div>
             </div>
         ),
         bulkName : (
-            <div>
-                BulkName &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    BulkName &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="bulkName" defaultValue={eachRowData.current["bulkName"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="bulkName" style={{width:"250px"}} defaultValue={eachRowData.current["bulkName"]} />
+                </div>
+            </div>
+        ),
+        issuedBy : (
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    issuedBy &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="issuedBy" style={{width:"250px"}} defaultValue={eachRowData.current["issuedBy"]} />
+                </div>
+            </div>
+        ),
+        raisedBy : (
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    raisedBy &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="raisedBy" style={{width:"250px"}} defaultValue={eachRowData.current["raisedBy"]} />
+                </div>
+            </div>
+        ),
+        completedBy : (
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    completedBy &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="completedBy" style={{width:"250px"}} defaultValue={eachRowData.current["completedBy"]} />
+                </div>
+            </div>
+        ),
+        confirmedBy : (
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    confirmedBy &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="confirmedBy" style={{width:"250px"}} defaultValue={eachRowData.current["confirmedBy"]} />
+                </div>
+            </div>
+        ),
+        closedBy : (
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    closedBy &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="closedBy" style={{width:"250px"}} defaultValue={eachRowData.current["closedBy"]} />
+                </div>
             </div>
         ),
         department : (
@@ -505,28 +587,27 @@ const GridComponent = () => {
         confirmedDate : (
             <ClosedDate static={eachRowData.current["confirmedDate"]} rowName={"ConfirmedDate"} rowIndex={"confirmedDate"} />
         ),
-        confirmedBy : (
-            <div>
-                ConfirmedBy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="confirmedBy" defaultValue={eachRowData.current["confirmedBy"]} />
-            </div>
-        ),
         closedDate : (
             <ClosedDate static={eachRowData.current["closedDate"]} rowName={"ClosedDate"} rowIndex={"closedDate"}/>
         ),
-        closedby : (
-            <div>
-                Closedby &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
-                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="closedby" defaultValue={eachRowData.current["closedby"]} />
-            </div>
-        ),
+        // closedby : (
+        //     <div>
+        //         Closedby &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+        //         {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+        //         <Input id="closedby" defaultValue={eachRowData.current["closedby"]} />
+        //     </div>
+        // ),
         scheduleKey : (
-            <div>
-                ScheduleKey &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    scheduleKey &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="scheduleKey" defaultValue={eachRowData.current["scheduleKey"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="scheduleKey" style={{width:"250px"}} defaultValue={eachRowData.current["scheduleKey"]} />
+                </div>
             </div>
         ),
         targetDate : (
@@ -548,24 +629,39 @@ const GridComponent = () => {
             <ClosedDate  static={eachRowData.current["issuedDate"]} rowName={"IssuedDate"} rowIndex={"issuedDate"} />
         ),
         designChgReq : ( // defalt : 0
-            <div>
-                DesignChgReq &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    designChgReq &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="designChgReq" defaultValue={eachRowData.current["designChgReq"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="designChgReq" style={{width:"250px"}} defaultValue={eachRowData.current["designChgReq"]} />
+                </div>
             </div>
         ),
-        meterialReq : ( // defalt : 0
-            <div>
-                MeterialReq &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+        materialReq : ( // defalt : 0
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    meterialReq &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="meterialReq" defaultValue={eachRowData.current["meterialReq"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="meterialReq" style={{width:"250px"}} defaultValue={eachRowData.current["meterialReq"]} />
+                </div>
             </div>
         ),
         issueDescription : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
-                IssueDescription &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
+                <span style={{}}>
+                issueDescription &nbsp;&nbsp;:   <br />
+                </span>
                 <TextField
+                    style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
                     id="issueDescription"
                     // label="Multiline"
                     multiline
@@ -579,7 +675,7 @@ const GridComponent = () => {
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
                 <span style={{}}>
-                    CompleteComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
+                    CompleteComment &nbsp;&nbsp;:   <br />
                 </span>
                 <TextField
                     style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
@@ -595,8 +691,11 @@ const GridComponent = () => {
         notAcceptComment : (
             <div>
                 {/* <InputLabel htmlFor="select">Age</InputLabel> */}
-                NotAcceptComment &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;  <br />
+                <span style={{}}>
+                    notAcceptComment &nbsp;&nbsp;:   <br />
+                </span>
                 <TextField
+                    style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
                     id="notAcceptComment"
                     // label="Multiline"
                     multiline
@@ -616,37 +715,81 @@ const GridComponent = () => {
             <CostImpact static={eachRowData.current["costImpact"]} />
         ),
         keyword1 : (
-            <>
-                <TextField id="keyword1" label="keyword1" defaultValue={eachRowData.current["keyword1"]} />
-            </>
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    keyword1 &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="keyword1" style={{width:"250px"}} defaultValue={eachRowData.current["keyword1"]} />
+                </div>
+            </div>
         ),
         keyword2 : (
-            <>
-                <TextField id="keyword2" label="keyword2" defaultValue={eachRowData.current["keyword2"]} />
-            </>
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    keyword2 &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="keyword2" style={{width:"250px"}} defaultValue={eachRowData.current["keyword2"]} />
+                </div>
+            </div>
         ),
         keyword3 : (
-            <>
-                <TextField id="keyword3" label="keyword3" defaultValue={eachRowData.current["keyword3"]} />
-            </>
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    keyword3 &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="keyword3" style={{width:"250px"}} defaultValue={eachRowData.current["keyword3"]} />
+                </div>
+            </div>
         ),
         keyword4 : (
-            <>
-                <TextField id="keyword4" label="keyword4" defaultValue={eachRowData.current["keyword4"]} />
-            </>
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    keyword4 &nbsp;&nbsp; :
+                </div>
+                {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
+                <div style={{flexGrow: 1}}>
+                    <Input id="keyword4" style={{width:"250px"}} defaultValue={eachRowData.current["keyword4"]} />
+                </div>
+            </div>
         ),
         drawingNo : (
-            <div>
-                DrawingNo &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    drawingNo &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="drawingNo" defaultValue={eachRowData.current["drawingNo"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="drawingNo" style={{width:"250px"}} defaultValue={eachRowData.current["drawingNo"]} />
+                </div>
             </div>
         ),
         awpCode : (
-            <div>
-                AWPcode &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;
+            <div style={{display:'flex'}}>
+                <div style={{
+                    width: "30%"
+                }}>
+                    awpCode &nbsp;&nbsp; :
+                </div>
                 {/* <Input id="my-input" aria-describedby="my-helper-text" defaultValue={eachRowData.current["Area"]} /> */}
-                <Input id="awpCode" defaultValue={eachRowData.current["awpCode"]} />
+                <div style={{flexGrow: 1}}>
+                    <Input id="awpCode" style={{width:"250px"}} defaultValue={eachRowData.current["awpCode"]} />
+                </div>
             </div>
         ),
     }
@@ -718,7 +861,7 @@ const GridComponent = () => {
 
     const rowData = eachRowKData.map((rData, index) => 
             
-            <div style={{width:'100%', padding:'5px'}}>
+            <div style={{width:'97%', padding:'5px'}}>
                 {/* <p>{rData} : {eachRowVData[index]}</p> */}
                 {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
                 {detailUI[rData]
@@ -828,13 +971,20 @@ const GridComponent = () => {
                                 key="Inbox"
                             >
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
-                                <ListItemText primary="Update Row" />
-                                <button className="updateRowColumnCodeData"><FindInPageIcon/>CodeMapping</button>
+                                {/* <ListItemText primary="Update Row" /> */}
+                                <ListItemText>
+                                    <h3>Update row-data</h3>
+                                </ListItemText>
+                                {/* <button className="updateRowColumnCodeData"><FindInPageIcon/>CodeMapping</button> */}
 
                                 {/* codeMapping page */}
                                 <FormControlLabel
-                                    control={<Switch checked={codeMappingChecked} onChange={handleChangeCodeMapping} />}
-                                    label="Show"
+                                    control={<Switch 
+                                                    checked={codeMappingChecked} 
+                                                    onChange={handleChangeCodeMapping} 
+                                                    color="primary"
+                                            />}
+                                    label="CodeMapping"
                                 />
                             
                             </ListItem>
@@ -858,11 +1008,11 @@ const GridComponent = () => {
 
                             <hr style={{width:'460px'}} />
                             <br />
-                            <p>
+                            {/* <p>
                                 아래에서 안보이는 값들은 columns가 DB columns와 다르기 때문에 보이지 않습니다.
 
                                 {eachRowKData}
-                            </p>
+                            </p> */}
                             
 
 

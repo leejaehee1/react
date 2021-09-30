@@ -1,7 +1,7 @@
 button.excelColumns {
     width: 130px;
     height: 10px;
-    border-radius: 13px;
+    border-radius: 16px;
     color: #424242;
     background: #ececec;
     /* box-sizing: border-box; */
@@ -13,6 +13,7 @@ button.excelColumns {
     /* margin: 0px; */
     font-family: sans-serif;
     text-align: center;
+    /* justify-content: center; */
     font-size: 15px;
     cursor: pointer;
   

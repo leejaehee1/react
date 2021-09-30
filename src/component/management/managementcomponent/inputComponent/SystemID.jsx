@@ -31,19 +31,32 @@ const SystemID = (props) => {
   }, [])
 
   return (
-    <div>
-      systemID &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-      <NativeSelect id="systemID"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.systemID !== props.static){ 
-            return (
-          <option value={a.systemID} >{a.systemID}</option>
-          )}
-        }
-        )}
-      </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        systemID &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
+      </div>
+      <div style={{display:'flex', flexGrow: 0}}>
+        <div style={{}}>
+          <NativeSelect id="systemID" style={{maxWidth:"80px"}} onChange={changeStatus}>
+            <option value={props.static} selected={true}>{props.static}</option>
+            {Object.values(data).map((a) => {
+              if (a.systemID !== props.static){ 
+                return (
+              <option value={a.systemID} >{a.systemID}</option>
+              )}
+            }
+            )}
+          </NativeSelect>
+        </div>
+        <div style={{flexGrow: 0}}>
+          {
+            (state==="Change this value" || state==="select button")
+            ?<span style={{color:"red", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+            :<span style={{color:"black", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+          }
+        </div>
+
+      </div>
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )

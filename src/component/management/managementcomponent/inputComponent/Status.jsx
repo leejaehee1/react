@@ -30,18 +30,22 @@ const Status = (props) => {
   }, [])
 
   return (
-    <div>
-      Status &nbsp;&nbsp; : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <NativeSelect id="status" variant="outlined"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.status !== props.static){ 
-            return (
-          <option value={a.status} >{a.status}</option>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        Status &nbsp;&nbsp; :
+      </div>
+      <div>
+        <NativeSelect id="status" variant="outlined" style={{maxWidth:"80px"}}  onChange={changeStatus}>
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.status !== props.static){ 
+              return (
+            <option value={a.status} >{a.status}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
+        </NativeSelect>
+      </div>
       {
         (state==="Change this value" || state==="select button")
         ?<span style={{color:"red", fontSize:"15px", float:'right',  // 아래가 줄 짤리는 로직

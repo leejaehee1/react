@@ -31,20 +31,27 @@ const Subsystem = (props) => {
   }, [])
 
   return (
-    <div>
-      Subsystem &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-      <NativeSelect id="subsystem"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.subsystem !== props.static){ 
-            return (
-          <option value={a.subsystem} >{a.subsystem}</option>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        Subsystem &nbsp;&nbsp; : 
+      </div>
+      <div style={{}}>
+        <NativeSelect id="subsystem" style={{maxWidth:"80px"}} onChange={changeStatus}>
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.subsystem !== props.static){ 
+              return (
+            <option value={a.subsystem} >{a.subsystem}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
-      {/* <Input id="Status" defaultValue="select button"></Input> */}
+        </NativeSelect>
+      </div>
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+      }
     </div>
   )
 }

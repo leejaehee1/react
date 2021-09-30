@@ -31,19 +31,27 @@ const Unit = (props) => {
   }, [])
 
   return (
-    <div>
-      Unit &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-      <NativeSelect id="unit"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.unit !== props.static){ 
-            return (
-          <option value={a.unit} >{a.unit}</option>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        Unit &nbsp;&nbsp; : 
+      </div>
+      <div>
+        <NativeSelect id="unit" style={{maxWidth:"80px"}}  onChange={changeStatus}>
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.unit !== props.static){ 
+              return (
+            <option value={a.unit} >{a.unit}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{state}
+        </NativeSelect>
+      </div>
+      {
+        (state==="Change this value" || state==="select button")
+        ?<span style={{color:"red", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+      }
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )

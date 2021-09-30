@@ -90,21 +90,17 @@ const ClosedDate = (props) => {
       }
     };
     return (
-        <div style={{
-                  // paddingTop:"5px", 
-                  // paddingBottom:"5px", 
-                  display:'inline-block'
-                  }}>
-                    
-          <span style={{}}>
-            {props.rowName} &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-          </span>
-          <span style={{float:'right'}}>
+      <div style={{display:'flex'}}>
+        <div style={{width:"30%"}}>
+            {props.rowName} &nbsp;&nbsp; :  
+          </div>
+          <div>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               {/* // https://material-ui-pickers.dev/api/DatePicker */}
               <ThemeProvider theme={defaultMaterialTheme}>
                 <KeyboardDatePicker
                   disableToolbar
+                  style={{width:"250px"}}
                   // variant="inline"
                   format="yyyy/MM/dd"
                   //inputVariant="filled"  // outlined // standard
@@ -119,7 +115,7 @@ const ClosedDate = (props) => {
                 />
               </ThemeProvider>
             </MuiPickersUtilsProvider>
-          </span>
+          </div>
         </div>
     )
 }

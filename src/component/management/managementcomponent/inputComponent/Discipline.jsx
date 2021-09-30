@@ -36,18 +36,22 @@ const Discipline = (props) => {
   }, [])
 
   return (
-    <div style={{display:'inline-block'}}>
-      Discipline &nbsp;&nbsp; :  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <NativeSelect id="discipline"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.discipline !== props.static){ 
-            return (
-          <option value={a.discipline} >{a.discipline}</option>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        Discipline &nbsp;&nbsp; :  
+      </div>
+      <div>
+        <NativeSelect id="discipline" style={{maxWidth:"80px"}} onChange={changeStatus}>
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.discipline !== props.static){ 
+              return (
+            <option value={a.discipline} >{a.discipline}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
+        </NativeSelect>        
+      </div>
       {
         (state==="Change this value" || state==="select button")
         ?<span style={{color:"red", fontSize:"15px", float:'right',  // 아래가 줄 짤리는 로직

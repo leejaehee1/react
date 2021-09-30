@@ -36,22 +36,30 @@ const Category = (props) => {
   }, [])
 
   return (
-    <div>
-      Category &nbsp;&nbsp; : &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <NativeSelect id="category"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.category !== props.static){ 
-            return (
-          <option value={a.category} >{a.category}</option>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
+        Category &nbsp;&nbsp; :
+      </div>
+      <div style={{}}>
+        <NativeSelect 
+          id="category" 
+          style={{maxWidth:"80px"}} 
+          onChange={changeStatus}
+        >
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.category !== props.static){ 
+              return (
+            <option value={a.category} >{a.category}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
+        </NativeSelect>
+      </div>
       {
         (state==="Change this value" || state==="select button")
-        ?<span style={{color:"red", fontSize:"15px", float:'right', width:'150px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
-        :<span style={{color:"black", fontSize:"15px", float:'right', width:'150px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+        ?<span style={{color:"red", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
       }
     </div>
   )

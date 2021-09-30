@@ -5,6 +5,7 @@ import React, {useEffect, useRef, useState} from 'react';
 // import InputLabel from '@material-ui/core/InputLabel'; 
 // import FormHelperText from '@material-ui/core/FormHelperText'; 
 import NativeSelect from '@material-ui/core/NativeSelect'; 
+import CachedIcon from '@material-ui/icons/Cached';
 import './styles/projectID.css'
 
 // get API
@@ -62,24 +63,31 @@ const ProjectID = (props) => {
   }
 
   return (
-    <div style={{display:'inline-block'}}>
-      projectID :  <button className='projectIDButton' type="button" onClick={updateAllProjectID}>change all data </button>&nbsp;&nbsp;&nbsp;
-      <NativeSelect id="projectID"  onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.projectID !== props.static){ 
-            return (
-          <option value={a.projectID} >{a.projectID}</option>
-          )}
-        }
-        )}
-      </NativeSelect>
-      {/* <pre>           </pre> */}
-      {
-        (state==="Change this value" || state==="select button")
-        ?<span style={{color:"red", fontSize:"15px", float:'right'}}>{state}</span>
-        :<span style={{color:"black", fontSize:"15px", float:'right'}}>{state}</span>
-      }
+    <div style={{display:'flex'}}>
+      <div style={{width: "40%"}}>
+        projectID :  <button className='projectIDButton' type="button" onClick={updateAllProjectID}><CachedIcon fontSize="small" /> ALL </button>
+      </div>
+      <div style={{flexGrow: 1, display:'flex'}}>
+        <div style={{width: "20%"}}>
+          <NativeSelect id="projectID"  onChange={changeStatus}>
+            <option value={props.static} selected={true}>{props.static}</option>
+            {Object.values(data).map((a) => {
+              if (a.projectID !== props.static){ 
+                return (
+              <option value={a.projectID} >{a.projectID}</option>
+              )}
+            }
+            )}
+          </NativeSelect>
+        </div>
+        <div >
+          {
+            (state==="Change this value" || state==="select button")
+            ?<span style={{color:"red", fontSize:"15px", float:'right'}}>{state}</span>
+            :<span style={{color:"black", fontSize:"15px", float:'right'}}>{state}</span>
+          }
+        </div>
+      </div>
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>
   )

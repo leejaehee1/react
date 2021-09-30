@@ -34,23 +34,26 @@ const Area = (props) => {
   }, [])
 
   return (
-    <div>
+    <div style={{display:'flex'}}>
+      <div style={{width:"30%"}}>
       area &nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp; 
-      <NativeSelect id="area" onChange={changeStatus}>
-        <option value={props.static} selected={true}>{props.static}</option>
-        {Object.values(data).map((a) => {
-          if (a.area !== props.static){ 
-            return (
-          <option value={a.area} >{a.area}</option>
+      </div>
+      <div>
+        <NativeSelect id="area" style={{maxWidth:"80px"}}  onChange={changeStatus}>
+          <option value={props.static} selected={true}>{props.static}</option>
+          {Object.values(data).map((a) => {
+            if (a.area !== props.static){ 
+              return (
+            <option value={a.area} >{a.area}</option>
+            )}
+          }
           )}
-        }
-        )}
-      </NativeSelect>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </NativeSelect>
+      </div>
       {
         (state==="Change this value" || state==="select button")
-        ?<span style={{color:"red", fontSize:"15px"}}>{state}</span>
-        :<span style={{color:"black", fontSize:"15px"}}>{state}</span>
+        ?<span style={{color:"red", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
+        :<span style={{color:"black", fontSize:"15px", float:'right', width:'210px', whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}>{state}</span>
       }
       {/* <Input id="Status" defaultValue="select button"></Input> */}
     </div>

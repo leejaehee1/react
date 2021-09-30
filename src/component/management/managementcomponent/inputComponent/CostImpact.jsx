@@ -38,17 +38,14 @@ const CostImpact = (props) => {
     };
 
     return (
-        <div className={classes.root}>
-        {/* <Typography id="input-slider" gutterBottom>
-            Department
-        </Typography> */}
-        <Grid container spacing={2} alignItems="center">
-          <Grid item>
+      <div style={{display:'flex'}}>
+        <div style={{width:"30%"}}>
             {/* <VolumeUp /> */}
-            CostImpact &nbsp;&nbsp;:  &nbsp;&nbsp;&nbsp;&nbsp;
-          </Grid>
-          <Grid item xs>
+            CostImpact &nbsp;&nbsp;:  
+            </div>
+          <div style={{flexGrow: 1}}>
             <Slider
+              style={{width:"250px"}}
                 // id="difficulty"
               value={typeof value === 'number' ? value : props.static}
               onChange={handleSliderChange}
@@ -60,8 +57,7 @@ const CostImpact = (props) => {
               min={1}
               max={5}
             />
-          </Grid>
-          <Grid item>
+          {/* <Grid item>
             <Input
                 id="costImpact"
               className={classes.input}
@@ -77,8 +73,8 @@ const CostImpact = (props) => {
                 'aria-labelledby': 'input-slider',
               }}
             />
-          </Grid>
-        </Grid>
+          </Grid> */}
+        </div>
       </div>
     )
 }
