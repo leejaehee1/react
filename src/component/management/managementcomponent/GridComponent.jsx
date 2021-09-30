@@ -16,6 +16,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
+import WarningIcon from '@material-ui/icons/Warning';
 
 
 // color
@@ -720,7 +721,13 @@ const GridComponent = () => {
             <>
                 {/* <p>{rData} : {eachRowVData[index]}</p> */}
                 {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
-                {detailUI[rData]}
+                {detailUI[rData]
+                ?detailUI[rData]
+                :
+                <div style={{display:'inline-block'}}>
+                    {rData} : <span style={{color:"red"}}> <WarningIcon /> Column not to exist in the database.</span>
+                </div>
+                }
             </>
             
         )

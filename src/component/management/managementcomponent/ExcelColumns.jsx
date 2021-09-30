@@ -303,9 +303,9 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                                 {(props.sqlHooks.includes(row))? <DoneOutlineIcon />:
                                                     <>
                                                     <HttpsIcon />
-                                                    <HighlightOffIcon /> 
+                                                    {/* <HighlightOffIcon /> 
                                                     <NotInterestedIcon />
-                                                    <RemoveCircleOutlineIcon />
+                                                    <RemoveCircleOutlineIcon /> */}
                                                     </>
                                                     }
                                                 {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
@@ -339,9 +339,9 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
                                             :
                                                 <>
                                                     <HttpsIcon />
-                                                    <HighlightOffIcon /> 
+                                                    {/* <HighlightOffIcon /> 
                                                     <NotInterestedIcon />
-                                                    <RemoveCircleOutlineIcon />
+                                                    <RemoveCircleOutlineIcon /> */}
                                                 </> 
                                             } 
                                             {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<DoneOutlineIcon /> */}
