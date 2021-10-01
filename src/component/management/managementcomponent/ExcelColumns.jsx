@@ -258,7 +258,7 @@ const ExcelColumns = (props) => {
 
     return (
         <>
-            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}><FindInPageIcon/>AutoMapping</button></h1>
+            <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;<button className="excelColumns" onClick={searchMappingColumns}><FindInPageIcon placement="button-start" />AutoMapping</button></h1>
             {/* <Collapse in={alertOpen}>
                 <Alert severity="error">This is an error alert — check it out!</Alert>
                 <Alert severity="warning">This is a warning alert — check it out!</Alert>

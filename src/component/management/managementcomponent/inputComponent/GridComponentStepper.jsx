@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {useGetList} from 'react-admin';
 
 // form
 import InputLabel from '@material-ui/core/InputLabel';
@@ -12,6 +13,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+
+// import code data
+// import { useGetList } from 'react-admin';
+import Status from './Status';
+import ProjectID from './ProjectID';
+import Category from './Category';
+import Discipline from './Discipline';
+import Unit from './Unit';
+import SystemID from './SystemID';
+import Subsystem from './Subsystem';
+import Area from './Area';
+import Department from './Department';
+import Difficulty from './Difficulty';
+import ScheduleImpact from './ScheduleImpact';
+import CostImpact from './CostImpact';
+import ClosedDate from './ClosedDate';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,11 +49,58 @@ const useStyles = makeStyles((theme) => ({
   
 function getSteps() {
     return ['Select column to update', 'input rowdata', 'Select CodeData'];
-  }
+}
 
-const GetStepContent = (props) => {
-    const classes = useStyles();
-    const [column, setColumn] = React.useState('');
+
+
+const DiviedCodeData = (props) => {
+    console.dir(props.baseColumn)
+    if (props.baseColumn === "projectID") {
+        return (<>
+            <ProjectID />
+            {/* return (<>projectID</>) */}
+        </>)
+    } else if (props.baseColumn === "status") {
+        return (<><Status /></>)
+    } else if (props.baseColumn === "discipline") {
+        return (<><Discipline /></>)
+    } else if (props.baseColumn === "category") {
+        return (<><Category /></>)
+    } 
+    // else if (column === "authority") {
+    //     return (<></>)
+    // } 
+    else if (props.baseColumn === "status") {
+        return (<><Status /></>)
+    } else if (props.baseColumn === "department") {
+        return (<><Department /></>)
+    } else if (props.baseColumn === "systemID") {
+        return (<><SystemID /></>)
+    } else if (props.baseColumn === "subsystem") {
+        return (<><Subsystem /></>)
+    } else if (props.baseColumn === "unit") {
+        return (<><Unit /></>)
+    } else if (props.baseColumn === "area") {
+        return (<Area />)
+    } else if (props.baseColumn === "drawingNo") {
+        return (<></>)
+    } else {
+        return (<> code가 아니무니다</>)
+    }
+    return (<></>)
+}
+  
+  const GetStepContent = (props) => {
+      const classes = useStyles();
+      const [column, setColumn] = React.useState('');
+      const baseColumn = React.useRef("");
+      // const [inputRowData, setInputRowData] = React.useState('');
+      const { dataa, ids } = useGetList('list', );
+      
+      useEffect(()=>{
+            baseColumn.current = column
+        }, [column])
+        
 
     const handleChange = (event) => {
         setColumn(event.target.value);
@@ -76,7 +140,9 @@ const GetStepContent = (props) => {
         return (
             <div style={{height:'100px'}}>
                 {/* 'What is an ad group anyways?'<br /> */}
-                What data will be changed?<br />
+                <div style={{paddingBottom:'13px'}}>
+                    What data will be changed at <b>{column}</b> column?
+                </div>
                 <TextField id="outlined-basic" label="Existing data" style={{minWidth:"400px"}} variant="outlined" />
             </div>
         )
@@ -85,8 +151,15 @@ const GetStepContent = (props) => {
         return (
             <div style={{height:'100px'}}>
                 {/* 'What is an ad group anyways?'<br /> */}
-                What data do you want to change?<br />
-                <TextField id="outlined-basic" label="Data to change" style={{minWidth:"400px"}} variant="outlined" />
+                <div style={{paddingBottom:'13px'}}>
+                    What data do you want to change?
+                </div><br />
+                <div style={{paddingLeft:'110px'}}>
+                    {/* <div style={{width:"20px"}}></div> */}
+                {/* <Discipline /> */}
+                    <DiviedCodeData baseColumn={baseColumn.current} />
+                </div>
+                {/* <TextField id="outlined-basic" label="Data to change" style={{minWidth:"400px"}} variant="outlined" /> */}
             </div>
         )
       default:
@@ -123,7 +196,7 @@ const GridComponentStepper = (props) => {
                 ))}
             </Stepper>
             <div>
-                {props.selectedColumns}
+                {/* {props.selectedColumns} */}
                 {activeStep === steps.length ? (
                 <div>
                     <div style={{textAlign:"center", height:"100px"}} >
@@ -141,17 +214,22 @@ const GridComponentStepper = (props) => {
                         </Typography>
                     </div>
                     <br />
-                    <div>
-                    <Button
-                        disabled={activeStep === 0}
-                        onClick={handleBack}
-                        className={classes.backButton}
-                    >
-                        Back
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={handleNext}>
-                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                    </Button>
+                    <div style={{display:'flex'}}>
+                        <div style={{width:'70%'}}>
+                            <Button
+                                disabled={activeStep === 0}
+                                onClick={handleBack}
+                                className={classes.backButton}
+                            >
+                                Back
+                            </Button>
+                            <Button variant="contained" color="primary" onClick={handleNext}>
+                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                            </Button>                            
+                        </div>
+                        <div></div>
+
+                    {/* <Button>CodeData</Button> */}
                     </div>
                 </div>
                 )}
