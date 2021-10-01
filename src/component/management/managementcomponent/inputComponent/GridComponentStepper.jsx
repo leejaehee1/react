@@ -72,25 +72,23 @@ const DiviedCodeData = (props) => {
     } else if (props.baseColumn === "status") {
         return (<><Status setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "discipline") {
-        return (<><Discipline /></>)
+        return (<><Discipline setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "category") {
-        return (<><Category /></>)
+        return (<><Category setUpdata={setUpdata} /></>)
     } 
     // else if (column === "authority") {
     //     return (<></>)
     // } 
-    else if (props.baseColumn === "status") {
-        return (<><Status /></>)
-    } else if (props.baseColumn === "department") {
-        return (<><Department /></>)
+    else if (props.baseColumn === "department") {
+        return (<><Department setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "systemID") {
-        return (<><SystemID /></>)
+        return (<><SystemID setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "subsystem") {
-        return (<><Subsystem /></>)
+        return (<><Subsystem setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "unit") {
-        return (<><Unit /></>)
+        return (<><Unit setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "area") {
-        return (<Area />)
+        return (<Area setUpdata={setUpdata} />)
     } else if (props.baseColumn === "drawingNo") {
         return (<></>)
     } else {

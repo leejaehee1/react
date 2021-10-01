@@ -18,8 +18,12 @@ const Status = (props) => {
   }, [])
 
   const changeStatus = (event) =>{
-    setState(data[event.target.value].statusName)
-    props.setUpdata(event.target.value)
+    try {
+      setState(data[event.target.value].statusName)
+      props.setUpdata(event.target.value)
+    } catch (e) {
+      setState("Change this value")
+    }
   }
 
   useEffect(() => {

@@ -20,6 +20,7 @@ const Area = (props) => {
 
     try {
         setState(data[event.target.value].areaName)
+        props.setUpdata(event.target.value)
       } catch (e) {
         setState("Change this value")
       }

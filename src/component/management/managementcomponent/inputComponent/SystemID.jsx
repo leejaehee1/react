@@ -17,6 +17,7 @@ const SystemID = (props) => {
 
     try {
         setState(data[event.target.value].systemName)
+        props.setUpdata(event.target.value)
       } catch (e) {
         setState("Change this value")
       }
