@@ -999,7 +999,7 @@ const GridComponent = () => {
                                 <div className={classes.container}>
                                     <Collapse in={codeMappingChecked}><br /><br />
                                     <Paper elevation={0} className={classes.paper}>
-                                        <GridComponentStepper selectedColumns={selectedColumns} /> 
+                                        <GridComponentStepper selectedColumns={selectedColumns} data={data} /> 
                                     </Paper>
                                     </Collapse>
                                     {/* <Collapse in={codeMappingChecked} collapsedSize={40}>
@@ -1037,7 +1037,7 @@ const GridComponent = () => {
                 onRowClick={(event, rowData)=> {
                     // 클릭 시 배경
                     setSelectedRow(rowData.punchID)
-                    console.dir(rowData)
+                    // console.dir(rowData)
 
                     setRightDrawerState(true)
                     // console.log(1)

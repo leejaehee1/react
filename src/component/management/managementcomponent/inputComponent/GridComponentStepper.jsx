@@ -54,7 +54,6 @@ function getSteps() {
 
 
 const DiviedCodeData = (props) => {
-    console.dir(props.baseColumn)
     if (props.baseColumn === "projectID") {
         return (<>
             <ProjectID />
@@ -92,18 +91,32 @@ const DiviedCodeData = (props) => {
   
   const GetStepContent = (props) => {
       const classes = useStyles();
-      const [column, setColumn] = React.useState('');
-      const baseColumn = React.useRef("");
-      // const [inputRowData, setInputRowData] = React.useState('');
-      const { dataa, ids } = useGetList('list', );
+      const [column, setColumn] = React.useState(''); // 1 step
+        const [inputRowDataBefore, setInputRowDataBefore] = React.useState(''); // 2 step
+        const [inputRowData, setInputRowData] = React.useState(''); // 2 step
+      const baseColumn = React.useRef(""); // 3 step before
+    //   const baseColumnAfter = React.useRef(""); // 3 step after
+    //   const { dataa, ids } = useGetList('list', );
       
-      useEffect(()=>{
-            baseColumn.current = column
-        }, [column])
+    const selectedRowDataSet = new Set()
+    
+    useEffect(()=>{
+        baseColumn.current = column
+        for (var r of props.data){
+            // console.log(r[column])
+            selectedRowDataSet.add(r[column]?r[column]:"(undefined)")
+        }
+        setInputRowDataBefore([...selectedRowDataSet])
+        console.log(selectedRowDataSet)
+    }, [column])
         
 
     const handleChange = (event) => {
         setColumn(event.target.value);
+        console.log(event.target.value)
+      };
+      const handleChangeTwo = (event) => {
+        setInputRowData(event.target.value);
         console.log(event.target.value)
       };
     // console.dir(activeStep)
@@ -143,7 +156,27 @@ const DiviedCodeData = (props) => {
                 <div style={{paddingBottom:'13px'}}>
                     What data will be changed at <b>{column}</b> column?
                 </div>
-                <TextField id="outlined-basic" label="Existing data" style={{minWidth:"400px"}} variant="outlined" />
+                {/* <TextField id="outlined-basic" label="Existing data" style={{minWidth:"400px"}} variant="outlined" /> */}
+                <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">RowData</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={inputRowData}
+                    onChange={handleChangeTwo}
+                    label="column"
+                    >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    {inputRowDataBefore.map((value) => 
+                        <MenuItem value={value}>{value}</MenuItem>
+                    )}
+                    {/* <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem> */}
+                    </Select>
+                </FormControl>
             </div>
         )
       case 2:
@@ -210,7 +243,7 @@ const GridComponentStepper = (props) => {
                     <div style={{textAlign:"center", height:"100px"}}>
                         <Typography className={classes.instructions}>
                             {/* {getStepContent(activeStep)} */}
-                            <GetStepContent activeStep={activeStep} selectedColumns={props.selectedColumns} />
+                            <GetStepContent activeStep={activeStep} selectedColumns={props.selectedColumns} data={props.data}  />
                         </Typography>
                     </div>
                     <br />
