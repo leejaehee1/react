@@ -19,6 +19,7 @@ const Status = (props) => {
 
   const changeStatus = (event) =>{
     setState(data[event.target.value].statusName)
+    props.setUpdata(event.target.value)
   }
 
   useEffect(() => {

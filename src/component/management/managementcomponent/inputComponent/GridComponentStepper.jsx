@@ -70,7 +70,7 @@ const DiviedCodeData = (props) => {
             {/* return (<>projectID</>) */}
         </>)
     } else if (props.baseColumn === "status") {
-        return (<><Status /></>)
+        return (<><Status setUpdata={setUpdata} /></>)
     } else if (props.baseColumn === "discipline") {
         return (<><Discipline /></>)
     } else if (props.baseColumn === "category") {
@@ -124,12 +124,14 @@ const DiviedCodeData = (props) => {
     }, [column])
     
     useEffect(()=> {
-        console.log("upUpData")
-        console.log(upUpData)
-        console.log("inputRowData")
-        console.log(inputRowData)
-        console.log("column")
-        console.log(column)
+        // console.log("upUpData")
+        // console.log(upUpData)
+        // console.log("inputRowData")
+        // console.log(inputRowData)
+        // console.log("column")
+        // console.log(column)
+        var combineData = [column, inputRowData, upUpData]
+        props.setUpUpUpDate(combineData)
     }, [upUpData])
 
     const handleChange = (event) => {
@@ -224,6 +226,7 @@ const DiviedCodeData = (props) => {
 const GridComponentStepper = (props) => {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [upUpUpDate, setUpUpUpDate] = React.useState(["", "", ""]);
     const steps = getSteps();
 
     const handleNext = () => {
@@ -238,7 +241,12 @@ const GridComponentStepper = (props) => {
         setActiveStep(0);
     };
 
-    // console.log(props.selectedColumns)
+    const handleOldData = () => {
+        if(upUpUpDate[0].length === 0 ){
+            console.log('GridComponentStepper 246 page :데이터 0로직')
+        }
+        props.setUpdatedOldData(upUpUpDate)
+    }
 
     return (
         <div className={classes.root}>
@@ -254,17 +262,21 @@ const GridComponentStepper = (props) => {
                 {activeStep === steps.length ? (
                 <div>
                     <div style={{textAlign:"center", height:"100px"}} >
-                        <Typography className={classes.instructions}>All steps completed</Typography>
+                        <Typography className={classes.instructions}>
+                        <p>target column : {upUpUpDate[0]}</p>
+                        <p>Old Data : {upUpUpDate[1]}</p>
+                        <p>New Data : {upUpUpDate[2]}</p></Typography>
                     </div>
                     <br />
                     <Button onClick={handleReset}>Reset</Button>
+                    <Button onClick={handleOldData} color="primary" variant="contained">Apply</Button>
                 </div>
                 ) : (
                 <div>
                     <div style={{textAlign:"center", height:"100px"}}>
                         <Typography className={classes.instructions}>
                             {/* {getStepContent(activeStep)} */}
-                            <GetStepContent activeStep={activeStep} selectedColumns={props.selectedColumns} data={props.data}  />
+                            <GetStepContent setUpUpUpDate={setUpUpUpDate} activeStep={activeStep} selectedColumns={props.selectedColumns} data={props.data}  />
                         </Typography>
                     </div>
                     <br />

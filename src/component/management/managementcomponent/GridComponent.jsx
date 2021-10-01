@@ -952,6 +952,22 @@ const GridComponent = () => {
                                                 // {if(Object.keys(detailUI).includes(col)){
                                                 //     return col
                                                 // }else {}})
+
+    //
+    const [updatedOldData, setUpdatedOldData] = useState(["", "", ""])
+
+    useEffect(()=> {
+        // data[selectRowId][a.title] = event.target.elements[a.title]["value"];
+        for(let rowI in data){
+            if (data[rowI][updatedOldData[0]] === updatedOldData[1]){
+                data[rowI][updatedOldData[0]] = updatedOldData[2]
+            }
+        }
+        // console.log(123)
+        // console.log(data)
+        // console.log(updatedOldData)
+    }, [updatedOldData])
+
     return (
         <div style={{
                     width: '100vw', 
@@ -999,7 +1015,7 @@ const GridComponent = () => {
                                 <div className={classes.container}>
                                     <Collapse in={codeMappingChecked}><br /><br />
                                     <Paper elevation={0} className={classes.paper}>
-                                        <GridComponentStepper selectedColumns={selectedColumns} data={data} /> 
+                                        <GridComponentStepper setUpdatedOldData={setUpdatedOldData} selectedColumns={selectedColumns} data={data} /> 
                                     </Paper>
                                     </Collapse>
                                     {/* <Collapse in={codeMappingChecked} collapsedSize={40}>
