@@ -58,6 +58,10 @@ function getSteps() {
 const DiviedCodeData = (props) => {
     const [upData, setUpdata] = useState("")
 
+    const handleTextField = (e) => {
+        setUpdata(e.target.value)
+    }
+
     useEffect(()=> {
         console.log(2);
         // console.log(upData);
@@ -93,7 +97,7 @@ const DiviedCodeData = (props) => {
         return (<></>)
     } else {
         return (
-             <TextField id="outlined-basic" label="Input text" style={{minWidth:"100px", marginLeft:"-120px"}} variant="outlined" />
+             <TextField onChange={handleTextField} id="outlined-basic" label="Input text" style={{minWidth:"100px", marginLeft:"-120px"}} variant="outlined" />
              )
     }
     return (<></>)
@@ -256,14 +260,20 @@ const GridComponentStepper = (props) => {
                 ))}
             </Stepper>
             <div>
-                {/* {props.selectedColumns} */}
                 {activeStep === steps.length ? (
                 <div>
                     <div style={{textAlign:"center", height:"100px"}} >
                         <Typography className={classes.instructions}>
-                        <p>target column : {upUpUpDate[0]}</p>
-                        <p>Old Data : {upUpUpDate[1]}</p>
-                        <p>New Data : {upUpUpDate[2]}</p></Typography>
+                        <div style={{display:"inline-block",textAlign:"center"}}>
+                            <p style={{ width:'400px', margin:"3px", whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}><b>Target column</b> : {upUpUpDate[0]}</p>
+                        </div>
+                        <div style={{display:"inline-block",textAlign:"center"}}>
+                            <p style={{ width:'400px', margin:"3px", whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}><b>Old Data</b> : {upUpUpDate[1]}</p>
+                        </div>
+                        <div style={{display:"inline-block",textAlign:"center"}}>
+                            <p style={{ width:'400px', margin:"3px", whiteSpace: 'nowrap', textOverflow:'ellipsis', overflow:'hidden'}}><b>New Data</b> : {upUpUpDate[2]}</p>
+                        </div>
+                        </Typography>
                     </div>
                     <br />
                     <Button onClick={handleReset}>Reset</Button>
