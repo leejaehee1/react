@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -13,6 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input'; 
+
 
 // import code data
 // import { useGetList } from 'react-admin';
@@ -54,9 +56,17 @@ function getSteps() {
 
 
 const DiviedCodeData = (props) => {
+    const [upData, setUpdata] = useState("")
+
+    useEffect(()=> {
+        console.log(2);
+        // console.log(upData);
+        props.setUpUpdata(upData)
+    }, [upData])
+
     if (props.baseColumn === "projectID") {
         return (<>
-            <ProjectID />
+            <ProjectID setUpdata={setUpdata} />
             {/* return (<>projectID</>) */}
         </>)
     } else if (props.baseColumn === "status") {
@@ -84,18 +94,21 @@ const DiviedCodeData = (props) => {
     } else if (props.baseColumn === "drawingNo") {
         return (<></>)
     } else {
-        return (<> code가 아니무니다</>)
+        return (
+             <TextField id="outlined-basic" label="Input text" style={{minWidth:"100px", marginLeft:"-120px"}} variant="outlined" />
+             )
     }
     return (<></>)
 }
   
   const GetStepContent = (props) => {
-      const classes = useStyles();
-      const [column, setColumn] = React.useState(''); // 1 step
-        const [inputRowDataBefore, setInputRowDataBefore] = React.useState(''); // 2 step
-        const [inputRowData, setInputRowData] = React.useState(''); // 2 step
-      const baseColumn = React.useRef(""); // 3 step before
-    //   const baseColumnAfter = React.useRef(""); // 3 step after
+    const classes = useStyles();
+    const [column, setColumn] = React.useState(''); // 1 step
+    const [inputRowDataBefore, setInputRowDataBefore] = React.useState(''); // 2 step
+    const [inputRowData, setInputRowData] = React.useState(''); // 2 step
+    const baseColumn = React.useRef(""); // 3 step before
+    const [upUpData, setUpUpdata] = useState(""); // 3 step after
+    const baseColumnAfter = React.useRef(""); // 3 step after
     //   const { dataa, ids } = useGetList('list', );
       
     const selectedRowDataSet = new Set()
@@ -107,17 +120,25 @@ const DiviedCodeData = (props) => {
             selectedRowDataSet.add(r[column]?r[column]:"(undefined)")
         }
         setInputRowDataBefore([...selectedRowDataSet])
-        console.log(selectedRowDataSet)
+        // console.log(selectedRowDataSet)
     }, [column])
-        
+    
+    useEffect(()=> {
+        console.log("upUpData")
+        console.log(upUpData)
+        console.log("inputRowData")
+        console.log(inputRowData)
+        console.log("column")
+        console.log(column)
+    }, [upUpData])
 
     const handleChange = (event) => {
         setColumn(event.target.value);
-        console.log(event.target.value)
+        // console.log(event.target.value)
       };
       const handleChangeTwo = (event) => {
         setInputRowData(event.target.value);
-        console.log(event.target.value)
+        // console.log(event.target.value)
       };
     // console.dir(activeStep)
     // console.log(props.selectedColumns)
@@ -169,8 +190,8 @@ const DiviedCodeData = (props) => {
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
-                    {inputRowDataBefore.map((value) => 
-                        <MenuItem value={value}>{value}</MenuItem>
+                    {inputRowDataBefore.map((value, index) => 
+                        <MenuItem key={index} value={value}>{value}</MenuItem>
                     )}
                     {/* <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
@@ -184,13 +205,13 @@ const DiviedCodeData = (props) => {
         return (
             <div style={{height:'100px'}}>
                 {/* 'What is an ad group anyways?'<br /> */}
-                <div style={{paddingBottom:'13px'}}>
-                    What data do you want to change?
+                <div style={{paddingBottom:'0px'}}>
+                    What data do you want to change at <b>{column}</b> column?
                 </div><br />
                 <div style={{paddingLeft:'110px'}}>
                     {/* <div style={{width:"20px"}}></div> */}
                 {/* <Discipline /> */}
-                    <DiviedCodeData baseColumn={baseColumn.current} />
+                    <DiviedCodeData baseColumn={baseColumn.current} setUpUpdata={setUpUpdata} />
                 </div>
                 {/* <TextField id="outlined-basic" label="Data to change" style={{minWidth:"400px"}} variant="outlined" /> */}
             </div>
@@ -263,6 +284,7 @@ const GridComponentStepper = (props) => {
                         <div></div>
 
                     {/* <Button>CodeData</Button> */}
+        
                     </div>
                 </div>
                 )}

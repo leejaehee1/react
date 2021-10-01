@@ -25,7 +25,9 @@ const ProjectID = (props) => {
     try {
         changedAllProjectID.current = data[event.target.value].projectID;
         setState(data[event.target.value].projectName);
-        console.log(changedAllProjectID.current)
+        // console.log(changedAllProjectID.current)
+        console.log(1)
+        props.setUpdata(changedAllProjectID.current)
       } catch (e) {
         changedAllProjectID.current = "";
         setState("Change this value");
