@@ -15,6 +15,10 @@ const Status = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
+    const upValData = Object.values(data).map(a => a.status)
+    if(props.stepValFlag===""){
+      props.setValStatus(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{

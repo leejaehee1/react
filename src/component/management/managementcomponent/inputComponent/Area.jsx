@@ -15,12 +15,26 @@ const Area = (props) => {
   const [ state, setState ] = useState("");
   const [ select, setSelect ] = useState(false);
 
+  useEffect(() => {
+    const upValData = Object.values(data).map(a => a.area)
+    // console.log("props.stepValFlag")
+    // console.log(props.stepValFlag)
+    if(props.stepValFlag===""){
+      props.setValArea(upValData)
+    }
+  }, [])
 
   const changeStatus = (event) =>{
 
     try {
+        // console.log(1)
         setState(data[event.target.value].areaName)
+        // console.log(2)
+        try {
+          
+        }catch(e){}
         props.setUpdata(event.target.value)
+        // console.log(3)
       } catch (e) {
         setState("Change this value")
       }

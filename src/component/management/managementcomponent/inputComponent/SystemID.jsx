@@ -10,7 +10,10 @@ const SystemID = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
-      console.log(111)
+    const upValData = Object.values(data).map(a => a.systemID)
+    if(props.stepValFlag===""){
+      props.setValSystemID(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{

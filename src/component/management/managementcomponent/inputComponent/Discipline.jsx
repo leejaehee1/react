@@ -15,7 +15,10 @@ const Discipline = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
-      console.log(111)
+    const upValData = Object.values(data).map(a => a.discipline)
+    if(props.stepValFlag===""){
+      props.setValDiscipline(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{

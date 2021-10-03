@@ -10,7 +10,10 @@ const Unit = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
-      console.log(111)
+    const upValData = Object.values(data).map(a => a.unit)
+    if(props.stepValFlag===""){
+      props.setValUnit(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{

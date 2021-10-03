@@ -15,8 +15,12 @@ const Category = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
-      console.log(111)
+    const upValData = Object.values(data).map(a => a.category)
+    if(props.stepValFlag===""){
+      props.setValCategory(upValData)
+    }
   }, [])
+
 
   const changeStatus = (event) =>{
 

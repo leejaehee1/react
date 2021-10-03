@@ -18,6 +18,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
 import WarningIcon from '@material-ui/icons/Warning';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 // color
 
@@ -443,15 +449,40 @@ const GridComponent = () => {
     const [valCategory, setValCategory] = useState([]);
     const [valDepartment, setValDepartment] = useState([]);
     const [valSystemID, setValSystemID] = useState([]);
-    const [valSubsystem, setSubsystem] = useState([]);
+    const [valSubsystem, setValSubsystem] = useState([]);
     const [valUnit, setValUnit] = useState([]);
     const [valArea, setValArea] = useState([]);
-    const [valDrawingNo, setDrawingNo] = useState([]);
- 
+    // const [valDrawingNo, setDrawingNo] = useState([]);
+
+    useEffect(() => {
+        console.log("valProjectID")
+        console.log(valProjectID)
+        console.log("valDiscipline")
+        console.log(valDiscipline)
+        console.log("valCategory")
+        console.log(valCategory)
+        console.log("valDepartment")
+        console.log(valDepartment)
+        console.log("valSystemID")
+        console.log(valSystemID)
+        console.log("valSubsystem")
+        console.log(valSubsystem)
+        console.log("valStatus")
+        console.log(valStatus)
+        console.log("valUnit")
+        console.log(valUnit)
+        console.log("valArea")
+        console.log(valArea)
+      }, [valStatus])
 
     const detailUI =  {
         projectID : (  // PK
-            <ProjectID static={eachRowData.current["projectID"]} setAllProjectTargetData={setAllProjectTargetData} />
+            <>
+            <ProjectID static={eachRowData.current["projectID"]} 
+                    setAllProjectTargetData={setAllProjectTargetData} 
+                    setValProjectID={setValProjectID} 
+                    />
+            </>
         ),
         punchID : (    // PK
             <div style={{display:'flex'}}>
@@ -470,26 +501,31 @@ const GridComponent = () => {
             </div>
         ),
         category : (
-            <Category static={eachRowData.current["category"]} />
+            <Category static={eachRowData.current["category"]}
+                    setValCategory={setValCategory} />
 
         ),
         systemID : (
-            <SystemID static={eachRowData.current["systemID"]} />
+            <SystemID static={eachRowData.current["systemID"]}
+                    setValSystemID={setValSystemID} />
         ),
         subsystem : (
-            <Subsystem static={eachRowData.current["subsystem"]} />
+            <Subsystem static={eachRowData.current["subsystem"]}
+                    setValSubsystem={setValSubsystem} />
         ),
         discipline : (
-            <Discipline static={eachRowData.current["discipline"]} />
+            <Discipline static={eachRowData.current["discipline"]} 
+                    setValDiscipline={setValDiscipline} />
         ),
         status : ( // 변경 완료
-            <Status static={eachRowData.current["status"]} />
+            <Status static={eachRowData.current["status"]} setValStatus={setValStatus} />
         ),
         unit : (
-            <Unit static={eachRowData.current["unit"]} />
+            <Unit static={eachRowData.current["unit"]} 
+                    setValUnit={setValUnit} />
         ),
         area : ( // 변경 완료
-            <Area static={eachRowData.current["area"]} />
+            <Area static={eachRowData.current["area"]} setValArea={setValArea} />
         ),
         tagNumber : (
             <div style={{display:'flex'}}>
@@ -596,7 +632,8 @@ const GridComponent = () => {
             </div>
         ),
         department : (
-            <Department static={eachRowData.current["department"]} />
+            <Department static={eachRowData.current["department"]} 
+            setValDepartment={setValDepartment} />
         ),
         confirmedDate : (
             <ClosedDate static={eachRowData.current["confirmedDate"]} rowName={"ConfirmedDate"} rowIndex={"confirmedDate"} />
@@ -911,10 +948,16 @@ const GridComponent = () => {
     }
 
 
+    // verify button result
+    const [valOpen, setValOpen] = React.useState(false);
+    const handleValClose = () => {
+        setValOpen(false);
+      };
 
     // alert
     const [alertOpen, setAlertOpen] = useState(false);
     const [alertImportOpen, setAlertImportOpen] = useState(false);
+    const [errorResultData, setErrorResultData] = useState({});
     const handleVerifyButton = () => {
         // columns checking validation
         // console.log("updateColDefs.current")
@@ -944,15 +987,99 @@ const GridComponent = () => {
         // alert(updateColDefs.current)
 
 
+
+        // const [valProjectID, setValProjectID] = useState([]);
+        // const [valStatus, setValStatus] = useState([]);
+        // const [valDiscipline, setValDiscipline] = useState([]);
+        // const [valCategory, setValCategory] = useState([]);
+        // const [valDepartment, setValDepartment] = useState([]);
+        // const [valSystemID, setValSystemID] = useState([]);
+        // const [valSubsystem, setValSubsystem] = useState([]);
+        // const [valUnit, setValUnit] = useState([]);
+        // const [valArea, setValArea] = useState([]);
+
         // column complete + row validation
-        console.dir(updateColDefs.current) // [{title:, field:~~ .. 변경O delete반영
         console.dir(data) // [{punchId:, projecID:, ... delete 된 값들도 포함되어 있다.
+        console.dir(updateColDefs.current) // [{title:, field:~~ .. 변경O delete반영
+
+
         // 
         let errorRow = {}
-        // for (var tData of data) {
+        for (var tData of data) {
+            var tArray = []
+            for(var uData of updateColDefs.current){
+                // console.log(tData['punchID'])
+                // console.log(uData.title)
+                // console.log(tData)
+                // console.log(tData[uData.title])
+                if (uData.title === 'projectID'){
+                    if(valProjectID.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'status'){
+                    if(valStatus.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'discipline'){
+                    if(valDiscipline.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'category'){
+                    if(valCategory.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'department'){
+                    if(valDepartment.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'systemID'){
+                    if(valSystemID.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'subsystem'){
+                    if(valSubsystem.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'unit'){
+                    if(valUnit.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }else if (uData.title === 'area'){
+                    if(valArea.includes(tData[uData.title])) {
+
+                    }else{
+                        tArray.push(uData.title)
+                    }
+                }
+            }
+            // console.log(tArray)
+            if (tArray.length === 0){
+
+            }else{
+                errorRow[tData['punchID']] = tArray
+            }
             
-        // }
-        
+
+        }
+        setErrorResultData(errorRow)
+        // console.log(errorResultData)
+        setValOpen(true)
 
         return () => {
             setAlertOpen(false)
@@ -1005,6 +1132,41 @@ const GridComponent = () => {
                     }}>
             <div>
                 <React.Fragment key="right">
+                    <Dialog
+                        open={valOpen}
+                        onClose={handleValClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                        <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Let Google help apps determine location. This means sending anonymous location data to
+                            Google, even when no apps are running.
+                            {Object.keys(errorResultData).map((v, i)=> (
+                                <>
+                                    <p>{v}</p>
+                                    <p>{Object.values(errorResultData)[i]}</p>
+                                    {/* <p>{Object.values(errorResultData[i]).map((vV, iV)=>(
+                                        <>
+                                            vV
+                                        </>
+                                    ))}</p> */}
+                                </>
+                            ))}
+                            {Object.keys(errorResultData)}
+                            {Object.values(errorResultData)}
+                        </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                        <Button onClick={handleValClose} color="primary">
+                            Disagree
+                        </Button>
+                        <Button onClick={handleValClose} color="primary" autoFocus>
+                            Agree
+                        </Button>
+                        </DialogActions>
+                    </Dialog>
                     {/* <Button onClick={toggleDrawer(true)}>TOPPunchList</Button> */}
                     <Drawer anchor="right" open={rightDrawerState} onClose={toggleDrawer(false)}>
                         <div

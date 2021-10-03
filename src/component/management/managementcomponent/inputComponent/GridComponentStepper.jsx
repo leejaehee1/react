@@ -70,29 +70,29 @@ const DiviedCodeData = (props) => {
 
     if (props.baseColumn === "projectID") {
         return (<>
-            <ProjectID setUpdata={setUpdata} />
+            <ProjectID setUpdata={setUpdata} stepValFlag="stepValFlag" />
             {/* return (<>projectID</>) */}
         </>)
     } else if (props.baseColumn === "status") {
-        return (<><Status setUpdata={setUpdata} /></>)
+        return (<><Status setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "discipline") {
-        return (<><Discipline setUpdata={setUpdata} /></>)
+        return (<><Discipline setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "category") {
-        return (<><Category setUpdata={setUpdata} /></>)
+        return (<><Category setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } 
     // else if (column === "authority") {
     //     return (<></>)
     // } 
     else if (props.baseColumn === "department") {
-        return (<><Department setUpdata={setUpdata} /></>)
+        return (<><Department setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "systemID") {
-        return (<><SystemID setUpdata={setUpdata} /></>)
+        return (<><SystemID setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "subsystem") {
-        return (<><Subsystem setUpdata={setUpdata} /></>)
+        return (<><Subsystem setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "unit") {
-        return (<><Unit setUpdata={setUpdata} /></>)
+        return (<><Unit setUpdata={setUpdata} stepValFlag="stepValFlag" /></>)
     } else if (props.baseColumn === "area") {
-        return (<Area setUpdata={setUpdata} />)
+        return (<Area setUpdata={setUpdata} stepValFlag="stepValFlag" />)
     } else if (props.baseColumn === "drawingNo") {
         return (<></>)
     } else {

@@ -10,7 +10,10 @@ const Subsystem = (props) => {
   const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
-      console.log(111)
+    const upValData = Object.values(data).map(a => a.subsystem)
+    if(props.stepValFlag===""){
+      props.setValSubsystem(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{

@@ -14,6 +14,12 @@ const Department = (props) => {
   const [ state, setState ] = useState("");
   const [ select, setSelect ] = useState(false);
 
+  useEffect(() => {
+    const upValData = Object.values(data).map(a => a.department)
+    if(props.stepValFlag===""){
+      props.setValDepartment(upValData)
+    }
+  }, [])
 
   const changeStatus = (event) =>{
 

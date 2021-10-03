@@ -18,6 +18,12 @@ const ProjectID = (props) => {
   const changedAllProjectID = useRef("aa");
   
   useEffect(() => {
+    const upValData = Object.values(data).map(a => a.projectID)
+    // console.log("props.stepValFlag")
+    // console.log(props.stepValFlag)
+    if(props.stepValFlag===""){
+      props.setValProjectID(upValData)
+    }
   }, [])
 
   const changeStatus = (event) =>{
