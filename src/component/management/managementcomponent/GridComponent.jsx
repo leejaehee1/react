@@ -433,6 +433,20 @@ const GridComponent = () => {
             data[d].projectID = allProjectTargetData
         }
     }, [allProjectTargetData])
+
+
+
+    // validation Code Data
+    const [valProjectID, setValProjectID] = useState([]);
+    const [valStatus, setValStatus] = useState([]);
+    const [valDiscipline, setValDiscipline] = useState([]);
+    const [valCategory, setValCategory] = useState([]);
+    const [valDepartment, setValDepartment] = useState([]);
+    const [valSystemID, setValSystemID] = useState([]);
+    const [valSubsystem, setSubsystem] = useState([]);
+    const [valUnit, setValUnit] = useState([]);
+    const [valArea, setValArea] = useState([]);
+    const [valDrawingNo, setDrawingNo] = useState([]);
  
 
     const detailUI =  {
@@ -927,7 +941,18 @@ const GridComponent = () => {
                 return null
             }
         }
-        alert('성공')
+        // alert(updateColDefs.current)
+
+
+        // column complete + row validation
+        console.dir(updateColDefs.current) // [{title:, field:~~ .. 변경O delete반영
+        console.dir(data) // [{punchId:, projecID:, ... delete 된 값들도 포함되어 있다.
+        // 
+        let errorRow = {}
+        // for (var tData of data) {
+            
+        // }
+        
 
         return () => {
             setAlertOpen(false)
