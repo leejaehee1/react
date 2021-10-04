@@ -25,7 +25,9 @@ const Department = (props) => {
 
     try {
         setState(data[event.target.value].deptName)
-        props.setUpdata(event.target.value)
+        if (props.stepValFlag==="stepValFlag"){
+          props.setUpdata(event.target.value)
+        }
       } catch (e) {
         setState("Change this value")
       }

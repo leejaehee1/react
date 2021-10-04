@@ -27,14 +27,10 @@ const Area = (props) => {
   const changeStatus = (event) =>{
 
     try {
-        // console.log(1)
         setState(data[event.target.value].areaName)
-        // console.log(2)
-        try {
-          
-        }catch(e){}
-        props.setUpdata(event.target.value)
-        // console.log(3)
+        if (props.stepValFlag==="stepValFlag"){
+          props.setUpdata(event.target.value)
+        }
       } catch (e) {
         setState("Change this value")
       }

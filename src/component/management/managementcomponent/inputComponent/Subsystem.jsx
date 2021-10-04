@@ -20,7 +20,9 @@ const Subsystem = (props) => {
 
     try {
         setState(data[event.target.value].subsystemName)
-        props.setUpdata(event.target.value)
+        if (props.stepValFlag==="stepValFlag"){
+          props.setUpdata(event.target.value)
+        }
       } catch (e) {
         setState("Change this value")
       }

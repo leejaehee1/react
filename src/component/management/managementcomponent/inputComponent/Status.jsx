@@ -24,7 +24,9 @@ const Status = (props) => {
   const changeStatus = (event) =>{
     try {
       setState(data[event.target.value].statusName)
-      props.setUpdata(event.target.value)
+      if (props.stepValFlag==="stepValFlag"){
+        props.setUpdata(event.target.value)
+      }
     } catch (e) {
       setState("Change this value")
     }

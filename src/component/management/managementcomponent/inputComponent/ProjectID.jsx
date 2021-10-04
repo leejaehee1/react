@@ -33,7 +33,10 @@ const ProjectID = (props) => {
         setState(data[event.target.value].projectName);
         // console.log(changedAllProjectID.current)
         console.log(1)
-        props.setUpdata(changedAllProjectID.current)
+        if (props.stepValFlag==="stepValFlag"){
+          props.setUpdata(event.target.value)
+        }
+        // props.setUpdata(changedAllProjectID.current)
       } catch (e) {
         changedAllProjectID.current = "";
         setState("Change this value");
@@ -72,8 +75,9 @@ const ProjectID = (props) => {
 
   return (
     <div style={{display:'flex'}}>
-      <div style={{width: "40%"}}>
-        projectID :  <button className='projectIDButton' type="button" onClick={updateAllProjectID}><CachedIcon fontSize="small" /> ALL </button>
+      <div style={{width: "30%"}}>
+        projectID :  
+        {/* <button className='projectIDButton' type="button" onClick={updateAllProjectID}><CachedIcon fontSize="small" /> ALL </button> */}
       </div>
       <div style={{flexGrow: 1, display:'flex'}}>
         <div style={{width: "20%"}}>
