@@ -1,5 +1,5 @@
 button.beforeIssue {
-    width: 170px;
+    width: 180px;
     height: 60px;
     border-radius: 7px;
     color: #424242;
@@ -19,7 +19,7 @@ button.beforeIssue {
   }
   
   button.afterIssue {
-    width: 170px;
+    width: 180px;
     height: 60px;
     border-radius: 7px;
     color: #ffffff;
@@ -44,7 +44,7 @@ button.beforeIssue {
 
 
   button.beforeHistory {
-    width: 170px;
+    width: 180px;
     height: 60px;
     border-radius: 7px;
     color: #424242;
@@ -64,7 +64,7 @@ button.beforeIssue {
   }
   
   button.afterHistory {
-    width: 170px;
+    width: 180px;
     height: 60px;
     border-radius: 7px;
     color: #ffffff;
@@ -83,3 +83,31 @@ button.beforeIssue {
     color: #424242;
     cursor: pointer;
   } */
+
+button.excelIcon {
+  /* background: pink; */
+  /* background-image: url("./images/Login.png"); */
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+button.excelIcon > p {
+  color: transparent;
+}
+
+button.pdfIcon {
+  width: 30px;
+  height: 30px;
+  /* background: lightcoral; */
+  /* background-image: url("images/pdfIcon.png"); */
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+button.pdfIcon > p {
+  color: transparent;
+}

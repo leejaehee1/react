@@ -4,7 +4,12 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
 
+// style
 import './styles/detailselector.css'
+
+// static
+import excelIcon from './static/excel-icon.png'
+import pdfIcon from './static/pdf-icon.png'
 
 function DetailSelector(props) {
   const [issueState, setIssueState] = useState(false)
@@ -25,7 +30,7 @@ function DetailSelector(props) {
   }
   
   return (
-    <div>
+    <div style={{display:'flex'}}>
       {issueState?
       <button className="beforeIssue" onClick={changeIssueState}>
         <p className="title">Issue</p>
@@ -44,13 +49,14 @@ function DetailSelector(props) {
         <p className="title">History</p>
       </button>
       }
-      <div className="files">
-        {/* <button>
+      <div className="files" style={{marginLeft: '5px', marginRight: '-20px'}}>
+        
+        <button className="pdfIcon" style={{backgroundImage: `url(${pdfIcon})`}}>
+          <p>pdf</p>
+        </button>
+        <button className="excelIcon" style={{backgroundImage: `url(${excelIcon})`}}>
           <p>excel</p>
         </button>
-        <button>
-          <p>pdf</p>
-        </button> */}
       </div>
     </div>
   )
