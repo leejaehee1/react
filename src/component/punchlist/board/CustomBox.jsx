@@ -35,10 +35,12 @@ const CustomBox = (props) => {
             <Box
                 button
                 width="110px"
-                height={28}
+                height={25}
                 display="inline-block"
                 textAlign="center"
-                lineHeight="28px"
+                lineHeight="25px"
+                fontSize="12px"
+                // fontWeight="bold"
                 verticalAlign="middle"
                 color="white"
                 borderRadius={3}

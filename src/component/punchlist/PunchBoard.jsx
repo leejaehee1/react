@@ -110,7 +110,7 @@ const PunchBoard = (props) => {
                             {/* aaa
                             ${inputBoardData[id].punchID} */}
                             <ListItemText 
-                                style={{marginRight:'10px'}}
+                                style={{marginRight:'10px', marginTop:'0px', marginBottom:'0px', height:'50px'}}
                                 
                                 primary={
                                     `${inputBoardData[id].punchID}, 
@@ -122,6 +122,7 @@ const PunchBoard = (props) => {
                                 secondary={
                                     <>
                                         <p style={{width:"600px", 
+                                                fontSize:"10px",
                                                 overflow:"hidden", 
                                                 textOverflow:"ellipsis", 
                                                 whiteSpace:"nowrap"}}
@@ -139,7 +140,7 @@ const PunchBoard = (props) => {
                                 <StateButton eachState={inputBoardData[id].status} allData={inputBoardData[id]} />
                             </Typography>
                         </ListItem>
-                        <hr />
+                        <hr style={{margin:'0px'}} />
 
                         </>
                     );

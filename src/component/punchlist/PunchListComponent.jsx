@@ -39,6 +39,7 @@ import PunchBoard from './PunchBoard.jsx';
 
 
 import "./styles/button.css"
+import DetailHistoryComponent from './components/DetailHistoryComponent';
 
 
 // https://material-ui.com/system/borders/
@@ -77,10 +78,13 @@ const useStyles = makeStyles((theme) => ({
         // width: theme.spacing(16),
         // height: theme.spacing(16),
         textAlign: 'center',
+        width: '120px',
         // color: theme.palette.text.disabled,
         color: 'white',
         backgroundColor: '#616161',
         height: '30px',
+        textTransform: 'none',
+        fontSize: '14px',
         
         // background:'black',
     
@@ -91,10 +95,14 @@ const useStyles = makeStyles((theme) => ({
         // width: theme.spacing(16),
         // height: theme.spacing(16),
         textAlign: 'center',
+        width: '120px',
         // color: theme.palette.text.disabled,
         color: 'black',
         backgroundColor: '#bdbdbd',
         height: '30px',
+        textTransform: 'none',
+        fontSize: '14px',
+
 
         // background:'black',
     
@@ -321,7 +329,8 @@ const PunchListComponent = () => {
                     <>
                     <Box 
                     // boxShadow={5} 
-                    borderColor="#ECECEC" style={{backgroundColor:'#ECECEC', margin:'0px', width:'100%', height:'16rem'}}>
+                    borderColor="#ECECEC" style={{backgroundColor:'#ECECEC', margin:'0px', width:'100%', 
+                    height:'180px'}}>
                         <Box display="flex" 
                             // width="75rem"
                             width="100%"
@@ -549,7 +558,7 @@ const PunchListComponent = () => {
                         }
                         {historyShow?
                             <>
-                                <p>History Data Logic</p>
+                                <DetailHistoryComponent />
                             </>
                         :
                             null

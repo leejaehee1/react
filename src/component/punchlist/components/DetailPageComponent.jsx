@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     justifyContent: 'space-between',
-    padding: 15
+    paddingTop: 10
   },
   container: {
     display: 'grid',
@@ -32,20 +32,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.5),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  },
-  lpaper: {
-    padding: theme.spacing(1),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    marginBottom: theme.spacing(1),
-  },
-  rpaper: {
-    padding: theme.spacing(1),
-    textAlign: 'right',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    marginBottom: theme.spacing(1),
   },
   divider: {
     margin: theme.spacing(2, 0),
