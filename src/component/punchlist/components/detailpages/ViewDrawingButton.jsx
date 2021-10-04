@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Modal from '@material-ui/core/Modal';
 import './styles/viewdrawingbutton.css'
+import ComponentToPrint from './ViewDrawingButtonPrint';
+import ReactToPrint, { useReactToPrint } from 'react-to-print';
+import Button from '@material-ui/core/Button';
+
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -29,6 +33,11 @@ const ViewDrawingButton = () => {
     const handleClose = () => {
       setOpen(false);
     };
+
+    let componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
     return (
         <>
             <button className="ViewDrawingButton" onClick={handleOpen}>
@@ -42,6 +51,8 @@ const ViewDrawingButton = () => {
             >
                 {/* {body} */}
                 <div style={modalStyle} className="page">
+                    {/* <ViewDrawingButtonPrint /> */}
+                    {/* <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
@@ -49,8 +60,19 @@ const ViewDrawingButton = () => {
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
                     <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
-                    <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
-                    <p>abcabcaaaaaaaaaaaaaaaaaabc</p>
+                    <p>abcabcaaaaaaaaaaaaaaaaaabc</p> */}
+                    <button>Print</button>
+                    {/* <ReactToPrint
+                        trigger={() => <a href="#">Print this out!</a>}
+                        // trigger={() => <Button>Print this out!</Button>}
+                        content={() => componentRef.current}
+                    />
+                    <ComponentToPrint ref={el => (componentRef = el)} /> */}
+                    <div ref={componentRef}>
+                        <ComponentToPrint />
+                    </div>
+                    <Button>Close</Button>
+                    <Button onClick={handlePrint}>Print</Button>
                 </div>
             </Modal>
         </>
