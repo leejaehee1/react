@@ -1,5 +1,5 @@
 import './styles/header.css'
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Tabs, Tab, Toolbar, AppBar, Box, Typography, Divider } from '@material-ui/core';
 import { Link, useRouteMatch } from 'react-router-dom';
@@ -32,10 +32,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = () => {
-    const classes = useStyles();
-    const match = useRouteMatch(['/list', '/admin', '/code']);
-    const currentPath = match?.path ?? '/';
+    // const classes = useStyles();
+    // const match = useRouteMatch(['/list', '/admin', '/code']);
+    // const currentPath = match?.path ?? '/';
 
+    const [statePunch, setStatePunch] = useState(true);
+    const [stateManagement, setStateManagement] = useState(false);
+    const [stateCode, setStateCode] = useState(false);
+
+    const handlePunch = () => {
+        setStatePunch(true);
+        setStateManagement(false);
+        setStateCode(false);
+    }
+    const handleManagement = () => {
+        setStatePunch(false);
+        setStateManagement(true);
+        setStateCode(false);
+    }
+    const handleCode = () => {
+        setStatePunch(false);
+        setStateManagement(false);
+        setStateCode(true);
+    }
 
     return (
         // <nav className={classes.root}>
@@ -98,25 +117,25 @@ const Header = () => {
         //                         /> */}
         //                     </Tabs>
         //                 </Box>
-        //                 <Box display="flex">
-        //                     <LoadingIndicator />
+                        // <Box display="flex">
+                        //     <LoadingIndicator />
 
                             
-        //                     {/* logout :  redirect login page */}
-        //                     <UserMenu logout={<Logout button />} />
-        //                 </Box>
+                        //     {/* logout :  redirect login page */}
+                        //     <UserMenu logout={<Logout button />} />
+                        // </Box>
         //             </Box>
         //         </Toolbar>
         //     </AppBar>
         // </nav>
         <>
-         <header className={classes.root}>
+         <header >
             <div>
             <h1>
                 <a href="#">P.L.M.S</a>
             </h1>
-            <a href="#" className="navUsername">
-                <p>Gil Dong Hong가나다라마바사아자차</p>
+            <a href="#" className="navUsername" >
+                <p>Gil Dong Hong</p>
             </a>
             <select name="#">
                 <option value="Algeria">Algeria RDPP</option>
@@ -125,19 +144,39 @@ const Header = () => {
             </select>
             </div>
             <nav id="gnb">
-            <ul>
-                <li>
-                <a href="#">Punch List</a>
-                </li>
-                <li className="on">
-                <a href="#/admin">Management</a>
-                </li>
-                <li>
-                <a href="#/code">Code</a>
-                </li>
-            </ul>
+                <ul>
+                    {statePunch?
+                    <li className="on">
+                    <a href="#">Punch List</a>
+                    </li>
+                    :
+                    <li onClick={handlePunch}>
+                    <a href="#">Punch List</a>
+                    </li>
+                    }
+                    {stateManagement?
+                    <li className="on">
+                    <a href="#/admin">Management</a>
+                    </li>
+                    :
+                    <li onClick={handleManagement}>
+                    <a href="#/admin">Management</a>
+                    </li>
+                    }
+                    {stateCode?
+                    <li className="on">
+                    <a href="#/code">Code</a>
+                    </li>
+                    :
+                    <li onClick={handleCode}>
+                    <a href="#/code">Code</a>
+                    </li>
+                    }
+                </ul>
             </nav>
         </header>
+        {/* <Logout button /> */}
+        {/* <UserMenu logout={<Logout button />} /> */}
         </>
     );
 };

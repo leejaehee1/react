@@ -13,7 +13,7 @@ button > p {
 
 
 button.beforeAll {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#808080 12%, #fff 0%);
@@ -21,7 +21,7 @@ button.beforeAll {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -34,7 +34,7 @@ button.beforeAll:hover {
 }
 
 button.afterAll {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #808080;
@@ -42,14 +42,14 @@ button.afterAll {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
   }
 
 button.beforeOpened {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#b28e59 12%, #fff 0%);
@@ -57,7 +57,7 @@ button.beforeOpened {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -70,7 +70,7 @@ button.beforeOpened:hover {
 }
 
 button.afterOpened {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #b28e59;
@@ -78,14 +78,14 @@ button.afterOpened {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
   }
 
 button.beforeReadyForReview {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#4e342e 12%, #fff 0%);
@@ -93,7 +93,7 @@ button.beforeReadyForReview {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -106,7 +106,7 @@ button.beforeReadyForReview:hover {
 }
 
 button.afterReadyForReview {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #4e342e;
@@ -114,14 +114,14 @@ button.afterReadyForReview {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
   }
 
 button.beforeRequestedForClose {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#7d6d99 12%, #fff 0%);
@@ -129,7 +129,7 @@ button.beforeRequestedForClose {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -142,7 +142,7 @@ button.beforeRequestedForClose:hover {
 }
 
 button.afterRequestedForClose {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #7d6d99;
@@ -150,14 +150,14 @@ button.afterRequestedForClose {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
   }
 
 button.beforeNotAccepted {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#739574 12%, #fff 0%);
@@ -165,7 +165,7 @@ button.beforeNotAccepted {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -178,7 +178,7 @@ button.beforeNotAccepted:hover {
 }
 
 button.afterNotAccepted {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #739574;
@@ -186,14 +186,14 @@ button.afterNotAccepted {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;
   }
 
 button.beforeClosed {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#648dae 12%, #fff 0%);
@@ -201,7 +201,7 @@ button.beforeClosed {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
   
     /* font-weight:  */
@@ -214,7 +214,7 @@ button.beforeClosed:hover {
 }
 
 button.afterClosed {
-    width: 120px;
+    width: 125px;
     height: 50px;
     color: #ffffff;
     background-color: #648dae;
@@ -222,7 +222,7 @@ button.afterClosed {
     border: 0px solid transparent;
     /* padding: 15px 50px; */
     /* margin-right: 10px; */
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #a0a0a0;
     /* font-weight:  */
     cursor: pointer;

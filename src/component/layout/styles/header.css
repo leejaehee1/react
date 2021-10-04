@@ -119,16 +119,17 @@
     opacity: 0.2;
   }
   header div > a.navUsername {
-    font-size: 10px;
-    padding: 0px 46px 0px 10px;
+    font-size: 5px;
+    padding: 10px 65px 0px 10px;
   }
   header div > a.navUsername p {
     opacity: 0.8;
   }
   header div > select {
+    font-size: 20px;
     cursor: pointer;
     background-color: #2b3546;
-    padding: 0px 14px;
+    padding: 0px 25px;
   }
   
   header div > select:focus {
@@ -153,6 +154,7 @@
   }
   header nav ul li {
     display: inline-block;
+    width: 170px;
     min-width: 110px;
     text-align: center;
     line-height: 46px; /*header에 사용된 height와 높이 동일하게 맞춰야 함*/

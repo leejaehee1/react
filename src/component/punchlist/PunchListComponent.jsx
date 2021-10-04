@@ -72,6 +72,8 @@ const useStyles = makeStyles((theme) => ({
         // color: theme.palette.text.disabled,
         color: 'white',
         backgroundColor: '#616161',
+        height: '30px',
+        
         // background:'black',
     
     },
@@ -84,6 +86,8 @@ const useStyles = makeStyles((theme) => ({
         // color: theme.palette.text.disabled,
         color: 'black',
         backgroundColor: '#bdbdbd',
+        height: '30px',
+
         // background:'black',
     
     },
@@ -261,7 +265,6 @@ const PunchListComponent = () => {
     
     return (
         <React.Fragment>
-            <br />
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
                 <Button className={classes.lbutton} onClick={handleDashBoard}>DashBoard</Button>
                 <Button className={classes.rbutton} onClick={handleStatus}>Status</Button>
@@ -270,23 +273,6 @@ const PunchListComponent = () => {
             { stateShow?(
                 show? (
                     <>
-                    {/* <Box bgcolor="primary.main" color="red" borderColor="red" {...defaultProps}> */}
-
-                    {/* boardData={boardData.length?boardData:boardAllData} 
-                    boardIds={boardIndexData.length?boardIndexData:allIndex}  */}
-
-
-{/* const defaultProps = {
-    // bgcolor: 'background.paper',
-    bgcolor: '#ECECEC',
-    // textAlign: 'center',
-    // marginleft: 5,
-    m: 0,
-    // border: 1,
-    style: { width: '100%', height: '16rem' },
-  }; */}
-
-
                     <div 
                          borderColor="#e0e0e0" 
                         style={{backgroundColor:'#ECECEC', 
@@ -332,6 +318,7 @@ const PunchListComponent = () => {
                             // width="75rem"
                             width="100%"
                             // height="18rem"
+                            
                             height="18rem"
                         // mt="1em"
                         > 
@@ -417,12 +404,12 @@ const PunchListComponent = () => {
                 )) : (<></>)
             }
             {/* <p>다음글</p> */}
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textAlign: "center", height: '15px' }}>
                 { stateShow?
                 (
-                    <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+                    <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
                 ) : (
-                    <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "2rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
+                    <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
                 )
                 }
             </div>
@@ -431,7 +418,7 @@ const PunchListComponent = () => {
 
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
-                    <>
+                    <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>
                         {buttonOne? 
                         <button className="afterAll" onClick={changeState}>
                             <p className="title">All</p>
@@ -501,7 +488,7 @@ const PunchListComponent = () => {
                                 <p>1002</p>
                             </button>
                         }
-                    </>
+                    </div>
                     
                     {/* <Resource 
                         name="list" 
