@@ -53,7 +53,11 @@ import Slider from '@material-ui/core/Slider';
 
 
 // import code data
-// import { useGetList } from 'react-admin';
+import { 
+    // useGetList,
+    useRefresh,
+    useCreate,
+ } from 'react-admin';
 import Status from './inputComponent/Status';
 import ProjectID from './inputComponent/ProjectID';
 import Category from './inputComponent/Category';
@@ -1120,6 +1124,26 @@ const GridComponent = () => {
         // console.log(updatedOldData)
     }, [updatedOldData])
 
+
+
+    // create API
+    const [create, {loading}] = useCreate();
+    const refresh = useRefresh()
+
+    const handleSaveDatabase = () => {
+        
+        // console.log("찍힌다.")
+        create('list/create',
+            {data: data, colDefs: excelChangedArray.current},
+            {
+                onSuccess: () => {
+                    refresh()
+                    // console.log("create 성공")
+                }
+            }
+        )
+    }
+    
     return (
         <div style={{
                     width: '100vw', 
@@ -1379,6 +1403,7 @@ const GridComponent = () => {
                                 </Button>
                                 &nbsp;&nbsp;&nbsp;
                                 <Button className={classes.baseButton} 
+                                    onClick={handleSaveDatabase}
                                     variant="outlined" 
                                     style={{textTransform: 'none'}}
                                 >
