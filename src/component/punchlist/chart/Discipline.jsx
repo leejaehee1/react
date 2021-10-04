@@ -1,6 +1,6 @@
 import { useGetList } from 'react-admin';
 
-import { Chart, Series, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip  } from 'devextreme-react/chart';
+import { Chart, Series,Grid, Title,  Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip, CommonSeriesSettings, SeriesTemplate  } from 'devextreme-react/chart';
 
 // boardData={boardData.length?boardData:boardAllData} 
 // boardIds={boardIndexData.length?boardIndexData:allIndex} 
@@ -32,38 +32,69 @@ const Discipline = (props) => {
       { argument: 'Structure', value: structureNum },
     ];
     return (
-      <Chart dataSource={barData}>
-      <Series
-        argumentField="argument"
-        valueField="value"
-        // name="count"
-        type="bar"
-        color="#ffaa66" 
-      />
-      <Tooltip enabled={true} />
-
-      <Size
-          height={160}
-          // width={250}
-      />
-      <CommonAxisSettings  
-        tickInterval={3}
-      >
-          {/* <Label 
-            format="decimal" 
-            staggeringSpacing={1}
-            displayMode="stagger"
-          /> */}
-          <Label
-                        rotationAngle={-20}
-                        overlappingBehavior="rotate"
+      <div style={{display:'flex'}}>
+        <div>
+          <text style={{ fontSize: 12, height:'145px', paddingRight:'10px', fill:'#494949', fontWeight:'bold', display:'flex', justifyContent:'center', alignItems:'center' }}>
+            Discipline
+          </text>
+        </div>
+        <Chart 
+          id ="barChart"
+          dataSource={barData}
+          // palette="Soft"
+          palette="Pastel"
+          >
+        <CommonSeriesSettings
+          argumentField="argument"
+          valueField="value"
+          type="bar"
+          // barPadding={9}
           />
-      </CommonAxisSettings >
-
-      <Legend
-          visible={false}
+        {/* <Series
+          argumentField="argument"
+          valueField="value"
+          // name="count"
+          // ignoreEmptyPoints={true}
+          type="bar"
+          // color="#ffaa66" 
+        /> */}
+        {/* <Tooltip enabled={true} /> */}
+        <ArgumentAxis>
+            <Label 
+              displayMode="stagger"
+              
+              staggeringSpacing={-3}
+             />
+          </ArgumentAxis>
+          {/* <ValueAxis pane="bottomPane">
+            <Grid visible={true} />
+            <Title text="Discipline" style={{ fontSize: 12, fill:'#494949', fontWeight:'bold' }} />
+          </ValueAxis> */}
+        <SeriesTemplate nameField="argument" />
+        <Size
+            height={160}
+            width={400}
         />
-    </Chart>
+        <CommonAxisSettings  
+          // tickInterval={3}
+        >
+            {/* <Label 
+              format="decimal" 
+              staggeringSpacing={1}
+              displayMode="stagger"
+            /> */}
+            {/* <Label
+                          rotationAngle={-20}
+                          overlappingBehavior="rotate"
+                          visible={true}
+            /> */}
+        </CommonAxisSettings >
+
+        <Legend
+            visible={false}
+          />
+      </Chart>
+      </div>
     )
 }
 

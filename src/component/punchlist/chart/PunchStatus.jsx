@@ -7,6 +7,7 @@ import PieChart, {
   Size,
   Legend,
   AdaptiveLayout,
+  Margin,
 } from 'devextreme-react/pie-chart';
 
 import React, { useEffect } from 'react';
@@ -69,42 +70,60 @@ const PunchStatus = (props) => {
   }
   
   return (
-    <PieChart 
-            dataSource={pieData}
-            type="doughnut"
-            innerRadius={0.85}
-            centerRender={abcc}
-            palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
-        >
-            <Series 
-                argumentField="argument" 
-                valueField="value" 
-            />
-            <Tooltip enabled={true} />
-            {/* <Type /> */}
-            <Size
-                    height={150}
-                    // width={250}
-                />
-            <Legend
-                    orientation="vertical"
-                    // center/right/left
-                    horizontalAlignment="right" 
-                    // top/bottom
-                    verticalAlignment="top"
-                    
-                    // columnItemSpacing={20}
-                    // rowItemSpacing={30}
+    <>
+      <PieChart 
+              dataSource={pieData}
+              type="doughnut"
+              innerRadius={0.85}
+              centerRender={abcc}
+              palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
+          >
+              <Series 
+                  argumentField="argument" 
+                  valueField="value" 
+              />
+              <Tooltip enabled={true} />
+              {/* <Type /> */}
+              <Size
+                      height={150}
+                      // width={250}
+                  />
+              <Margin
+                  // top={20}
+                  // bottom={20}
+                  left={60}
+                  // right={30}
+              />
 
+              
+              {/* // https://js.devexpress.com/Documentation/ApiReference/UI_Components/dxPieChart/Configuration/legend/#customizeText
+              // custom text Legend */}
+              <Legend
+                      orientation="vertical"
+                      // center/right/left
+                      horizontalAlignment="right" 
+                      // top/bottom
+                      verticalAlignment="top"
 
-                    onPointClick={pointClickHandler}
-                    onLegendClick={legendClickHandler}
-                />
-            <AdaptiveLayout
-                    // height={10}
-                    // width={50}
-            />
-        </PieChart>
+                      // columnItemSpacing={20}
+                      // rowItemSpacing={30}
+
+                      onPointClick={pointClickHandler}
+                      onLegendClick={legendClickHandler}
+              >
+                <Margin
+                  top={20}
+                  // bottom={20}
+                  // left={60}
+                  // right={30}
+              />
+              </Legend>
+              <AdaptiveLayout
+                      // height={10}
+                      // width={50}
+              />
+          </PieChart>
+    </>
   );
 }
   

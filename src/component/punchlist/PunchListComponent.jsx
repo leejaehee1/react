@@ -287,7 +287,7 @@ const PunchListComponent = () => {
   }; */}
 
 
-                    <Box 
+                    <div 
                          borderColor="#e0e0e0" 
                         style={{backgroundColor:'#ECECEC', 
                                 margin:'0px', 
@@ -301,27 +301,27 @@ const PunchListComponent = () => {
                                 {/* <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3> */}
                                 <PunchStatus 
                                     allData={boardAllData}
-                                    show={show}
+                                    // show={show}
                                  />
                             </Box>
                             <Box flex="3" p={0} m="1em">
                                 {/* <h3>Category</h3> */}
                                 <Category 
                                     allData={boardAllData}
-                                    show={show}
+                                    // show={show}
                                 />
                             </Box>
                             <Box flex="5" p={0} m="1em">
                                 {/* <h3>&nbsp;&nbsp;&nbsp;Discipline</h3> */}
                                 <Discipline 
                                     allData={boardData.length?boardData:boardAllData}
-                                    show={show}
+                                    // show={show}
                                     // boardData={boardData.length?boardData:boardAllData} 
                                     // boardIds={boardIndexData.length?boardIndexData:allIndex} 
                                 />
                             </Box>
                         </Box>
-                    </Box>
+                    </div>
                     </>
                 ) : (
                     <>

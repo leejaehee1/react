@@ -7,6 +7,7 @@ import PieChart, {
     Size,
     Legend,
     AdaptiveLayout,
+    Margin,
 } from 'devextreme-react/pie-chart';
  
 
@@ -69,6 +70,12 @@ export default function Category(props) {
                 argumentField="argument" 
                 valueField="value" 
             />
+            <Margin
+                          // top={20}
+                          // bottom={20}
+                          left={40}
+                          right={30}
+                      />
             <Tooltip enabled={true} />
             {/* <Type /> */}
             <Size
@@ -88,7 +95,14 @@ export default function Category(props) {
 
                     onPointClick={pointClickHandler}
                     onLegendClick={legendClickHandler}
-                />
+            >
+                <Margin
+                  top={30}
+                  // bottom={20}
+                  // left={60}
+                  // right={30}
+                  />
+            </Legend>
             <AdaptiveLayout
                     // height={10}
                     // width={50}
