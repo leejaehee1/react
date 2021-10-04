@@ -10,6 +10,14 @@ import { useAuthenticated } from 'react-admin';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import ViewStreamIcon from '@material-ui/icons/ViewStream';
+import ViewStreamTwoToneIcon from '@material-ui/icons/ViewStreamTwoTone';
+import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+
 
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
@@ -290,14 +298,14 @@ const PunchListComponent = () => {
                                     // show={show}
                                  />
                             </Box>
-                            <Box flex="3" p={0} m="1em">
+                            <Box flex="4" p={0} m="1em">
                                 {/* <h3>Category</h3> */}
                                 <Category 
                                     allData={boardAllData}
                                     // show={show}
                                 />
                             </Box>
-                            <Box flex="5" p={0} m="1em">
+                            <Box flex="4" p={0} m="1em">
                                 {/* <h3>&nbsp;&nbsp;&nbsp;Discipline</h3> */}
                                 <Discipline 
                                     allData={boardData.length?boardData:boardAllData}
@@ -419,6 +427,29 @@ const PunchListComponent = () => {
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>
+                        {/* <Checkbox
+                            size="small"
+                            color="default"
+                            labelPlacement="top"
+                            onClick={e => {
+                                // e.stopPropagation();
+                                // console.log(e.target)
+                                // console.log(id)
+                                // onToggleItem(id);
+                            }}
+                        /> */}
+                        <div style={{width:'40px', margin:'0px'}}>
+                            <FormControlLabel
+                            // value="top"
+                            style={{marginLeft:'5px', marginBottom: '-10px'}}
+                            control={<Checkbox size="small" color="default" />}
+                            // label={<BeenhereIcon fontSize="small" />}
+                            // label={<PageviewIcon fontSize="small" />}
+                            // label={<ViewStreamTwoToneIcon fontSize="small" />}
+                            label={<FormatAlignJustifyIcon fontSize="small" />}
+                            labelPlacement="top"
+                            />
+                        </div>
                         {buttonOne? 
                         <button className="afterAll" onClick={changeState}>
                             <p className="title">All</p>

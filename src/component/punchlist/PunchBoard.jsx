@@ -90,9 +90,12 @@ const PunchBoard = (props) => {
                             // component={Link}
                             // to={`/contacts/${id}/show`}
                         >
-                            <ListItemIcon>
+                            <ListItemIcon style={{marginRight:'-10px'}}>
                                 <Checkbox
                                     edge="start"
+                                    size="small"
+                                    color="default"
+                                    
                                     // checked={selectedIds.includes(id)}
                                     // tabIndex={-1}
                                     // disableRipple
@@ -107,6 +110,7 @@ const PunchBoard = (props) => {
                             {/* aaa
                             ${inputBoardData[id].punchID} */}
                             <ListItemText 
+                                style={{marginRight:'10px'}}
                                 
                                 primary={
                                     `${inputBoardData[id].punchID}, 
@@ -117,7 +121,11 @@ const PunchBoard = (props) => {
                                 }
                                 secondary={
                                     <>
-                                        <p style={{width:"600px", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap"}}>
+                                        <p style={{width:"600px", 
+                                                overflow:"hidden", 
+                                                textOverflow:"ellipsis", 
+                                                whiteSpace:"nowrap"}}
+                                        >
                                         {inputBoardData[id].issueDescription} 
                                         <br />
                                         {inputBoardData[id].completeComment}

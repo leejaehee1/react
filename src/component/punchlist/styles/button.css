@@ -13,7 +13,7 @@ button > p {
 
 
 button.beforeAll {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#808080 12%, #fff 0%);
@@ -34,7 +34,7 @@ button.beforeAll:hover {
 }
 
 button.afterAll {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #808080;
@@ -49,7 +49,7 @@ button.afterAll {
   }
 
 button.beforeOpened {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#b28e59 12%, #fff 0%);
@@ -70,7 +70,7 @@ button.beforeOpened:hover {
 }
 
 button.afterOpened {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #b28e59;
@@ -85,7 +85,7 @@ button.afterOpened {
   }
 
 button.beforeReadyForReview {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#4e342e 12%, #fff 0%);
@@ -106,7 +106,7 @@ button.beforeReadyForReview:hover {
 }
 
 button.afterReadyForReview {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #4e342e;
@@ -121,7 +121,7 @@ button.afterReadyForReview {
   }
 
 button.beforeRequestedForClose {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#7d6d99 12%, #fff 0%);
@@ -142,7 +142,7 @@ button.beforeRequestedForClose:hover {
 }
 
 button.afterRequestedForClose {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #7d6d99;
@@ -157,7 +157,7 @@ button.afterRequestedForClose {
   }
 
 button.beforeNotAccepted {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#739574 12%, #fff 0%);
@@ -178,7 +178,7 @@ button.beforeNotAccepted:hover {
 }
 
 button.afterNotAccepted {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #739574;
@@ -193,7 +193,7 @@ button.afterNotAccepted {
   }
 
 button.beforeClosed {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #202020;
     background: linear-gradient(#648dae 12%, #fff 0%);
@@ -214,7 +214,7 @@ button.beforeClosed:hover {
 }
 
 button.afterClosed {
-    width: 125px;
+    width: 120px;
     height: 50px;
     color: #ffffff;
     background-color: #648dae;

@@ -1,6 +1,6 @@
 import { useGetList } from 'react-admin';
 
-import { Chart, Series,Grid, Title,  Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip, CommonSeriesSettings, SeriesTemplate  } from 'devextreme-react/chart';
+import { Chart, Series,Grid, Title, Margin, Size, Legend, ArgumentAxis, Label, ValueAxis, CommonAxisSettings, Tooltip, CommonSeriesSettings, SeriesTemplate  } from 'devextreme-react/chart';
 
 // boardData={boardData.length?boardData:boardAllData} 
 // boardIds={boardIndexData.length?boardIndexData:allIndex} 
@@ -71,9 +71,15 @@ const Discipline = (props) => {
             <Title text="Discipline" style={{ fontSize: 12, fill:'#494949', fontWeight:'bold' }} />
           </ValueAxis> */}
         <SeriesTemplate nameField="argument" />
+        <Margin
+                          // top={20}
+                          // bottom={20}
+                          // left={40}
+                          right={50}
+                      />
         <Size
             height={160}
-            width={400}
+            width={370}
         />
         <CommonAxisSettings  
           // tickInterval={3}
