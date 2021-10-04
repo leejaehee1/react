@@ -34,15 +34,6 @@ import "./styles/button.css"
 
 
 // https://material-ui.com/system/borders/
-const defaultProps = {
-    // bgcolor: 'background.paper',
-    bgcolor: '#ECECEC',
-    // textAlign: 'center',
-    // marginleft: 5,
-    m: 0,
-    // border: 1,
-    style: { width: '100%', height: '16rem' },
-  };
 
   
 
@@ -285,25 +276,46 @@ const PunchListComponent = () => {
                     boardIds={boardIndexData.length?boardIndexData:allIndex}  */}
 
 
-                    <Box borderColor="#e0e0e0" {...defaultProps}>
+{/* const defaultProps = {
+    // bgcolor: 'background.paper',
+    bgcolor: '#ECECEC',
+    // textAlign: 'center',
+    // marginleft: 5,
+    m: 0,
+    // border: 1,
+    style: { width: '100%', height: '16rem' },
+  }; */}
+
+
+                    <Box 
+                         borderColor="#e0e0e0" 
+                        style={{backgroundColor:'#ECECEC', 
+                                margin:'0px', 
+                                width:'100%', 
+                                height:'180px'
+                            }}
+                    >
                         <Box display="flex" > 
                             <Box flex="4" p={0} m="1em">
                             {/* bgcolor="palevioletred" */}
-                                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3>
+                                {/* <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Punch Status</h3> */}
                                 <PunchStatus 
                                     allData={boardAllData}
+                                    show={show}
                                  />
                             </Box>
                             <Box flex="3" p={0} m="1em">
-                                <h3>Category</h3>
+                                {/* <h3>Category</h3> */}
                                 <Category 
                                     allData={boardAllData}
+                                    show={show}
                                 />
                             </Box>
                             <Box flex="5" p={0} m="1em">
-                                <h3>&nbsp;&nbsp;&nbsp;Discipline</h3>
+                                {/* <h3>&nbsp;&nbsp;&nbsp;Discipline</h3> */}
                                 <Discipline 
                                     allData={boardData.length?boardData:boardAllData}
+                                    show={show}
                                     // boardData={boardData.length?boardData:boardAllData} 
                                     // boardIds={boardIndexData.length?boardIndexData:allIndex} 
                                 />
@@ -315,7 +327,7 @@ const PunchListComponent = () => {
                     <>
                     <Box 
                     // boxShadow={5} 
-                    borderColor="#ECECEC" {...defaultProps}>
+                    borderColor="#ECECEC" style={{backgroundColor:'#ECECEC', margin:'0px', width:'100%', height:'16rem'}}>
                         <Box display="flex" 
                             // width="75rem"
                             width="100%"

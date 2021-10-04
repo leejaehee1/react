@@ -57,11 +57,23 @@ const PunchStatus = (props) => {
     { argument: "not accepted", value: d },
     { argument: "closed", value: e },
   ];
+
+  const abcc = () => {
+    return (
+      <>
+        <text textAnchor="middle" x="100" y="120" style={{ fontSize: 12, fill:'#494949', fontWeight:'bold' }}>
+          Punch Status
+        </text>
+    </>
+    )
+  }
   
   return (
     <PieChart 
             dataSource={pieData}
             type="doughnut"
+            innerRadius={0.85}
+            centerRender={abcc}
             palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
         >
             <Series 

@@ -48,10 +48,21 @@ export default function Category(props) {
         { argument: "C", value: c },
         { argument: "D", value: d },
     ];
+    const abcc = () => {
+        return (
+          <>
+            <text textAnchor="middle" x="100" y="120" style={{ fontSize: 12, fill:'#494949', fontWeight:'bold' }}>
+              Category
+            </text>
+        </>
+        )
+    }
     return (
         <PieChart 
             dataSource={pieData}
             type="doughnut"
+            innerRadius={0.85}
+            centerRender={abcc}
             palette="Pastel" // https://js.devexpress.com/Demos/WidgetsGallery/Demo/Charts/Palette/React/Light/
         >
             <Series 

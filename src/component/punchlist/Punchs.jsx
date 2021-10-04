@@ -54,42 +54,42 @@ import { connect } from 'react-redux';
 // import Button from '@mui/material/Button';
 
 
-const CustomButtonRoot = styled('span')(`
-  background-color: #007fff;
-  padding: 15px 20px;
-  border-radius: 10px;
-  color: #fff;
-  font-weight: 600;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  transition: all 200ms ease;
-  cursor: pointer;
-  box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 0 rgba(0, 127, 255, 0);
-  border: none;
+// const CustomButtonRoot = styled('span')(`
+//   background-color: #007fff;
+//   padding: 15px 20px;
+//   border-radius: 10px;
+//   color: #fff;
+//   font-weight: 600;
+//   font-family: Helvetica, Arial, sans-serif;
+//   font-size: 14px;
+//   transition: all 200ms ease;
+//   cursor: pointer;
+//   box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 0 rgba(0, 127, 255, 0);
+//   border: none;
 
-  &:hover {
-    background-color: #0059b2;
-  }
+//   &:hover {
+//     background-color: #0059b2;
+//   }
 
-  &.${buttonUnstyledClasses.active} {
-    background-color: #004386;
-  }
+//   &.${buttonUnstyledClasses.active} {
+//     background-color: #004386;
+//   }
 
-  &.${buttonUnstyledClasses.focusVisible} {
-    box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 5px rgba(0, 127, 255, 0.5);
-    outline: none;
-  }
+//   &.${buttonUnstyledClasses.focusVisible} {
+//     box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 5px rgba(0, 127, 255, 0.5);
+//     outline: none;
+//   }
 
-  &.${buttonUnstyledClasses.disabled} {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: 0 0 0 0 rgba(0, 127, 255, 0);
-  }
-`);
+//   &.${buttonUnstyledClasses.disabled} {
+//     opacity: 0.5;
+//     cursor: not-allowed;
+//     box-shadow: 0 0 0 0 rgba(0, 127, 255, 0);
+//   }
+// `);
 
-function CustomButton(props) {
-  return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
-}
+// function CustomButton(props) {
+//   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
+// }
 
 const PunchListContent = () => {
     const { data, ids, onToggleItem, } = useListContext();
@@ -213,10 +213,10 @@ const Punchs = props => {
                 <IconEvent/>
             </Button>
             <Button>test <br /> button</Button>
-            <Grid spacing={2} direction="row">
+            {/* <Grid spacing={2} direction="row">
                 <CustomButton>Button</CustomButton>
                 <CustomButton disabled>Disabled</CustomButton>
-            </Grid>
+            </Grid> */}
             <button>test <br /> button</button>
             <button>test <br /> button</button>
             <button>test <br /> button</button>
