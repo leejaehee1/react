@@ -76,21 +76,21 @@ const DataCheckBox = (props) => {
   }
 
   return (
-    <div>
+    <div style={{marginLeft: '-5px'}}>
 
       {/* <br /> */}
-        <Divider className={classes.udivider} />
+        {/* <Divider className={classes.udivider} /> */}
       {/* <br /> */}
       <Grid container spacing={3} alignItems="center">
-        <Grid item xs={3}>
+        <Grid item xs={5}>
         {/* elevation={0} */}
           <Paper elevation={0} className={classes.lpaper}>
             <ThemeProvider theme={theme}>
-              <Typography variant="h5">DesignChgReq</Typography>
+              <Typography variant="h5">Design Check Required</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={1} style={{marginRight:'5px', marginLeft: '-20px'}}>
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
               // defaultChecked
@@ -100,14 +100,14 @@ const DataCheckBox = (props) => {
             />
           </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Paper elevation={0} className={classes.lpaper}>
             <ThemeProvider theme={theme}>
-              <Typography variant="h5">MaterialReq</Typography>
+              <Typography variant="h5">Material Check Required</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={1} style={{marginLeft:'-13px'}}>
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
               checked={(props.dataOne?.materialReq === "1"?true: false)}
@@ -119,8 +119,8 @@ const DataCheckBox = (props) => {
       </Grid>
 
       {/* <br /> */}
-        <Divider className={classes.ddivider} />
-      <br />
+        {/* <Divider className={classes.ddivider} /> */}
+      {/* <br /> */}
     </div>
   )
 }

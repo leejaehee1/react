@@ -210,6 +210,27 @@ const GridComponent = () => {
         } 
     };
 
+    function ExcelDateToJSDate(serial) {
+        var utc_days  = Math.floor(serial - 25569);
+        var utc_value = utc_days * 86400;                                        
+        var date_info = new Date(utc_value * 1000);
+     
+        var fractional_day = serial - Math.floor(serial) + 0.0000001;
+     
+        var total_seconds = Math.floor(86400 * fractional_day);
+     
+        var seconds = total_seconds % 60;
+     
+        total_seconds -= seconds;
+     
+        var hours = Math.floor(total_seconds / (60 * 60));
+        var minutes = Math.floor(total_seconds / 60) % 60;
+     
+        // return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+        // return [date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds];
+        return `${date_info.getFullYear()}/${date_info.getMonth()}/${date_info.getDate()}`;
+     };
+
     const [columnsData, setColumnsData] = useState()
         
     const onexcelChangedColumns = (excelChangedColumns) => {
@@ -231,7 +252,8 @@ const GridComponent = () => {
         const baseComparing = Object.values(colDefs).map((a) => a.title);
         let targetArray = []
         const compareColumnsData = []
-        for (const a of excelChangedArray.current) {
+        const dateToData = ['targetDate', 'issuedDate', 'completedDate', 'confirmedDate', 'closedDate', 'scheStartDate', 'scheFinishDate']
+        for (let a of excelChangedArray.current) {
             if (baseComparing.includes(a)) {
                 let tergetObject = {title: a, 
                                     field: a,
@@ -246,6 +268,25 @@ const GridComponent = () => {
             } else {
                 // console.log("없다")
             }
+
+
+            if(dateToData.includes(a)) {
+                console.log("여기까지 왔다....")
+                console.log(a)
+                for (var rD of data) {
+                    var dateTypeData = (rD['issuedDate'])?rD['issuedDate']:rD['IssuedDate'];
+                    // console.log(typeof(rD['IssuedDate']))
+                    if (typeof(dateTypeData)=== 'number'){
+                        console.log('number 찍혔다.')
+                        console.log(ExcelDateToJSDate(dateTypeData))
+                    }
+                }
+            } else {}
+
+
+
+
+
         }
         if (targetArray) {
             targetArrayRef.current = targetArray

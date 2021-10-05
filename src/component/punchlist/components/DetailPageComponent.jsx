@@ -71,12 +71,15 @@ function DetailPageComponent(props) {
         </Typography>
         
         <DataOne dataOne={props.downDetailData} />
-        <DataCheckBox dataOne={props.downDetailData} />
+
+
         <DataTime dataOne={props.downDetailData} />
-        <Divider className={classes.divider} />
+
+        {/* <Divider className={classes.divider} /> */}
+        <DataCheckBox dataOne={props.downDetailData} />
 
         {/* difficulty */}
-        <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} />
+        {/* <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} /> */}
 
         {/* schedule impact */}
         <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} />

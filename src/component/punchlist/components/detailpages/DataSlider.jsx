@@ -14,7 +14,23 @@ import Slider from '@material-ui/core/Slider';
 import React from 'react';
 import Input from '@material-ui/core/Input';
 
-
+const marks = [
+  {
+    value: 1,
+  },
+  {
+    value: 2,
+  },
+  {
+    value: 3,
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 5,
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,30 +129,23 @@ function DataSlider(props) {
           </ThemeProvider>
         </Paper>
         </Grid>
-        <Grid item xs={5}>
-        <Paper elevation={0} className={classes.rpaper}>
-          {/* <Slider
-            aria-label="custom thumb label"
-            color="primary"
-            defaultValue={60}
-            track="normal"//"inverted"//"normal"// 
-            valueLabelDisplay="auto"
-          /> */}
-          <Slider
-                // id="difficulty"
-              value={typeof value === 'number' ? value : parseInt(props.dataOne)}
-              onChange={handleSliderChange}
-              defaultValue={props.dataOne}
-            //   aria-labelledby="input-slider"
-              valueLabelDisplay="auto"
-              step={1}
-              marks
-              min={1}
-              max={5}
-          />
-        </Paper>
+        <Grid item xs={8} style={{marginLeft:'-15px'}}>
+          <Paper elevation={0} className={classes.rpaper}>
+            <Slider
+                  // id="difficulty"
+                value={typeof value === 'number' ? value : parseInt(props.dataOne)}
+                onChange={handleSliderChange}
+                defaultValue={props.dataOne}
+              //   aria-labelledby="input-slider"
+                valueLabelDisplay="auto"
+                step={1}
+                marks={marks}
+                min={1}
+                max={5}
+            />
+          </Paper>
         </Grid>
-        <Grid item xs={3}>
+        {/* <Grid item xs={3}>
             <Input
                 id="difficulty"
               className={classes.input}
@@ -152,7 +161,7 @@ function DataSlider(props) {
                 'aria-labelledby': 'input-slider',
               }}
             />
-          </Grid>
+          </Grid> */}
       </Grid>
     </>
   )
