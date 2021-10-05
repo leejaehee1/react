@@ -269,17 +269,126 @@ const GridComponent = () => {
                 // console.log("없다")
             }
 
-
+            // change datetime
             if(dateToData.includes(a)) {
-                console.log("여기까지 왔다....")
-                console.log(a)
-                for (var rD of data) {
-                    var dateTypeData = (rD['issuedDate'])?rD['issuedDate']:rD['IssuedDate'];
-                    // console.log(typeof(rD['IssuedDate']))
-                    if (typeof(dateTypeData)=== 'number'){
-                        console.log('number 찍혔다.')
-                        console.log(ExcelDateToJSDate(dateTypeData))
+                // console.log("여기까지 왔다....")
+                // console.log(a)
+                for (var rD in data) {
+
+                    if (a === 'issuedDate'){
+
+                        var dateTypeData = (data[rD]['issuedDate'])?data[rD]['issuedDate']:data[rD]['IssuedDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['issuedDate']) {
+                                data[rD]['issuedDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['IssuedDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'targetDate'){
+
+                        var dateTypeData = (data[rD]['targetDate'])?data[rD]['targetDate']:data[rD]['TargetDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['targetDate']) {
+                                data[rD]['targetDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['TargetDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'completedDate'){
+
+                        var dateTypeData = (data[rD]['completedDate'])?data[rD]['completedDate']:data[rD]['CompletedDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['completedDate']) {
+                                data[rD]['completedDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['CompletedDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'confirmedDate'){
+
+                        var dateTypeData = (data[rD]['confirmedDate'])?data[rD]['confirmedDate']:data[rD]['ConfirmedDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['confirmedDate']) {
+                                data[rD]['confirmedDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['ConfirmedDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'closedDate'){
+
+                        var dateTypeData = (data[rD]['closedDate'])?data[rD]['closedDate']:data[rD]['ClosedDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['closedDate']) {
+                                data[rD]['closedDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['ClosedDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'scheStartDate'){
+
+                        var dateTypeData = (data[rD]['scheStartDate'])?data[rD]['scheStartDate']:data[rD]['ScheStartDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['scheStartDate']) {
+                                data[rD]['scheStartDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['ScheStartDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
+                    } else if (a === 'scheFinishDate'){
+
+                        var dateTypeData = (data[rD]['scheStartDate'])?data[rD]['scheFinishDate']:data[rD]['ScheFinishDate'];
+                        // console.log(typeof(rD['IssuedDate']))
+                        if (typeof(dateTypeData)=== 'number'){
+                            // console.log('number 찍혔다.')
+                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            if(data[rD]['scheFinishDate']) {
+                                data[rD]['scheFinishDate'] = ExcelDateToJSDate(dateTypeData)
+                            } else {
+                                data[rD]['ScheFinishDate'] = ExcelDateToJSDate(dateTypeData)
+                            }
+                            // console.log(data[rD])
+                        }
+
+
                     }
+
                 }
             } else {}
 
