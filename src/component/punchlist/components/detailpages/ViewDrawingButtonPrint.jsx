@@ -57,18 +57,18 @@ const ComponentToPrint = () => {
                     <div style={{width:"100%", height:'60px', borderTop:'1px solid', display:'flex', justifyContent:'left', paddingLeft:'4px', alignItems:'center'}}>Description</div>
                 </div>
             </div>
-            <div style={{display:'flex', height:'180px', border:'1px solid', marginTop:'7px'}}>
+            <div style={{display:'flex', height:'210px', border:'1px solid', marginTop:'7px'}}>
                 <div style={{width:"50%"}}>
-                    <div style={{width:"100%", height:'20px', display:'flex', justifyContent:'left', marginLeft:'3px', alignItems:'center'}}>Drawing</div>
-                    <div style={{width:"100%", height:'160px', borderRight:'1px solid',  borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'left', marginLeft:'3px', alignItems:'center'}}>Drawing</div>
+                    <div style={{width:"100%", height:'180px', borderRight:'1px solid',  borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
                 </div>
                 <div style={{width:"50%"}}>
-                    <div style={{width:"100%", height:'20px', display:'flex', justifyContent:'center', alignItems:'center'}}></div>
-                    <div style={{width:"100%", height:'160px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'center', alignItems:'center'}}></div>
+                    <div style={{width:"100%", height:'180px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
                 </div>
             </div>
 
-            <div style={{display:'flex', height:'40px', marginTop:'7px', justifyContent:'right', alignItems:'center'}}>
+            <div style={{display:'flex', height:'45px', marginTop:'7px', justifyContent:'right', alignItems:'center'}}>
                 printed date : 0000.00.00
             </div>
         </div>
