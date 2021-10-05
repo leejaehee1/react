@@ -62,7 +62,7 @@ function TabPanel(props) {
       flexGrow: 1,
       // paddingTop: 20,
       width: '100%',
-      // backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.paper,
     },
   }));
 
@@ -87,8 +87,9 @@ function CodeTamplate() {
   
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        {/* <AppBar position="static" color="#ffffff"> */}
           <Tabs
+          // style={{backgroundColor:'red'}}
             value={value}
             onChange={handleChange}
             indicatorColor="primary"
@@ -110,7 +111,7 @@ function CodeTamplate() {
             <Tab label="Area" {...a11yProps(10)} />
             <Tab label="Drawing" {...a11yProps(11)} />
           </Tabs>
-        </AppBar>
+        {/* </AppBar> */}
         <SwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={value}

@@ -25,13 +25,15 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   lpaper: {
-    padding: theme.spacing(1.5),
+    backgroundColor: '#f5f5f5',
+    padding: theme.spacing(1),
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
     marginBottom: theme.spacing(1),
   },
   rpaper: {
+    backgroundColor: '#f5f5f5',
     padding: theme.spacing(0),
     textAlign: 'right',
     color: theme.palette.text.secondary,
@@ -85,8 +87,9 @@ const DataCheckBox = (props) => {
         <Grid item xs={5}>
         {/* elevation={0} */}
           <Paper elevation={0} className={classes.lpaper}>
+            
             <ThemeProvider theme={theme}>
-              <Typography variant="h5">Design Check Required</Typography>
+              <Typography variant="h5">&nbsp;Design Check Required</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>

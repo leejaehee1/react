@@ -75,22 +75,34 @@ function DetailPageComponent(props) {
 
         <DataTime dataOne={props.downDetailData} />
 
-        {/* <Divider className={classes.divider} /> */}
-        <DataCheckBox dataOne={props.downDetailData} />
+        <div style={{backgroundColor:'#f5f5f5', paddingLeft:'10px', marginTop:'2px', paddingRight:'10px', marginBottom:'-20px'}}>
+          {/* <Divider className={classes.divider} /> */}
+          <DataCheckBox dataOne={props.downDetailData} />
 
-        {/* difficulty */}
-        {/* <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} /> */}
+          {/* difficulty */}
+          <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} />
 
-        {/* schedule impact */}
-        <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} />
+          {/* schedule impact */}
+          <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} />
 
-        {/* cost Impact316 */}
-        <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} />
+          {/* cost Impact316 */}
+          <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} />
+        </div>
 
-
+        <br />
         <Divider className={classes.divider} />
 
-        <DataChipsArray />
+        <DataChipsArray 
+          keyOne={props.downDetailData?.keyword1} 
+          keyTwo={props.downDetailData?.keyword2} 
+          KeyThree={props.downDetailData?.keyword3}
+          KeyFour={props.downDetailData?.keyword4}
+          
+        />
+        {/* {props.downDetailData?.keyword1}
+        {props.downDetailData?.keyword2}
+        {props.downDetailData?.keyword3}
+        {props.downDetailData?.keyword4} */}
 
         <Divider className={classes.divider} />
 

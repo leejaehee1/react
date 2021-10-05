@@ -3,7 +3,8 @@
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, createTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
+
 // import Divider from '@material-ui/core/Divider';
 
 // slider
@@ -13,6 +14,65 @@ import Slider from '@material-ui/core/Slider';
 
 import React from 'react';
 import Input from '@material-ui/core/Input';
+
+
+
+const iOSBoxShadow ='0 0 0 1.5px rgba(0,0,0,0.5)'
+  // '0 3px 10px rgba(0,0,0,0.2),0 4px 8px rgba(0,0,0,0.26),0 0 0 1px rgba(0,0,0,0.5)';
+
+const IOSSlider = withStyles({
+  root: {
+    // color: '#3880ff',
+    color: 'gray',
+    height: 2,
+    padding: '-3px 0',
+  },
+  thumb: {
+    height: 20,
+    width: 10,
+    backgroundColor: 'gray',
+    // boxShadow: iOSBoxShadow,
+    marginTop: -10,
+    marginLeft: -7,
+    '&:focus, &:hover, &$active': {
+      // boxShadow: '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
+      // Reset on touch devices, it doesn't add specificity
+      // '@media (hover: none)': {
+      //   boxShadow: iOSBoxShadow,
+      // },
+    },
+  },
+  active: {},
+  valueLabel: {
+    // left: 'calc(-50% + 12px)',
+    left: -13,
+    top: -22,
+    '& *': {
+      background: 'transparent',
+      color: '#000',
+    },
+  },
+  track: {
+    height: 2,
+  },
+  rail: {
+    height: 2,
+    opacity: 0.5,
+    backgroundColor: '#bfbfbf',
+  },
+  mark: {
+    backgroundColor: '#bfbfbf',
+    height: 8,
+    width: 1,
+    marginTop: -3,
+  },
+  markActive: {
+    opacity: 1,
+    backgroundColor: 'currentColor',
+  },
+})(Slider);
+
+
 
 const marks = [
   {
@@ -44,11 +104,13 @@ const useStyles = makeStyles((theme) => ({
     gridGap: theme.spacing(3),
   },
   paper: {
+    
     padding: theme.spacing(1.5),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   lpaper: {
+    backgroundColor: '#f5f5f5',
     padding: theme.spacing(1),
     textAlign: 'left',
     color: theme.palette.text.secondary,
@@ -57,6 +119,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(-1),
   },
   rpaper: {
+    backgroundColor: '#f5f5f5',
     padding: theme.spacing(-2),
     textAlign: 'right',
     color: theme.palette.text.secondary,
@@ -93,6 +156,7 @@ const theme = createTheme({
 
 function DataSlider(props) {
   const classes = useStyles();
+  
 
   // function onChange(e, v) {
   //   console.log(e) // event
@@ -131,7 +195,7 @@ function DataSlider(props) {
         </Grid>
         <Grid item xs={8} style={{marginLeft:'-15px'}}>
           <Paper elevation={0} className={classes.rpaper}>
-            <Slider
+            <IOSSlider
                   // id="difficulty"
                 value={typeof value === 'number' ? value : parseInt(props.dataOne)}
                 onChange={handleSliderChange}
