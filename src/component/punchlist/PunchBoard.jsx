@@ -114,10 +114,11 @@ const PunchBoard = (props) => {
                                 
                                 primary={
                                     `${inputBoardData[id].punchID}, 
-                                    ${inputBoardData[id].discipline}, 
-                                    ${inputBoardData[id].bulkName}, 
-                                    ${inputBoardData[id].scheduleImpact}, 
-                                    ${inputBoardData[id].completedBy}`
+                                    ${inputBoardData[id].category}, 
+                                    ${inputBoardData[id].discipline},(<=이건 name)   
+                                    ${inputBoardData[id].tagNumber}, 
+                                    ${inputBoardData[id].unit}, 
+                                    ${inputBoardData[id].area}`
                                 }
                                 secondary={
                                     <>
@@ -126,10 +127,10 @@ const PunchBoard = (props) => {
                                                 overflow:"hidden", 
                                                 textOverflow:"ellipsis", 
                                                 whiteSpace:"nowrap"}}
-                                        >
-                                        {inputBoardData[id].issueDescription} 
+                                        >(이건 name)
+                                        {inputBoardData[id].systemID}
                                         <br />
-                                        {inputBoardData[id].completeComment}
+                                        {inputBoardData[id].subsystem}
                                         </p>
                                     </>
                                 }

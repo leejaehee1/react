@@ -56,6 +56,20 @@ export default function DataChipsArray(props) {
     setChipData(targetData)
   }, [props])
   let icon = <AddCircleOutlineIcon />
+
+
+  const handleAddTag = () => {
+    // tag에 추가하는 로직을 만들어 줍니다.
+    alert('들어온다.')
+  }
+
+  // const handleAddTag = (id: Identifier) => {
+  //   const tags: Identifier[] = [...record.tags, id];
+  //   update('contacts', record.id, { tags }, record);
+  //   setAnchorEl(null);
+  // };
+
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -85,7 +99,11 @@ export default function DataChipsArray(props) {
           }
 
         })}
-        <AddCircleOutlineIcon fontSize="small" style={{marginTop:'6px', marginLeft:'5px'}} />
+        <AddCircleOutlineIcon 
+            fontSize="small" 
+            style={{marginTop:'6px', marginLeft:'5px'}} 
+            onClick={() => handleAddTag()}
+        />
         {/* <Chip
                   // variant="outlined"
                   size="small"

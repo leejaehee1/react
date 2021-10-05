@@ -272,6 +272,8 @@ const PunchListComponent = () => {
         }
     }
 
+    
+
     // useEffect(()=> {
     //     console.log(upPunchBoardData)
     // },[upPunchBoardData])
@@ -423,11 +425,11 @@ const PunchListComponent = () => {
             {/* <p>다음글</p> */}
             <div style={{ textAlign: "center", height: '15px' }}>
                 { stateShow?
-                (
-                    <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
-                ) : (
-                    <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
-                )
+                    (
+                        <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+                    ) : (
+                        <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
+                    )
                 }
             </div>
             {/* <ArrowDropUpIcon fontSize="large" />
@@ -449,83 +451,83 @@ const PunchListComponent = () => {
                         /> */}
                         <div style={{width:'40px', margin:'0px'}}>
                             <FormControlLabel
-                            // value="top"
-                            style={{marginLeft:'5px', marginBottom: '-10px'}}
-                            control={<Checkbox size="small" color="default" />}
-                            // label={<BeenhereIcon fontSize="small" />}
-                            // label={<PageviewIcon fontSize="small" />}
-                            // label={<ViewStreamTwoToneIcon fontSize="small" />}
-                            label={<FormatAlignJustifyIcon fontSize="small" />}
-                            labelPlacement="top"
+                                // value="top"
+                                style={{marginLeft:'5px', marginBottom: '-10px'}}
+                                control={<Checkbox size="small" color="default" />}
+                                // label={<BeenhereIcon fontSize="small" />}
+                                // label={<PageviewIcon fontSize="small" />}
+                                // label={<ViewStreamTwoToneIcon fontSize="small" />}
+                                label={<FormatAlignJustifyIcon fontSize="small" />}
+                                labelPlacement="top"
                             />
                         </div>
                         {buttonOne? 
                         <button className="afterAll" onClick={changeState}>
                             <p className="title">All</p>
-                            <p>1002</p>
+                            <p>{allIndex.length}</p>
                         </button>
                         :
                         <button className="beforeAll" onClick={changeState}>
                             <p className="title">All</p>
-                            <p>1002</p>
+                            <p>allIndex.length</p>
                         </button>
                         }
 
                         {buttonTwo?
                         <button className="afterOpened" onClick={changeState}>
                             <p className="title">Opened</p>
-                            <p>1002</p>
+                            <p>{allOpenedIdx.length}</p>
                         </button>
                         :
                         <button className="beforeOpened" onClick={changeState}>
                             <p className="title">Opened</p>
-                            <p>1002</p>
+                            <p>{allOpenedIdx.length}</p>
                         </button>
                         }
                         {buttonThr?
                             <button className="afterReadyForReview" onClick={changeState}>
                                 <p className="title">Ready for Review</p>
-                                <p>1002</p>
+                                <p>{allReadyForReviewIdx.length}</p>
                             </button>
                         :
                             <button className="beforeReadyForReview" onClick={changeState}>
                                 <p className="title">Ready for Review</p>
-                                <p>1002</p>
+                                <p>{allReadyForReviewIdx.length}</p>
                             </button>
                         }
                         {buttonFour?
                             <button className="afterRequestedForClose" onClick={changeState}>
                                 <p className="title">Requested for Close</p>
-                                <p>1002</p>
+                                <p>{allRequestedForCloseIdx.length}</p>
                             </button>
                         :
                             <button className="beforeRequestedForClose" onClick={changeState}>
                                 <p className="title">Requested for Close</p>
-                                <p>1002</p>
+                                <p>{allRequestedForCloseIdx.length}</p>
                             </button>
                         }
 
                         {buttonFive?
                             <button className="afterNotAccepted" onClick={changeState}>
                                 <p className="title">Not Accepted</p>
-                                <p>1002</p>
+                                <p>{allNotAcceptedIdx.length}</p>
                             </button>
                         :
                             <button className="beforeNotAccepted" onClick={changeState}>
                                 <p className="title">Not Accepted</p>
-                                <p>1002</p>
+                                <p>{allNotAcceptedIdx.length}</p>
                             </button>
                         }
 
                         {buttonSix?
                             <button className="afterClosed" onClick={changeState}>
                                 <p className="title">Closed</p>
-                                <p>1002</p>
+                                <p>{allClosedIdx.length}</p>
                             </button>
                         :
                             <button className="beforeClosed" onClick={changeState}>
                                 <p className="title">Closed</p>
-                                <p>1002</p>
+                                <p>{allClosedIdx.length}</p>
                             </button>
                         }
                     </div>
