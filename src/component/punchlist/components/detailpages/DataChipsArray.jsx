@@ -111,12 +111,12 @@ export default function DataChipsArray(props) {
     var flag = false
     let flagData;
     let newArr = chipData.map((value, index)=> {
-      console.log('start')
-      console.log(index)
-      console.log(finalTarget)
-      console.log(value.key)
+      // console.log('start')
+      // console.log(index)
+      // console.log(finalTarget)
+      // console.log(value.key)
       if (Number(index) === Number(finalTarget)) {
-        console.log('들어왔다.')
+        // console.log('들어왔다.')
         if (value.key===index) {
           console.log(11)
           return {...value, label:typingKeyword}
@@ -130,8 +130,8 @@ export default function DataChipsArray(props) {
         return value
       }
     })
-    console.log(newArr)
-    console.log(flagData)
+    // console.log(newArr)
+    // console.log(flagData)
     setChipData(newArr)
     if (flag){
       setChipData([...chipData, flagData])
