@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { userLogin} from 'react-admin';
 // import { MuiThemeProvider } from '@material-ui/core/styles';
 import LoginSide from './LoginSide';
+import LoginPageppt from './LoginPageppt';
 
 class LoginPage extends Component {
     submit = (e) => {
@@ -27,7 +28,8 @@ class LoginPage extends Component {
     render() {
         return (
             <>
-                <LoginSide />
+                {/* <LoginSide /> */}
+                <LoginPageppt />
                 {/* <Login
                 // A random image that changes everyday
                 backgroundImage="https://source.unsplash.com/random/1600x900/daily"
