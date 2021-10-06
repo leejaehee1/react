@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Tabs, Tab, Toolbar, AppBar, Box, Typography, Divider } from '@material-ui/core';
 import { Link, useRouteMatch } from 'react-router-dom';
-import { UserMenu, Logout, LoadingIndicator } from 'react-admin';
+import { UserMenu, Logout, LoadingIndicator, useGetList } from 'react-admin';
 import { CodeSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,12 @@ const Header = () => {
         setStateCode(true);
     }
 
+    const { data, ids } = useGetList('project', );
+    for (var a of Object.keys(data)){
+        console.log(a)
+    }
     return (
+
         // <nav className={classes.root}>
         //     <AppBar position="static" color="primary">
         //         <Toolbar className={classes.lnav} variant="dense">
@@ -138,9 +143,11 @@ const Header = () => {
                 <p>Gil Dong Hong</p>
             </a>
             <select name="#">
-                <option value="Algeria">Algeria RDPP</option>
-                <option value="second">Second</option>
-                <option value="third">Third</option>
+                { Object.keys(data).map((pj)=> 
+                    (<option value="Algeria">{data[pj]['projectName']}</option>)
+                )}
+                {/* <option value="second">Second</option>
+                <option value="third">Third</option> */}
             </select>
             </div>
             <nav id="gnb">
@@ -179,6 +186,8 @@ const Header = () => {
                     {/* <Logout button /> */}
                 </ul>
             </nav>
+            {/* {JSON.stringify(data)} */}
+            {/* {data} */}
         </header>
         {/* <Logout button /> */}
         {/* <UserMenu logout={<Logout button />} /> */}
