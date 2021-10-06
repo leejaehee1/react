@@ -40,6 +40,7 @@ import PunchBoard from './PunchBoard.jsx';
 
 import "./styles/button.css"
 import DetailHistoryComponent from './components/DetailHistoryComponent';
+import DashBoardStatus from './chart/DashBoardStatus';
 
 
 // https://material-ui.com/system/borders/
@@ -331,9 +332,12 @@ const PunchListComponent = () => {
                     <>
                     <Box 
                     // boxShadow={5} 
-                    borderColor="#ECECEC" style={{backgroundColor:'#ECECEC', margin:'0px', width:'100%', 
+                    // borderColor="#ECECEC" 
+                    style={{
+                        // backgroundColor:'#ECECEC', 
+                        margin:'0px', width:'100%', 
                     height:'180px'}}>
-                        
+                        <DashBoardStatus />
                     </Box>
                     </>
                 )) : (<></>)
