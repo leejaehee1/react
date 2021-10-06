@@ -154,8 +154,8 @@
   }
   header nav ul li {
     display: inline-block;
-    width: 170px;
-    min-width: 110px;
+    width: 160px;
+    min-width: 50px;
     text-align: center;
     line-height: 46px; /*header에 사용된 height와 높이 동일하게 맞춰야 함*/
     box-sizing: border-box;

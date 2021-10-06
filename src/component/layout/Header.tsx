@@ -122,7 +122,7 @@ const Header = () => {
 
                             
                         //     {/* logout :  redirect login page */}
-                        //     <UserMenu logout={<Logout button />} />
+                            // <UserMenu logout={<Logout button />} />
                         // </Box>
         //             </Box>
         //         </Toolbar>
@@ -165,13 +165,18 @@ const Header = () => {
                     }
                     {stateCode?
                     <li className="on">
-                    <a href="#/code">Code</a>
+                    <a href="#/code">Code </a>
+                    
                     </li>
                     :
                     <li onClick={handleCode}>
                     <a href="#/code">Code</a>
                     </li>
                     }
+                    <li style={{width:'10px', padding:'0px', margin:'0px'}}>
+                    <UserMenu logout={<Logout button />} />
+                    </li>
+                    {/* <Logout button /> */}
                 </ul>
             </nav>
         </header>
