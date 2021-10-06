@@ -117,6 +117,8 @@ function App() {
       <Resource name="drawing" list={Drawing} />
 
 
+      {/* punchlistpage */}
+      <Resource name="vwpunchhis" list={Drawing} />
       {/* <Resource name="SignUpPage" {...SignUpPage}  /> */}
 
       {/* <Resource name="register" list={SignUpPage} /> */}

@@ -7,6 +7,7 @@ const CustomBox = (props) => {
     const [stateValue, setStateValue] = React.useState("")
     const [colorValue, setColorValue] = React.useState("")
     const [allData, setAllData] = React.useState(props.allData)
+    // const [buttonHeight, setButtonHeight] = React.useState()
     // console.log(props.allData)
     useEffect(()=> {
         if (props.stateData==="1") {
@@ -35,7 +36,7 @@ const CustomBox = (props) => {
             <Box
                 button
                 width="110px"
-                height={25}
+                height={props.heightData}
                 display="inline-block"
                 textAlign="center"
                 lineHeight="25px"

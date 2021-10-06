@@ -138,7 +138,10 @@ const PunchBoard = (props) => {
 
 
                             <Typography variant="body2" Wcolor="textSecondary">
-                                <StateButton eachState={inputBoardData[id].status} allData={inputBoardData[id]} />
+                                <StateButton 
+                                        eachState={inputBoardData[id].status} 
+                                        allData={inputBoardData[id]} 
+                                />
                             </Typography>
                         </ListItem>
                         <hr style={{margin:'0px'}} />

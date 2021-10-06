@@ -168,7 +168,7 @@ export default function DataChipsArray(props) {
         <Typography variant="h5">Keyword</Typography>
       </ThemeProvider>
       <Paper elevation={0} component="ul" className={classes.root}>
-        {JSON.stringify(chipData)}
+        {/* {JSON.stringify(chipData)} */}
         {chipData.map((data) => {
 
           // if (data.label === 'Punch Keyword') {
