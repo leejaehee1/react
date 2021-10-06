@@ -1,13 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, createTheme, ThemeProvider  } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
 import TagFacesIcon from '@material-ui/icons/TagFaces';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+// open dialog
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import Typography from '@material-ui/core/Typography';
 import { PinDropSharp } from '@material-ui/icons';
+import { isTemplateElement } from '@babel/types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +41,9 @@ const theme = createTheme({
 
 export default function DataChipsArray(props) {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [typingKeyword, setTypingKeyword] = useState('');
+
   let targetData = [
     { key: 0, label: props.keyOne },
     { key: 1, label: props.keyTwo },
@@ -47,8 +59,85 @@ export default function DataChipsArray(props) {
     // { key: 4, label: 'buildin' },
   ]);
 
+  const changeInput = (e) => {
+    setTypingKeyword(e.target.value)
+    return ()=> {
+    }
+  }
+
+  const handleAddTag = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setTypingKeyword('');
+  };
+  
+  const handleSaveClose = () => {
+    setOpen(false);
+    let targetLabel;
+    for(let a of chipData) {
+      if (a.label){
+      } else{
+        targetLabel = a.key
+        break;
+      }
+    }
+    
+    let targetKey;
+    for(let i in chipData){
+      if(chipData[i].key===i){
+      }else {
+        targetKey = i
+        break
+      }
+    }
+
+    let finalTarget;
+    if(targetLabel < targetKey){
+      finalTarget = targetLabel
+    }else{
+      finalTarget = targetKey
+    }
+
+    // console.log(targetLabel);
+    // console.log(targetKey);
+    // console.log('finalTarget');
+    // console.log(finalTarget);
+    // console.log(chipData)
+    // console.log(typingKeyword)
+    // console.log(targetKey)
+    var flag = false
+    let flagData;
+    let newArr = chipData.map((value, index)=> {
+      if (index === finalTarget) {
+        if (value.key===index) {
+          return {...value, label:typingKeyword}
+        } else {
+          flag = true
+          flagData = {key:index, label:typingKeyword}
+          return 
+        }
+      } else {
+        return value
+      }
+    })
+    console.log(newArr)
+    console.log(flagData)
+    setChipData(newArr)
+    if (flag){
+      setChipData([...chipData, flagData])
+      flag = false
+    }
+
+  }
+
+
+
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    // console.log(chipData)
   };
 
   useEffect(()=> {
@@ -58,10 +147,6 @@ export default function DataChipsArray(props) {
   let icon = <AddCircleOutlineIcon />
 
 
-  const handleAddTag = () => {
-    // tag에 추가하는 로직을 만들어 줍니다.
-    alert('들어온다.')
-  }
 
   // const handleAddTag = (id: Identifier) => {
   //   const tags: Identifier[] = [...record.tags, id];
@@ -76,6 +161,7 @@ export default function DataChipsArray(props) {
         <Typography variant="h5">Keyword</Typography>
       </ThemeProvider>
       <Paper elevation={0} component="ul" className={classes.root}>
+        {JSON.stringify(chipData)}
         {chipData.map((data) => {
 
           // if (data.label === 'Punch Keyword') {
@@ -101,9 +187,35 @@ export default function DataChipsArray(props) {
         })}
         <AddCircleOutlineIcon 
             fontSize="small" 
-            style={{marginTop:'6px', marginLeft:'5px'}} 
+            style={{marginTop:'6px', marginLeft:'5px', cursor: 'pointer'}} 
             onClick={() => handleAddTag()}
         />
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Create a new keyword</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>
+            To subscribe to this website, please enter your email address here. We will send updates
+            occasionally.
+          </DialogContentText> */}
+          <TextField
+            autoFocus
+            onChange= {changeInput}
+            margin="dense"
+            id="name"
+            label="Keyword"
+            type="email"
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSaveClose} color="primary">
+            add keyword
+          </Button>
+        </DialogActions>
+      </Dialog>
         {/* <Chip
                   // variant="outlined"
                   size="small"

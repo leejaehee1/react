@@ -469,7 +469,7 @@ const PunchListComponent = () => {
                         :
                         <button className="beforeAll" onClick={changeState}>
                             <p className="title">All</p>
-                            <p>allIndex.length</p>
+                            <p>{allIndex.length}</p>
                         </button>
                         }
 
