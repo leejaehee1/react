@@ -19,6 +19,11 @@ import ViewStreamTwoToneIcon from '@material-ui/icons/ViewStreamTwoTone';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 
 
+//search
+import TuneIcon from '@material-ui/icons/Tune';
+import SearchIcon from '@material-ui/icons/Search';
+
+
 // import Card from '@material-ui/core/Card';
 // import CardContent from '@material-ui/core/CardContent';
 // import { Title } from 'react-admin';
@@ -357,18 +362,27 @@ const PunchListComponent = () => {
                 )) : (<></>)
             }
             {/* <p>다음글</p> */}
-            <div style={{ textAlign: "center", height: '15px' }}>
-                { stateShow?
-                    (
-                        <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
-                    ) : (
-                        <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
-                    )
-                }
+            <div style={{display:'flex'}}>
+                <div style={{width:'45%'}}></div>
+                <div style={{ textAlign: "center", width:'10%', height: '15px' }}>
+                    { stateShow?
+                        (
+                            <Button onClick={handleStateOpen} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropUpIcon fontSize="large" /></Button>
+                        ) : (
+                            <Button onClick={handleStateClose} variant="outlined" style={{ padding: "0", width: "10rem", height: "1.5rem" }}><ArrowDropDownIcon fontSize="large" /></Button>
+                        )
+                    }
+                </div>
+                <div style={{width:'45%', position:'absolute', left:'73%', padding:'5px', height: '30px' }}>
+                    <TuneIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
+                    <input style={{backgroundColor:'white', border:'1px solid', height: "100%" }} type="text" />
+                    <SearchIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
+                </div>
             </div>
             {/* <ArrowDropUpIcon fontSize="large" />
             <ArrowDropDownIcon fontSize="large" /> */}
-
+            {/* aaaaaaaaaaaaaaaaaaaaaaaa
+            <TuneIcon /><input type="text" /><SearchIcon /> */}
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>

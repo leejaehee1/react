@@ -64,7 +64,7 @@ function DetailPageComponent(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
       {/* {JSON.stringify(props.downDetailData)} */}
       <Paper style={{padding: '15px'}}>
         <Typography variant="subtitle1" gutterBottom>

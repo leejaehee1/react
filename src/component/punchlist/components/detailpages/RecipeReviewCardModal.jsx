@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import CancelIcon from '@material-ui/icons/Cancel';
+
 
 // Modal 
 function rand() {
@@ -101,12 +103,23 @@ export default function RecipeReviewCardModal(props) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const clickCancel = () => {
+    props.setOpen(false)
+  }
+
   return (
     <div style={modalStyle} className={classes.paper}>
       {/* <Paper square elevation={0} className={classes.header}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper> */}
-      <h3>{props.imageName}</h3>
+      <div style={{display:'flex'}}>
+        <div style={{width:"95%"}}>
+          <h3>{props.imageName}</h3> 
+        </div>
+        <div>
+          <CancelIcon style={{cursor: 'pointer'}} onClick={clickCancel} />
+        </div>
+      </div>
       <img
         className={classes.img}
         src={tutorialSteps[activeStep].imgPath}

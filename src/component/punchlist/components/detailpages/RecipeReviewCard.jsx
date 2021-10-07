@@ -7,7 +7,6 @@ import Modal from '@material-ui/core/Modal';
 import RecipeReviewCardModal from './RecipeReviewCardModal';
 
 
-
 // function rand() {
 //   return Math.round(Math.random() * 20) - 10;
 // }
@@ -94,7 +93,7 @@ export default function RecipeReviewCard(props) {
         aria-describedby="simple-modal-description"
       >
         {/* {body} */}
-        <RecipeReviewCardModal imageName={props.imageName} />
+        <RecipeReviewCardModal imageName={props.imageName} setOpen={setOpen} />
       </Modal>
     </>
   );

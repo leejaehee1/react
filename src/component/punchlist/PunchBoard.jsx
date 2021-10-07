@@ -55,6 +55,7 @@ const PunchBoard = (props) => {
     if (!boardIds) return null;
     return (
         // <Card>
+        <div style={{overflow: 'auto', height: '700px'}}>
             <List dense={true}  >
                 {inputBoardIds.map(id => {
                     return (
@@ -130,6 +131,7 @@ const PunchBoard = (props) => {
                 )
             }
             </List>
+        </div>
         // </Card>
     )
 }
