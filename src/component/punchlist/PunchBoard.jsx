@@ -1,70 +1,36 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
     List as RaList,
-    // ListProps,
-    // SimpleListLoading,
-    // ReferenceField,
-    // TextField,
     useListContext,
-    // ExportButton,
-    // SortButton,
-    TopToolbar,
-    CreateButton,
-    ExportButton,
-    Pagination,
-    // useGetIdentity,
-    // TextField,
-    // Button,
-    ListActions,
-    
     useGetList,
-
-    // Datagrid,
 } from 'react-admin';
 
 import {
     List,
     ListItem,
     
-    // ListItemAvatar,
     ListItemIcon,
-    ListItemSecondaryAction,
     ListItemText,
     Checkbox,
     Typography,
-    Box,
-    styled,
-    Button,
-    Grid,
-    Card,
-    // buttonUnstyledClasses,
-    // ButtonUnstyled,
-    // CustomButton,
+
 } from '@material-ui/core';
-// import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled';
-// import {Paper} from '@material-ui/core';
 
 
 
 
-import { cloneElement } from 'react';
-import IconEvent from '@material-ui/icons/Event';
+// import { cloneElement } from 'react';
+// import IconEvent from '@material-ui/icons/Event';
 import StateButton from './board/StateButton';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import Button from '@mui/material/Button';
 
 const PunchBoard = (props) => {
-    // console.log("들어왔다.")
-    // const { data, ids, loading, error } = useGetList('list', );
-    // const { data, ids, onToggleItem, } = useListContext();
-    // const [boardData, setBoardData] = useState(props.boardData)
-    // const [boardIds, setBoardIds] = useState(props.boardIds)
     const [timeFlag, setTimeFlag] = useState(false)
     const a = props.boardData
     const b = props.boardIds
     const boardData = useRef(a)
     const boardIds = useRef(b)
-    // console.log(props.boardData)
     
     boardData.current = a  // 이걸 지우면 애러발생
 
@@ -74,6 +40,17 @@ const PunchBoard = (props) => {
     const updateDetailPage = (id) => {
         props.setUpPunchBoardData(id)
     }
+
+    // const { data, ids } = useGetList('discipline', );
+    const discipline = useGetList('discipline', );
+    const systemID = useGetList('systems', );
+    const subSystem = useGetList('subsystem', );
+    // console.dir(systemID.data)
+    // console.dir(Object.keys(subSystem.data))
+    // console.log(systemID?.data["05/70/80SG"]['systemName'])
+    // console.log(systemID?.data["UB"]['systemName'])
+
+    
     
     if (!boardIds) return null;
     return (
@@ -115,7 +92,7 @@ const PunchBoard = (props) => {
                                 primary={
                                     `${inputBoardData[id].punchID}, 
                                     ${inputBoardData[id].category}, 
-                                    ${inputBoardData[id].discipline},(<=이건 name)   
+                                    ${discipline.data[inputBoardData[id].discipline]['disciplineName']},   
                                     ${inputBoardData[id].tagNumber}, 
                                     ${inputBoardData[id].unit}, 
                                     ${inputBoardData[id].area}`
@@ -127,10 +104,10 @@ const PunchBoard = (props) => {
                                                 overflow:"hidden", 
                                                 textOverflow:"ellipsis", 
                                                 whiteSpace:"nowrap"}}
-                                        >(이건 name)
-                                        {inputBoardData[id].systemID}
-                                        <br />
-                                        {inputBoardData[id].subsystem}
+                                        >
+                                            {systemID.data[inputBoardData[id].systemID]?.systemName}
+                                            <br />
+                                            {subSystem.data[inputBoardData[id].subsystem]?.subsystemName}
                                         </p>
                                     </>
                                 }

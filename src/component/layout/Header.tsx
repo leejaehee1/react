@@ -57,9 +57,7 @@ const Header = () => {
     }
 
     const { data, ids } = useGetList('project', );
-    for (var a of Object.keys(data)){
-        console.log(a)
-    }
+
     return (
 
         // <nav className={classes.root}>
