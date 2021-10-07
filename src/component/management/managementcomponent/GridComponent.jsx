@@ -1315,8 +1315,8 @@ const GridComponent = () => {
                         <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
                         <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            Let Google help apps determine location. This means sending anonymous location data to
-                            Google, even when no apps are running.
+                            {/* Let Google help apps determine location. This means sending anonymous location data to
+                            Google, even when no apps are running. */}
                             {Object.keys(errorResultData).map((v, i)=> (
                                 <>
                                     <p>{v}</p>
@@ -1328,17 +1328,17 @@ const GridComponent = () => {
                                     ))}</p> */}
                                 </>
                             ))}
-                            {Object.keys(errorResultData)}
-                            {Object.values(errorResultData)}
+                            {/* {Object.keys(errorResultData)}
+                            {Object.values(errorResultData)} */}
                         </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                        <Button onClick={handleValClose} color="primary">
-                            Disagree
-                        </Button>
-                        <Button onClick={handleValClose} color="primary" autoFocus>
-                            Agree
-                        </Button>
+                            {/* <Button onClick={handleValClose} color="primary">
+                                Disagree
+                            </Button> */}
+                            <Button onClick={handleValClose} color="primary" autoFocus>
+                                OK
+                            </Button>
                         </DialogActions>
                     </Dialog>
                     {/* <Button onClick={toggleDrawer(true)}>TOPPunchList</Button> */}
@@ -1406,7 +1406,7 @@ const GridComponent = () => {
                     </Drawer>
                 </React.Fragment>
             </div>
-            <MaterialTable 
+            <MaterialTable style={{minHeight:'700px'}}
                 title="Punchlist data" 
                 data={data} 
                 columns={colDefs} 
@@ -1463,15 +1463,10 @@ const GridComponent = () => {
                     setEachRowVData(eachRowValueData.current)
                 }}
                 options={{
-                    // rowStyle: rowData => ({  // 렉폭팔
-                    //     backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'
-                    //   }),
-                    // rowStyle: (rowData) => {
-                    //     return {
-                    //         backgroundColor: (selectedRow === rowData.tableData.id)? '#EEE' : '#FFF',
-                    //     }
-                    // },
-                    paginationType: "stepped",
+                    maxBodyHeight: '600px',
+                    //paging
+                    // paginationType: "stepped",
+                    paging: false,
                     columnsButton:true,
                     // https://material-table.com/#/docs/features/styling
                     headerStyle: {
