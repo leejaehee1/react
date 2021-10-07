@@ -48,7 +48,7 @@ const SystemID = (props) => {
             {Object.values(data).map((a) => {
               if (a.systemID !== props.static){ 
                 return (
-              <option value={a.systemID} >{a.systemID}</option>
+              <option value={a.systemID} >{a.systemID} &nbsp;  {data[a.systemID]?.systemName}</option>
               )}
             }
             )}

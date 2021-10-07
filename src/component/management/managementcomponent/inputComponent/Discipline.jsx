@@ -54,7 +54,7 @@ const Discipline = (props) => {
           {Object.values(data).map((a) => {
             if (a.discipline !== props.static){ 
               return (
-            <option value={a.discipline} >{a.discipline}</option>
+            <option value={a.discipline} >{a.discipline} &nbsp;  {data[a.discipline].disciplineName}</option>
             )}
           }
           )}

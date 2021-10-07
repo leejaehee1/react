@@ -52,7 +52,7 @@ const Department = (props) => {
           {Object.values(data).map((a) => {
             if (a.department !== props.static){ 
               return (
-            <option value={a.department} >{a.department}</option>
+            <option value={a.department} >{a.department} &nbsp; {data[a.department]?.deptName}</option>
             )}
           }
           )}

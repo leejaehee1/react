@@ -57,7 +57,7 @@ const Category = (props) => {
           {Object.values(data).map((a) => {
             if (a.category !== props.static){ 
               return (
-            <option value={a.category} >{a.category}</option>
+            <option value={a.category} >{a.category}&nbsp;  {data[a.category]?.categoryName}</option>
             )}
           }
           )}

@@ -55,7 +55,7 @@ const Area = (props) => {
           {Object.values(data).map((a) => {
             if (a.area !== props.static){ 
               return (
-            <option value={a.area} >{a.area}</option>
+            <option value={a.area} >{a.area} &nbsp;  {data[a.area]?.areaName}</option>
             )}
           }
           )}

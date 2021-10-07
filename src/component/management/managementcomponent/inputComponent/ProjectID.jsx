@@ -86,7 +86,7 @@ const ProjectID = (props) => {
             {Object.values(data).map((a) => {
               if (a.projectID !== props.static){ 
                 return (
-              <option value={a.projectID} >{a.projectID}</option>
+              <option value={a.projectID} >{a.projectID} &nbsp;  {data[a.projectID]?.projectName}</option>
               )}
             }
             )}

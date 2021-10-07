@@ -47,7 +47,7 @@ const Subsystem = (props) => {
           {Object.values(data).map((a) => {
             if (a.subsystem !== props.static){ 
               return (
-            <option value={a.subsystem} >{a.subsystem}</option>
+            <option value={a.subsystem} >{a.subsystem}&nbsp; {data[a.subsystem]?.subsystemName}</option>
             )}
           }
           )}

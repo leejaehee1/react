@@ -51,7 +51,7 @@ const Status = (props) => {
           {Object.values(data).map((a) => {
             if (a.status !== props.static){ 
               return (
-            <option value={a.status} >{a.status}</option>
+            <option value={a.status} >{a.status} &nbsp; {data[a.status]?.statusName}</option>
             )}
           }
           )}

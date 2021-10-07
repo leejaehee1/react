@@ -47,7 +47,7 @@ const Unit = (props) => {
           {Object.values(data).map((a) => {
             if (a.unit !== props.static){ 
               return (
-            <option value={a.unit} >{a.unit}</option>
+            <option value={a.unit} >{a.unit} &nbsp; {data[a.unit]?.unitName}</option>
             )}
           }
           )}
