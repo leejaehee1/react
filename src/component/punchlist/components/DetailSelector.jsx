@@ -7,6 +7,8 @@ import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 
+// excel export 
+import { CSVLink, CSVDownload } from "react-csv";
 
 // style
 import './styles/detailselector.css'
@@ -68,6 +70,18 @@ function DetailSelector(props) {
         content: () => componentRef.current,
   });
   
+  // console.log(props.boardData)
+
+  let excelData = Object.values(props.boardData)
+  let fData = Object.keys(excelData[0])
+  // console.log(fData)
+  let headerData = []
+  for(var i of fData){
+    var sData = {label:i, key:i}
+    headerData.push(sData)
+  }
+  console.log(headerData)
+  
   return (
     <div style={{display:'flex'}}>
       {issueState?
@@ -123,9 +137,17 @@ function DetailSelector(props) {
         </Modal>
 
 
+        <CSVLink 
+          headers={headerData} 
+          // data={data} 
+          data={excelData} 
+          filename="users.csv" 
+          target="_blank"
+        >
         <button className="excelIcon" style={{backgroundImage: `url(${excelIcon})`}}>
           <p>excel</p>
         </button>
+        </CSVLink>
       </div>
     </div>
   )

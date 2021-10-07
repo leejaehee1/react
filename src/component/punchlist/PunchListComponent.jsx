@@ -483,6 +483,7 @@ const PunchListComponent = () => {
                     <Box flex="1" mr="1em">
                         {/* <DetailComponent /> */}
                         <DetailSelector 
+                            boardData={boardData.length?boardData:boardAllData} 
                             setIssueShow={setIssueShow} 
                             setHistoryShow={setHistoryShow} 
                             downDetailData={
