@@ -108,7 +108,7 @@ function DetailSelector(props) {
                                             borderLeft: '1px solid'
                                             // border: '1px solid'
                                             }}>
-                    <ComponentToPrint />
+                    <ComponentToPrint downDetailData={props.downDetailData} />
                 </div>
                 <hr style={{
                   marginTop: '-50px', 

@@ -69,7 +69,7 @@ function DataDescription(props) {
       </Paper> */}
 
       <TextField
-                    style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
+                    style={{width: '350px', paddingLeft:'20px', paddingTop: '5px'}}
                     id="issueDescription"
                     // label="Multiline"
                     multiline

@@ -12,7 +12,7 @@ import { makeStyles, createTheme, ThemeProvider, withStyles } from '@material-ui
 import Slider from '@material-ui/core/Slider';
 // import Tooltip from '@material-ui/core/Tooltip';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import Input from '@material-ui/core/Input';
 
 
@@ -163,6 +163,10 @@ function DataSlider(props) {
   //   console.log(v) // 숫자
   // }
   const [value, setValue] = React.useState(props.dataOne);
+
+  useEffect(()=> {
+    setValue(props.dataOne)
+  }, [props])
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);

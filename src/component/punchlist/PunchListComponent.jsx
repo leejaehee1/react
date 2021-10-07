@@ -482,7 +482,14 @@ const PunchListComponent = () => {
                 <Box flex="2" display="flex">
                     <Box flex="1" mr="1em">
                         {/* <DetailComponent /> */}
-                        <DetailSelector setIssueShow={setIssueShow} setHistoryShow={setHistoryShow} />
+                        <DetailSelector 
+                            setIssueShow={setIssueShow} 
+                            setHistoryShow={setHistoryShow} 
+                            downDetailData={
+                                boardAllData[upPunchBoardData]
+                                ?boardAllData[upPunchBoardData]
+                                :boardAllData[allIndex[0]]}
+                        />
                         {issueShow?
                             <DetailPageComponent 
                                 downDetailData={

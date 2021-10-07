@@ -28,27 +28,29 @@ const tutorialSteps = [
   {
     label: 'San Francisco – Oakland Bay Bridge, United States',
     imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    // 'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    'https://tongnews.com.au/wp-content/uploads/2019/10/%E1%84%8B%E1%85%A9%E1%84%91%E1%85%A1%E1%86%AF%E1%84%90%E1%85%A1%E1%84%8B%E1%85%AF-%E1%84%80%E1%85%A5%E1%86%AB%E1%84%8E%E1%85%AE%E1%86%A8-%E1%84%92%E1%85%A1%E1%84%8C%E1%85%A1.jpg',
   },
   {
     label: 'Bird',
     imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      // 'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+      'http://www.phiko.kr/data/file/z4_01/thumb-2827220211_6B21QMZt_0ac9604caf67af43cfa87bae1d0000251c66cc01_750x1000.jpg',
   },
   {
     label: 'Bali, Indonesia',
     imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl924zW37o5jfIiMc2RaSd4_1WreosjZX4TQ&usqp=CAU',
   },
   {
     label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
     imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://newsimg.hankookilbo.com/cms/articlerelease/2018/10/10/201810101513035685_33.jpg',
   },
   {
     label: 'Goč, Serbia',
     imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+      'https://www.woodkorea.co.kr/news/photo/201910/32227_34434_296.jpg',
   },
 ];
 
