@@ -175,7 +175,7 @@ const PunchListComponent = () => {
     
 
     const boardAllData = data;
-    const allIndex = ids;
+    const allIndex = ids.filter(id=> data[id].status !== '1');;
     const allOpenedIdx = ids.filter(id=> data[id].status === '2');
     const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3');
     const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4');
