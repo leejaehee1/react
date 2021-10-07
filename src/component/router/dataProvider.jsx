@@ -54,7 +54,7 @@ export default {
             {
             data: json.result.map(resource => ({ ...resource, id: resource[json.resultID] }) ),
             // data: json,
-            total: parseInt(headers.get('content-range').split('/').pop(), 10),
+            // total: parseInt(headers.get('content-range').split('/').pop(), 10),
             // total: 10,
         }))
     },

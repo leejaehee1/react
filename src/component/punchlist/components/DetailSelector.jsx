@@ -72,15 +72,15 @@ function DetailSelector(props) {
   
   // console.log(props.boardData)
 
-  let excelData = Object.values(props.boardData)
-  let fData = Object.keys(excelData[0])
+  let excelData = Object.values(props?.boardData)
+  let fData = Object.keys(excelData[0]?excelData[0]:[])
   // console.log(fData)
   let headerData = []
   for(var i of fData){
     var sData = {label:i, key:i}
     headerData.push(sData)
   }
-  console.log(headerData)
+  // console.log(headerData)
   
   return (
     <div style={{display:'flex'}}>

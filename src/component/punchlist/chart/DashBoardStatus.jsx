@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {useGetList} from 'react-admin';
+import { fetchUtils } from 'react-admin';
+import { stringify } from 'query-string';
+import axios from 'axios';
 
 const DashBoardStatus = () => {
     const bgColor = '#bdbdbd'
+
+
+    const url = 'http://localhost:5000/punchlist/progress/?range=[0, 24]';
+
+    const [proData, setProData] = useState()
+
+    const progressData = () =>{
+        axios.get(url)
+        .then((res)=> setProData(res.data.result))
+        .catch(err => console.log(err))
+    }
+    useEffect(()=>{
+        progressData()
+    }, [])
 
     return (
         <>
             <div style={{display:'flex'}}>
                 <div style={{paddingRight:'10px', width:'67%'}}>
+                    {/* {JSON.stringify(proData[proData.length-1])} */}
                     <table
                         style={{ 
                             borderCollapse: "collapse", 
@@ -40,27 +59,27 @@ const DashBoardStatus = () => {
                             <td colspan="2" style={{backgroundColor:bgColor}}>Closed</td>
                         </tr>
                         <tr>
-                            <td rowspan="4">Lorem</td>
+                            <td rowspan="4">{proData[proData.length-1].RemainYday}</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
-                            <td rowspan="4">Dolor</td>
-                            <td rowspan="4">Dolor</td>
+                            <td rowspan="4">{proData[proData.length-1].RemainToday}</td>
+                            <td rowspan="4">{proData[proData.length-1].Pending}</td>
                         </tr>
                         <tr>
-                            <td>Lorem</td>
-                            <td>Ipsum</td>
-                            <td>Dolor</td>
-                            <td>Dolor</td>
+                            <td>{proData[proData.length-1].IssuedYday}</td>
+                            <td>{proData[proData.length-1].IssuedToday}</td>
+                            <td>{proData[proData.length-1].ClosedYday}</td>
+                            <td>{proData[proData.length-1].ClosedToday}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style={{backgroundColor:bgColor}}>Total Issued</td>
                             <td colspan="2" style={{backgroundColor:bgColor}}>Total Closed</td>
                         </tr>
                         <tr>
-                            <td colspan="2">Total Closed</td>
-                            <td colspan="2">Dolor</td>
+                            <td colspan="2">{proData[proData.length-1].IssuedTotal}</td>
+                            <td colspan="2">{proData[proData.length-1].ClosedTotal}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -93,9 +112,9 @@ const DashBoardStatus = () => {
                                 <td style={{backgroundColor:bgColor}}>Closed</td>
                             </tr>
                             <tr style={{height:'50px'}}>
-                                <td>Ipsum</td>
-                                <td>Dolor</td>
-                                <td>Dolor</td>
+                                <td>{proData[proData.length-1].trendIssued}</td>
+                                <td>{proData[proData.length-1].trendCompleted}</td>
+                                <td>{proData[proData.length-1].trendClosed}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -128,7 +147,7 @@ const DashBoardStatus = () => {
                             <tr>
                                 <td style={{backgroundColor:bgColor, width:'60%', borderBottomLeftRadius: '5px', borderTopLeftRadius: '5px',
                                                     borderStyle:'hidden',}}>ScheDule Availability</td>
-                                <td>Dolor</td>
+                                <td>proData[proData.length-1].predict</td>
                             </tr>
                             </tbody>
                         </table>
