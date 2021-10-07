@@ -15,6 +15,7 @@ import ClosedDate from '../../management/managementcomponent/inputComponent/Clos
 import ViewDrawingButton from './detailpages/ViewDrawingButton';
 // import Button from '@material-ui/core/Button';
 
+import'./styles/DetailPageComponent.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -126,15 +127,16 @@ function DetailPageComponent(props) {
 
         <Grid container spacing={3}>
             <Grid item xs={6}>
-            <Paper className={classes.paper}>
+            {/* <Paper className={classes.paper}>
               Cancel
-            </Paper>
+            </Paper> */}
+            <button className="detailPageCancelButton">Cancel</button>
             </Grid>
             <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              {/* <Button /> */}
+            {/* <Paper className={classes.paper}>
               Save
-            </Paper>
+            </Paper> */}
+            <button className="detailPageSaveButton">Save</button>
             </Grid>
         </Grid>
       </Paper>
