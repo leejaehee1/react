@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,9 +64,21 @@ function DataDescription(props) {
       <ThemeProvider theme={theme}>
         <Typography variant="h5">{props.columnName}</Typography>
       </ThemeProvider>
-      <Paper variant="outlined" className={classes.lpaper} square>
+      {/* <Paper variant="outlined" className={classes.lpaper} square>
         {props.dataOne}
-      </Paper>
+      </Paper> */}
+
+      <TextField
+                    style={{width: '400px', paddingLeft:'20px', paddingTop: '5px'}}
+                    id="issueDescription"
+                    // label="Multiline"
+                    multiline
+                    rows={4}
+                    // color='gray'
+                    color="default"
+                    defaultValue={props.dataOne}
+                    variant="outlined"
+                />
         
       <br />
 

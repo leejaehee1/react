@@ -92,9 +92,6 @@ const DataCheckBox = (props) => {
     setCheckedMaterial((pre)=> (!pre))
   }
 
-  console.log(props.dataOne?.designChgReq)
-  console.log(a)
-  console.log(b)
   return (
     <div style={{marginLeft: '-5px'}}>
 
