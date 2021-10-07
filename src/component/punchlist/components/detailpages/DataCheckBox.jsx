@@ -85,11 +85,11 @@ const DataCheckBox = (props) => {
   // }
 
   const handleDetailBox = (e) => {
-    setChecked((pre)=>(!pre))
+    setChecked((pre)=>(Math.abs(pre-1)))
   }
 
   const handleDetailMaterial = ()=> {
-    setCheckedMaterial((pre)=> (!pre))
+    setCheckedMaterial((pre)=> (Math.abs(!pre)))
   }
 
   return (

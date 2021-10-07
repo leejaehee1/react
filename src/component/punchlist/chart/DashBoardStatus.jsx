@@ -5,12 +5,12 @@ import { stringify } from 'query-string';
 import axios from 'axios';
 
 const DashBoardStatus = () => {
-    const bgColor = '#bdbdbd'
+    const bgColor = '#b0bec5'
 
 
     const url = 'http://localhost:5000/punchlist/progress/?range=[0, 24]';
 
-    const [proData, setProData] = useState()
+    const [proData, setProData] = useState("")
 
     const progressData = () =>{
         axios.get(url)
@@ -18,9 +18,11 @@ const DashBoardStatus = () => {
         .catch(err => console.log(err))
     }
     useEffect(()=>{
-        progressData()
+        axios.get(url)
+        .then((res)=> setProData(res.data.result))
+        .catch(err => console.log(err))
     }, [])
-
+    // if(proData.length){return <></>}
     return (
         <>
             <div style={{display:'flex'}}>
@@ -48,10 +50,12 @@ const DashBoardStatus = () => {
                         <tr>
                             <td rowspan="2" style={{backgroundColor:bgColor}}>Remained <br /> (Yesterday)</td>
                             <td colspan="4" style={{backgroundColor:bgColor}}>Current Status</td>
-                            <td rowspan="2" style={{backgroundColor:bgColor}}>Remained <br /> (Today)</td>
+                            <td rowspan="2" style={{backgroundColor:bgColor, }}>Remained <br /> (Today)</td>
                             <td rowspan="2" style={{backgroundColor:bgColor,                         
                                                     borderTopRightRadius: '5px',
                                                     borderStyle:'hidden',
+                                                    borderLeft: "1px solid #ECECEC",
+                                                    borderBottom: "1px solid #ECECEC",
                                                     }}>Pending</td>
                         </tr>
                         <tr>
@@ -59,27 +63,27 @@ const DashBoardStatus = () => {
                             <td colspan="2" style={{backgroundColor:bgColor}}>Closed</td>
                         </tr>
                         <tr>
-                            <td rowspan="4">{proData[proData.length-1].RemainYday}</td>
+                            <td rowspan="4">{proData[proData.length-1]?.RemainYday}</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
-                            <td rowspan="4">{proData[proData.length-1].RemainToday}</td>
-                            <td rowspan="4">{proData[proData.length-1].Pending}</td>
+                            <td rowspan="4">{proData[proData.length-1]?.RemainToday}</td>
+                            <td rowspan="4">{proData[proData.length-1]?.Pending}</td>
                         </tr>
                         <tr>
-                            <td>{proData[proData.length-1].IssuedYday}</td>
-                            <td>{proData[proData.length-1].IssuedToday}</td>
-                            <td>{proData[proData.length-1].ClosedYday}</td>
-                            <td>{proData[proData.length-1].ClosedToday}</td>
+                            <td>{proData[proData.length-1]?.IssuedYday}</td>
+                            <td>{proData[proData.length-1]?.IssuedToday}</td>
+                            <td>{proData[proData.length-1]?.ClosedYday}</td>
+                            <td>{proData[proData.length-1]?.ClosedToday}</td>
                         </tr>
                         <tr>
                             <td colspan="2" style={{backgroundColor:bgColor}}>Total Issued</td>
                             <td colspan="2" style={{backgroundColor:bgColor}}>Total Closed</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{proData[proData.length-1].IssuedTotal}</td>
-                            <td colspan="2">{proData[proData.length-1].ClosedTotal}</td>
+                            <td colspan="2">{proData[proData.length-1]?.IssuedTotal}</td>
+                            <td colspan="2">{proData[proData.length-1]?.ClosedTotal}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -98,13 +102,13 @@ const DashBoardStatus = () => {
                                     borderRadius: '5px',
                                     borderStyle:'hidden',
                                      height:'110px'}}
-                            border="3"
+                            border="1"
                             border-collapse="collapse"
                         >
                             <tbody>
                             <tr>
                                 <td colspan="3" style={{backgroundColor:bgColor, borderTopLeftRadius: '5px',
-                                                    borderStyle:'hidden',}}>Trend (avg of last week)</td>
+                                                    borderStyle:'hidden',border: "1px solid #e4e4e4"} }>Trend (avg of last week)</td>
                             </tr>
                             <tr>
                                 <td style={{backgroundColor:bgColor}}>Opened</td>
@@ -112,9 +116,9 @@ const DashBoardStatus = () => {
                                 <td style={{backgroundColor:bgColor}}>Closed</td>
                             </tr>
                             <tr style={{height:'50px'}}>
-                                <td>{proData[proData.length-1].trendIssued}</td>
-                                <td>{proData[proData.length-1].trendCompleted}</td>
-                                <td>{proData[proData.length-1].trendClosed}</td>
+                                <td>{proData[proData.length-1]?.trendIssued}</td>
+                                <td>{proData[proData.length-1]?.trendCompleted}</td>
+                                <td>{proData[proData.length-1]?.trendClosed}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -147,7 +151,7 @@ const DashBoardStatus = () => {
                             <tr>
                                 <td style={{backgroundColor:bgColor, width:'60%', borderBottomLeftRadius: '5px', borderTopLeftRadius: '5px',
                                                     borderStyle:'hidden',}}>ScheDule Availability</td>
-                                <td>proData[proData.length-1].predict</td>
+                                <td>{proData[proData.length-1]?.predict}</td>
                             </tr>
                             </tbody>
                         </table>
