@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -70,10 +70,16 @@ const theme = createTheme({
 
 
 const DataCheckBox = (props) => {
-  const [checked, setChecked] = useState((props.dataOne?.designChgReq === "1"?true: false));
-  const [checkedMaterial, setCheckedMaterial] = useState((props.dataOne?.materialReq === "1"?true: false));
+  const [checked, setChecked] = useState();
+  const [checkedMaterial, setCheckedMaterial] = useState();
   const classes = useStyles();
+  let a = props.dataOne?.designChgReq
+  let b = props.dataOne?.materialReq
 
+  useEffect(()=> {
+    setChecked(a)
+    setCheckedMaterial(b)
+  }, [props])
   // const handleChange = (event) => {
   //   setChecked(event.target.checked);
   // }
@@ -86,6 +92,9 @@ const DataCheckBox = (props) => {
     setCheckedMaterial((pre)=> (!pre))
   }
 
+  console.log(props.dataOne?.designChgReq)
+  console.log(a)
+  console.log(b)
   return (
     <div style={{marginLeft: '-5px'}}>
 
@@ -107,7 +116,7 @@ const DataCheckBox = (props) => {
             <Checkbox
               // defaultChecked
               onChange={handleDetailBox}
-              checked={checked}
+              checked={parseInt(checked)}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
@@ -124,7 +133,7 @@ const DataCheckBox = (props) => {
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
               onChange={handleDetailMaterial}
-              checked={checkedMaterial}
+              checked={parseInt(checkedMaterial)}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />

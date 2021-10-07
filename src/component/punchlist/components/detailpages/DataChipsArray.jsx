@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { makeStyles, createTheme, ThemeProvider  } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
@@ -42,7 +42,8 @@ const theme = createTheme({
 export default function DataChipsArray(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [typingKeyword, setTypingKeyword] = useState('');
+  // const [typingKeyword, setTypingKeyword] = useState('');
+  const typingKeyword = useRef('');
 
   let targetData = [
     { key: 0, label: props.keyOne },
@@ -51,16 +52,11 @@ export default function DataChipsArray(props) {
     { key: 3, label: props.keyFour },
     // { key: 4, label: 'buildin' },
   ];
-  const [chipData, setChipData] = React.useState([
-    { key: 0, label: props.keyOne },
-    { key: 1, label: 'cable-list' },
-    { key: 2, label: props.keyOne },
-    { key: 3, label: 'piping-tablelist' },
-    // { key: 4, label: 'buildin' },
-  ]);
+  const [chipData, setChipData] = React.useState([]);
 
   const changeInput = (e) => {
-    setTypingKeyword(e.target.value)
+    // setTypingKeyword(e.target.value)
+    typingKeyword.current = e.target.value
     return ()=> {
     }
   }
@@ -71,67 +67,67 @@ export default function DataChipsArray(props) {
 
   const handleClose = () => {
     setOpen(false);
-    setTypingKeyword('');
+    // setTypingKeyword('');
+    typingKeyword.current = '';
   };
   
   const handleSaveClose = () => {
     setOpen(false);
-    let targetLabel;
-    for(let a of chipData) {
-      if (a.label){
-      } else{
-        targetLabel = a.key
-        break;
-      }
-    }
-    
-    let targetKey;
-    for(let i in chipData){
-      if(chipData[i].key===i){
-      }else {
-        targetKey = i
+
+    let targetIdx=-1;
+    // 0~3 사이에 포함이 되는가? [0, 1, 2, 3] 
+    // 있으면 통과 없으면 alert 후에 끝! 추가 불가.
+    // => for문으로 0부터 하나씩 뽑는다.
+    let chipKeys = chipData.map((d)=> d.key)
+    // console.log(chipKeys)
+    // console.log(Object.values(chipData))
+    for (var i of [0, 1, 2, 3]){
+      // console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
+      // console.log(i)
+      if(chipKeys.includes(i)){
+        // console.log('포함');
+        // datachip하나씩 돌리다가 key부분이 같다면 label을 찾아보자.
+        chipData.map((rD) => {
+          // if(rD){}
+          // console.log(rD)
+          if(rD['key']===i){
+            // console.log('1차들어옴')
+            if(rD['label']){}else{
+              // console.log('드렁옴??')
+              if (targetIdx===-1){
+                targetIdx = i;
+              }
+              // break;
+            }
+          }
+        });
+        // break;
+      } else {
+        // console.log('불포함');
+        targetIdx = i;
         break
       }
     }
 
-    let finalTarget;
-    if(targetLabel < targetKey){
-      finalTarget = targetLabel
-    }else{
-      finalTarget = targetKey
-    }
+    console.log('targetIdx')
+    console.log(targetIdx)
 
-    // console.log(targetLabel);
-    // console.log(targetKey);
-    // console.log('finalTarget');
-    // console.log(finalTarget);
-    // console.log(chipData)
-    // console.log(typingKeyword)
-    // console.log(targetKey)
+
     var flag = false
-    let flagData;
+    var flagData;
     let newArr = chipData.map((value, index)=> {
-      // console.log('start')
-      // console.log(index)
-      // console.log(finalTarget)
-      // console.log(value.key)
-      if (Number(index) === Number(finalTarget)) {
-        // console.log('들어왔다.')
-        if (value.key===index) {
-          console.log(11)
-          return {...value, label:typingKeyword}
+      if (Number(index) === Number(targetIdx)) {
+        if (value.key===Number(index)) {
+          return {...value, label:typingKeyword.current}
         } else {
           flag = true
-          flagData = {key:index, label:typingKeyword}
-          console.log(22)
+          flagData = {key:index, label:typingKeyword.current}
           return 
         }
       } else {
         return value
       }
     })
-    // console.log(newArr)
-    // console.log(flagData)
     setChipData(newArr)
     if (flag){
       setChipData([...chipData, flagData])
@@ -198,7 +194,7 @@ export default function DataChipsArray(props) {
             onClick={() => handleAddTag()}
         />
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Create a new keyword</DialogTitle>
+        {/* <DialogTitle id="form-dialog-title">Create a new keyword</DialogTitle> */}
         <DialogContent>
           {/* <DialogContentText>
             To subscribe to this website, please enter your email address here. We will send updates
@@ -209,7 +205,7 @@ export default function DataChipsArray(props) {
             onChange= {changeInput}
             margin="dense"
             id="name"
-            label="Keyword"
+            label="Create a new Keyword"
             type="email"
             fullWidth
           />
@@ -219,7 +215,7 @@ export default function DataChipsArray(props) {
             Cancel
           </Button>
           <Button onClick={handleSaveClose} color="primary">
-            add keyword
+            add
           </Button>
         </DialogActions>
       </Dialog>

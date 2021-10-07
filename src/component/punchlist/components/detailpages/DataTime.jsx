@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -73,12 +73,18 @@ const defaultMaterialTheme = createTheme({
 function DataTime(props) {
     const classes = useStyles();
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [selectedDate, setSelectedDate] = React.useState("");
     // const [selectedDate, setSelectedDate] = React.useState(new Date('2021-07-18T21:11:54'));
+    // console.log(props.dataOne?.targetDate)
 
     const handleDateChange = (date) => {
       setSelectedDate(date);
     };
+
+    useEffect(()=> {
+      setSelectedDate("")
+    },[props])
+
     return (
         <>
           <Grid container spacing={3} alignItems="center" style={{marginTop:'-30px'}}>
@@ -96,15 +102,18 @@ function DataTime(props) {
                   {/* // https://material-ui-pickers.dev/api/DatePicker */}
                   <ThemeProvider theme={defaultMaterialTheme}>
                     <KeyboardDatePicker
-                      // style={{width:"250px"}}
                       disableToolbar
+                      // style={{width:"250px"}}
                       // variant="inline"
                       format="yyyy/MM/dd"
                       //inputVariant="filled"  // outlined // standard
                       // margin="normal"
                       id="date-picker-inline"
                       // label="Date picker inline"
-                      value={props.dataOne?.targetDate}
+                      // defaultValue='2020-01-01'
+                      // defaultValue={selectedDate}
+                      // initialFocusedDate={props.dataOne?.targetDate}
+                      value={selectedDate?selectedDate:props.dataOne?.targetDate}
                       onChange={handleDateChange}
                       KeyboardButtonProps={{
                         'aria-label': 'change date',
