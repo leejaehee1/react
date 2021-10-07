@@ -281,6 +281,20 @@ const PunchListComponent = () => {
 
     const [issueShow, setIssueShow] = useState(true)
     const [historyShow, setHistoryShow] = useState(false)
+
+
+    const [allCheckBox, setAllCheckBox] = useState(false)
+    const [otherCheckBox, setOtherCheckBox] = useState(false)
+    const changeAllCheckbox = (e) => {
+        // console.log(e.target.checked)
+        // console.log(e.target.value)
+        setAllCheckBox(e.target.checked)
+    }
+
+    useEffect(()=> {
+        setOtherCheckBox(otherCheckBox)
+        // console.log(allCheckBox)
+    },[allCheckBox])
     
     return (
         <React.Fragment>
@@ -373,7 +387,7 @@ const PunchListComponent = () => {
                             <FormControlLabel
                                 // value="top"
                                 style={{marginLeft:'5px', marginBottom: '-10px'}}
-                                control={<Checkbox size="small" color="default" />}
+                                control={<Checkbox size="small" color="default" onClick={changeAllCheckbox} />}
                                 // label={<BeenhereIcon fontSize="small" />}
                                 // label={<PageviewIcon fontSize="small" />}
                                 // label={<ViewStreamTwoToneIcon fontSize="small" />}
@@ -462,6 +476,7 @@ const PunchListComponent = () => {
                         boardData={boardData.length?boardData:boardAllData} 
                         boardIds={boardIndexData.length?boardIndexData:allIndex} 
                         setUpPunchBoardData={setUpPunchBoardData}
+                        otherCheckBox={allCheckBox}
                     />
                 </Box>
                 <Box flex="2" display="flex">

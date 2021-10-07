@@ -50,7 +50,7 @@ const PunchBoard = (props) => {
     // console.log(systemID?.data["05/70/80SG"]['systemName'])
     // console.log(systemID?.data["UB"]['systemName'])
 
-    
+    // console.log(props.otherCheckBox)
     
     if (!boardIds) return null;
     return (
@@ -72,7 +72,7 @@ const PunchBoard = (props) => {
                                     edge="start"
                                     size="small"
                                     color="default"
-                                    
+                                    checked={props.otherCheckBox}
                                     // checked={selectedIds.includes(id)}
                                     // tabIndex={-1}
                                     // disableRipple
