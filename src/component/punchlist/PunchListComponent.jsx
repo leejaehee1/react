@@ -373,7 +373,9 @@ const PunchListComponent = () => {
                         )
                     }
                 </div>
-                <div style={{width:'45%', position:'absolute', left:'73%', padding:'5px', height: '30px' }}>
+                <div style={{width:'45%', textAlign: "right",
+                            // position:'absolute', left:'73%', 
+                            padding:'5px', height: '30px' }}>
                     <TuneIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
                     <input style={{backgroundColor:'white', border:'1px solid', height: "100%" }} type="text" />
                     <SearchIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
@@ -399,13 +401,9 @@ const PunchListComponent = () => {
                         /> */}
                         <div style={{width:'40px', margin:'0px'}}>
                             <FormControlLabel
-                                // value="top"
                                 style={{marginLeft:'5px', marginBottom: '-10px'}}
                                 control={<Checkbox size="small" color="default" onClick={changeAllCheckbox} />}
-                                // label={<BeenhereIcon fontSize="small" />}
-                                // label={<PageviewIcon fontSize="small" />}
-                                // label={<ViewStreamTwoToneIcon fontSize="small" />}
-                                label={<FormatAlignJustifyIcon fontSize="small" />}
+                                // label={<FormatAlignJustifyIcon fontSize="small" />}
                                 labelPlacement="top"
                             />
                         </div>

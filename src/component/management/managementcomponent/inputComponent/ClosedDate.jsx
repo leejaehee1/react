@@ -101,6 +101,7 @@ const ClosedDate = (props) => {
                 <KeyboardDatePicker
                   disableToolbar
                   style={{width:"250px"}}
+                  // size='string  '
                   // variant="inline"
                   format="yyyy/MM/dd"
                   //inputVariant="filled"  // outlined // standard

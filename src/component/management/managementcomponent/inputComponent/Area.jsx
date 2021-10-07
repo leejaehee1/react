@@ -19,7 +19,7 @@ const Area = (props) => {
     const upValData = Object.values(data).map(a => a.area)
     // console.log("props.stepValFlag")
     // console.log(props.stepValFlag)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValArea(upValData)
     }
   }, [])

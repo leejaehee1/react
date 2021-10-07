@@ -16,7 +16,7 @@ const Discipline = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.discipline)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValDiscipline(upValData)
     }
   }, [])

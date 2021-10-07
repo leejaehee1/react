@@ -656,30 +656,30 @@ const GridComponent = () => {
         ),
         category : (
             <Category static={eachRowData.current["category"]}
-                    setValCategory={setValCategory} />
+                    setValCategory={setValCategory} stepValFlag="verify" />
 
         ),
         systemID : (
             <SystemID static={eachRowData.current["systemID"]}
-                    setValSystemID={setValSystemID} />
+                    setValSystemID={setValSystemID} stepValFlag="verify" />
         ),
         subsystem : (
             <Subsystem static={eachRowData.current["subsystem"]}
-                    setValSubsystem={setValSubsystem} />
+                    setValSubsystem={setValSubsystem} stepValFlag="verify" />
         ),
         discipline : (
             <Discipline static={eachRowData.current["discipline"]} 
-                    setValDiscipline={setValDiscipline} />
+                    setValDiscipline={setValDiscipline} stepValFlag="verify" />
         ),
         status : ( // 변경 완료
-            <Status static={eachRowData.current["status"]} setValStatus={setValStatus} />
+            <Status static={eachRowData.current["status"]} setValStatus={setValStatus} stepValFlag="verify" />
         ),
         unit : (
             <Unit static={eachRowData.current["unit"]} 
-                    setValUnit={setValUnit} />
+                    setValUnit={setValUnit} stepValFlag="verify" />
         ),
         area : ( // 변경 완료
-            <Area static={eachRowData.current["area"]} setValArea={setValArea} />
+            <Area static={eachRowData.current["area"]} setValArea={setValArea} stepValFlag="verify" />
         ),
         tagNumber : (
             <div style={{display:'flex'}}>
@@ -1057,7 +1057,7 @@ const GridComponent = () => {
         )
 
 
-
+        setRightDrawerState(false)
     }
 
 
@@ -1165,7 +1165,10 @@ const GridComponent = () => {
                 // console.log(tData['punchID'])
                 // console.log(uData.title)
                 // console.log(tData)
-                // console.log(tData[uData.title])
+                console.log('ttttttttttttttttttttttttt')
+                console.log(tData[uData.title])
+                console.log(uData.title)
+                console.log(valProjectID)
                 if (uData.title === 'projectID'){
                     if(valProjectID.includes(tData[uData.title])) {
 
@@ -1215,7 +1218,7 @@ const GridComponent = () => {
                         tArray.push(uData.title)
                     }
                 }else if (uData.title === 'area'){
-                    if(valArea.includes(tData[uData.title])) {
+                    if(valArea.includes(tData[uData?.title])) {
 
                     }else{
                         tArray.push(uData.title)
@@ -1312,24 +1315,19 @@ const GridComponent = () => {
                         aria-labelledby="alert-dialog-title"
                         aria-describedby="alert-dialog-description"
                     >
-                        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                        <DialogTitle id="alert-dialog-title">{"Check your warning row"}</DialogTitle>
                         <DialogContent>
                         <DialogContentText id="alert-dialog-description">
                             {/* Let Google help apps determine location. This means sending anonymous location data to
                             Google, even when no apps are running. */}
                             {Object.keys(errorResultData).map((v, i)=> (
                                 <>
-                                    <p>{v}</p>
-                                    <p>{Object.values(errorResultData)[i]}</p>
-                                    {/* <p>{Object.values(errorResultData[i]).map((vV, iV)=>(
-                                        <>
-                                            vV
-                                        </>
-                                    ))}</p> */}
+                                    <p>punchID : <b>{v}</b></p>
+                                    <p>{Object.values(errorResultData)[i].map(d=> <>{d} </>)}</p>
+                                    <hr />
                                 </>
                             ))}
-                            {/* {Object.keys(errorResultData)}
-                            {Object.values(errorResultData)} */}
+         
                         </DialogContentText>
                         </DialogContent>
                         <DialogActions>
@@ -1358,7 +1356,7 @@ const GridComponent = () => {
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
                                 {/* <ListItemText primary="Update Row" /> */}
                                 <ListItemText>
-                                    <h3>Update row-data</h3>
+                                    {/* <h3>Update row-data</h3> */}
                                 </ListItemText>
                                 {/* <button className="updateRowColumnCodeData"><FindInPageIcon/>CodeMapping</button> */}
 
@@ -1369,7 +1367,7 @@ const GridComponent = () => {
                                                     onChange={handleChangeCodeMapping} 
                                                     color="primary"
                                             />}
-                                    label="CodeMapping"
+                                    label="DataMapping"
                                 />
                             
                             </ListItem>
@@ -1399,7 +1397,9 @@ const GridComponent = () => {
 
                             <form className={classes.root}  onSubmit={handleSubmit}>
                                 {rowData}
-                                <button className="updateRowButton" type="submit">submit</button>
+                                <button className="updateRowButtonF" type="submit">
+                                    submit
+                                </button>
                             </form>
                             <Divider />
                         </div>

@@ -15,6 +15,7 @@ import ExcelColumns from './ExcelColumns';
 
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import './styles/excelcolumns.css'
+import './styles/ColumnMappingButton.css'
 
 //alert
 import { Alert, AlertTitle } from '@material-ui/lab';
@@ -234,10 +235,10 @@ const ColumnMappingButton = (props) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} className="columnMappingCancel" color="primary">
             Cancel
           </Button>
-          <Button autoFocus onClick={handleCloseApply} color="primary">
+          <Button autoFocus onClick={handleCloseApply} className="columnMappingApply" color="primary">
             Apply
           </Button>
         </DialogActions>

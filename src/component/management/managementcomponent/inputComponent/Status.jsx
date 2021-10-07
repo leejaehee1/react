@@ -16,7 +16,7 @@ const Status = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.status)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValStatus(upValData)
     }
   }, [])

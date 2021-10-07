@@ -11,7 +11,7 @@ const Unit = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.unit)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValUnit(upValData)
     }
   }, [])

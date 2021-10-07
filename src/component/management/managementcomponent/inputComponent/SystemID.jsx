@@ -11,7 +11,7 @@ const SystemID = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.systemID)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValSystemID(upValData)
     }
   }, [])

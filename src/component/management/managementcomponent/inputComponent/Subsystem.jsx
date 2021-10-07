@@ -11,7 +11,7 @@ const Subsystem = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.subsystem)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValSubsystem(upValData)
     }
   }, [])

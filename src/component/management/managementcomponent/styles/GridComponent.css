@@ -18,6 +18,23 @@ button.updateRowButton {
   
     /* font-weight:  */
   }
+
+  button.updateRowButtonF {
+    width: 160px;
+    height: 40px;
+    border-radius: 4px;
+    color: #ffffff;
+    background: #2b3546;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    padding: 15px 50px;
+    /* margin-bottom: 5px; */
+    box-shadow: 0px 2px 5px #a0a0a0;
+    text-align: center;
+    line-height: 11px;
+    cursor: pointer;
+  }
+
 button.updateRowColumnCodeData {
     width: 130px;
     height: 10px;

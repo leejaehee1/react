@@ -16,7 +16,7 @@ const Category = (props) => {
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.category)
-    if(props.stepValFlag===""){
+    if(props.stepValFlag==="verify"){
       props.setValCategory(upValData)
     }
   }, [])
