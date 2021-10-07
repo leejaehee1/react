@@ -104,3 +104,39 @@ button.excelIcon {
 button.excelIcon > p {
   color: transparent;
 }
+
+
+button.printPrint {
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #4b5668;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  padding: 15px 50px;
+  /* margin-bottom: 5px; */
+  box-shadow: 0px 2px 5px #a0a0a0;
+  text-align: center;
+  line-height: 11px;
+  cursor: pointer;
+
+}
+
+button.printClose {
+  width: 160px;
+  height: 40px;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #7b95a1;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  padding: 15px 50px;
+  /* margin-bottom: 5px; */
+  box-shadow: 0px 2px 5px #a0a0a0;
+  text-align: center;
+  line-height: 11px;
+  cursor: pointer;
+  margin-right: 20px;
+
+}

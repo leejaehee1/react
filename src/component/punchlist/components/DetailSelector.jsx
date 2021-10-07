@@ -7,6 +7,7 @@ import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 
+
 // excel export 
 import { CSVLink, CSVDownload } from "react-csv";
 
@@ -24,13 +25,15 @@ function rand() {
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 20 + rand();
+  const left = 30 + rand();
 
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    // top: `${top}%`,
+    top: '50%',
+    // left: `${left}%`,
+    left: '50%',
+    // transform: `translate(-${top}%, -${left}%)`,
   };
 }
 
@@ -54,7 +57,7 @@ function DetailSelector(props) {
   }
 
   // print
-  const [modalStyle] = React.useState(getModalStyle);
+  // const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -112,17 +115,33 @@ function DetailSelector(props) {
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
+            // style={{border: "30px solid #ECECEC", }}
         >
             {/* {body} */}
-            <div style={modalStyle} className="page">
+            <div 
+            style={{ 
+               overflow:'auto',
+              //  maxHeight:'500px',
+              // width: '30px',
+              //  transform: 'scale(1) translate(100%,0%)',
+              position: 'fixed',    
+              top: '50px',   
+              // bottom: '2000px',
+              left: '50%',
+              transform: 'translate(-50%)',
+            // modalStyle
+              // transform: 'scale(1) translate(100%,0%)',
+              maxHeight: '600px',
+              overflow:'auto',
+              }} className="page">
                 <div ref={componentRef} style={{
                                             margin: '-5px' ,
                                             borderTop: '1px solid', 
                                             borderRight: '1px solid', 
-                                            borderLeft: '1px solid'
+                                            borderLeft: '1px solid',
                                             // border: '1px solid'
                                             }}>
-                    <ComponentToPrint downDetailData={props.downDetailData} />
+                    <ComponentToPrint downDetailData={props.downDetailData}  />
                 </div>
                 <hr style={{
                   marginTop: '-50px', 
@@ -130,9 +149,8 @@ function DetailSelector(props) {
                   marginLeft: '-5px',
                   marginRight: '-5px',
                   }} />
-                <br />
-                <Button onClick={handleClose}>Close</Button>
-                <Button onClick={handlePrint}>Print</Button>
+                <Button className="printClose" variant="outlined" onClick={handleClose}>Close</Button>
+                <Button className="printPrint" variant="outlined" onClick={handlePrint}>Print</Button>
             </div>
         </Modal>
 
@@ -141,7 +159,7 @@ function DetailSelector(props) {
           headers={headerData} 
           // data={data} 
           data={excelData} 
-          filename="users.csv" 
+          filename="punchs.csv" 
           target="_blank"
         >
         <button className="excelIcon" style={{backgroundImage: `url(${excelIcon})`}}>
