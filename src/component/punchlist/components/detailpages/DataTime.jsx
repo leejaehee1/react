@@ -13,6 +13,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+
 import { PROPERTY_TYPES } from '@babel/types';
 // css
 // import { createMuiTheme } from "@material-ui/core";
@@ -95,6 +96,7 @@ function DataTime(props) {
                   {/* // https://material-ui-pickers.dev/api/DatePicker */}
                   <ThemeProvider theme={defaultMaterialTheme}>
                     <KeyboardDatePicker
+                      // style={{width:"250px"}}
                       disableToolbar
                       // variant="inline"
                       format="yyyy/MM/dd"

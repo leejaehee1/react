@@ -70,11 +70,20 @@ const theme = createTheme({
 
 
 const DataCheckBox = (props) => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState((props.dataOne?.designChgReq === "1"?true: false));
+  const [checkedMaterial, setCheckedMaterial] = useState((props.dataOne?.materialReq === "1"?true: false));
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
+  // const handleChange = (event) => {
+  //   setChecked(event.target.checked);
+  // }
+
+  const handleDetailBox = (e) => {
+    setChecked((pre)=>(!pre))
+  }
+
+  const handleDetailMaterial = ()=> {
+    setCheckedMaterial((pre)=> (!pre))
   }
 
   return (
@@ -97,7 +106,8 @@ const DataCheckBox = (props) => {
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
               // defaultChecked
-              checked={(props.dataOne?.designChgReq === "1"?true: false)}
+              onChange={handleDetailBox}
+              checked={checked}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
@@ -113,7 +123,8 @@ const DataCheckBox = (props) => {
         <Grid item xs={1} style={{marginLeft:'-13px'}}>
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
-              checked={(props.dataOne?.materialReq === "1"?true: false)}
+              onChange={handleDetailMaterial}
+              checked={checkedMaterial}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}
             />

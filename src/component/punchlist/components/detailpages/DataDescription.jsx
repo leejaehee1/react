@@ -61,7 +61,7 @@ function DataDescription(props) {
       <br />
       {/* <h5>Issue Description</h5> */}
       <ThemeProvider theme={theme}>
-        <Typography variant="h5">Issue Description</Typography>
+        <Typography variant="h5">{props.columnName}</Typography>
       </ThemeProvider>
       <Paper variant="outlined" className={classes.lpaper} square>
         {props.dataOne}

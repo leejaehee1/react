@@ -107,9 +107,9 @@ function DetailPageComponent(props) {
 
         <Divider className={classes.divider} />
 
-        <DataDescription dataOne={props.downDetailData?.issueDescription} />
+        <DataDescription dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" />
 
-        <DataDescription dataOne={props.downDetailData?.completeComment} />
+        <DataDescription dataOne={props.downDetailData?.completeComment} columnName="Complete Description" />
 
         <Divider className={classes.divider} />
 
