@@ -119,7 +119,7 @@ const DiviedCodeData = (props) => {
         baseColumn.current = column
         for (var r of props.data){
             // console.log(r[column])
-            selectedRowDataSet.add(r[column]?r[column]:"(undefined)")
+            selectedRowDataSet.add(r[column]?r[column]:"")
         }
         setInputRowDataBefore([...selectedRowDataSet])
         // console.log(selectedRowDataSet)

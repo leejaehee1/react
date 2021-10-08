@@ -40,14 +40,14 @@ const StateButton = (props) => {
         // console.dir(event.currentTarget.textContent)
         // setSelectedIndex(index);
         // setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
-        // setAnchorEl(null);
         update('list', 
-                {a:updataPK}, 
-                {status : index+2},
-                updataUpPK,
-                {
-                    onSuccess: ()=> {
-                        refresh()
+            {a:updataPK}, 
+            {status : index+2},
+            updataUpPK,
+            {
+                onSuccess: ()=> {
+                    refresh()
+                    setAnchorEl(null);
                         // console.log('들어왔다능')
                         // setSelectedIndex(index);
                         // console.log('들어왔다능1')
