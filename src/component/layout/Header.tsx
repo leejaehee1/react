@@ -138,7 +138,7 @@ const Header = () => {
                 <a href="#">P.L.M.S</a>
             </h1>
             <a href="#" className="navUsername" >
-                <p>Gil Dong Hong</p>
+                <p>Welter</p>
             </a>
             <select name="#">
                 { Object.keys(data).map((pj)=> 
