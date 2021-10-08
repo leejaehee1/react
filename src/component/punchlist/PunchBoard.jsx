@@ -27,8 +27,8 @@ import StateButton from './board/StateButton';
 
 const PunchBoard = (props) => {
     const [timeFlag, setTimeFlag] = useState(false)
-    const a = props.boardData
-    const b = props.boardIds
+    const a = props?.boardData
+    const b = props?.boardIds
     const boardData = useRef(a)
     const boardIds = useRef(b)
     
@@ -37,10 +37,14 @@ const PunchBoard = (props) => {
     const inputBoardData = props.boardData.length? props.boardData:boardData.current;
     const inputBoardIds = props.boardIds.length? props.boardIds:boardIds.current;
 
+    const [targetA, setTargetA] = useState('a');
+
     const updateDetailPage = (id) => {
         props.setUpPunchBoardData(id)
+        setTargetA(id)
     }
 
+    
     // const { data, ids } = useGetList('discipline', );
     const discipline = useGetList('discipline', );
     const systemID = useGetList('systems', );
@@ -49,9 +53,17 @@ const PunchBoard = (props) => {
     // console.dir(Object.keys(subSystem.data))
     // console.log(systemID?.data["05/70/80SG"]['systemName'])
     // console.log(systemID?.data["UB"]['systemName'])
-
     // console.log(props.otherCheckBox)
     
+    const [checkedId, setCheckedId] = useState(false);
+    
+
+    
+    useEffect(()=> {
+        setCheckedId(props.otherCheckBox);
+        // console.log(props.otherCheckBox)
+    }, [props])
+
     if (!boardIds) return null;
     return (
         // <Card>
@@ -73,7 +85,7 @@ const PunchBoard = (props) => {
                                     edge="start"
                                     size="small"
                                     color="default"
-                                    checked={props.otherCheckBox}
+                                    checked={(targetA===id)?true:checkedId}
                                     // checked={selectedIds.includes(id)}
                                     // tabIndex={-1}
                                     // disableRipple
