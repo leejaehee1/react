@@ -91,12 +91,12 @@ const PunchBoard = (props) => {
                                 style={{marginRight:'10px', marginTop:'0px', marginBottom:'0px', height:'50px'}}
                                 
                                 primary={
-                                    `${inputBoardData[id].punchID}, 
-                                    ${inputBoardData[id].category}, 
-                                    ${discipline.data[inputBoardData[id].discipline]['disciplineName']},   
-                                    ${inputBoardData[id].tagNumber}, 
-                                    ${inputBoardData[id].unit}, 
-                                    ${inputBoardData[id].area}`
+                                    `${inputBoardData[id]?.punchID}, 
+                                    ${inputBoardData[id]?.category}, 
+                                    ${discipline?.data[inputBoardData[id]?.discipline]?.disciplineName},   
+                                    ${inputBoardData[id]?.tagNumber}, 
+                                    ${inputBoardData[id]?.unit}, 
+                                    ${inputBoardData[id]?.area}`
                                 }
                                 secondary={
                                     <>
@@ -106,9 +106,9 @@ const PunchBoard = (props) => {
                                                 textOverflow:"ellipsis", 
                                                 whiteSpace:"nowrap"}}
                                         >
-                                            {systemID.data[inputBoardData[id].systemID]?.systemName}
+                                            {systemID?.data[inputBoardData[id]?.systemID]?.systemName}
                                             <br />
-                                            {subSystem.data[inputBoardData[id].subsystem]?.subsystemName}
+                                            {subSystem?.data[inputBoardData[id]?.subsystem]?.subsystemName}
                                         </p>
                                     </>
                                 }
@@ -117,7 +117,7 @@ const PunchBoard = (props) => {
 
                             <Typography variant="body2" Wcolor="textSecondary">
                                 <StateButton 
-                                        eachState={inputBoardData[id].status} 
+                                        eachState={inputBoardData[id]?.status} 
                                         allData={inputBoardData[id]} 
                                 />
                             </Typography>

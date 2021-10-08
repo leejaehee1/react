@@ -23,8 +23,8 @@ const StateButton = (props) => {
     const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
     // const [updataPK, setDataPK] = React.useState(props.allData.punchID)
-    const updataPK = props.allData.punchID
-    const updataUpPK = props.allData
+    const updataPK = props?.allData?.punchID
+    const updataUpPK = props?.allData
     const [update, { loading }] = useUpdate();
 
     const refresh = useRefresh()
