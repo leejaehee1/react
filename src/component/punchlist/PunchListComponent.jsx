@@ -47,6 +47,11 @@ import "./styles/button.css"
 import DetailHistoryComponent from './components/DetailHistoryComponent';
 import DashBoardStatus from './chart/DashBoardStatus';
 
+// filter model
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import PunchlistFilter from './components/PunchlistFilter';
+
 
 // https://material-ui.com/system/borders/
 
@@ -300,7 +305,18 @@ const PunchListComponent = () => {
         setOtherCheckBox(otherCheckBox)
         // console.log(allCheckBox)
     },[allCheckBox])
+
+    // filter Model 
+    const [filterOpen, setFilterOpen] = useState(false);
     
+    const handleFilterOpen = () => {
+        console.log('들어온다.')
+        setFilterOpen(true);
+    }
+    
+    const handleFilterClose = () => {
+        setFilterOpen(false);
+    }
     return (
         <React.Fragment>
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
@@ -373,14 +389,29 @@ const PunchListComponent = () => {
                         )
                     }
                 </div>
-                <div style={{width:'45%', textAlign: "right",
+                <div style={{
+                    width:'45%', textAlign: "right",
                             // position:'absolute', left:'73%', 
-                            padding:'5px', height: '30px' }}>
-                    <TuneIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
+                            padding:'5px', height: '30px' 
+                            }}>
+                    {/* <Button onClick={handleFilterOpen}> */}
+                        <TuneIcon onClick={handleFilterOpen} fontSize="large" style={{ paddingTop: "5px", height: "100%", cursor:'pointer' }} />
+                    {/* </Button> */}
+            {/* SimpleDialog about TuneIcon */}
+                    <Dialog onClose={handleFilterClose} aria-labelledby="simple-dialog-title" open={filterOpen}>
+                        <DialogTitle id="simple-dialog-title">Set backup accountaaaaaaaaaaaaaaaaaaaaaaaaa</DialogTitle>
+                        <PunchlistFilter boardAllData={boardAllData} />
+                    </Dialog>
                     <input style={{backgroundColor:'white', border:'1px solid', height: "100%" }} type="text" />
                     <SearchIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
                 </div>
             </div>
+            
+
+
+
+
+
             {/* <ArrowDropUpIcon fontSize="large" />
             <ArrowDropDownIcon fontSize="large" /> */}
             {/* aaaaaaaaaaaaaaaaaaaaaaaa
