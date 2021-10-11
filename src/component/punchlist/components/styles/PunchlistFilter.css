@@ -1,0 +1,12 @@
+/* id="filterInput" */
+/* id="filterSelect" */
+
+
+select.filterSelect{
+    border: 1px solid black;
+    width: 250px;
+}
+
+input.filterInput{
+    border: 1px solid black;
+}
