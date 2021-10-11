@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 
 
@@ -59,6 +59,31 @@ const PunchlistFilter = (props) => {
 
         
     }, [])
+
+    const [keywords, setKeywords] = useState([]);
+    const [content, setContent] = useState();
+    const nextID = useRef(0);
+
+    const handleChange = (e) => {
+        setContent(e.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!content) return;
+        // console.log(e)
+
+        const keyword = {
+            id: nextID.current,
+            content
+        }
+
+        setKeywords(keywords.concat(keyword))
+        nextID.current += 1
+        setContent("")
+
+    }
+
     // if(proData
     return (
         <>
@@ -70,7 +95,7 @@ const PunchlistFilter = (props) => {
                     <div style={{width: '30%'}}>Project ID</div>
                     {/* <div style={{width: '70%'}}><input type="text" name="서버전달" value={getProjectID} /></div> */}
                     <div style={{width: '70%'}}>
-                        <select name="filterProjectID" id="filterProjectID">
+                        <select name="filterProjectID" id="filterSelect">
                             {getProjectID?.map((v, i)=>
                                 <option value={v.projectID}>{v.projectID} {v.projectName}</option>
 
@@ -82,7 +107,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Category</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterCategory" id="filterCategory">
+                        <select name="filterCategory" id="filterSelect">
                             {getCategory?.map((v, i)=>
                                 <option value={v.category}>{v.category} {v.categoryName}</option>
 
@@ -93,7 +118,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Discipline</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterDiscipline" id="filterDiscipline">
+                        <select name="filterDiscipline" id="filterSelect">
                             {getDiscipline?.map((v, i)=>
                                 <option value={v.discipline}>{v.discipline} {v.disciplineName}</option>
 
@@ -104,7 +129,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Unit</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterUnit" id="filterUnit">
+                        <select name="filterUnit" id="filterSelect">
                             {getUnit?.map((v, i)=>
                                 <option value={v.unit}>{v.unit} {v.unitName}</option>
                             )}
@@ -114,7 +139,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Area</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" id="filterArea">
+                        <select name="filterArea" id="filterSelect">
                             {getArea?.map((v, i)=>
                                 <option value={v.Area}>{v.area} {v.areaName}</option>
                             )}
@@ -124,7 +149,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Issued By</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" id="filterArea">
+                        <select name="filterArea" id="filterSelect">
                             {Array.from(issuedByData)?.map((v, i)=>
                                 <option value={v}>{v}</option>
                             )}
@@ -135,7 +160,7 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Drawing No</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" id="filterArea">
+                        <select name="filterArea" id="filterSelect">
                             {getDrawing?.map((v, i)=>
                                 <option value={v.projectID}>{v.projectID} {v.drawingNo}</option>
                             )}
@@ -145,14 +170,56 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Tag Number</div>
                     <div style={{width: '70%'}}>
-                        {Array.from(tagNumberData)?.map((v, i)=>
-                                <option value={v}>{v}</option>
-                            )}
+                        <select name="filterTag" id="filterSelect">                          
+                            {Array.from(tagNumberData)?.map((v, i)=>
+                                    <option value={v}>{v}</option>
+                                )}
+                        </select>
                     </div>
                 </div>
                 <div style={{display:'flex'}}>
                     <div style={{width: '30%'}}>Keyword</div>
-                    <div style={{width: '70%'}}>b</div>
+                    <div style={{width: '70%'}}>
+                        <form>
+                            <input 
+                                id="filterInput"
+                                type="text" 
+                                name="text"
+                                value={content}
+                                onChange={handleChange}  
+                            />
+                            <input type="submit" onClick={handleSubmit} value="+" />
+                            {/* <button onClick={handleSubmit}>+</button> */}
+                        </form>
+                        {keywords.map((v, i)=> <p key={v.id}>{v.id} {v.content}</p>)}
+                    </div>
+                </div>
+                <div style={{display:'flex'}}>
+                    <div style={{width: '40%'}}>Difficulty(1-5)</div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="difficultyB" id="filterInput" />
+                    </div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="difficultyA" id="filterInput" />
+                    </div>
+                </div>
+                <div style={{display:'flex'}}>
+                    <div style={{width: '40%'}}>Schedule Impact(1-5)</div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="ScheduleImpactB" id="filterInput" />
+                    </div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="ScheduleImpactA" id="filterInput" />
+                    </div>
+                </div>
+                <div style={{display:'flex'}}>
+                    <div style={{width: '40%'}}>Cost Impact(1-5)</div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="CostImpactB" id="filterInput" />
+                    </div>
+                    <div style={{width: '30%'}}>
+                        <input type="text" name="CostImpactA" id="filterInput" />
+                    </div>
                 </div>
             </div>
         </>
