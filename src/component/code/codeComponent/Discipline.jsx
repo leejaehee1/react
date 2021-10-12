@@ -5,6 +5,7 @@ import { List, Datagrid, TextField, DateField } from 'react-admin';
 export const Discipline = (props) => (
     <List {...props}>
         <Datagrid>
+            {/* <TextField source="id" /> */}
             <TextField source="discipline" />
             <TextField source="disciplineName" />
             <TextField source="shortName" />

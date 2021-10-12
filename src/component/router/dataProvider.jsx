@@ -59,11 +59,29 @@ export default {
         }))
     },
 
-    getOne: (resource, params) =>
-        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
-            data: json,
-            // data: { ...json, id: json.punchID },
-        })),
+    // getOne: (resource, params) =>{
+    //     console.log(resource);
+    //     console.log(params);
+    //     if(params.id==='code'){
+    //         params.id= 1
+    //     }
+    //     console.log(params);
+    //     // httpClient(`${apiUrl}/${resource}/${params.id}`)
+    //     httpClient(`${apiUrl}/${resource}/${params.id}`)
+    //     .then(({ headers, json }) => {
+    //         console.dir('-------------------------------------------------------')
+    //         console.dir(json.resultID)
+    //         console.dir(json)
+    //         // json.result.map(resource => console.log(resource) )
+    //         console.dir({ ...json, id: json[json.resultID] })
+    //       });
+    //     return httpClient(`${apiUrl}/${resource}/${params.id}`)
+    //     .then(({ json }) => ({
+    //         // data: json,
+    //         // data: json.result.map(resource => ({ ...resource, id: resource[json.resultID] }) ),
+    //         data: { ...json, id: json[json.resultID] },
+    //     }))
+    //     },
 
     getMany: (resource, params) => {
         const query = {
@@ -96,6 +114,8 @@ export default {
     },
 
     update: (resource, params) => {
+        console.log(resource);
+        console.log(params);
         return httpClient(`${apiUrl}/${resource}/${params.id.a}`, {
             method: 'PUT',
             body: JSON.stringify(params.data),

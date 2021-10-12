@@ -1,5 +1,6 @@
 import React from 'react';
-import { Resource, ListGuesser} from 'react-admin';
+import { Resource, ListGuesser, Admin, EditGuesser} from 'react-admin';
+
 
 
 
@@ -14,6 +15,7 @@ import Box from '@material-ui/core/Box';
 import Authority from './codeComponent/Authority';
 import Project from './codeComponent/Project';
 import Status from './codeComponent/Status';
+import StatusEdit from './codeComponent/StatusEdit';
 import Discipline from './codeComponent/Discipline';
 import Category from './codeComponent/Category';
 import Department from './codeComponent/Department';
@@ -121,10 +123,15 @@ function CodeTamplate() {
             <Resource name="project" list={Project} />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Resource name="status" list={Status} />
+            <Resource name="status" 
+            list={Status} 
+            // edit={StatusEdit} 
+            />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <Resource name="discipline" list={Discipline} />
+            <Resource name="discipline" list={Discipline} 
+            // edit={EditGuesser} 
+            />
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
             <Resource name="category" list={Category} />

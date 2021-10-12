@@ -1,5 +1,5 @@
 import React from 'react';
-import { Admin, Resource, fetchUtils, ListGuesser } from 'react-admin';
+import { Admin, Resource, fetchUtils, ListGuesser, EditGuesser } from 'react-admin';
 
 
 // import AppRouter from './component/router/RouterComponent';
@@ -28,6 +28,8 @@ import Unit from './component/code/codeComponent/Unit';
 import Area from './component/code/codeComponent/Area';
 import Drawing from './component/code/codeComponent/Drawing';
 import Progress from './component/code/codeComponent/Progress';
+import StatusEdit from './component/code/codeComponent/StatusEdit';
+import StatusCreate from './component/code/codeComponent/StatusCreate';
 // import { TestAuthority } from './TestAuthority';
 
 
@@ -106,7 +108,7 @@ function App() {
        {/* code page */}
       <Resource name="authority" list={ListGuesser} />
       <Resource name="project" list={Project} />
-      <Resource name="status" list={Status} />
+      <Resource name="status" list={Status} create={StatusCreate} edit={StatusEdit} />
       <Resource name="discipline" list={Discipline} />
       <Resource name="category" list={Category} />
       <Resource name="department" list={Department} />
