@@ -63,11 +63,76 @@ const PunchlistFilter = (props) => {
         
     }, [])
 
+    //  filterCategory filterDiscipline filterUnit/ filterArea/ filterIssuedBy/ filterDrawing/ filterTag/ difficultyB difficultyA ScheduleImpactB ScheduleImpactA CostImpactB CostImpactA
+    const [filterProjectID, setFilterProjectID] = useState("");
+    const [filterCategory, setFilterCategory] = useState("");
+    const [filterDiscipline, setFilterDiscipline] = useState("");
+    const [filterUnit, setFilterUnit] = useState("");
+    const [filterArea, setFilterArea] = useState("");
+    const [filterIssuedBy, setFilterIssuedBy] = useState("");
+    const [filterDrawing, setFilterDrawing] = useState("");
+    const [filterTag, setFilterTag] = useState("");
+    const [difficultyB, setDifficultyB] = useState("");
+    const [difficultyA, setDifficultyA] = useState("");
+    const [scheduleImpactB, setScheduleImpactB] = useState("");
+    const [scheduleImpactA, setScheduleImpactA] = useState("");
+    const [costImpactB, setCostImpactB] = useState("");
+    const [costImpactA, setCostImpactA] = useState("");
+
+    const handleChange = (e) =>{
+        const name = e.target.name
+        // console.log(name)
+        // console.log(e.target.value)
+        if (name ==="filterProjectID") {
+            setFilterProjectID(e.target.value)
+            // console.log(1)
+        } else if (name =="filterCategory"){
+            setFilterCategory(e.target.value)
+            // console.log(2)
+        }else if (name =="filterDiscipline"){
+            setFilterDiscipline(e.target.value)
+            // console.log(3)
+        }else if (name =="filterUnit"){
+            setFilterUnit(e.target.value)
+            // console.log(4)
+        }else if (name =="filterArea"){
+            setFilterArea(e.target.value)
+            // console.log(5)
+        }else if (name =="filterIssuedBy"){
+            setFilterIssuedBy(e.target.value)
+            // console.log(6)
+        }else if (name =="filterDrawing"){
+            setFilterDrawing(e.target.value)
+            // console.log(7)
+        }else if (name =="filterTag"){
+            setFilterTag(e.target.value)
+            // console.log(8)
+        }else if (name =="difficultyB"){
+            setDifficultyB(e.target.value)
+            // console.log(9)
+        }else if (name =="difficultyA"){
+            setDifficultyA(e.target.value)
+            // console.log(10)
+        }else if (name =="scheduleImpactB"){
+            setScheduleImpactB(e.target.value)
+            // console.log(11)
+        }else if (name =="scheduleImpactA"){
+            setScheduleImpactA(e.target.value)
+            // console.log(12)
+        }else if (name =="costImpactB"){
+            setCostImpactB(e.target.value)
+            // console.log(13)
+        }else if (name =="costImpactA"){
+            setCostImpactA(e.target.value)
+            // console.log(14)
+        }
+    }
+
     const [keywords, setKeywords] = useState([]);
     const [content, setContent] = useState();
     const nextID = useRef(0);
 
-    const handleChange = (e) => {
+    const handleChangeKey = (e) => {
         setContent(e.target.value);
     };
 
@@ -87,10 +152,64 @@ const PunchlistFilter = (props) => {
 
     }
 
-    // if(proData
+    const handleFilter = (e) => {
+        e.preventDefault()
+        // console.log(e)
+        // console.log(e.target.name)
+        // console.log(e.target.elements)
+    }
+    
+
+
+    const handleFilterCancel = () => {
+        props.setFilterOpen(false)
+    }
+
+    const handleFilterApply = () => {
+        const filterData = {
+            projectID:filterProjectID,
+            category:filterCategory,
+            discipline:filterDiscipline,
+            unit:filterUnit,
+            area:filterArea,
+            issuedBy:filterIssuedBy,
+            drawing:filterDrawing, // not punchlist data
+            tagNumber:filterTag,
+            keyword:keywords,
+            difficultyB:difficultyB,
+            difficultyA:difficultyA,
+            scheduleImpactB:scheduleImpactB,
+            scheduleImpactA:scheduleImpactA,
+            costImpactB:costImpactB,
+            costImpactA:costImpactA
+        }
+        props.setFilterOpen(false)
+        props.setDataForFilter(filterData)
+        // console.log(filterData)
+    }
+
+    // const [filterProjectID, setFilterProjectID] = useState("");
+    // const [filterCategory, setFilterCategory] = useState("");
+    // const [filterDiscipline, setFilterDiscipline] = useState("");
+    // const [filterUnit, setFilterUnit] = useState("");
+    // const [filterArea, setFilterArea] = useState("");
+    // const [filterIssuedBy, setFilterIssuedBy] = useState("");
+    // const [filterDrawing, setFilterDrawing] = useState("");
+    // const [filterTag, setFilterTag] = useState("");
+    // const [difficultyB, setDifficultyB] = useState("");
+    // const [difficultyA, setDifficultyA] = useState("");
+    // const [scheduleImpactB, setScheduleImpactB] = useState("");
+    // const [scheduleImpactA, setScheduleImpactA] = useState("");
+    // const [costImpactB, setCostImpactB] = useState("");
+    // const [costImpactA, setCostImpactA] = useState("");
+
+
     return (
         <>
             <div style={{padding:'10px'}}>
+                <form 
+                onSubmit={handleFilter}
+                >
                 {/* {JSON.stringify(Object.values(props.boardAllData))} */}
                 {/* {getProjectID.map(a => JSON.stringify(a.projectID))} */}
                 {/* {JSON.stringify(getProjectID?.projectName)} */}
@@ -98,7 +217,8 @@ const PunchlistFilter = (props) => {
                     <div style={{width: '30%'}}>Project ID</div>
                     {/* <div style={{width: '70%'}}><input type="text" name="서버전달" value={getProjectID} /></div> */}
                     <div style={{width: '70%'}}>
-                        <select name="filterProjectID" className="filterSelect">
+                        <select name="filterProjectID" id="filterProjectID" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {getProjectID?.map((v, i)=>
                                 <option value={v.projectID}>{v.projectID} {v.projectName}</option>
 
@@ -110,7 +230,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Category</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterCategory" className="filterSelect">
+                        <select name="filterCategory" id="filterCategory" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {getCategory?.map((v, i)=>
                                 <option value={v.category}>{v.category} {v.categoryName}</option>
 
@@ -121,7 +242,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Discipline</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterDiscipline" className="filterSelect">
+                        <select name="filterDiscipline" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {getDiscipline?.map((v, i)=>
                                 <option value={v.discipline}>{v.discipline} {v.disciplineName}</option>
 
@@ -132,7 +254,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Unit</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterUnit" className="filterSelect">
+                        <select name="filterUnit" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {getUnit?.map((v, i)=>
                                 <option value={v.unit}>{v.unit} {v.unitName}</option>
                             )}
@@ -142,9 +265,10 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Area</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" className="filterSelect">
+                        <select name="filterArea" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {getArea?.map((v, i)=>
-                                <option value={v.Area}>{v.area} {v.areaName}</option>
+                                <option value={v.area}>{v.area} {v.areaName}</option>
                             )}
                         </select> 
                     </div>
@@ -152,7 +276,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Issued By</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" className="filterSelect">
+                        <select name="filterIssuedBy" className="filterSelect" onChange={handleChange}>
+                            <option value=""></option>
                             {Array.from(issuedByData)?.map((v, i)=>
                                 <option value={v}>{v}</option>
                             )}
@@ -163,7 +288,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Drawing No</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterArea" className="filterSelect">
+                        <select name="filterDrawing" className="filterSelect" onChange={handleChange}>
+                        <option value=""></option>
                             {getDrawing?.map((v, i)=>
                                 <option value={v.projectID}>{v.projectID} {v.drawingNo}</option>
                             )}
@@ -173,7 +299,8 @@ const PunchlistFilter = (props) => {
                 <div style={{display:'flex', padding:'3px'}}>
                     <div style={{width: '30%'}}>Tag Number</div>
                     <div style={{width: '70%'}}>
-                        <select name="filterTag" className="filterSelect">                          
+                        <select name="filterTag" className="filterSelect" onChange={handleChange}>
+                        <option value=""></option>
                             {Array.from(tagNumberData)?.map((v, i)=>
                                     <option value={v}>{v}</option>
                                 )}
@@ -189,8 +316,8 @@ const PunchlistFilter = (props) => {
                                 type="text" 
                                 name="text"
                                 value={content}
-                                onChange={handleChange}  
-                                style={{width:'250px'}}
+                                onChange={handleChangeKey}  
+                                style={{width:'180px'}}
                             />
                             <input type="submit" onClick={handleSubmit} value="+" style={{fontSize:'15px'}} />
                             {/* <button onClick={handleSubmit}>+</button> */}
@@ -199,32 +326,43 @@ const PunchlistFilter = (props) => {
                     </div>
                 </div>
                 <div style={{display:'flex', padding:'3px'}}>
-                    <div style={{width: '35%'}}>Difficulty(1-5)</div>
+                    <div style={{width: '60%'}}>Difficulty(1-5)</div>
                     <div style={{width: '20%'}}>
-                        <input type="text" name="difficultyB" className="filterInput" style={{width: "40px"}} />
+                        <input type="text" name="difficultyB" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
                     </div>
                     <div style={{width: '20%'}}>
-                        <input type="text" name="difficultyA" className="filterInput" style={{width: "40px"}} />
-                    </div>
-                </div>
-                <div style={{display:'flex', padding:'3px'}}>
-                    <div style={{width: '35%'}}>Schedule Impact(1-5)</div>
-                    <div style={{width: '20%'}}>
-                        <input type="text" name="ScheduleImpactB" className="filterInput" style={{width: "40px"}} />
-                    </div>
-                    <div style={{width: '20%'}}>
-                        <input type="text" name="ScheduleImpactA" className="filterInput" style={{width: "40px"}} />
+                        <input type="text" name="difficultyA" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
                     </div>
                 </div>
                 <div style={{display:'flex', padding:'3px'}}>
-                    <div style={{width: '35%'}}>Cost Impact(1-5)</div>
+                    <div style={{width: '60%'}}>Schedule Impact(1-5)</div>
                     <div style={{width: '20%'}}>
-                        <input type="text" name="CostImpactB" className="filterInput" style={{width: "40px"}} />
+                        <input type="text" name="scheduleImpactB" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
                     </div>
                     <div style={{width: '20%'}}>
-                        <input type="text" name="CostImpactA" className="filterInput" style={{width: "40px"}} />
+                        <input type="text" name="scheduleImpactA" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
                     </div>
                 </div>
+                <div style={{display:'flex', padding:'3px'}}>
+                    <div style={{width: '60%'}}>Cost Impact(1-5)</div>
+                    <div style={{width: '20%'}}>
+                        <input type="text" name="costImpactB" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
+                    </div>
+                    <div style={{width: '20%'}}>
+                        <input type="text" name="costImpactA" className="filterInput" style={{width: "40px"}} onChange={handleChange} />
+                    </div>
+                </div>
+
+                <hr></hr>
+                <div style={{display:'flex'}}>
+                <button style={{width: '50%', margin:'10px'}} className="filterCancelButton" onClick={handleFilterCancel} >cancel</button>
+                <button style={{width: '50%', margin:'10px'}} 
+                    className="filterapplyButton" 
+                    type="submit" 
+                    onClick={handleFilterApply}
+                >apply</button>
+                </div>
+                </form>
             </div>
         </>
     )

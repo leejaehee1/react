@@ -185,7 +185,7 @@ const PunchListComponent = () => {
     
 
     const boardAllData = data;
-    const allIndex = ids.filter(id=> data[id].status !== '1');;
+    const allIndex = ids.filter(id=> data[id].status !== '1');
     const allOpenedIdx = ids.filter(id=> data[id].status === '2');
     const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3');
     const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4');
@@ -310,13 +310,136 @@ const PunchListComponent = () => {
     const [filterOpen, setFilterOpen] = useState(false);
     
     const handleFilterOpen = () => {
-        console.log('들어온다.')
+        // console.log('들어온다.')
         setFilterOpen(true);
     }
     
     const handleFilterClose = () => {
         setFilterOpen(false);
     }
+    
+    // filter logic
+    const [dataForFilter, setDataForFilter] = useState();
+
+    useEffect(()=>{
+        // setButtonOne(true);
+        setButtonOne(false);
+        setButtonTwo(false);
+        setButtonThr(false);
+        setButtonFour(false);
+        setButtonFive(false);
+        setButtonSix(false);
+        
+        console.log(dataForFilter);
+
+        let keywordA;
+
+        keywordA = dataForFilter?.keyword.map(v => v.content)
+        // console.log(keywordA)
+
+        let stepA = ids.filter(id => data[id].area === dataForFilter?.area);
+        // const allIndex = ids.filter(id=> data[id].status !== '1');
+
+        if(dataForFilter?.area.length){
+            console.log('area')
+            var areaF = ids.filter(id => data[id].area === dataForFilter?.area);
+            console.log(areaF.length)
+        }else{
+            var areaF = ids
+        }
+        if(dataForFilter?.category.length){
+            console.log('category')
+            var categoryF = areaF.filter(id => data[id].category === dataForFilter?.category);
+            console.log(categoryF.length)
+        }else {
+            var categoryF = areaF
+        }
+        if(dataForFilter?.discipline.length){
+            console.log('discipline')
+            var disciplineF = categoryF.filter(id => data[id].discipline === dataForFilter?.discipline);
+            console.log(disciplineF.length)
+        }else {
+            var disciplineF = categoryF
+        }
+        if(dataForFilter?.drawing.length){
+            console.log('drawing')
+            // var drawingF = disciplineF.filter(id => data[id].drawing === dataForFilter?.drawing); //     you must change Drawing Filter  
+            var drawingF = disciplineF
+        }else {
+            var drawingF = disciplineF
+        }
+        if(dataForFilter?.issuedBy.length){
+            console.log('issuedBy')
+            var issuedByF = drawingF.filter(id => data[id].issuedBy === dataForFilter?.issuedBy);
+        }else {
+            var issuedByF = drawingF
+        }
+        if(dataForFilter?.projectID.length){
+            console.log('projectID')
+            var projectIDF = issuedByF.filter(id => data[id].projectID === dataForFilter?.projectID);
+        }else {
+            var projectIDF = issuedByF
+        }
+        if(dataForFilter?.tagNumber.length){
+            console.log('tagNumber')
+            var tagNumberF = projectIDF.filter(id => data[id].tagNumber === dataForFilter?.tagNumber);
+        }else {
+            var tagNumberF = projectIDF
+        }
+        if(dataForFilter?.unit.length){
+            console.log('unit')
+            var unitF = tagNumberF.filter(id => data[id].unit === dataForFilter?.unit);
+        }else {
+            var unitF = tagNumberF
+        }
+        if(dataForFilter?.costImpactA.length && dataForFilter?.costImpactB.length){
+            console.log('costImpact')
+            var costImpactF = unitF.filter(id => (parseInt(dataForFilter?.costImpactB) <= parseInt(data[id].costImpact)) 
+                                                    && (parseInt(data[id].costImpact) <= parseInt(dataForFilter?.costImpactA))
+                    );
+        }else {
+            var costImpactF = unitF
+        }
+        if(dataForFilter?.difficultyA.length && dataForFilter?.difficultyB.length){
+            console.log('difficulty')
+            var difficultyF = costImpactF.filter(id => (parseInt(dataForFilter?.difficultyB) <= parseInt(data[id].difficulty)) 
+                                                        && (parseInt(data[id].difficulty) <= parseInt(dataForFilter?.difficultyA))
+                                            );
+        }else {
+            var difficultyF = costImpactF
+        }
+        if(dataForFilter?.scheduleImpactA.length && dataForFilter?.scheduleImpactB.length){
+            console.log('scheduleImpact')
+            var scheduleImpactF = difficultyF.filter(id => (parseInt(dataForFilter?.scheduleImpactB) <= parseInt(data[id].scheduleImpact)) 
+                                                            && (parseInt(data[id].scheduleImpact) <= parseInt(dataForFilter?.scheduleImpactA))
+                                                );
+        }else {
+            var scheduleImpactF = difficultyF
+        }
+        if(keywordA?.length){
+            console.log('keywordA')
+            console.log(keywordA)
+            var keywordF = scheduleImpactF.filter(id => (
+                                                        keywordA.includes(data[id].keyword1) 
+                                                     || keywordA.includes(data[id].keyword2) 
+                                                     || keywordA.includes(data[id].keyword3)
+                                                     || keywordA.includes(data[id].keyword4) 
+                                                     ));
+        }else {
+            var keywordF = scheduleImpactF
+        }
+
+        // console.log(stepA)
+        // console.log(12)
+        // console.log(34)
+
+        console.log("keywordF")
+        console.log(keywordF)
+        setBoardIndexData(keywordF);
+    }, [dataForFilter])
+
+    
+
     return (
         <React.Fragment>
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
@@ -399,8 +522,12 @@ const PunchListComponent = () => {
                     {/* </Button> */}
             {/* SimpleDialog about TuneIcon */}
                     <Dialog onClose={handleFilterClose} aria-labelledby="simple-dialog-title" open={filterOpen}>
-                        <DialogTitle id="simple-dialog-title">Set backup accountaaaaaaaaaaaaaaaaaaaaaaaaa</DialogTitle>
-                        <PunchlistFilter boardAllData={boardAllData} />
+                        <DialogTitle id="simple-dialog-title" style={{display:"flex", justifyContent:'center'}}>Filter Conditions</DialogTitle>
+                        <PunchlistFilter 
+                            boardAllData={boardAllData} 
+                            setFilterOpen={setFilterOpen}
+                            setDataForFilter={setDataForFilter}
+                        />
                     </Dialog>
                     <input style={{backgroundColor:'white', border:'1px solid', height: "100%" }} type="text" />
                     <SearchIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
