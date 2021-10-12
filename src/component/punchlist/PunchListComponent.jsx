@@ -51,6 +51,7 @@ import DashBoardStatus from './chart/DashBoardStatus';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import PunchlistFilter from './components/PunchlistFilter';
+import PunchlistSearch from './components/PunchlistSearch';
 
 
 // https://material-ui.com/system/borders/
@@ -440,6 +441,28 @@ const PunchListComponent = () => {
     }, [dataForFilter])
 
     
+    // search logic
+    // const searchText= useRef("");
+    const [searchText, setSearchText]= useState("");
+
+    useEffect(() => {
+        console.log(searchText)
+        setButtonOne(false);
+        setButtonTwo(false);
+        setButtonThr(false);
+        setButtonFour(false);
+        setButtonFive(false);
+        setButtonSix(false);
+
+        var searchD = ids.filter(id => (
+                                        searchText===data[id].keyword1 
+                                        || searchText===data[id].keyword2
+                                        || searchText===data[id].keyword3
+                                        || searchText===data[id].keyword4
+                                        ));
+        setBoardIndexData(searchD);
+    }, [searchText])
+
 
     return (
         <React.Fragment>
@@ -514,7 +537,7 @@ const PunchListComponent = () => {
                     }
                 </div>
                 <div style={{
-                    width:'45%', textAlign: "right",
+                    width:'45%', textAlign: "right", verticalAlign:'center',
                             // position:'absolute', left:'73%', 
                             padding:'5px', height: '30px' 
                             }}>
@@ -530,8 +553,10 @@ const PunchListComponent = () => {
                             setDataForFilter={setDataForFilter}
                         />
                     </Dialog>
-                    <input style={{backgroundColor:'white', border:'1px solid', height: "100%" }} type="text" />
-                    <SearchIcon fontSize="large" style={{ paddingTop: "5px", height: "100%" }} />
+                    {/* <input type="text" name="scheduleImpactA" className="filterInput" style={{width: "40px"}} onChange={handleChange} /> */}
+                    <PunchlistSearch setSearchText={setSearchText} />
+                    {/* <input style={{width: "150px", textAlign: "left"}} className="searchFilterInput" type="text" value={searchText} onChange={handeleSearchFilter} />
+                    <SearchIcon fontSize="large" style={{ paddingTop: "10px", paddingBottom:'-5px' , height: "30px", margin:'0px' }} onClick={handleSearchClick} /> */}
                 </div>
             </div>
             

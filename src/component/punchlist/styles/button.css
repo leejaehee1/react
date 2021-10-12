@@ -227,3 +227,10 @@ button.afterClosed {
     /* font-weight:  */
     cursor: pointer;
   }
+
+
+
+
+input.searchFilterInput{
+    border: 1px solid black;
+}
