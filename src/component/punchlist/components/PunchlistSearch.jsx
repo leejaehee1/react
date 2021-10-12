@@ -12,7 +12,6 @@ const PunchlistSearch = (props) => {
     }  
 
     const handleSearchClick = (e) => {
-        console.log('올려버린다./')
         props.setSearchText(searchText)
     }
 

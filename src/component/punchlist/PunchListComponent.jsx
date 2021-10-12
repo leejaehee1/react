@@ -435,8 +435,8 @@ const PunchListComponent = () => {
         // console.log(12)
         // console.log(34)
 
-        console.log("keywordF")
-        console.log(keywordF)
+        // console.log("keywordF")
+        // console.log(keywordF)
         setBoardIndexData(keywordF);
     }, [dataForFilter])
 
@@ -446,7 +446,6 @@ const PunchListComponent = () => {
     const [searchText, setSearchText]= useState("");
 
     useEffect(() => {
-        console.log(searchText)
         setButtonOne(false);
         setButtonTwo(false);
         setButtonThr(false);
@@ -467,8 +466,19 @@ const PunchListComponent = () => {
     return (
         <React.Fragment>
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
-                <Button className={classes.lbutton} onClick={handleDashBoard}>DashBoard</Button>
-                <Button className={classes.rbutton} onClick={handleStatus}>Status</Button>
+            {/* <div> */}
+            {show?(
+            <>
+                <button className="stateChartSelectButton" onClick={handleDashBoard}>DashBoard</button>
+                <button className="stateStatusSelectButton" onClick={handleStatus}>Status</button>
+            </>
+            ):(
+            <>
+                <button className="stateStatusSelectButton" onClick={handleDashBoard}>DashBoard</button>
+                <button className="stateChartSelectButton" onClick={handleStatus}>Status</button>
+            </>
+            )}
+            {/* </div> */}
                 {/* <Button>Three</Button> */}
             </ButtonGroup>
             { stateShow?(

@@ -234,3 +234,61 @@ button.afterClosed {
 input.searchFilterInput{
     border: 1px solid black;
 }
+
+
+/* 
+lbutton: {
+    //   padding: theme.spacing(1.5),
+    // margin: theme.spacing(1),
+    // width: theme.spacing(16),
+    // height: theme.spacing(16),
+    textAlign: 'center',
+    width: '120px',
+    // color: theme.palette.text.disabled,
+    color: 'white',
+    backgroundColor: '#616161',
+    height: '30px',
+    textTransform: 'none',
+    fontSize: '14px',
+    
+    // background:'black',
+
+},
+rbutton: {
+    //   padding: theme.spacing(1.5),
+    // margin: theme.spacing(1),
+    // width: theme.spacing(16),
+    // height: theme.spacing(16),
+    textAlign: 'center',
+    width: '120px',
+    // color: theme.palette.text.disabled,
+    color: 'black',
+    backgroundColor: '#bdbdbd',
+    height: '30px',
+    textTransform: 'none',
+    fontSize: '14px',
+
+
+    // background:'black',
+
+}, */
+
+button.stateChartSelectButton{
+    width: 120px;
+    height: 30px;
+    background-color: #616161;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    /* text-transform: none, */
+}
+button.stateStatusSelectButton{
+    width: 120px;
+    height: 30px;
+    background-color: #bdbdbd;
+    color: black;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
