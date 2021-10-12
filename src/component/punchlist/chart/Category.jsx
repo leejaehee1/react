@@ -35,11 +35,10 @@ export default function Category(props) {
     // const { data } = useGetList('list', );
     const targetData = props.allData
 
-
-    const a = Object.values(targetData).filter(da => da.category==="A").length;
-    const b = Object.values(targetData).filter(da => da.category==="B").length;
-    const c = Object.values(targetData).filter(da => da.category==="C").length;
-    const d = Object.values(targetData).filter(da => da.category==="D").length;
+    const a = Object.values(targetData).filter(da => da.category==="A" && da.status !== '1').length;
+    const b = Object.values(targetData).filter(da => da.category==="B" && da.status !== '1').length;
+    const c = Object.values(targetData).filter(da => da.category==="C" && da.status !== '1').length;
+    const d = Object.values(targetData).filter(da => da.category==="D" && da.status !== '1').length;
 
 
 

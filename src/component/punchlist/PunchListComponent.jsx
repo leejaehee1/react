@@ -318,9 +318,10 @@ const PunchListComponent = () => {
         setFilterOpen(false);
     }
     
+
+    
     // filter logic
     const [dataForFilter, setDataForFilter] = useState();
-
     useEffect(()=>{
         // setButtonOne(true);
         setButtonOne(false);
