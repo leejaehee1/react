@@ -105,7 +105,7 @@ function DataTime(props) {
                       disableToolbar
                       // style={{width:"250px"}}
                       // variant="inline"
-                      format="yyyy/MM/dd"
+                      format="yyyy.MM.dd"
                       //inputVariant="filled"  // outlined // standard
                       // margin="normal"
                       id="date-picker-inline"

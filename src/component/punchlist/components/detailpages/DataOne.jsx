@@ -78,9 +78,8 @@ function DataOne(props) {
         <Grid item xs={3}>
           <Paper elevation={0} className={classes.rpaper}>
             <ThemeProvider theme={theme}>
-              {/* <Typography variant="h5"><b>aaaaaaaaaaaaaaaaaaa</b></Typography> */}
               {(props.dataOne?.issuedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.issuedDate.split('-')[0]}/{props.dataOne?.issuedDate.split('-')[1]}/{props.dataOne?.issuedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.issuedDate.split('-')[0]}.{props.dataOne?.issuedDate.split('-')[1]}.{props.dataOne?.issuedDate.split('-')[2].slice(0,2)}</b></Typography>
               :
                 <Typography variant="h5"><b>{props.dataOne?.issuedDate}</b></Typography>
               }
@@ -88,7 +87,7 @@ function DataOne(props) {
               <Typography variant="h5"><b>{props.dataOne?.issuedBy}</b></Typography>
               
               {(props.dataOne?.completedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.completedDate.split('-')[0]}/{props.dataOne?.completedDate.split('-')[1]}/{props.dataOne?.completedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.completedDate.split('-')[0]}.{props.dataOne?.completedDate.split('-')[1]}.{props.dataOne?.completedDate.split('-')[2].slice(0,2)}</b></Typography>
               :
                 <Typography variant="h5"><b>{props.dataOne?.completedDate}</b></Typography>
               }
@@ -112,7 +111,7 @@ function DataOne(props) {
           <Paper elevation={0} className={classes.rpaper}>
             <ThemeProvider theme={theme}>
               {(props.dataOne?.closedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.closedDate.split('-')[0]}/{props.dataOne?.closedDate.split('-')[1]}/{props.dataOne?.closedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.closedDate.split('-')[0]}.{props.dataOne?.closedDate.split('-')[1]}.{props.dataOne?.closedDate.split('-')[2].slice(0,2)}</b></Typography>
               :
                 <Typography variant="h5"><b>{props.dataOne?.closedDate}</b></Typography>
               }
