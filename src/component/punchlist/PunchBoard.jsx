@@ -132,6 +132,7 @@ const PunchBoard = (props) => {
                                 <StateButton 
                                         eachState={inputBoardData[id]?.status} 
                                         allData={inputBoardData[id]} 
+                                        eachRowId={id}
                                 />
                             </Typography>
                         </ListItem>

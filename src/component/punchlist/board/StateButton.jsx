@@ -8,6 +8,7 @@ import {
 import CustomBox from './CustomBox';
 
 import {useUpdate, useRefresh, useRedirect} from 'react-admin';
+import axios from 'axios';
 
 
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -39,9 +40,15 @@ const StateButton = (props) => {
     const refresh = useRefresh();
     const redirect = useRedirect();
 
-
+    //sendEmail
+    const punchListIssuedBy = useRef();
+    const punchListProjectID = useRef();
+    const [apiUsers, setApiUsers] = useState();
+    const [apiProjectUsers, setApiProjectUsers] = useState();
 
     const handleClickListItem = (event) => {
+        // props.eachRowId
+        // console.log(props.allData['projectID'])
         setAnchorEl(event.currentTarget);
     };
 
@@ -52,7 +59,74 @@ const StateButton = (props) => {
         // setSelectedIndex(index);
         // setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
         // console.log(index===3)
-        if (index!==3){
+        // console.log(apiUsers)
+        // console.log(apiProjectUsers)
+        // console.log(props.allData)
+        punchListIssuedBy.current = props.allData['issuedBy']
+        punchListProjectID.current = props.allData['projectID']
+        // console.log(punchListIssuedBy.current)
+        // console.log(punchListProjectID.current)
+        if (index===3 ){
+            setAnchorEl(null);
+            setOpenModal(true)
+            
+        }else if(index===4){
+            let targetUsersSendEmail = [];
+            for(var apiProjectUser of apiProjectUsers){
+                if(apiProjectUser['projectID']===punchListProjectID.current){
+                    targetUsersSendEmail.push(apiProjectUser['userID'])
+                }
+            }
+            targetUsersSendEmail.push(punchListIssuedBy.current)
+            // console.log(targetUsersSendEmail)
+            let targetUsersSendEmailSet = new Set(targetUsersSendEmail)
+            // console.log(targetUsersSendEmailSet)
+            let targetUsersSendEmailSetArrays = Array.from(targetUsersSendEmailSet)
+            // console.log(targetUsersSendEmailSetArrays)
+
+            let targetSendEmail = []
+            for (var targetUsersSendEmailSetArray of targetUsersSendEmailSetArrays){
+                for (var apiUser of apiUsers){
+                if(apiUser['userID']===targetUsersSendEmailSetArray){
+                    targetSendEmail.push(apiUser['email'])
+                }}
+            }
+            // console.log(targetSendEmail)
+            let postData = {
+                data:targetSendEmail,
+                punchID: props.allData['punchID'],
+                issuedDate: props.allData['issuedDate'],
+                closedDate: props.allData['closedDate'],
+                issueDescription: props.allData['issueDescription']
+            }
+            // console.log(postData)
+            const urlMail = 'http://localhost:5000/punchlist/mail';
+
+            axios.post(urlMail, postData)
+                .then((res)=> console.log('success sendEmail'))
+                .catch(err => console.log(err))
+
+            // update('list', 
+            //     {a:updataPK},   // id
+            //     {status : index+2}, // data
+            //     updataUpPK,
+            //     {
+            //         onSuccess: ()=> {
+            //             // console.log('들어왔다능')
+            //             refresh()
+            //             // console.log('들어왔다능1')
+            //             setAnchorEl(null);
+            //             // console.log('들어왔다능2')
+
+            //             // redirect('/');
+
+            //             setEachState(index);
+            //                 // setEachState(index+2)
+            //                 // setAnchorEl(null);
+            //             },
+            //     }
+            // )
+        }else {
             update('list', 
                 {a:updataPK},   // id
                 {status : index+2}, // data
@@ -72,10 +146,6 @@ const StateButton = (props) => {
                             // setAnchorEl(null);
                         },
                     })
-        }else {
-            // setSelectedIndex(3);
-            setAnchorEl(null);
-            setOpenModal(true)
 
         }
         
@@ -85,15 +155,38 @@ const StateButton = (props) => {
         // 다른 버튼 눌렀을 때
         // setEachState(selectedIndex+2)
         setAnchorEl(null);
-
     };
+
+    
+    // const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
+    // const urlDiscipline = 'http://localhost:5000/punchlist/discipline/?range=[0, 24]';
+    // const urlCategory = 'http://localhost:5000/punchlist/category/?range=[0, 24]';
+    // const urlUnit = 'http://localhost:5000/punchlist/unit/?range=[0, 24]';
+    // const urlArea = 'http://localhost:5000/punchlist/area/?range=[0, 24]';
+    // const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
+    const urlProjectUser = 'http://localhost:5000/punchlist/projectuser/?range=[0, 24]';
+    const urlUserCode = 'http://localhost:5000/punchlist/usercode/?range=[0, 24]';
+
+    // const [apiUsers, setApiUsers] = useState();
+    // const [apiProjectUsers, setApiProjectUsers] = useState();
+    
+    // sending mail
+    useEffect(()=> {
+        axios.get(urlProjectUser)
+        .then((res)=> setApiProjectUsers(res.data.result))
+        .catch(err => console.log(err))
+        axios.get(urlUserCode)
+        .then((res)=> setApiUsers(res.data.result))
+        .catch(err => console.log(err))
+
+    }, [])
 
     
     // not Accepted Dialog
     const [openModal, setOpenModal] = useState(false);
     const [modalTextArea, setModalTextArea] = useState("")
     const handelModalTextArea = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setModalTextArea(e.target.value)
     }
     const handleModal = () => {
@@ -126,7 +219,6 @@ const StateButton = (props) => {
                         refresh()
                         setAnchorEl(null);
                         setOpenModal(false);
-                        console.log('들어왔다능')
                         // redirect('/admin');
                         // redirect('/');
                         setEachState(5);
