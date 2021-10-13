@@ -173,7 +173,7 @@ function DetailSelector(props) {
           headers={headerData} 
           // data={data} 
           data={excelData} 
-          filename={`${excelData[0].projectID}_${nameDate}.csv`}
+          filename={`${excelData[0]?.projectID}_${nameDate}.csv`}
           target="_blank"
         >
         <button className="excelIcon" style={{backgroundImage: `url(${excelIcon})`}}>
