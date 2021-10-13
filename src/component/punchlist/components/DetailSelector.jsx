@@ -73,18 +73,32 @@ function DetailSelector(props) {
         content: () => componentRef.current,
   });
   
-  // console.log(props.boardData)
-
+  
   let excelData = Object.values(props?.boardData)
   let fData = Object.keys(excelData[0]?excelData[0]:[])
+
+  // console.log(excelData[0].projectID)
   // console.log(fData)
   let headerData = []
   for(var i of fData){
+    if(i!=='id'){
+    // console.log(i)
     var sData = {label:i, key:i}
     headerData.push(sData)
+    }
   }
   // console.log(headerData)
-  
+  function getFormatDate(date){
+      var year = date.getFullYear();              //yyyy
+      var month = (1 + date.getMonth());          //M
+      month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+      var day = date.getDate();                   //d
+      day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+      return  year + '' + month + '' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+  }
+  var nameDate = new Date();
+  nameDate = getFormatDate(nameDate);
+  // console.log(date)
   return (
     <div style={{display:'flex'}}>
       {issueState?
@@ -159,7 +173,7 @@ function DetailSelector(props) {
           headers={headerData} 
           // data={data} 
           data={excelData} 
-          filename="punchs.csv" 
+          filename={`${excelData[0].projectID}_${nameDate}.csv`}
           target="_blank"
         >
         <button className="excelIcon" style={{backgroundImage: `url(${excelIcon})`}}>
