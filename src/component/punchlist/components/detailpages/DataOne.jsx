@@ -79,19 +79,19 @@ function DataOne(props) {
           <Paper elevation={0} className={classes.rpaper}>
             <ThemeProvider theme={theme}>
               {(props.dataOne?.issuedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.issuedDate.split('-')[0]}.{props.dataOne?.issuedDate.split('-')[1]}.{props.dataOne?.issuedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.issuedDate.split('-')[0]}.{props.dataOne?.issuedDate.split('-')[1]}.{props.dataOne?.issuedDate.split('-')[2].slice(0,2)}</b>&nbsp;</Typography>
               :
-                <Typography variant="h5"><b>{props.dataOne?.issuedDate}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.issuedDate}&nbsp;</b></Typography>
               }
               
-              <Typography variant="h5"><b>{props.dataOne?.issuedBy}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.issuedBy}&nbsp;</b></Typography>
               
               {(props.dataOne?.completedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.completedDate.split('-')[0]}.{props.dataOne?.completedDate.split('-')[1]}.{props.dataOne?.completedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.completedDate.split('-')[0]}.{props.dataOne?.completedDate.split('-')[1]}.{props.dataOne?.completedDate.split('-')[2].slice(0,2)}</b>&nbsp;</Typography>
               :
-                <Typography variant="h5"><b>{props.dataOne?.completedDate}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.completedDate}&nbsp;</b></Typography>
               }
-              <Typography variant="h5"><b>{props.dataOne?.completedBy}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.completedBy}&nbsp;</b></Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
@@ -111,12 +111,12 @@ function DataOne(props) {
           <Paper elevation={0} className={classes.rpaper}>
             <ThemeProvider theme={theme}>
               {(props.dataOne?.closedDate)?
-                <Typography variant="h5"><b>{props.dataOne?.closedDate.split('-')[0]}.{props.dataOne?.closedDate.split('-')[1]}.{props.dataOne?.closedDate.split('-')[2].slice(0,2)}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.closedDate.split('-')[0]}.{props.dataOne?.closedDate.split('-')[1]}.{props.dataOne?.closedDate.split('-')[2].slice(0,2)}</b>&nbsp;</Typography>
               :
-                <Typography variant="h5"><b>{props.dataOne?.closedDate}</b></Typography>
+                <Typography variant="h5"><b>{props.dataOne?.closedDate}&nbsp;</b></Typography>
               }
-              <Typography variant="h5"><b>{props.dataOne?.closedBy}</b></Typography>
-              <Typography variant="h5"><b>{props.dataOne?.raisedBy}</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.closedBy}&nbsp;</b></Typography>
+              <Typography variant="h5"><b>{props.dataOne?.raisedBy}&nbsp;</b></Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
