@@ -17,7 +17,7 @@ const PunchlistSearch = (props) => {
 
     return (
         <>
-            <input style={{width: "150px", textAlign: "left", border: '1px solid black', fontSize:'17px' }} 
+            <input style={{width: "200px", textAlign: "left", border: '1px solid black', fontSize:'17px' }} 
                 type="text" name="aheiufhbeawhfibqilfb" value={searchText} onChange={handeleSearchFilter} 
             />
             <SearchIcon fontSize="large" style={{ paddingTop: "10px", paddingBottom:'-5px' , height: "30px", margin:'0px' }} onClick={handleSearchClick} />

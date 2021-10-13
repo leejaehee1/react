@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Box,
     Menu,
@@ -7,7 +7,15 @@ import {
 } from '@material-ui/core';
 import CustomBox from './CustomBox';
 
-import {useUpdate, useRefresh} from 'react-admin';
+import {useUpdate, useRefresh, useRedirect} from 'react-admin';
+
+
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+import TextField from '@material-ui/core/TextField';
+
+// css
+import './styles/StateButton.css'
 
 
 const options = [
@@ -23,11 +31,13 @@ const StateButton = (props) => {
     const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
     // const [updataPK, setDataPK] = React.useState(props.allData.punchID)
-    const updataPK = props?.allData?.punchID
-    const updataUpPK = props?.allData
+    const updataPK = props?.allData?.punchID;
+    const updataUpPK = props?.allData;
     const [update, { loading }] = useUpdate();
+    const selectStatusIndex = useRef()
 
-    const refresh = useRefresh()
+    const refresh = useRefresh();
+    const redirect = useRedirect();
 
 
 
@@ -36,26 +46,38 @@ const StateButton = (props) => {
     };
 
     const handleMenuItemClick = (event, index) => {
+        selectStatusIndex.current = index;
         // 주어진 버튼 눌렀을 때
         // console.dir(event.currentTarget.textContent)
         // setSelectedIndex(index);
         // setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
-        update('list', 
-            {a:updataPK}, 
-            {status : index+2},
-            updataUpPK,
-            {
-                onSuccess: ()=> {
-                    refresh()
-                    setAnchorEl(null);
+        // console.log(index===3)
+        if (index!==3){
+            update('list', 
+                {a:updataPK},   // id
+                {status : index+2}, // data
+                updataUpPK,
+                {
+                    onSuccess: ()=> {
                         // console.log('들어왔다능')
-                        // setSelectedIndex(index);
+                        refresh()
                         // console.log('들어왔다능1')
-                        // setEachState(index+2)
+                        setAnchorEl(null);
                         // console.log('들어왔다능2')
-                        // setAnchorEl(null);
-                    },
-                })
+
+                        // redirect('/');
+
+                        setEachState(index);
+                            // setEachState(index+2)
+                            // setAnchorEl(null);
+                        },
+                    })
+        }else {
+            // setSelectedIndex(3);
+            setAnchorEl(null);
+            setOpenModal(true)
+
+        }
         
     };
     
@@ -66,12 +88,59 @@ const StateButton = (props) => {
 
     };
 
-    // useEffect(()=> {
-    //     let a = updataPK // "PC-2-00-MB-MBP-E-01-001"
-    //     let b = eachState // 1
-    //     // update('list', {a:a}, {status : b})
+    
+    // not Accepted Dialog
+    const [openModal, setOpenModal] = useState(false);
+    const [modalTextArea, setModalTextArea] = useState("")
+    const handelModalTextArea = (e) => {
+        console.log(e.target.value)
+        setModalTextArea(e.target.value)
+    }
+    const handleModal = () => {
+        setOpenModal(false);
+    }
 
-    // }, [eachState])
+    const handelModalCancelButton = (e) => {
+        // e.stopPropagation()
+        // if (e.target !== e.currentTarget) return;
+        // console.log(11)
+        setAnchorEl(null);
+        setOpenModal(false);
+        // e.preventDefault()
+        // if (e.stopPropagation) e.stopPropagation();
+        // if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+    }
+    const handelModalApplyButton = (e) => {
+        // e.stopImmediatePropagation()
+        // e.stopPropagation()
+        // console.log(22)
+        // setOpenModal(false);
+
+        update('listAccept', 
+                {a:updataPK},   // id
+                {status : 5, notAcceptedComment:modalTextArea, notAcceptedBy: 'testUser'}, // data
+                updataUpPK,
+                {
+                    onSuccess: ()=> {
+                        refresh()
+                        setAnchorEl(null);
+                        setOpenModal(false);
+                        console.log('들어왔다능')
+                        // redirect('/admin');
+                        // redirect('/');
+                        setEachState(5);
+                        // setSelectedIndex(3);
+                        // console.log('들어왔다능1')
+                        // setEachState(index+2)
+                        // console.log('들어왔다능2')
+                        // setAnchorEl(null);
+                        },
+        })
+        
+        return false
+    }
+
     return (
         <div>
             <Button aria-controls="simple-menu" aria-haspopup="true" style={{textTransform:"none"}} onClick={handleClickListItem}>
@@ -110,6 +179,27 @@ const StateButton = (props) => {
                 </MenuItem>
                 ))}
             </Menu>
+            <Dialog onClose={handleModal} aria-labelledby="simple-dialog-title" open={openModal}>
+                <div style={{width:"400px", height:"180px", textAlign:'center' }}>
+                    <DialogTitle id="simple-dialog-title" style={{display:"flex", justifyContent:'center', fontSize:'10px'}}>Comment fo Not Accepted</DialogTitle>
+                    <TextField
+                        id="outlined-multiline-static"
+                        // label="Multiline"
+                        multiline
+                        rows={4}
+                        // defaultValue="Default Value"
+                        variant="outlined"
+                        style={{width:"350px"}}
+                        onChange={handelModalTextArea}
+
+                    />
+                </div>
+                <div style={{display:'flex', justifyContent:'center'}}>
+                    <button className="notAcceptedCommentCancelButton" onMouseDown={handelModalCancelButton}>Cancel</button>
+                    <button className="notAcceptedCommentApplyButton" onMouseDown={handelModalApplyButton}>Apply</button>
+                </div>
+
+            </Dialog>
         </div>
     )
 }

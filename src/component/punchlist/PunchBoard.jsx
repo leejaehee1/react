@@ -39,9 +39,10 @@ const PunchBoard = (props) => {
 
     const [targetA, setTargetA] = useState('a');
 
-    const updateDetailPage = (id) => {
+    const updateDetailPage = (id, e) => {
         props.setUpPunchBoardData(id)
         setTargetA(id)
+        if (e.target !== e.currentTarget) return;
     }
 
     
@@ -75,7 +76,7 @@ const PunchBoard = (props) => {
                         <ListItem
                             button
                             key={id}
-                            onClick={()=> updateDetailPage(id)}
+                            onClick={(e)=> updateDetailPage(id, e)}
                             // onClick={()=> props.upPunchBoard(id)}
                             // component={Link}
                             // to={`/contacts/${id}/show`}
