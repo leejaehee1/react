@@ -102,30 +102,32 @@ const StateButton = (props) => {
             // console.log(postData)
             const urlMail = 'http://localhost:5000/punchlist/mail';
 
-            axios.post(urlMail, postData)
-                .then((res)=> console.log('success sendEmail'))
-                .catch(err => console.log(err))
 
-            // update('list', 
-            //     {a:updataPK},   // id
-            //     {status : index+2}, // data
-            //     updataUpPK,
-            //     {
-            //         onSuccess: ()=> {
-            //             // console.log('들어왔다능')
-            //             refresh()
-            //             // console.log('들어왔다능1')
-            //             setAnchorEl(null);
-            //             // console.log('들어왔다능2')
+            // turn off send mail under three line
+            // axios.post(urlMail, postData)
+            //     .then((res)=> console.log('success sendEmail'))
+            //     .catch(err => console.log(err))
 
-            //             // redirect('/');
+            update('list', 
+                {a:updataPK},   // id
+                {status : index+2}, // data
+                updataUpPK,
+                {
+                    onSuccess: ()=> {
+                        // console.log('들어왔다능')
+                        refresh()
+                        // console.log('들어왔다능1')
+                        setAnchorEl(null);
+                        // console.log('들어왔다능2')
 
-            //             setEachState(index);
-            //                 // setEachState(index+2)
-            //                 // setAnchorEl(null);
-            //             },
-            //     }
-            // )
+                        // redirect('/');
+
+                        setEachState(index);
+                            // setEachState(index+2)
+                            // setAnchorEl(null);
+                        },
+                }
+            )
         }else {
             update('list', 
                 {a:updataPK},   // id
