@@ -24,6 +24,7 @@
     "jwt-decode": "^3.1.2",
     "material-table": "^1.69.3",
     "node-polyglot": "^2.4.2",
+    "pdf2pic": "^2.1.4",
     "prop-types": "^15.7.2",
     "ra-data-fakerest": "^3.13.5",
     "ra-data-json-server": "^3.17.1",

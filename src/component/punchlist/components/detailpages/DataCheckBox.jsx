@@ -112,7 +112,7 @@ const DataCheckBox = (props) => {
           <Paper elevation={0} className={classes.rpaper}>
             <Checkbox
               // defaultChecked
-              onChange={handleDetailBox}
+              onMouseDown={handleDetailBox}
               checked={parseInt(checked)}
               color="default"
               inputProps={{ 'aria-label': 'checkbox with default color' }}

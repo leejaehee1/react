@@ -602,70 +602,70 @@ const PunchListComponent = () => {
                             />
                         </div>
                         {buttonOne? 
-                        <button className="afterAll" onClick={changeState}>
+                        <button className="afterAll" onMouseDown={changeState}>
                             <p className="title">All</p>
                             <p>{allIndex.length}</p>
                         </button>
                         :
-                        <button className="beforeAll" onClick={changeState}>
+                        <button className="beforeAll" onMouseDown={changeState}>
                             <p className="title">All</p>
                             <p>{allIndex.length}</p>
                         </button>
                         }
 
                         {buttonTwo?
-                        <button className="afterOpened" onClick={changeState}>
+                        <button className="afterOpened" onMouseDown={changeState}>
                             <p className="title">Opened</p>
                             <p>{allOpenedIdx.length}</p>
                         </button>
                         :
-                        <button className="beforeOpened" onClick={changeState}>
+                        <button className="beforeOpened" onMouseDown={changeState}>
                             <p className="title">Opened</p>
                             <p>{allOpenedIdx.length}</p>
                         </button>
                         }
                         {buttonThr?
-                            <button className="afterReadyForReview" onClick={changeState}>
+                            <button className="afterReadyForReview" onMouseDown={changeState}>
                                 <p className="title">Ready for Review</p>
                                 <p>{allReadyForReviewIdx.length}</p>
                             </button>
                         :
-                            <button className="beforeReadyForReview" onClick={changeState}>
+                            <button className="beforeReadyForReview" onMouseDown={changeState}>
                                 <p className="title">Ready for Review</p>
                                 <p>{allReadyForReviewIdx.length}</p>
                             </button>
                         }
                         {buttonFour?
-                            <button className="afterRequestedForClose" onClick={changeState}>
+                            <button className="afterRequestedForClose" onMouseDown={changeState}>
                                 <p className="title">Requested for Close</p>
                                 <p>{allRequestedForCloseIdx.length}</p>
                             </button>
                         :
-                            <button className="beforeRequestedForClose" onClick={changeState}>
+                            <button className="beforeRequestedForClose" onMouseDown={changeState}>
                                 <p className="title">Requested for Close</p>
                                 <p>{allRequestedForCloseIdx.length}</p>
                             </button>
                         }
 
                         {buttonFive?
-                            <button className="afterNotAccepted" onClick={changeState}>
+                            <button className="afterNotAccepted" onMouseDown={changeState}>
                                 <p className="title">Not Accepted</p>
                                 <p>{allNotAcceptedIdx.length}</p>
                             </button>
                         :
-                            <button className="beforeNotAccepted" onClick={changeState}>
+                            <button className="beforeNotAccepted" onMouseDown={changeState}>
                                 <p className="title">Not Accepted</p>
                                 <p>{allNotAcceptedIdx.length}</p>
                             </button>
                         }
 
                         {buttonSix?
-                            <button className="afterClosed" onClick={changeState}>
+                            <button className="afterClosed" onMouseDown={changeState}>
                                 <p className="title">Closed</p>
                                 <p>{allClosedIdx.length}</p>
                             </button>
                         :
-                            <button className="beforeClosed" onClick={changeState}>
+                            <button className="beforeClosed" onMouseDown={changeState}>
                                 <p className="title">Closed</p>
                                 <p>{allClosedIdx.length}</p>
                             </button>
