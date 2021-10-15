@@ -6,6 +6,8 @@ import './styles/Drawing.css'
 
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
+import Button from '@material-ui/core/Button';
+
 
 
 // css
@@ -16,9 +18,14 @@ export const Drawing = (props) => {
     const [getProjectID, setGetProjectID] = useState([]);
     const [getSystem, setGetSystem] = useState([]);
     const [getSubSystem, setGetSubSystem] = useState([]);
+    const [getDrawing, setGetDrawing] = useState([]);
     const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
     const urlSystems = 'http://localhost:5000/punchlist/systems/?range=[0, 24]';
     const urlSubSystem = 'http://localhost:5000/punchlist/subsystem/?range=[0, 24]';
+    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
+
+    // DB image name
+    const [imageNameDB, setImageNameDB] = useState('');
 
     const refresh = useRefresh()
     
@@ -34,6 +41,10 @@ export const Drawing = (props) => {
         axios.get(urlSubSystem)
         .then((res)=> setGetSubSystem(res.data.result))
         .catch(err => console.log(err))        
+        
+        axios.get(urlDrawing)
+        .then((res)=> setGetDrawing(res.data.result))
+        .catch(err => console.log(err))        
     }, [])
     const [drawingProjectID, setDrawingProjectID] = useState("");
     const [drawingSystem, setDrawingSystem] = useState("");
@@ -41,9 +52,9 @@ export const Drawing = (props) => {
     const [drawingSeq, setDrawingSeq] = useState("");
     const [drawingDrawingNo, setDrawingDrawingNo] = useState("");
 
-
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileUploadOpen, setFileUploadOpen] = useState(false)
+    const [fileDetailOpen, setFileDetailOpen] = useState(false)
 
     const url = 'http://localhost:5000/punchlist/uploadfile';
     
@@ -98,6 +109,7 @@ export const Drawing = (props) => {
 
     const handleCancelButton = () => {
         setFileUploadOpen(false)
+        setFileDetailOpen(false)
     }
 
     const handleApplyButton = () => {
@@ -107,6 +119,7 @@ export const Drawing = (props) => {
 
     const handleFileUploadClose = () => {
         setFileUploadOpen(false)
+        setFileDetailOpen(false)
     }
 
     const handleChange = (e) => {
@@ -128,9 +141,52 @@ export const Drawing = (props) => {
         setDrawingDrawingNo(e.target.value)
     }
 
+
+    
+    const [viewDrawingProject, setViewDrawingProject] = useState('');
+    const [viewDrawingSystem, setViewDrawingSystem] = useState('');
+    const [viewDrawingSubsystem, setViewDrawingSubsystem] = useState('');
+    const [viewDrawingSeq, setViewDrawingSeq] = useState('');
+    const [viewDrawingDrawingNo, setViewDrawingDrawingNo] = useState('');
     // click table icon
     const handelViewDrawing = (e) => {
-        alert("들어왔다.")
+        e.preventDefault()
+        // console.log(e.target.innerText)
+        // a = `http://localhost:5000/drawings/pdfs/${e.target.innerText}.png`
+        setImageNameDB(e.target.innerText)
+
+        if(getDrawing.length){
+            getDrawing.map(v=> {
+                console.log(v);
+                if(v.drawingNo===e.target.innerText){
+                    console.log('같다.');
+                    setViewDrawingProject(v.projectID);
+                    setViewDrawingSystem(v.systemID);
+                    setViewDrawingSubsystem(v.subsystem);
+                    setViewDrawingSeq(v.seq);
+                    setViewDrawingDrawingNo(v.drawingNo);
+
+
+                }
+            })
+        }
+
+
+        setFileDetailOpen(true)
+        
+
+
+
+
+
+
+
+
+    }
+    const onSubmit= (e) => {
+        // e.preventDefault()
+        // console.log(e.target.elements)
+        // console.log(e.element)
     }
     return (
         <>  
@@ -140,26 +196,93 @@ export const Drawing = (props) => {
                 onChange={handleFileChange}
                 />
             </div>
-            <List {...props}>
+            <List {...props} filterDefaultValues={{ is_published: true }}>
+                    <form onSubmit={onSubmit}>
                 <Datagrid>
+                    {/* <p>{JSON.stringify(Object.keys(props))}</p> */}
                     {/* <p>{JSON.stringify(props)}</p> */}
-                    <TextField source="projectID" />
-                    <TextField source="systemID" />
-                    <TextField source="subsystem" />
-                    <TextField source="seq" />
-                    <TextField source="drawingNo" />
-                    <DateField source="uploadDate" />
-                    <TextField source="imagePath" />
-                    <TextField source="xSize" />
-                    <TextField source="ySize" />
-                    <button className="DrawingIcon" 
-                        id={<TextField source="id" />} 
-                        style={{backgroundImage: `url(${drawingIcon})`}}
-                        onMouseDown={handelViewDrawing}
-                        
-                        ></button>
+                        <TextField source="projectID" />
+                        <TextField source="systemID" />
+                        <TextField source="subsystem" />
+                        <TextField source="seq" />
+                        <TextField source="drawingNo" />
+                        <DateField source="uploadDate" />
+                        <TextField source="imagePath" />
+                        <TextField source="xSize" />
+                        <TextField source="ySize" />
+                        <button className="DrawingIcon" 
+                            id={<TextField source="id" />} 
+                            name={<TextField source="id" />} 
+                            style={{backgroundImage: `url(${drawingIcon})`}}
+                            onMouseDown={handelViewDrawing}
+                            // style={{opacity:'0'}}
+                            >
+                                <div style={{opacity:'0'}}>
+                        <TextField source="drawingNo" />
+                                </div>
+                            </button>
+
                 </Datagrid>
+                    </form>
             </List>
+
+            {/* drawing modal */}
+            <Dialog 
+                onClose={handleFileUploadClose} 
+                aria-labelledby="simple-dialog-title"
+                maxWidth="xl" 
+                // fullWidth={true}
+                open={fileDetailOpen}>
+                <div style={{width:'850px', height:'750px',}}>
+                    <DialogTitle id="simple-dialog-title" style={{display:"flex", justifyContent:'center'}}>Drawing detail</DialogTitle>
+                    
+                    <div style={{display:'flex', padding:'3px 10px', paddingLeft:'50px'}}>
+                        <div style={{width: '15%'}}>Project</div>
+                        <div style={{width: '70%'}}>
+                            <p>: {viewDrawingProject}</p>
+                        </div>
+                    </div>
+                    <div style={{display:'flex', padding:'3px 10px', paddingLeft:'50px'}}>
+                        <div style={{width: '15%'}}>System</div>
+                        <div style={{width: '70%'}}>
+                            <p>: {viewDrawingSystem}</p>
+                        </div>
+                    </div>
+                    <div style={{display:'flex', padding:'3px 10px', paddingLeft:'50px'}}>
+                        <div style={{width: '15%'}}>Subsystem</div>
+                        <div style={{width: '70%'}}>
+                            <p>: {viewDrawingSubsystem}</p>
+                        </div>
+                    </div>
+                    <div style={{display:'flex', padding:'3px 10px', paddingLeft:'50px'}}>
+                        <div style={{width: '15%'}}>Seq</div>
+                        <div style={{width: '70%'}}>
+                            : {viewDrawingSeq}
+                        </div>
+                    </div>
+                    <div style={{display:'flex', padding:'3px 10px', paddingLeft:'50px'}}>
+                        <div style={{width: '15%'}}>Drawing No</div>
+                        <div style={{width: '70%'}}>
+                            <p>: {viewDrawingDrawingNo}</p>
+                        </div>
+                    </div>
+                    <div style={{display:'flex', width:'850px', justifyContent:'center'}}>
+                        <img src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
+                    </div>
+                    <div style={{display:'flex'}}>
+                        <div style={{width: '70%', margin:'10px'}} 
+                             // className="filterapplyButton" 
+                             // type="submit" 
+                             // onClick={handleApplyButton}
+                         ></div>
+                        <button style={{width: '30%', margin:'10px'}} className="filterCancelButton" 
+                        onClick={handleCancelButton}
+                        >cancel</button>
+                    </div>
+                </div>
+            </Dialog>
+
+            {/* create modal */}
             <Dialog onClose={handleFileUploadClose} aria-labelledby="simple-dialog-title" open={fileUploadOpen}>
                 <div style={{width:'320px', height:'270px',}}>
                     <DialogTitle id="simple-dialog-title" style={{display:"flex", justifyContent:'center'}}>Add drawing detail</DialogTitle>
@@ -171,7 +294,6 @@ export const Drawing = (props) => {
                                 <option value=""></option>
                                 {getProjectID?.map((v, i)=>
                                     <option value={v.projectID}>{v.projectID} {v.projectName}</option>
-
                                 )}
                             </select>
                         </div>
