@@ -114,7 +114,7 @@ function DetailPageComponent(props) {
         <Divider className={classes.divider} />
 
         {/* modal */}
-        <DataImage />
+        <DataImage rowData={props.downDetailData} />
         
         
         

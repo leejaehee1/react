@@ -61,8 +61,13 @@ const theme = createTheme({
 })
 
 
-function DataImage() {
+function DataImage(props) {
   const classes = useStyles();
+  // console.log(props.rowData)
+  // console.log(props.rowData?.punchID)
+  // console.log(props.rowData?.punchID)
+  // photos 기준으로 punchStep를 기준으로 1과 2를 나눠 준다. 
+  // 그리고 RecipeReviewCard 내부에서 seq를 순차적으로 이미지를 넣어준다.
   return (
     <>
       <Grid container spacing={3}>
@@ -71,7 +76,7 @@ function DataImage() {
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Issued</Typography>
           </ThemeProvider>
-          <RecipeReviewCard imageName="Issued Image" />
+          <RecipeReviewCard imageName="Issued Image" punchStep="1" rowData={props.rowData} />
           </Paper>
         </Grid>
         <Grid item xs={6}>
@@ -79,18 +84,17 @@ function DataImage() {
           <ThemeProvider theme={theme}>
             <Typography variant="h5">Completed</Typography>
           </ThemeProvider>
-          <RecipeReviewCard imageName="Completed Image" />
+          <RecipeReviewCard imageName="Completed Image" punchStep="2" rowData={props.rowData} />
           </Paper>
         </Grid>
       </Grid>
 
 
+      {/* <div style={{display:'flex', width:'850px', justifyContent:'center'}}>
+          <img src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
+      </div> */}
 
-      {/* <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>View Drawing</Paper>
-        </Grid>
-      </Grid> */}
+
     </>
   )
 }

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { red } from '@material-ui/core/colors';
 import Modal from '@material-ui/core/Modal';
 import RecipeReviewCardModal from './RecipeReviewCardModal';
+
+import axios from 'axios';
 
 
 // function rand() {
@@ -67,24 +69,81 @@ export default function RecipeReviewCard(props) {
     setOpen(false);
   };
 
-  // const body = (
-  //   <div style={modalStyle} className={classes.paper}>
-  //     <h2 id="simple-modal-title">Text in a modal</h2>
-  //     <p id="simple-modal-description">
-  //       Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-  //     </p>
-  //     {/* <RecipeReviewCard /> */}
-  //   </div>
-  // );
+  const [getPhotos, setGetPhotos] = useState([]);
+  const [imagePathList, setImagePathList] = useState([]);
+  const [imageUrl, setImageUrl] = useState('');
+  const urlPhotos = 'http://localhost:5000/punchlist/photos/?range=[0, 24]';
 
+  useEffect(() => {
+    axios.get(urlPhotos)
+    .then((res)=> setGetPhotos(res?.data.result))
+    .catch(err => console.log(err))
+  }, [props])
+  useEffect(()=> {
+    const sampleImagePathList = []
+    if(getPhotos.length) {
+        getPhotos.map(rw => {
+            if(rw.punchID === props.rowData?.punchID && rw.punchStep === props.punchStep){
+                sampleImagePathList.push({label: rw.punchID ,
+                    imagePath :rw.imagePath})
+                }
+            })
+      }
+      setImagePathList(sampleImagePathList)
+    }, [getPhotos])
+
+    useEffect(()=> {
+        setImageUrl(`http://localhost:5000/${imagePathList[0]?.imagePath.slice(7)}`)
+    }, [imagePathList])
+    
+    // console.log(imagePathList)
+    const [imageValidationtarget, setImageValidationtarget] = useState([])
+    useEffect(()=> {
+        // console.log(imagePathList)
+        // for(var index in imagePathList){
+        //     // console.log(imagePathList[index]["imagePath"])
+        //     axios.get(`http://localhost:5000/${imagePathList[index]["imagePath"].slice(7)}`)
+        //         .then((res)=> {
+        //             console.log(res);
+        //             // console.log(imageValidationtarget)
+        //             var imageValidationList = [...imageValidationtarget, 1]
+        //             setImageValidationtarget(imageValidationList)
+        //         })
+        //         .catch(err => {
+        //             console.log(2);
+        //             var imageValidationList = [...imageValidationtarget, 0]
+        //             setImageValidationtarget(imageValidationList)
+        //         })
+        // }
+        // console.log(imagePathList)
+    }, [imagePathList])
+  // console.log(props.punchStep)
+  // console.log(props.rowData)
   return (
     <>
+    {/* {JSON.stringify(getPhotos)} */}
+    {/* {JSON.stringify(imagePathList)} */}
       <Card className={classes.root} onClick={handleOpen}>
-        <CardMedia
+        {/* <CardMedia
           className={classes.media}
-          image="/static/images/break1.jpg"
+          image={`http://localhost:5000/${imagePathList[0]["imagePath"].slice(7)}`}
           title="Paella dish"
+        /> */}
+        {/* {imageUrl} */}
+        {imageValidationtarget}
+        {(imagePathList.length)?
+        <img
+        className={classes.img}
+        // src={tutorialSteps[activeStep].imgPath}
+        width="100%"
+        // height="100%"
+        src={imageUrl}
+        // alt={tutorialSteps[activeStep].label}
+        alt={imagePathList?.label}
         />
+        :
+        <p>-Not Picture-</p>
+        }
       </Card>
       <Modal
         open={open}
@@ -93,7 +152,12 @@ export default function RecipeReviewCard(props) {
         aria-describedby="simple-modal-description"
       >
         {/* {body} */}
-        <RecipeReviewCardModal imageName={props.imageName} setOpen={setOpen} />
+        <RecipeReviewCardModal 
+            imageName={props.imageName} 
+            setOpen={setOpen} 
+            punchStep={props.punchStep}
+            rowData={props.rowData}
+          />
       </Modal>
     </>
   );
