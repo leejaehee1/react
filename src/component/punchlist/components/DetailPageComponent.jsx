@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -16,6 +16,8 @@ import ViewDrawingButton from './detailpages/ViewDrawingButton';
 // import Button from '@material-ui/core/Button';
 
 import'./styles/DetailPageComponent.css'
+
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +65,88 @@ function DetailPageComponent(props) {
   // console.log(props.downDetailData)
   const classes = useStyles();
 
+
+  const [targetDate, setTargetDate] = useState('');
+  const [designChgReq, setDesignChgReq] = useState('');
+  const [materialReq, setMaterialReq] = useState('');
+  const [scheduleImpact, setScheduleImpact] = useState('');
+  const [costImpact, setCostImpact] = useState('');
+  const [keyword1, setKeyword1] = useState('');
+  const [keyword2, setKeyword2] = useState('');
+  const [keyword3, setKeyword3] = useState('');
+  const [keyword4, setKeyword4] = useState('');
+  const [issueDescription, setIssueDescription] = useState('');
+  const [completeComment, setCompleteComment] = useState('');
+
+
+  const handleDetailUpdate= () => {
+    alert('asdfasdf')
+    const formData = new FormData();
+    const data = {}
+    if (targetDate==='' || targetDate===false){}else{
+      data.targetDate = targetDate
+      formData.append("targetDate", targetDate);
+    }
+    if (designChgReq==='' || designChgReq===false){}else{
+      data.designChgReq = designChgReq
+      formData.append("designChgReq", designChgReq);
+    }
+    if (materialReq==='' || materialReq===false){}else{
+      data.materialReq = materialReq
+      formData.append("materialReq", materialReq);
+    }
+    if (scheduleImpact==='' || scheduleImpact===false){}else{
+      data.scheduleImpact = scheduleImpact
+      formData.append("scheduleImpact", scheduleImpact);
+    }
+    if (costImpact==='' || costImpact===false){}else{
+      data.costImpact = costImpact
+      formData.append("costImpact", costImpact);
+    }
+    if (keyword1==='' || keyword1===false || keyword1===undefined){}else{
+      data.keyword1 = keyword1
+      formData.append("keyword1", keyword1);
+    }
+    if (keyword2==='' || keyword2===false || keyword2===undefined){}else{
+      data.keyword2 = keyword2
+      formData.append("keyword2", keyword2);
+    }
+    if (keyword3==='' || keyword3===false || keyword3===undefined){}else{
+      data.keyword3 = keyword3
+      formData.append("keyword3", keyword3);
+    }
+    if (keyword4==='' || keyword4===false || keyword4===undefined){}else{
+      data.keyword4 = keyword4
+      formData.append("keyword4", keyword4);
+    }
+    if (issueDescription==='' || issueDescription===false){}else{
+      data.issueDescription = issueDescription
+      formData.append("issueDescription", issueDescription);
+    }
+    if (completeComment==='' || completeComment===false){}else{
+      data.completeComment = completeComment
+      formData.append("completeComment", completeComment);
+    }
+    formData.append("punchID", props.downDetailData?.punchID);
+
+    const url = 'http://localhost:5000/punchlist/updateDetail';
+    console.log(data)
+    axios.post(url, formData, {
+      headers: {
+          'Content-Type' : 'multipart/form-data'
+      }
+    })
+    .then(res => {
+        console.log(res);
+        // refresh()
+        alert("저장 완료");
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+  }
+
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
       {/* {JSON.stringify(props.downDetailData)} */}
@@ -70,24 +154,36 @@ function DetailPageComponent(props) {
         <Typography variant="subtitle1" gutterBottom>
             {/* Material-UI Grid: */}
         </Typography>
-        
+
+      {JSON.stringify(props.downDetailData?.punchID)} <br />
+        DataTime: {JSON.stringify(targetDate)} <br />
+        designChgReq: {JSON.stringify(designChgReq)} <br />
+        materialReq: {JSON.stringify(materialReq)} <br />
+        scheduleImpact: {JSON.stringify(scheduleImpact)} <br />
+        costImpact: {JSON.stringify(costImpact)} <br />
+        keyword1: {JSON.stringify(keyword1)} <br />
+        keyword2: {JSON.stringify(keyword2)} <br />
+        keyword3: {JSON.stringify(keyword3)} <br />
+        keyword4: {JSON.stringify(keyword4)} <br />
+        issueDescription: {JSON.stringify(issueDescription)} <br />
+        completeComment: {JSON.stringify(completeComment)} <br />
         <DataOne dataOne={props.downDetailData} />
 
 
-        <DataTime dataOne={props.downDetailData} />
+        <DataTime dataOne={props.downDetailData} setTargetDate={setTargetDate} />
 
         <div style={{backgroundColor:'#f5f5f5', paddingLeft:'10px', marginTop:'2px', paddingRight:'10px', marginBottom:'-20px'}}>
           {/* <Divider className={classes.divider} /> */}
-          <DataCheckBox dataOne={props.downDetailData} />
+          <DataCheckBox dataOne={props.downDetailData} setDesignChgReq={setDesignChgReq} setMaterialReq={setMaterialReq} />
 
           {/* difficulty */}
-          <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} />
+          {/* <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} /> */}
 
           {/* schedule impact */}
-          <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} />
+          <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} comName="scheduleImpact" setScheduleImpact={setScheduleImpact} />
 
           {/* cost Impact316 */}
-          <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} />
+          <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} comName="costImpact" setCostImpact={setCostImpact} />
         </div>
 
         <br />
@@ -98,6 +194,10 @@ function DetailPageComponent(props) {
           keyTwo={props.downDetailData?.keyword2} 
           KeyThree={props.downDetailData?.keyword3}
           KeyFour={props.downDetailData?.keyword4}
+          setKeyword1={setKeyword1}
+          setKeyword2={setKeyword2}
+          setKeyword3={setKeyword3}
+          setKeyword4={setKeyword4}
           
         />
         {/* {props.downDetailData?.keyword1}
@@ -107,9 +207,9 @@ function DetailPageComponent(props) {
 
         <Divider className={classes.divider} />
 
-        <DataDescription dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" />
+        <DataDescription dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} />
 
-        <DataDescription dataOne={props.downDetailData?.completeComment} columnName="Complete Description" />
+        <DataDescription dataOne={props.downDetailData?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} />
 
         <Divider className={classes.divider} />
 
@@ -136,7 +236,7 @@ function DetailPageComponent(props) {
             {/* <Paper className={classes.paper}>
               Save
             </Paper> */}
-            <button className="detailPageSaveButton">Save</button>
+            <button className="detailPageSaveButton" onClick={handleDetailUpdate}>Save</button>
             </Grid>
         </Grid>
       </Paper>

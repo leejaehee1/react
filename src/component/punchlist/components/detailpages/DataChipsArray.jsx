@@ -146,7 +146,11 @@ export default function DataChipsArray(props) {
   useEffect(()=> {
     // console.log(22)
     setChipData(targetData)
-  }, [props])
+    props.setKeyword1('')
+    props.setKeyword2('')
+    props.setKeyword3('')
+    props.setKeyword4('')
+  }, [props.keyOne, props.keyTwo, props.KeyThree, props.KeyFour])
   let icon = <AddCircleOutlineIcon />
 
 
@@ -158,8 +162,49 @@ export default function DataChipsArray(props) {
   // };
 
 
+  useEffect(() => {
+    console.log('------------------')
+    chipData.map(v => {
+      if (v.key === 0){
+        props.setKeyword1(v.label)
+      }
+       else if (v.key === 1){
+        props.setKeyword2(v.label)
+      }
+      else if (v.key === 2){
+        props.setKeyword3(v.label)
+
+      }
+      else if (v.key === 3){
+        props.setKeyword4(v.label)
+      }
+    })
+    // delete로직
+    // var dhipDataKey = Object.keys(chipData);
+    // console.log(dhipDataKey)
+    // for (var d of [0, 1, 2, 3]){
+    //   if(dhipDataKey.includes(d) && ){} else {
+    //     if (d === 0){
+    //       props.setKeyword1('')
+    //     }
+    //      else if (d === 1){
+    //       props.setKeyword2('')
+    //     }
+    //     else if (d === 2){
+    //       props.setKeyword3('')
+  
+    //     }
+    //     else if (d === 3){
+    //       props.setKeyword4('')
+    //     }
+    //   }
+    // }
+
+  }, [chipData])
+
   return (
     <>
+      {/* {JSON.stringify(chipData)} */}
       <ThemeProvider theme={theme}>
         <Typography variant="h5">Keyword</Typography>
       </ThemeProvider>

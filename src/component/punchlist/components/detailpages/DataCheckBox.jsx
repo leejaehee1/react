@@ -70,26 +70,50 @@ const theme = createTheme({
 
 
 const DataCheckBox = (props) => {
-  const [checked, setChecked] = useState();
-  const [checkedMaterial, setCheckedMaterial] = useState();
+  const [checked, setChecked] = useState('');
+  const [checkedMaterial, setCheckedMaterial] = useState('');
   const classes = useStyles();
   let a = props.dataOne?.designChgReq
   let b = props.dataOne?.materialReq
 
-  useEffect(()=> {
-    setChecked(a)
-    setCheckedMaterial(b)
-  }, [props])
+
   // const handleChange = (event) => {
   //   setChecked(event.target.checked);
   // }
+  useEffect(()=> {
+    return ()=>{
+      setChecked('')
+      setCheckedMaterial('')
+      props.setDesignChgReq(false);
+      props.setMaterialReq(false);
+      console.log('2333333333333333333333333e')
+    }
+  }, [props.dataOne])
 
   const handleDetailBox = (e) => {
-    setChecked((pre)=>(Math.abs(pre-1)))
+    var designCheck;
+    setChecked((pre)=>{
+      if (String(checked).length){
+        designCheck = Math.abs(pre-1);
+      }else{
+        designCheck = Math.abs(parseInt(a)-1);
+      }
+      props.setDesignChgReq(designCheck);
+      return (designCheck)
+    })
   }
 
   const handleDetailMaterial = ()=> {
-    setCheckedMaterial((pre)=> (Math.abs(!pre)))
+    var materialCheck;
+    setCheckedMaterial((pre)=> { 
+      if (String(checkedMaterial).length){
+        materialCheck = Math.abs(pre-1);
+      } else{
+        materialCheck = Math.abs(parseInt(b)-1);
+      }
+      props.setMaterialReq(materialCheck);
+      return (materialCheck)
+    })
   }
 
   return (
@@ -109,14 +133,28 @@ const DataCheckBox = (props) => {
           </Paper>
         </Grid>
         <Grid item xs={1} style={{marginRight:'5px', marginLeft: '-20px'}}>
+            {/* {JSON.stringify(checked)}
+            {JSON.stringify(Boolean(String(checked)))}aa */}
           <Paper elevation={0} className={classes.rpaper}>
+            {(String(checked))?
             <Checkbox
               // defaultChecked
               onMouseDown={handleDetailBox}
-              checked={parseInt(checked)}
+              checked={checked}
               color="default"
-              inputProps={{ 'aria-label': 'checkbox with default color' }}
+              // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
+            :
+            <>
+            <Checkbox
+              // defaultChecked
+              onMouseDown={handleDetailBox}
+              checked={parseInt(props.dataOne?.designChgReq)}
+              color="default"
+              // inputProps={{ 'aria-label': 'checkbox with default color' }}
+            />
+            </>
+            }
           </Paper>
         </Grid>
         <Grid item xs={5}>
@@ -128,12 +166,21 @@ const DataCheckBox = (props) => {
         </Grid>
         <Grid item xs={1} style={{marginLeft:'-13px'}}>
           <Paper elevation={0} className={classes.rpaper}>
+            {(String(checkedMaterial))?
             <Checkbox
               onChange={handleDetailMaterial}
               checked={parseInt(checkedMaterial)}
               color="default"
-              inputProps={{ 'aria-label': 'checkbox with default color' }}
+              // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
+            :
+            <Checkbox
+              onChange={handleDetailMaterial}
+              checked={parseInt(props.dataOne?.materialReq)}
+              color="default"
+              // inputProps={{ 'aria-label': 'checkbox with default color' }}
+            />
+            }
           </Paper>
         </Grid>
       </Grid>

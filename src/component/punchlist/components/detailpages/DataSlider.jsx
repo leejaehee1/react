@@ -166,10 +166,20 @@ function DataSlider(props) {
 
   useEffect(()=> {
     setValue(props.dataOne)
-  }, [props])
-
+    if (props.comName==='scheduleImpact'){
+      props.setScheduleImpact(false)
+    } else {
+      props.setCostImpact(false)
+    }
+  }, [props.dataOne])
+ 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
+    if (props.comName==='scheduleImpact'){
+      props.setScheduleImpact(newValue)
+    } else {
+      props.setCostImpact(newValue)
+    }
   };
 
   const handleInputChange = (event) => {
@@ -206,6 +216,7 @@ function DataSlider(props) {
                 defaultValue={props.dataOne}
               //   aria-labelledby="input-slider"
                 valueLabelDisplay="auto"
+                name={props.comName}
                 step={1}
                 marks={marks}
                 min={1}

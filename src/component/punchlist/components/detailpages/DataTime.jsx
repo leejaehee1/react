@@ -79,11 +79,13 @@ function DataTime(props) {
 
     const handleDateChange = (date) => {
       setSelectedDate(date);
+      props.setTargetDate(date)
     };
 
     useEffect(()=> {
       setSelectedDate("")
-    },[props])
+      props.setTargetDate("")
+    },[props.dataOne])
 
     return (
         <>
