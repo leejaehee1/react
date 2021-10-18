@@ -15,6 +15,7 @@ import {
     Typography,
 
 } from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
 
 
 
@@ -65,12 +66,41 @@ const PunchBoard = (props) => {
         // console.log(props.otherCheckBox)
     }, [props])
 
+    const pagenationAllData = inputBoardIds
+    const [currentPage, setCurrentPage] = useState(1); // current page
+    const [postsPerPage, setPostsPerPage] = useState(12);  // count per page
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = pagenationAllData.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginationCount = parseInt(inputBoardIds.length / postsPerPage) + 1
+    // if(inputBoardIds.length){
+    //     // pagenation
+    //     // alldata
+    // }
+    // useEffect(()=> {
+    // }, [])
+
+    const handlePagination = (e) => {
+        // console.log(e.target.value)
+        // console.log(e)
+        // console.log(e.target)
+        // console.log(e.target.outerText)
+        setCurrentPage(e.target.outerText)
+        // console.log(e.target.elements)
+        // console.log(e.target.element)
+        // console.log(page)
+    }
+
     if (!boardIds) return null;
     return (
         // <Card>
         <div style={{overflow: 'auto', height: '700px'}}>
+            {/* aaaaaaaaaaaa{JSON.stringify(currentPosts)} */}
             <List dense={true}  >
                 {inputBoardIds.map(id => {
+                    // if (id!=='PC-2-00-MB-MBP-E-01-002'){ return <></>}
+                    if (!currentPosts.includes(id)){ return <></>}
                     return (
                         <>
                         <ListItem
@@ -142,8 +172,18 @@ const PunchBoard = (props) => {
                     );
                     
                 }
+
                 )
             }
+            <Pagination 
+            count={paginationCount} 
+            page={currentPage}
+            // boundaryCount={1}
+            // value={2}
+            defaultPage={1}
+            
+            onChange={handlePagination}
+             />
             </List>
         </div>
         // </Card>
