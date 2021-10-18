@@ -43,11 +43,15 @@ const PunchStatus = (props) => {
   // if (error) { return <p>ERROR</p>; }
   const targetData = props.allData
 
-  const a = Object.values(targetData).filter(da => da.status==="2").length;
-  const b = Object.values(targetData).filter(da => da.status==="3").length;
-  const c = Object.values(targetData).filter(da => da.status==="4").length;
-  const d = Object.values(targetData).filter(da => da.status==="5").length;
-  const e = Object.values(targetData).filter(da => da.status==="6").length;
+
+  // const boardAllData = data;
+  //   const allIndex = ids.filter(id=> (data[id].status !== '1' && data[id].projectID===window.localStorage.getItem('projectName')));
+
+  const a = Object.values(targetData).filter(da => (da.status==="2" && da.projectID===window.localStorage.getItem('projectName'))).length;
+  const b = Object.values(targetData).filter(da => (da.status==="3" && da.projectID===window.localStorage.getItem('projectName'))).length;
+  const c = Object.values(targetData).filter(da => (da.status==="4" && da.projectID===window.localStorage.getItem('projectName'))).length;
+  const d = Object.values(targetData).filter(da => (da.status==="5" && da.projectID===window.localStorage.getItem('projectName'))).length;
+  const e = Object.values(targetData).filter(da => (da.status==="6" && da.projectID===window.localStorage.getItem('projectName'))).length;
 
   
 

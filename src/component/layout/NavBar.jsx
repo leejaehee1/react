@@ -1,6 +1,6 @@
 import './styles/header.css'
 import React, { useEffect, useState } from 'react';
-import { UserMenu, Logout, LoadingIndicator, useGetList } from 'react-admin';
+import { UserMenu, Logout, LoadingIndicator, useGetList, useRefresh, useRedirect } from 'react-admin';
 
 import axios from 'axios';
 
@@ -9,7 +9,8 @@ const NavBar = () => {
     // const classes = useStyles();
     // const match = useRouteMatch(['/list', '/admin', '/code']);
     // const currentPath = match?.path ?? '/';
-
+    const refresh = useRefresh()
+    const redirect = useRedirect()
     const [statePunch, setStatePunch] = useState(true);
     const [stateManagement, setStateManagement] = useState(false);
     const [stateCode, setStateCode] = useState(false);
@@ -32,13 +33,14 @@ const NavBar = () => {
 
     const { data, ids } = useGetList('project', );
     const [userProjectName, setUserProjectName] = useState('');
-    const [userProjectList, setUserProjectList] = useState('');
-    const [apiUserProjectName, setApiUserProjectName] = useState();
+    const [userProjectList, setUserProjectList] = useState([]);
+    const [apiUserProjectName, setApiUserProjectName] = useState([]);
+    const [apiProject, setApiProject] = useState([]);
     let localUsername = window.localStorage.getItem('username')
 
     const urlUserProjectName = 'http://localhost:5000/punchlist/userprojectselect/?userid='+localUsername;
+    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
 
-    var testData ;
     useEffect(()=> {
         axios.get(urlUserProjectName)
         .then((res)=> {
@@ -53,32 +55,47 @@ const NavBar = () => {
         })
         .catch(err => console.log(err))
         console.log(urlUserProjectName)
+        axios.get(urlProjectID)
+        .then((res)=> setApiProject(res.data.result))
+        .catch(err => console.log(err))
     }, [])
     
     useEffect(()=> {
-        console.log(apiUserProjectName)
         let projectFilter = []
-        if(apiUserProjectName!==undefined){
+        let projectFilterID = []
+        if(apiUserProjectName){
 
-            Object.keys(data).map((i)=> {
-                if (apiUserProjectName.includes(data[i]['projectID'])){
+            Object.keys(apiProject).map((i)=> {
+                if (apiUserProjectName.includes(apiProject[i]['projectID'])){
                     // console.log(9)
                     // console.log(9)
                     // console.log(9)
                     // console.log(9)
                     // console.log(9)
                     // console.log(data[i]['projectName'])
-                    projectFilter.push(data[i]['projectName'])
+                    projectFilterID.push(apiProject[i]['projectID'])
+                    projectFilter.push(apiProject[i]['projectName'])
                 }
             })
+            window.localStorage.setItem('projectName', projectFilterID[0])
             setUserProjectList(projectFilter)
         }
-    }, [apiUserProjectName])
+        redirect('/')
+    }, [apiProject])
 
     const handleUserToProject = (e) => {
         // console.log(e.target.value)
         setUserProjectName(e.target.value)
-        window.localStorage.setItem('projectName', e.target.value)
+        Object.keys(apiProject).map((i)=> {
+            if(apiProject[i]['projectName']===e.target.value){
+                // console.log(apiProject[i]['projectID'])
+                window.localStorage.setItem('projectName', apiProject[i]['projectID'])
+            }
+        })
+
+
+
+        redirect('/')
     }
 
     useEffect(()=> {
@@ -91,8 +108,8 @@ const NavBar = () => {
     return (
 
         <>
-        aaa{JSON.stringify(apiUserProjectName)}
-        aaa{JSON.stringify(userProjectList)}
+        {/* aaa{JSON.stringify(apiUserProjectName)}
+        aaa{JSON.stringify(userProjectList)} */}
          <header >
             <div>
             <h1>
@@ -103,9 +120,10 @@ const NavBar = () => {
                 <p>{window.localStorage.getItem('username')}</p>
             </a>
             <select onChange={handleUserToProject}>
-                { userProjectList.map((name)=>
+                {(apiUserProjectName!==undefined && apiUserProjectName)? userProjectList.map((name)=>
                     (<option value={name}>{name}</option>)
-                )}
+                ): null
+            }
                 {/* { Object.keys(data).map((pj)=> 
                     (<option value={data[pj]['projectName']}>{data[pj]['projectName']}</option>)
                     )} */}

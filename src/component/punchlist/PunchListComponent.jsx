@@ -186,12 +186,12 @@ const PunchListComponent = () => {
     
 
     const boardAllData = data;
-    const allIndex = ids.filter(id=> data[id].status !== '1');
-    const allOpenedIdx = ids.filter(id=> data[id].status === '2');
-    const allReadyForReviewIdx = ids.filter(id=> data[id].status === '3');
-    const allRequestedForCloseIdx = ids.filter(id=> data[id].status === '4');
-    const allNotAcceptedIdx = ids.filter(id=> data[id].status === '5');
-    const allClosedIdx = ids.filter(id=> data[id].status === '6');
+    const allIndex = ids.filter(id=> (data[id].status !== '1' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allOpenedIdx = ids.filter(id=> (data[id].status === '2' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allReadyForReviewIdx = ids.filter(id=> (data[id].status === '3' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allRequestedForCloseIdx = ids.filter(id=> (data[id].status === '4' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allNotAcceptedIdx = ids.filter(id=> (data[id].status === '5' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allClosedIdx = ids.filter(id=> (data[id].status === '6' && data[id].projectID===window.localStorage.getItem('projectName')));
     
     const [upPunchBoardData, setUpPunchBoardData] = useState(0)
 

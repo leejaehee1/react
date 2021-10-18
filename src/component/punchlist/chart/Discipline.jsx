@@ -15,13 +15,13 @@ const Discipline = (props) => {
 
   const targetData = props.allData
 
-  const pipingNum = Object.values(targetData).filter(da => da.discipline==="1" && da.status !== '1').length;
-  const mechnincalNum = Object.values(targetData).filter(da => da.discipline==="2" && da.status !== '1').length;
-  const electricNum = Object.values(targetData).filter(da => da.discipline==="3" && da.status !== '1').length;
-  const instrumentNum = Object.values(targetData).filter(da => da.discipline==="4" && da.status !== '1').length;
-  const civilNum = Object.values(targetData).filter(da => da.discipline==="5" && da.status !== '1').length;
-  const architectureNum = Object.values(targetData).filter(da => da.discipline==="6" && da.status !== '1').length;
-  const structureNum = Object.values(targetData).filter(da => da.discipline==="7" && da.status !== '1').length;
+  const pipingNum = Object.values(targetData).filter(da => da.discipline==="1" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const mechnincalNum = Object.values(targetData).filter(da => da.discipline==="2" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const electricNum = Object.values(targetData).filter(da => da.discipline==="3" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const instrumentNum = Object.values(targetData).filter(da => da.discipline==="4" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const civilNum = Object.values(targetData).filter(da => da.discipline==="5" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const architectureNum = Object.values(targetData).filter(da => da.discipline==="6" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+  const structureNum = Object.values(targetData).filter(da => da.discipline==="7" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
   const barData = [
       { argument: 'Piping', value: pipingNum },
       { argument: 'Mechnincal', value: mechnincalNum },
