@@ -155,7 +155,7 @@ function DetailPageComponent(props) {
             {/* Material-UI Grid: */}
         </Typography>
 
-      {JSON.stringify(props.downDetailData?.punchID)} <br />
+      {/* {JSON.stringify(props.downDetailData?.punchID)} <br />
         DataTime: {JSON.stringify(targetDate)} <br />
         designChgReq: {JSON.stringify(designChgReq)} <br />
         materialReq: {JSON.stringify(materialReq)} <br />
@@ -166,7 +166,7 @@ function DetailPageComponent(props) {
         keyword3: {JSON.stringify(keyword3)} <br />
         keyword4: {JSON.stringify(keyword4)} <br />
         issueDescription: {JSON.stringify(issueDescription)} <br />
-        completeComment: {JSON.stringify(completeComment)} <br />
+        completeComment: {JSON.stringify(completeComment)} <br /> */}
         <DataOne dataOne={props.downDetailData} />
 
 

@@ -5,9 +5,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline, Container } from '@material-ui/core';
 import { CoreLayoutProps } from 'react-admin';
-import Header from './Header';
 
 import { Notification, Error } from 'react-admin';
+import Header from './Header';
 
 
 class Layout extends Component<LayoutProps, LayoutState>  {

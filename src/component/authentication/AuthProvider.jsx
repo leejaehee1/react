@@ -47,14 +47,14 @@ export default (type, params) => {
 
     // alll uset pass!!!!!
     // called when the user attempts to log in
-    if (type === AUTH_LOGIN) {
-        console.log(params)
-        const { username, password } = params;
-        localStorage.setItem('username', username);
-        localStorage.setItem('password', password);
-        // accept all username/password combinations
-        return Promise.resolve();
-    }
+    // if (type === AUTH_LOGIN) {
+    //     console.log(params)
+    //     const { username, password } = params;
+        // localStorage.setItem('username', username);
+        // localStorage.setItem('password', password);
+    //     // accept all username/password combinations
+    //     return Promise.resolve();
+    // }
 
     /*
 
@@ -66,41 +66,47 @@ export default (type, params) => {
     configure authProvider as follows:
 
     */
-    // if (type === AUTH_LOGIN) {
-    //     const { username, password } = params;
-    //     console.log(username, password);
-    //     const request = new Request('http://localhost:5000/api/login/', {
-    //         method: 'POST',
-    //         body: JSON.stringify({ userID : username, password }),
-    //         headers: new Headers({ 'Content-Type': 'application/json' }),
-    //     })
-    //     console.log("post 요청 보냈다.")
-    //     return fetch(request)
-    //         .then(response => {
-    //             console.log("response 받음---------")
-    //             console.log(response.body.locked)
-    //             console.log(response.status)
-    //             if (response.status < 200 || response.status >= 300) {
-    //                 throw new Error(response.statusText);
-    //             }
-    //             return response.json();
-    //         })
-    //         // .then(({ token }) => {
-    //         .then((response) => {
-    //             console.log("token 받음")
-    //             console.log(response.result)
-    //             localStorage.setItem('username', username);
-    //             if (response.result) {
-    //                 console.log('성공')
-    //                 return Promise.resolve();
-    //             } else {
-    //                 console.log('실패')
-    //             }
-    //             // const decodedToken = decodeJwt(token);
-    //             // localStorage.setItem('token', token);
-    //             // localStorage.setItem('permissions', decodedToken.permissions);
-    //         });
-    // }
+    if (type === AUTH_LOGIN) {
+        const { username, password } = params;
+        console.log(username, password);
+        const request = new Request('http://localhost:5000/api/login/', {
+            method: 'POST',
+            body: JSON.stringify({ userID : username, password }),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+        })
+        console.log("post 요청 보냈다.")
+        return fetch(request)
+            .then(response => {
+                console.log("response 받음---------")
+                console.log(response.body.locked)
+                console.log(response.status)
+                if (response.status < 200 || response.status >= 300) {
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            // .then(({ token }) => {
+            .then((auth) => {
+                console.log("token 받음")
+                console.log(auth)
+                console.log(auth.results)
+                console.log(auth.results.userID)
+                console.log(auth.results.password)
+                localStorage.setItem('auth', JSON.stringify(auth));
+                localStorage.setItem('username', auth.results.userID);
+                localStorage.setItem('password', auth.results.password);
+                if (auth.result) {
+                    console.log('성공')
+                    return Promise.resolve();
+                } else {
+                    console.log('실패')
+                    throw new Error('Network error')
+                }
+                // const decodedToken = decodeJwt(token);
+                // localStorage.setItem('token', token);
+                // localStorage.setItem('permissions', decodedToken.permissions);
+            });
+    }
 
 
 
