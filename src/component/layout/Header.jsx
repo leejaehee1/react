@@ -1,10 +1,6 @@
 import './styles/header.css'
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Tabs, Tab, Toolbar, AppBar, Box, Typography, Divider } from '@material-ui/core';
-import { Link, useRouteMatch } from 'react-router-dom';
 import { UserMenu, Logout, LoadingIndicator, useGetList } from 'react-admin';
-import { CodeSharp } from '@material-ui/icons';
 
 
 
@@ -46,8 +42,8 @@ const Header = () => {
         console.log('aa')
     }
 
-    const handleOptionTest = (e) =>{
-        console.log('aa')
+    const handleOptionTest = () =>{
+        console.log('abc')
     }
 
     return (

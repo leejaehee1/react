@@ -7,7 +7,8 @@ import { CssBaseline, Container } from '@material-ui/core';
 import { CoreLayoutProps } from 'react-admin';
 
 import { Notification, Error } from 'react-admin';
-import Header from './Header';
+import NavBar from './NavBar';
+// import Header from './Header';
 
 
 class Layout extends Component<LayoutProps, LayoutState>  {
@@ -46,7 +47,7 @@ class Layout extends Component<LayoutProps, LayoutState>  {
             // @ts-ignore
             <ThemeProvider theme={createMuiTheme(theme)}>
                 <CssBaseline />
-                <Header />
+                <NavBar />
                 
                 <Container>
                     
