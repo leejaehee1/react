@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 
-
+import './styles/PunchBoard.css'
 
 
 // import { cloneElement } from 'react';
@@ -83,12 +83,30 @@ const PunchBoard = (props) => {
         // console.log(page)
     }
 
+    const [detailPageUpdateButton, setDetailPageUpdateButton] = useState(false);
+    const [targetMouseOn, setTargetMouseOn] = useState('');
+    const onButton = (id) => {
+        clearInterval()
+        setTargetMouseOn(id)
+        setDetailPageUpdateButton(true)
+    }
+    const outButton = () => {
+        // if (targetMouseOn !== id){
+        // }
+        // setDetailPageUpdateButton(false)
+        // setTargetMouseOn('')
+
+        // setTimeout(() => {
+            setDetailPageUpdateButton(false)
+        // }, 5000)
+    }
+
     if (!boardIds) return null;
     return (
         // <Card>
-        <div style={{overflow: 'auto', height: '700px'}}>
+        <div onPointerLeave={outButton} style={{overflow: 'auto', height: '700px', maxWidth: '810px'}}>
             {/* aaaaaaaaaaaa{JSON.stringify(currentPosts)} */}
-            <List dense={true}  >
+            <List dense={true}>
                 {inputBoardIds.map(id => {
                     // if (id!=='PC-2-00-MB-MBP-E-01-002'){ return <></>}
                     if (!currentPosts.includes(id)){ return <></>}
@@ -98,6 +116,8 @@ const PunchBoard = (props) => {
                             button
                             key={id}
                             onClick={(e)=> updateDetailPage(id, e)}
+                            onPointerEnter={()=>onButton(id)} 
+                            // onMouseOut={()=>outButton(id)}
                             // onClick={()=> props.upPunchBoard(id)}
                             // component={Link}
                             // to={`/contacts/${id}/show`}
@@ -146,7 +166,12 @@ const PunchBoard = (props) => {
                                         </p>
                                     </>
                                 }
-                            />
+                                />
+                                {(detailPageUpdateButton && targetMouseOn===id)?
+                                <button className="updateOnMouseButton">update</button>
+                                :
+                                <></>
+                                }
 
 
                             <Typography variant="body2" Wcolor="textSecondary">

@@ -1,0 +1,14 @@
+button.updateOnMouseButton {
+    width: 100px;
+    height: 25px;
+    border-radius: 4px;
+    color: #ffffff;
+    background: #76868f;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    padding: 10px 15px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    text-align: center;
+    line-height: 2px;
+    cursor: pointer;
+  }
