@@ -47,15 +47,11 @@ const PunchBoard = (props) => {
     }
 
     
-    // const { data, ids } = useGetList('discipline', );
+
     const discipline = useGetList('discipline', );
     const systemID = useGetList('systems', );
     const subSystem = useGetList('subsystem', );
-    // console.dir(systemID.data)
-    // console.dir(Object.keys(subSystem.data))
-    // console.log(systemID?.data["05/70/80SG"]['systemName'])
-    // console.log(systemID?.data["UB"]['systemName'])
-    // console.log(props.otherCheckBox)
+
     
     const [checkedId, setCheckedId] = useState(false);
     
@@ -63,7 +59,7 @@ const PunchBoard = (props) => {
     
     useEffect(()=> {
         setCheckedId(props.otherCheckBox);
-        // console.log(props.otherCheckBox)
+
     }, [props])
 
     const pagenationAllData = inputBoardIds
@@ -74,12 +70,7 @@ const PunchBoard = (props) => {
     const currentPosts = pagenationAllData.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginationCount = parseInt(inputBoardIds.length / postsPerPage) + 1
-    // if(inputBoardIds.length){
-    //     // pagenation
-    //     // alldata
-    // }
-    // useEffect(()=> {
-    // }, [])
+
 
     const handlePagination = (e) => {
         // console.log(e.target.value)

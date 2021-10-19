@@ -1169,13 +1169,14 @@ const GridComponent = () => {
                 console.log(tData[uData.title])
                 console.log(uData.title)
                 console.log(valProjectID)
-                if (uData.title === 'projectID'){
-                    if(valProjectID.includes(tData[uData.title])) {
+                // if (uData.title === 'projectID'){
+                //     if(valProjectID.includes(tData[uData.title])) {
 
-                    }else{
-                        tArray.push(uData.title)
-                    }
-                }else if (uData.title === 'status'){
+                //     }else{
+                //         tArray.push(uData.title)
+                //     }
+                // }else 
+                if (uData.title === 'status'){
                     if(valStatus.includes(tData[uData.title])) {
 
                     }else{
@@ -1284,19 +1285,30 @@ const GridComponent = () => {
     const refresh = useRefresh()
 
     const handleSaveDatabase = () => {
+        setOpenModal(true)
         
         // console.log("찍힌다.")
+
+    }
+    const [alertFirstOpen, setAlertFirstOpen] = React.useState(false);
+    const [openModal, setOpenModal] = React.useState(false);
+
+    const handelModalCancelButton = () => {
+        setOpenModal(false)
+    }
+
+    const handelModalApplyButton = () => {
         create('list/create',
             {data: data, colDefs: excelChangedArray.current},
             {
                 onSuccess: () => {
                     refresh()
-                    // console.log("create 성공")
+                    console.log("create 성공")
                 }
             }
         )
+        setOpenModal(false)
     }
-    const [alertFirstOpen, setAlertFirstOpen] = React.useState(false);
 
     
     return (
@@ -1311,6 +1323,23 @@ const GridComponent = () => {
                     }}>
             <div>
                 <React.Fragment key="right">
+                {/* save logic */}
+                <Dialog onClose={handelModalCancelButton} aria-labelledby="simple-dialog-title" open={openModal}>
+                    <div style={{width:"400px", height:"100px", textAlign:'center' }}>
+                        <DialogTitle 
+                            id="simple-dialog-title" 
+                            style={{display:"flex", justifyContent:'center', marginTop:'20px', fontSize:'10px'}}>
+                                Did you check the data?
+                        </DialogTitle>
+
+                    </div>
+                    <div style={{display:'flex', justifyContent:'center'}}>
+                        <button className="notAcceptedCommentCancelButton" onMouseDown={handelModalCancelButton}>No</button>
+                        <button className="notAcceptedCommentApplyButton" onMouseDown={handelModalApplyButton}>Yes</button>
+                    </div>
+
+                </Dialog>
+            
                     <Dialog
                         open={valOpen}
                         onClose={handleValClose}

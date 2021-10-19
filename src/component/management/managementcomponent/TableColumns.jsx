@@ -130,26 +130,28 @@ const TableColumns = (props) => {
                                 <StyledTableRow hover key={row} onClick={checka} style={{background: "#e0e0e0"}}>
                                     <StyledTableCell component="th" scope="row">
                                         {row}  
-                                    </StyledTableCell>
-                                    <StyledTableCell align="left">
                                         {row==='projectID' || row==='punchID'?
                                                 <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
                                             :
                                                 <></>
                                         }
+                                    </StyledTableCell>
+                                    <StyledTableCell align="left">
                                     </StyledTableCell>
                                 </StyledTableRow>
                                 :
                                 <StyledTableRow hover key={row} onClick={checka} >
-                                    <StyledTableCell component="th" scope="row">
-                                        {row}  
-                                    </StyledTableCell>
-                                    <StyledTableCell align="left">
                                         {row==='projectID' || row==='punchID'?
-                                                <Chip avatar={<Avatar>PK</Avatar>} label="Check Required" />
+                                        <StyledTableCell component="th" scope="row">                      
+                                                {/* <Chip avatar={<Avatar>PK</Avatar>} label={row} /> */}
+                                                {row}
+                                        </StyledTableCell>
                                             :
-                                                <></>
+                                        <StyledTableCell component="th" scope="row">
+                                                <>{row}</>
+                                        </StyledTableCell>
                                         }
+                                    <StyledTableCell align="left">
                                     </StyledTableCell>
                                 </StyledTableRow>
                             }

@@ -3,6 +3,9 @@ import MaterialTable from 'material-table'
 import axios from 'axios';
 import './styles/Drawing.css'
 
+// modal
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
 
 const DepartmentTable = () => {
     const [getDepartment, setGetDepartment] = useState();
@@ -51,11 +54,39 @@ const DepartmentTable = () => {
         console.log(data)
     }, [data])
 
+    const [openModal, setOpenModal] = React.useState(false);
+    
+    const handleSaveDatabase = () => {
+      setOpenModal(true)
+    }
+
+    const handelModalCancelButton = () => {
+        setOpenModal(false)
+    }
+
+    const handelModalApplyButton = () => {
+
+        setOpenModal(false)
+    }
+
 
     return (
         <>
-        <div style={{padding: '15px'}}>
-                <button className='drawingButton' >Save</button>
+          <Dialog onClose={handelModalCancelButton} aria-labelledby="simple-dialog-title" open={openModal}>
+                <div style={{width:"400px", height:"100px", textAlign:'center' }}>
+                    <DialogTitle 
+                        id="simple-dialog-title" 
+                        style={{display:"flex", justifyContent:'center', marginTop:'20px', fontSize:'10px'}}>
+                            Did you check the data?
+                    </DialogTitle>
+                </div>
+                <div style={{display:'flex', justifyContent:'center'}}>
+                    <button className="notAcceptedCommentCancelButton" onMouseDown={handelModalCancelButton}>No</button>
+                    <button className="notAcceptedCommentApplyButton" onMouseDown={handelModalApplyButton}>Yes</button>
+                </div>
+            </Dialog>
+            <div style={{padding: '15px'}}>
+                <button className='drawingButton' onClick={handleSaveDatabase} >Save</button>
             </div>
             <MaterialTable
       title="Department"

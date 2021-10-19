@@ -586,24 +586,11 @@ const PunchListComponent = () => {
 
 
 
-            {/* <ArrowDropUpIcon fontSize="large" />
-            <ArrowDropDownIcon fontSize="large" /> */}
-            {/* aaaaaaaaaaaaaaaaaaaaaaaa
-            <TuneIcon /><input type="text" /><SearchIcon /> */}
+
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>
-                        {/* <Checkbox
-                            size="small"
-                            color="default"
-                            labelPlacement="top"
-                            onClick={e => {
-                                // e.stopPropagation();
-                                // console.log(e.target)
-                                // console.log(id)
-                                // onToggleItem(id);
-                            }}
-                        /> */}
+
                         <div style={{width:'40px', margin:'0px'}}>
                             <FormControlLabel
                                 style={{marginLeft:'5px', marginBottom: '-10px'}}

@@ -22,9 +22,10 @@ import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 import './styles/excelcolumns.css'
 
+
 //alert
-// import { Alert, AlertTitle } from '@material-ui/lab';
-// import Collapse from '@material-ui/core/Collapse';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
 
 
 
@@ -79,6 +80,8 @@ const ExcelColumns = (props) => {
     const [deleteArray, setDeletArray] = React.useState(dummyDeleteArray.fill(true))
     const excelChangedInit = useRef(props.excelColumns)
     const eTargetId = useRef("")
+    const [deleteAlertOpen, setDeleteAlertOpen] = useState(false)
+
     // console.log(sqlColumnDatas)
     // console.log(props.sqlHooks)
 
@@ -98,23 +101,17 @@ const ExcelColumns = (props) => {
 
 
     const deleteCheck= (e) => {
-        // setDeletId(e.target.id)
-        // return () => {
-        //     setDeletId(false)
-        // }
-        // console.log(e.target.id)
+
+        console.log(e.target.id)
         if (e.target.id) {
-            // console.log("asdfasdfasdfsdfadfdsfsadf")
             eTargetId.current = e.target.id
+            console.log(1)
+
+        } else {
+            // alert('Please Click slowly. Loading...')
+            setDeleteAlertOpen(true)
         }
-        // let deleteIdData = deleteArray
-        // console.log("deleteIdData")
-        // console.log(deleteArray)
-        // deleteIdData[e.target.id] = !deleteIdData[e.target.id]
-        console.log(typeof(deleteArray)==='object')
-        // if (typeof(deleteArray)==='object'){
-            
-        // }
+
         try{
             let deleteIdData = deleteArray.map((v, i) => {
                 // console.log(i);
@@ -125,10 +122,11 @@ const ExcelColumns = (props) => {
                 }else{
                     return v
                 }});
-            // console.log(deleteIdData)
-            // console.log(deleteArray)
-            setDeletArray({...deleteIdData})
+                // console.log(deleteIdData)
+                // console.log(deleteArray)
+                setDeletArray(deleteIdData)
         }catch(e){console.log(deleteArray)}
+        // console.log(deleteArray)
         return () => {
             setDeletId(false);
         }
@@ -255,7 +253,10 @@ const ExcelColumns = (props) => {
     }
 
     return (
-        <>
+        <>  
+            <Collapse in={deleteAlertOpen}>
+                <Alert severity="error" onClose={() => {setDeleteAlertOpen(false)}}>Please Click slowly. — Loading.....</Alert>
+            </Collapse>
             <h1>Excel Columns  &nbsp;&nbsp;&nbsp;&nbsp;
                 <button className="excelColumns" onClick={searchMappingColumns}><FindInPageIcon placement="button-start" />AutoMapping</button></h1>
             {/* <Collapse in={alertOpen}>
