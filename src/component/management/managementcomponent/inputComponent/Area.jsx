@@ -5,6 +5,8 @@ import React, {useEffect, useRef, useState} from 'react';
 // import InputLabel from '@material-ui/core/InputLabel'; 
 // import FormHelperText from '@material-ui/core/FormHelperText'; 
 import NativeSelect from '@material-ui/core/NativeSelect'; 
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 // get API
 import { useGetList } from 'react-admin';

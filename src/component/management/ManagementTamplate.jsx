@@ -9,12 +9,13 @@ const ManagementTamplate = () => {
             style={{ 
                         // maxWidth: '100%',
                         width: '100%',
+                        // height: '100px',
                         display: 'flex',
                         justifyContent: 'center', 
                     }}>
-        <br />
-        <br />
-        <br />
+        {/* <br /> */}
+        {/* <br /> */}
+        {/* <br /> */}
     
             {/* <h1 align="center">Punch-list Import</h1> */}
             {/* <h4>Import Data from Excel, Csv in Material Table</h4> */}

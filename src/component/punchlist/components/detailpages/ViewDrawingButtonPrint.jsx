@@ -8,6 +8,18 @@ const ComponentToPrint = (props) => {
     const [getDepartment, setGetDepartment] = useState([]);
     const [getSystem, setGetSystem] = useState([]);
     const [getSubSystem, setGetSubSystem] = useState([]);
+    const [getPhotos, setGetPhotos] = useState([]);
+    const [getDrawing, setGetDrawing] = useState([]);
+
+    const [imagePathListB, setImagePathListB] = useState([]);
+    const [imagePathListA, setImagePathListA] = useState([]);
+    const [imageUrlB, setImageUrlB] = useState('');
+    const [imageUrlA, setImageUrlA] = useState('');
+
+    const [imageNameDB, setImageNameDB] = useState('');
+
+
+
 
 
     let nowTime = JSON.stringify(new Date()).slice(1, 11)
@@ -17,8 +29,18 @@ const ComponentToPrint = (props) => {
     const urlDepartment = 'http://localhost:5000/punchlist/department/?range=[0, 24]';
     const urlSystem = 'http://localhost:5000/punchlist/systems/?range=[0, 24]';
     const urlSubSystem = 'http://localhost:5000/punchlist/subsystem/?range=[0, 24]';
+    const urlPhotos = 'http://localhost:5000/punchlist/photos/?range=[0, 24]';
+    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
 
     useEffect(()=>{
+        axios.get(urlDrawing)
+        .then((res)=> setGetDrawing(res.data.result))
+        .catch(err => console.log(err))  
+
+        axios.get(urlPhotos)
+        .then((res)=> setGetPhotos(res.data.result))
+        .catch(err => console.log(err))
+
         axios.get(urlProjectID)
         .then((res)=> setGetProjectID(res.data.result))
         .catch(err => console.log(err))
@@ -39,6 +61,51 @@ const ComponentToPrint = (props) => {
         .then((res)=> setGetSubSystem(res.data.result))
         .catch(err => console.log(err))
     }, [])
+
+    useEffect(()=> {
+        const sampleImagePathListB = []
+        const sampleImagePathListA = []
+        if(getPhotos.length) {
+            getPhotos.map(rw => {
+                if(rw.punchID === props.downDetailData?.punchID && parseInt(rw.punchStep) === 1){
+                    sampleImagePathListB.push({label: rw.punchID ,
+                        imagePath :rw.imagePath})
+                }
+            })
+        }
+        if(getPhotos.length) {
+            getPhotos.map(rw => {
+                if(rw.punchID === props.downDetailData?.punchID && parseInt(rw.punchStep) === 2){
+                    sampleImagePathListA.push({label: rw.punchID ,
+                        imagePath :rw.imagePath})
+                }
+            })
+        }
+        setImagePathListB(sampleImagePathListB)
+        setImagePathListA(sampleImagePathListA)
+    }, [getPhotos])
+
+    useEffect(()=> {
+        var targetData = ''
+        if(getDrawing.length) {
+            getDrawing.map(rw => {
+                if(rw.projectID === props.downDetailData?.projectID){
+                    targetData=rw.drawingNo
+                }
+            })
+        }
+        setImageNameDB(targetData)
+    }, [getDrawing])
+
+    useEffect(()=> {
+        setImageUrlB(`http://localhost:5000/${imagePathListB[0]?.imagePath.slice(7)}`)
+        setImageUrlA(`http://localhost:5000/${imagePathListA[0]?.imagePath.slice(7)}`)
+    }, [imagePathListA, imagePathListB])
+
+    const [drawingImage, setDrawingImage] = useState('');
+    useEffect(()=> {
+        setDrawingImage(`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`)
+    }, [imageNameDB])
 
 
     const [projectIDState, setProjectIDState] = useState(props.downDetailData.projectID)
@@ -138,10 +205,20 @@ const ComponentToPrint = (props) => {
                     <span>Material Requested : {(Number(props.downDetailData.materialReq))?<>Yes</>:<>No</>}</span> <br />
                 </div>
             </div>
-            <div style={{display:'flex', height:'340px', border:'1px solid', marginTop:'7px'}}>
+            <div style={{display:'flex', maxHeight:'340px', border:'1px solid', marginTop:'7px'}}>
                 <div style={{width:"50%", borderRight:'1px solid'}}>
                     <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'center', alignItems:'center'}}>Issued</div>
-                    <div style={{width:"100%", height:'190px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{width:"100%", height:'190px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                        <img
+                        // className={classes.img}
+                        // src={tutorialSteps[activeStep].imgPath}
+                        height="100%"
+                        // height="100%"
+                        src={imageUrlB}
+                        // alt={tutorialSteps[activeStep].label}
+                        alt={imagePathListB?.label}
+                        />
+                    </div>
                     <div style={{width:"100%", height:'120px', borderTop:'1px solid', display:'flex', justifyContent:'left', paddingLeft:'4px', alignItems:'center'}}> 
                      {props.downDetailData.issueDescription}
                     
@@ -149,20 +226,47 @@ const ComponentToPrint = (props) => {
                 </div>
                 <div style={{width:"50%"}}>
                     <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'center', alignItems:'center'}}>Completed</div>
-                    <div style={{width:"100%", height:'190px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{width:"100%", height:'190px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                        <img
+                            // className={classes.img}
+                            // src={tutorialSteps[activeStep].imgPath}
+                            height="100%"
+                            // height="100%"
+                            src={imageUrlA}
+                            // alt={tutorialSteps[activeStep].label}
+                            alt={imagePathListA?.label}
+                            />
+                    </div>
                     <div style={{width:"100%", height:'120px', borderTop:'1px solid', display:'flex', justifyContent:'left', paddingLeft:'4px', alignItems:'center'}}>
                      {props.downDetailData.completeComment}
                     </div>
                 </div>
             </div>
-            <div style={{display:'flex', height:'210px', border:'1px solid', marginTop:'7px'}}>
+            <div style={{display:'flex', maxHeight:'210px', border:'1px solid', marginTop:'7px'}}>
                 <div style={{width:"50%"}}>
                     <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'left', marginLeft:'3px', alignItems:'center'}}>Drawing</div>
-                    <div style={{width:"100%", height:'180px', borderRight:'1px solid',  borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{width:"100%", height:'180px', borderRight:'1px solid',  borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                    {/* {drawingImage} */}
+                    <img 
+                        src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} 
+                        alt="" 
+                        // width="800px" 
+                        height="100%" 
+                    />
+                    </div>
                 </div>
                 <div style={{width:"50%"}}>
                     <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'center', alignItems:'center'}}></div>
-                    <div style={{width:"100%", height:'180px', borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>Opend</div>
+                    <div style={{maxWidth:"290px", maxHeight:'170px', borderTop:'1px solid', overflow:'hidden'}}>
+                        <img 
+                            src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} 
+                            alt="" 
+                            // style={{maxHeight: '2000px', marginTop: '-75%', marginLeft: '-100%'}}  // top 180, left 250
+                            style={{tranform:'scale(5)', WebkitTransform:'scale(5)'}}
+                            width="290px" 
+                            height="170px" 
+                        />
+                    </div>
                 </div>
             </div>
 

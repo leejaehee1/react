@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import TableColumns from './TableColumns';
 import ExcelColumns from './ExcelColumns';
 
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import './styles/excelcolumns.css'
 import './styles/ColumnMappingButton.css'
@@ -100,7 +101,8 @@ const ColumnMappingButton = (props) => {
       setOpen(true);
       setModalFlag(false)
     } else {
-      alert("neet to import excel : ColumnMappingButton 102")
+      // alert("neet to import excel : ColumnMappingButton 102")
+      props.setAlertFirstOpen(true)
     }
     // console.log("excelHook")
     // console.log(excelHook)
@@ -197,6 +199,7 @@ const ColumnMappingButton = (props) => {
           {/* <Alert severity="success">This is a    alert — check it out!</Alert> */}
           {/* <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert> */}
         </Collapse>
+        
           <Grid container spacing={3} alignItems="center">
             <Grid item xs={6}>
               <Paper className={classes.paper} elevation={0}>
@@ -220,7 +223,7 @@ const ColumnMappingButton = (props) => {
             </Grid>
             <Grid item xs={2}>
               <Paper className={classes.paper} elevation={0}>
-                <KeyboardBackspaceIcon style={{ fontSize: 80 }} />
+                <ArrowBackIosIcon style={{ fontSize: 80 }} />
               </Paper>
             </Grid>
             <Grid item xs={4} elevation={0}>

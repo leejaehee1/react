@@ -25,6 +25,17 @@ import UserCode from './codeComponent/UserCode';
 import Unit from './codeComponent/Unit';
 import Area from './codeComponent/Area';
 import Drawing from './codeComponent/Drawing';
+import DisciplineTable from './codeComponent/DisciplineTable';
+import AreaTable from './codeComponent/AreaTable';
+import ProjectTable from './codeComponent/ProjectTable';
+import StatusTable from './codeComponent/StatusTable';
+import CategoryTable from './codeComponent/CategoryTable';
+import AuthorityTable from './codeComponent/AuthorityTable';
+import DepartmentTable from './codeComponent/DepartmentTable';
+import SystemTable from './codeComponent/SystemTable';
+import SubsystemTable from './codeComponent/SubsystemTable';
+import UserCodeTable from './codeComponent/UserCodeTable';
+import UnitTable from './codeComponent/UnitTable';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -120,42 +131,42 @@ function CodeTamplate() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Resource name="project" list={Project} />
+            {/* <Resource name="project" list={Project} /> */}
+            <ProjectTable />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <Resource name="status" 
-            list={Status} 
-            // edit={StatusEdit} 
-            />
+            <StatusTable />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            <Resource name="discipline" list={Discipline} 
+            {/* <Resource name="discipline" list={Discipline} 
             // edit={EditGuesser} 
-            />
+            /> */}
+            <DisciplineTable />
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
-            <Resource name="category" list={Category} />
+            <CategoryTable />
           </TabPanel>
           <TabPanel value={value} index={4} dir={theme.direction}>
-            <Resource name="authority" list={Authority} />
+            <AuthorityTable />
           </TabPanel>
           <TabPanel value={value} index={5} dir={theme.direction}>
-            <Resource name="department" list={Department} />
+            <DepartmentTable />
           </TabPanel>
           <TabPanel value={value} index={6} dir={theme.direction}>
-            <Resource name="systems" list={System} />
+            <SystemTable />
           </TabPanel>
           <TabPanel value={value} index={7} dir={theme.direction}>
-            <Resource name="subsystem" list={Subsystem} />
+            <SubsystemTable />
           </TabPanel>
           <TabPanel value={value} index={8} dir={theme.direction}>
-            <Resource name="usercode" list={UserCode} />
+            <UserCodeTable />
           </TabPanel>
           <TabPanel value={value} index={9} dir={theme.direction}>
-            <Resource name="unit" list={Unit} />
+            <UnitTable />
           </TabPanel>
           <TabPanel value={value} index={10} dir={theme.direction}>
-            <Resource name="area" list={Area} />
+            {/* <Resource name="area" list={Area} /> */}
+            <AreaTable />
           </TabPanel>
           <TabPanel value={value} index={11} dir={theme.direction}>
             <Resource name="drawing" list={Drawing} />

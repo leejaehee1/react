@@ -111,18 +111,24 @@ const ExcelColumns = (props) => {
         // console.log("deleteIdData")
         // console.log(deleteArray)
         // deleteIdData[e.target.id] = !deleteIdData[e.target.id]
-        let deleteIdData = deleteArray.map((v, i) => {
-            // console.log(i);
-            if(i===parseInt(eTargetId.current)){
-                // return !v
-                // console.log("들어오니")
-                return !v
-            }else{
-                return v
-            }});
-        // console.log(deleteIdData)
-        // console.log(deleteArray)
-        setDeletArray(deleteIdData)
+        console.log(typeof(deleteArray)==='object')
+        // if (typeof(deleteArray)==='object'){
+            
+        // }
+        try{
+            let deleteIdData = deleteArray.map((v, i) => {
+                // console.log(i);
+                if(i===parseInt(eTargetId.current)){
+                    // return !v
+                    // console.log("들어오니")
+                    return !v
+                }else{
+                    return v
+                }});
+            // console.log(deleteIdData)
+            // console.log(deleteArray)
+            setDeletArray({...deleteIdData})
+        }catch(e){console.log(deleteArray)}
         return () => {
             setDeletId(false);
         }
@@ -147,14 +153,6 @@ const ExcelColumns = (props) => {
         props.onLogic(excelChangedInit.current)
     }
 
-
-    // useEffect(() => {
-    //     const deleteIdData = deleteArray
-    //     deleteIdData[deleteId] = !deleteIdData[deleteId]
-    //     setDeletArray(deleteIdData)
-    //     setDeletId(false)
- 
-    // }, [deleteId])
 
     useEffect(() => {         //////////////////////////////////////////////
         if (excelChangedInit){

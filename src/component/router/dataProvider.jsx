@@ -82,7 +82,18 @@ export default {
     //         data: { ...json, id: json[json.resultID] },
     //     }))
     //     },
+    // getOne: (resource, params) =>
+    //     httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
+    //         data: json.result.map(resource => ({ ...resource, id: resource[json.resultID] }) ),
+    //     })),
 
+
+    getOne: (resource, params) =>
+        httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
+            data: json,
+        })),
+
+        
     getMany: (resource, params) => {
         const query = {
             filter: JSON.stringify({ id: params.ids }),
@@ -116,12 +127,21 @@ export default {
     update: (resource, params) => {
         console.log(resource);
         console.log(params);
-        return httpClient(`${apiUrl}/${resource}/${params.id.a}`, {
-            method: 'PUT',
-            body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ 
-            data : { ...json, id: json._id },
-        }));
+        if (params.id.a){
+            return httpClient(`${apiUrl}/${resource}/${params.id.a}`, {
+                method: 'PUT',
+                body: JSON.stringify(params.data),
+            }).then(({ json }) => ({ 
+                data : { ...json, id: json._id },
+            }));
+        } else {
+            return httpClient(`${apiUrl}/${resource}/${params.id}`, {
+                method: 'PUT',
+                body: JSON.stringify(params.data),
+            }).then(({ json }) => ({ 
+                data : { ...json, id: json._id },
+            }));
+        }
     },
     
     updateMany: (resource, params) => {
@@ -140,17 +160,18 @@ export default {
             body: JSON.stringify(params.data),
         }).then(({ json }) => ({
             // data: { ...params.data, id: json.id },
-            data: { ...params.data, id: json.punchID },
+            data : { ...json, id: json._id },
         })),
 
-    delete: (resource, params) =>
+    delete: (resource, params) =>{
+        console.log(`${apiUrl}/${resource}/${params.id}`);
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'DELETE',
         }).then(({ json }) => ({ 
             // data: json 
             data : { ...json, id: json._id },
 
-        })),
+        }))},
 
     deleteMany: (resource, params) => {
         const query = {

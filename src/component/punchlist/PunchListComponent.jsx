@@ -17,6 +17,8 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import ViewStreamIcon from '@material-ui/icons/ViewStream';
 import ViewStreamTwoToneIcon from '@material-ui/icons/ViewStreamTwoTone';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+import { Alert, AlertTitle } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
 
 
 //search
@@ -436,7 +438,9 @@ const PunchListComponent = () => {
         // console.log(34)
 
         // console.log("keywordF")
-        // console.log(keywordF)
+        if (keywordF.length ===0 && dataForFilter){
+            setAlertButton(true)
+        }
         setBoardIndexData(keywordF);
     }, [dataForFilter])
 
@@ -463,8 +467,14 @@ const PunchListComponent = () => {
     }, [searchText])
 
 
+    const [alertButton, setAlertButton] = useState(false)
+    // const
+
     return (
         <React.Fragment>
+            <Collapse in={alertButton}>
+                <Alert severity="error" onClose={() => {setAlertButton(false)}}>Cannot find data by filter</Alert>
+            </Collapse>
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
             {/* <div> */}
             {show?(
@@ -555,6 +565,7 @@ const PunchListComponent = () => {
                         <TuneIcon onClick={handleFilterOpen} fontSize="large" style={{ paddingTop: "5px", height: "100%", cursor:'pointer' }} />
                     {/* </Button> */}
             {/* SimpleDialog about TuneIcon */}
+            
                     <Dialog onClose={handleFilterClose} aria-labelledby="simple-dialog-title" open={filterOpen}>
                         <DialogTitle id="simple-dialog-title" style={{display:"flex", justifyContent:'center'}}>Filter Conditions</DialogTitle>
                         <PunchlistFilter 

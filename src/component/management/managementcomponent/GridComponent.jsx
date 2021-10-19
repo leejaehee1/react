@@ -1296,6 +1296,8 @@ const GridComponent = () => {
             }
         )
     }
+    const [alertFirstOpen, setAlertFirstOpen] = React.useState(false);
+
     
     return (
         <div style={{
@@ -1496,6 +1498,13 @@ const GridComponent = () => {
                         <Collapse in={alertImportOpen}>
                             <Alert severity="error" onClose={() => {setAlertImportOpen(false)}}>Please check Excel Import.</Alert>
                         </Collapse>
+                        <Collapse in={alertFirstOpen}>
+                            <Alert severity="error" onClose={() => {setAlertFirstOpen(false)}}>This is an error alert — Neet to import excel</Alert>
+                            {/* <Alert severity="warning">This is a warning alert — check it out!</Alert> */}
+                            {/* <Alert severity="info">This is an info alert — check it out!</Alert> */}
+                            {/* <Alert severity="success">This is a    alert — check it out!</Alert> */}
+                            {/* <Alert onClose={() => {setAlertOpen(false)}}>This is a success alert — check it out!</Alert> */}
+                        </Collapse>
                         <div style={{padding:'0', width:'100%'}}>
                         {/* <MTableToolbar {...props} /> */}
                         <Box display="flex" p={1} bgcolor="background.paper">
@@ -1536,6 +1545,7 @@ const GridComponent = () => {
                                     onexcelChangedColumns={onexcelChangedColumns} 
                                     onApply={onApply} 
                                     compareDbColumns={compareDbColumns}
+                                    setAlertFirstOpen={setAlertFirstOpen}
                                 />
 
                                 &nbsp;&nbsp;&nbsp;

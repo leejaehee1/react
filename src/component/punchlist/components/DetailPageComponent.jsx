@@ -219,7 +219,7 @@ function DetailPageComponent(props) {
         
         
         
-        <ViewDrawingButton />
+        <ViewDrawingButton dataOne={props.downDetailData} />
 
 
         <Divider className={classes.divider} />

@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect'; 
 
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
 // get API
 import { useGetList } from 'react-admin';
 

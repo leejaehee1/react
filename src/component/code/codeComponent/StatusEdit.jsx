@@ -19,7 +19,7 @@ export const StatusEdit = (props) => (
             {/* <TextInput disabled label="Id" source="id" /> */}
             <TextInput source="status" validate={required()} />
             <TextInput source="statusName" validate={required()} />
-            <TextInput source="shortName" validate={required()} />
+            <TextInput source="shortName" />
             <TextInput source="authority" />
             <TextInput source="remarks" />
             {/* <TextInput multiline source="teaser" validate={required()} />
