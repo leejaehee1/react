@@ -52,8 +52,12 @@ const PunchStatus = (props) => {
   const c = Object.values(targetData).filter(da => (da.status==="4" && da.projectID===window.localStorage.getItem('projectName'))).length;
   const d = Object.values(targetData).filter(da => (da.status==="5" && da.projectID===window.localStorage.getItem('projectName'))).length;
   const e = Object.values(targetData).filter(da => (da.status==="6" && da.projectID===window.localStorage.getItem('projectName'))).length;
-
-  
+  const allDataLength = a+b+c+d+e;
+  let target = {"opened":parseInt(a/allDataLength*100), 
+              "Ready for Review":parseInt(b/allDataLength*100), 
+              "requested for close":parseInt(c/allDataLength*100), 
+              "not accepted":parseInt(d/allDataLength*100), 
+              "closed":parseInt(e/allDataLength*100)}
 
   const pieData = [
     { argument: "opened", value: a },
@@ -72,6 +76,12 @@ const PunchStatus = (props) => {
     </>
     )
   }
+
+  const customizeText =(arg) => {
+    // return `${JSON.stringify(arg)}  a`
+    console.log(arg)
+    return `${arg.pointName} (${target[arg.pointName]}%)`;
+  }
   
   return (
     <>
@@ -86,6 +96,7 @@ const PunchStatus = (props) => {
                   argumentField="argument" 
                   valueField="value" 
               />
+              
               <Tooltip enabled={true} />
               {/* <Type /> */}
               <Size
@@ -95,8 +106,8 @@ const PunchStatus = (props) => {
               <Margin
                   // top={20}
                   // bottom={20}
-                  left={60}
-                  // right={30}
+                  left={10}
+                  right={-10}
               />
 
               
@@ -108,7 +119,7 @@ const PunchStatus = (props) => {
                       horizontalAlignment="right" 
                       // top/bottom
                       verticalAlignment="top"
-
+                      customizeText={(arg)=>customizeText(arg)}
                       // columnItemSpacing={20}
                       // rowItemSpacing={30}
 

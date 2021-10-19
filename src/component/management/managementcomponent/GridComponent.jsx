@@ -1004,54 +1004,22 @@ const GridComponent = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         try {
-            // console.dir(event)
             console.dir("-----------------------------------")
             console.dir(event.target.elements)
             console.dir(event.target)
-            // console.dir(event.target.elements.area.value) // 각 값들
-            // console.dir(event.target.elements[0]["defaultValue"]) // 각 값들
-            // console.dir(event.target.elements.punchID.value) // 각 값들
             console.dir(event.target.elements.closedDate.value) // 각 값들
         } catch (e) {
             console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
-            // alert("삐뽀삐뽀 에러 삐뽀삐뽀")
         }
-        // console.dir(event.target.elements.status.value) // 각 값들
-        // console.dir(event.target.elements["Area"]["value"]) // 각 값들
-        // console.dir(event.target.elements["PunchID"]["value"]) // 각 값들
-        // console.log(selectRowId) // row ID
 
-
-        // console.dir(data)
-        // console.dir(data[0])
-        // console.dir(data[0]["Area"])
-        // console.dir(updateColDefs.current)
 
         updateColDefs.current.map((a)=> {
                 try {
                     data[selectRowId][a.title] = event.target.elements[a.title]["value"];
                     console.log(a.title, "은 table에 반영되었다.")
-                    // console.log(data[selectRowId][a.title]);
                 } catch (e) {
                     console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
-                    // alert(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                 }
-
-                // if (a.title === "difficulty") {
-                //     console.log("----------------------------------")
-                //     console.log("difficulty는 여기서 따로 저장했다.")
-                //     console.log(event.target.elements[0]["defaultValue"])
-                //     // console.log(event.target.elements[a.title]["value"])
-                //     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
-                // }
-
-                // if (a.title === "scheduleImpact") {
-                //     console.log("-----------------------------------")
-                //     console.log("scheduleImpact는 여기서 따로 저장했다.")
-                //     console.log(event.target.elements[0]["defaultValue"])
-                //     // console.log(event.target.elements[a.title]["value"])
-                //     data[selectRowId][a.title] = event.target.elements[0]["defaultValue"]
-                // }
 
             }
         )
@@ -1067,7 +1035,6 @@ const GridComponent = () => {
     const rowData = eachRowKData.map((rData, index) => 
             
             <div style={{width:'97%', padding:'5px'}}>
-                {/* <p>{rData} : {eachRowVData[index]}</p> */}
                 {/* 키워드인 것들만 모아서 useState 배열에 넣어주고, 그 변경값은 바로 아래에 반영해서 다시 for문으로 따로 만든다. */}
                 {detailUI[rData]
                 ?detailUI[rData]
@@ -1226,7 +1193,6 @@ const GridComponent = () => {
                     }
                 }
             }
-            // console.log(tArray)
             if (tArray.length === 0){
 
             }else{
@@ -1236,7 +1202,6 @@ const GridComponent = () => {
 
         }
         setErrorResultData(errorRow)
-        // console.log(errorResultData)
         setValOpen(true)
 
         return () => {
@@ -1314,11 +1279,12 @@ const GridComponent = () => {
     return (
         <div style={{
                     width: '100vw', 
+                    // height: '100px',
                     // width: '150vw',
                     display: 'flex',
                     justifyContent: 'center',
-                    alignItems: 'center',
-                    // padding: '0px -30px 0px -30px',        //위 우 아래 좌
+                    // alignItems: 'center',
+                    // margin: '0px -350px 100px -350px',        //위 우 아래 좌
                     margin: '0px -350px',
                     }}>
             <div>

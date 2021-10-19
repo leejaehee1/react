@@ -39,6 +39,13 @@ export default function Category(props) {
     const b = Object.values(targetData).filter(da => da.category==="B" && da.status !== '1'  && da.projectID===window.localStorage.getItem('projectName')).length;
     const c = Object.values(targetData).filter(da => da.category==="C" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
     const d = Object.values(targetData).filter(da => da.category==="D" && da.status !== '1' && da.projectID===window.localStorage.getItem('projectName')).length;
+    const allDataLength = a+b+c+d;
+
+    let target = {"A":parseInt(a/allDataLength*100), 
+                "B":parseInt(b/allDataLength*100), 
+                "C":parseInt(c/allDataLength*100), 
+                "D":parseInt(d/allDataLength*100)
+                }
 
 
 
@@ -56,6 +63,12 @@ export default function Category(props) {
             </text>
         </>
         )
+    }
+
+    const customizeText =(arg) => {
+        // return `${JSON.stringify(arg)}  a`
+        console.log(arg)
+        return `${arg.pointName} (${target[arg.pointName]}%)`;
     }
     return (
         <PieChart 
@@ -87,7 +100,7 @@ export default function Category(props) {
                     horizontalAlignment="right" 
                     // top/bottom
                     verticalAlignment="top"
-                    
+                    customizeText={(arg)=>customizeText(arg)}
                     // columnItemSpacing={20}
                     // rowItemSpacing={30}
 
