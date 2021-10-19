@@ -101,6 +101,11 @@ const PunchBoard = (props) => {
         // }, 5000)
     }
 
+    const handleUpdateDetail = () => {
+        props.setAbleUpdateDetailFlag(false)
+    }
+
+
     if (!boardIds) return null;
     return (
         // <Card>
@@ -168,7 +173,7 @@ const PunchBoard = (props) => {
                                 }
                                 />
                                 {(detailPageUpdateButton && targetMouseOn===id)?
-                                <button className="updateOnMouseButton">update</button>
+                                <button className="updateOnMouseButton" onClick={handleUpdateDetail}>update</button>
                                 :
                                 <></>
                                 }

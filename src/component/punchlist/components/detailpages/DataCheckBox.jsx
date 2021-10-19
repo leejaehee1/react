@@ -139,6 +139,7 @@ const DataCheckBox = (props) => {
             {(String(checked))?
             <Checkbox
               // defaultChecked
+              disabled={props.disable}
               onMouseDown={handleDetailBox}
               checked={checked}
               color="default"
@@ -148,6 +149,7 @@ const DataCheckBox = (props) => {
             <>
             <Checkbox
               // defaultChecked
+              disabled={props.disable}
               onMouseDown={handleDetailBox}
               checked={parseInt(props.dataOne?.designChgReq)}
               color="default"
@@ -168,6 +170,7 @@ const DataCheckBox = (props) => {
           <Paper elevation={0} className={classes.rpaper}>
             {(String(checkedMaterial))?
             <Checkbox
+              disabled={props.disable}
               onChange={handleDetailMaterial}
               checked={parseInt(checkedMaterial)}
               color="default"
@@ -175,6 +178,7 @@ const DataCheckBox = (props) => {
             />
             :
             <Checkbox
+              disabled={props.disable}s
               onChange={handleDetailMaterial}
               checked={parseInt(props.dataOne?.materialReq)}
               color="default"

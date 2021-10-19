@@ -214,6 +214,7 @@ function DataSlider(props) {
                 value={typeof value === 'number' ? value : parseInt(props.dataOne)}
                 onChange={handleSliderChange}
                 defaultValue={props.dataOne}
+                disabled={props.disable}
               //   aria-labelledby="input-slider"
                 valueLabelDisplay="auto"
                 name={props.comName}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -58,8 +58,10 @@ const theme = createTheme({
 function DataDescription(props) {
   const classes = useStyles();
 
+  const [textAreaValue, setTextAreaValue] = useState('');
   const handleTextarea = (e) => {
     // console.log(e.target.value);
+    setTextAreaValue(e.target.value)
     if (props.comName==='issueDescription'){
       props.setIssueDescription(e.target.value)
     } else if(props.comName==='completeComment'){
@@ -73,6 +75,7 @@ function DataDescription(props) {
     } else if(props.comName==='completeComment'){
       props.setCompleteComment('')
     };
+    setTextAreaValue(props.dataOne)
   }, [props.dataOne])
 
   return (
@@ -95,8 +98,9 @@ function DataDescription(props) {
                     rows={4}
                     // color='gray'
                     color="default"
-                    defaultValue={props.dataOne}
+                    value={textAreaValue}
                     variant="outlined"
+                    disabled={props.disable}
                 />
         
       <br />

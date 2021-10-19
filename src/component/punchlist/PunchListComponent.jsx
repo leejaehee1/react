@@ -470,6 +470,12 @@ const PunchListComponent = () => {
     const [alertButton, setAlertButton] = useState(false)
     // const
 
+    const [ableUpdateDetailFlag, setAbleUpdateDetailFlag] = useState(true);
+
+
+    useEffect(()=> {
+        setAbleUpdateDetailFlag(true)
+    }, [upPunchBoardData])
     return (
         <React.Fragment>
             <Collapse in={alertButton}>
@@ -581,12 +587,6 @@ const PunchListComponent = () => {
                 </div>
             </div>
             
-
-
-
-
-
-
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>
@@ -681,6 +681,7 @@ const PunchListComponent = () => {
                         boardIds={boardIndexData.length?boardIndexData:allIndex} 
                         setUpPunchBoardData={setUpPunchBoardData}
                         otherCheckBox={allCheckBox}
+                        setAbleUpdateDetailFlag = {setAbleUpdateDetailFlag}
                     />
                 </Box>
                 <Box flex="2" display="flex">
@@ -690,6 +691,7 @@ const PunchListComponent = () => {
                             boardData={boardData.length?boardData:boardAllData} 
                             setIssueShow={setIssueShow} 
                             setHistoryShow={setHistoryShow} 
+
                             downDetailData={
                                 boardAllData[upPunchBoardData]
                                 ?boardAllData[upPunchBoardData]
@@ -697,6 +699,8 @@ const PunchListComponent = () => {
                         />
                         {issueShow?
                             <DetailPageComponent 
+                                ableUpdateDetailFlag={ableUpdateDetailFlag}
+                                setAbleUpdateDetailFlag={setAbleUpdateDetailFlag}
                                 downDetailData={
                                     boardAllData[upPunchBoardData]
                                     ?boardAllData[upPunchBoardData]

@@ -147,6 +147,10 @@ function DetailPageComponent(props) {
 
   }
 
+  // useState(() => {
+  //   props.setAbleUpdateDetailFlag(true)
+  // }, [props?.downDetailData])
+
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
       {/* {JSON.stringify(props.downDetailData)} */}
@@ -167,23 +171,23 @@ function DetailPageComponent(props) {
         keyword4: {JSON.stringify(keyword4)} <br />
         issueDescription: {JSON.stringify(issueDescription)} <br />
         completeComment: {JSON.stringify(completeComment)} <br /> */}
-        <DataOne dataOne={props.downDetailData} />
+        <DataOne dataOne={props.downDetailData}  />
 
 
-        <DataTime dataOne={props.downDetailData} setTargetDate={setTargetDate} />
+        <DataTime dataOne={props.downDetailData} disable={props?.ableUpdateDetailFlag} setTargetDate={setTargetDate} />
 
         <div style={{backgroundColor:'#f5f5f5', paddingLeft:'10px', marginTop:'2px', paddingRight:'10px', marginBottom:'-20px'}}>
           {/* <Divider className={classes.divider} /> */}
-          <DataCheckBox dataOne={props.downDetailData} setDesignChgReq={setDesignChgReq} setMaterialReq={setMaterialReq} />
+          <DataCheckBox disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData} setDesignChgReq={setDesignChgReq} setMaterialReq={setMaterialReq} />
 
           {/* difficulty */}
           {/* <DataSlider dataName="Difficulty" dataOne={props.downDetailData?.difficulty} /> */}
 
           {/* schedule impact */}
-          <DataSlider dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} comName="scheduleImpact" setScheduleImpact={setScheduleImpact} />
+          <DataSlider disable={props?.ableUpdateDetailFlag} dataName="Schedule Impact" dataOne={props.downDetailData?.scheduleImpact} comName="scheduleImpact" setScheduleImpact={setScheduleImpact} />
 
           {/* cost Impact316 */}
-          <DataSlider dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} comName="costImpact" setCostImpact={setCostImpact} />
+          <DataSlider disable={props?.ableUpdateDetailFlag} dataName="Cost Impact" dataOne={props.downDetailData?.costImpact} comName="costImpact" setCostImpact={setCostImpact} />
         </div>
 
         <br />
@@ -198,7 +202,7 @@ function DetailPageComponent(props) {
           setKeyword2={setKeyword2}
           setKeyword3={setKeyword3}
           setKeyword4={setKeyword4}
-          
+          disable={props?.ableUpdateDetailFlag}
         />
         {/* {props.downDetailData?.keyword1}
         {props.downDetailData?.keyword2}
@@ -207,9 +211,9 @@ function DetailPageComponent(props) {
 
         <Divider className={classes.divider} />
 
-        <DataDescription dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} />
+        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} />
 
-        <DataDescription dataOne={props.downDetailData?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} />
+        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} />
 
         <Divider className={classes.divider} />
 

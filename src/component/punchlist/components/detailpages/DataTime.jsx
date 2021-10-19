@@ -105,6 +105,7 @@ function DataTime(props) {
                   <ThemeProvider theme={defaultMaterialTheme}>
                     <KeyboardDatePicker
                       disableToolbar
+                      disabled={props.disable}
                       // style={{width:"250px"}}
                       // variant="inline"
                       format="yyyy.MM.dd"

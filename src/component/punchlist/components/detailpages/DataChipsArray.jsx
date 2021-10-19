@@ -221,6 +221,7 @@ export default function DataChipsArray(props) {
               <li key={data.key}>
                 <Chip
                   // variant="outlined"
+                  disabled={props.disable}
                   size="small"
                   // icon={icon}
                   label={data.label}
@@ -247,6 +248,7 @@ export default function DataChipsArray(props) {
           </DialogContentText> */}
           <TextField
             autoFocus
+            disabled={props.disable}
             onChange= {changeInput}
             margin="dense"
             id="name"
