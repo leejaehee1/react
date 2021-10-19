@@ -79,7 +79,7 @@ const PunchStatus = (props) => {
 
   const customizeText =(arg) => {
     // return `${JSON.stringify(arg)}  a`
-    console.log(arg)
+    // console.log(arg)
     return `${arg.pointName} (${target[arg.pointName]}%)`;
   }
   

@@ -102,11 +102,14 @@ const StateButton = (props) => {
             // console.log(postData)
             const urlMail = 'http://localhost:5000/punchlist/mail';
 
+            console.log(postData)
+
 
             // turn off send mail under three line
             // axios.post(urlMail, postData)
             //     .then((res)=> console.log('success sendEmail'))
             //     .catch(err => console.log(err))
+
 
             update('list', 
                 {a:updataPK},   // id
