@@ -52,7 +52,7 @@ const DetailHistoryComponent = (props) => {
 
 
 
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', padding: '5px 0 4px 0'}}>
                   <div style={{width:'30%'}}>
                     <CustomBox
                         stateData={2}
@@ -74,7 +74,7 @@ const DetailHistoryComponent = (props) => {
                   </div>
                 </div>
 
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', padding: '5px 0 4px 0'}}>
                   <div style={{width:'30%'}}>
                     <CustomBox
                         stateData={3}
@@ -98,7 +98,7 @@ const DetailHistoryComponent = (props) => {
 
 
 
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', padding: '5px 0 4px 0'}}>
                   <div style={{width:'30%'}}>
                     <CustomBox
                         stateData={4}
@@ -119,7 +119,7 @@ const DetailHistoryComponent = (props) => {
 
                   </div>
                 </div>
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', padding: '5px 0 4px 0'}}>
                   <div style={{width:'30%'}}>
                     <CustomBox
                         stateData={5}
@@ -140,7 +140,7 @@ const DetailHistoryComponent = (props) => {
 
                   </div>
                 </div>
-                <div style={{display:'flex'}}>
+                <div style={{display:'flex', padding: '5px 0 4px 0'}}>
                   <div style={{width:'30%'}}>
                     <CustomBox
                         stateData={6}

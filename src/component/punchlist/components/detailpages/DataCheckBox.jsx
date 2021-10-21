@@ -128,7 +128,7 @@ const DataCheckBox = (props) => {
           <Paper elevation={0} className={classes.lpaper}>
             
             <ThemeProvider theme={theme}>
-              <Typography variant="h5">&nbsp;Design Check Required</Typography>
+              <Typography variant="h5">&nbsp;Design Check Req</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
@@ -162,7 +162,7 @@ const DataCheckBox = (props) => {
         <Grid item xs={5}>
           <Paper elevation={0} className={classes.lpaper}>
             <ThemeProvider theme={theme}>
-              <Typography variant="h5">Material Check Required</Typography>
+              <Typography variant="h5">Material Check Req</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>

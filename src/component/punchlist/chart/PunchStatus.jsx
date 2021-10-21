@@ -97,7 +97,7 @@ const PunchStatus = (props) => {
                   valueField="value" 
               />
               
-              <Tooltip enabled={true} />
+              {/* <Tooltip enabled={true} /> */}
               {/* <Type /> */}
               <Size
                       height={150}

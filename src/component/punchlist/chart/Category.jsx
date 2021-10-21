@@ -88,7 +88,7 @@ export default function Category(props) {
                           left={40}
                           right={30}
                       />
-            <Tooltip enabled={true} />
+            {/* <Tooltip enabled={true} /> */}
             {/* <Type /> */}
             <Size
                     height={150}

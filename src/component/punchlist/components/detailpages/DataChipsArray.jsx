@@ -155,11 +155,7 @@ export default function DataChipsArray(props) {
 
 
 
-  // const handleAddTag = (id: Identifier) => {
-  //   const tags: Identifier[] = [...record.tags, id];
-  //   update('contacts', record.id, { tags }, record);
-  //   setAnchorEl(null);
-  // };
+
 
 
   useEffect(() => {
@@ -179,26 +175,7 @@ export default function DataChipsArray(props) {
         props.setKeyword4(v.label)
       }
     })
-    // delete로직
-    // var dhipDataKey = Object.keys(chipData);
-    // console.log(dhipDataKey)
-    // for (var d of [0, 1, 2, 3]){
-    //   if(dhipDataKey.includes(d) && ){} else {
-    //     if (d === 0){
-    //       props.setKeyword1('')
-    //     }
-    //      else if (d === 1){
-    //       props.setKeyword2('')
-    //     }
-    //     else if (d === 2){
-    //       props.setKeyword3('')
-  
-    //     }
-    //     else if (d === 3){
-    //       props.setKeyword4('')
-    //     }
-    //   }
-    // }
+
 
   }, [chipData])
 

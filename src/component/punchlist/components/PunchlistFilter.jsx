@@ -3,6 +3,8 @@ import axios from 'axios';
 import "./styles/PunchlistFilter.css";
 import Chip from '@material-ui/core/Chip';
 
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
 
 
 const PunchlistFilter = (props) => {
@@ -317,9 +319,14 @@ const PunchlistFilter = (props) => {
                                 name="text"
                                 value={content}
                                 onChange={handleChangeKey}  
-                                style={{width:'180px'}}
+                                style={{width:'170px'}}
                             />
-                            <input type="submit" onClick={handleSubmit} value="+" style={{fontSize:'15px'}} />
+                            {/* <input type="submit" onClick={handleSubmit} value="+" style={{fontSize:'15px'}} /> */}
+                            <AddCircleOutlineIcon 
+                                fontSize="small" 
+                                style={{paddingTop:'7px', cursor: 'pointer'}} 
+                                onClick={handleSubmit}
+                            />
                             {/* <button onClick={handleSubmit}>+</button> */}
                         </form>
                         {keywords.map((v, i)=> <span key={v.id}><Chip size="small" label={v.content} /></span>)}
