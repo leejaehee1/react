@@ -123,7 +123,7 @@ const StateButton = (props) => {
                         setAnchorEl(null);
                         // console.log('들어왔다능2')
 
-                        // redirect('/');
+                        redirect('/');
 
                         setEachState(index);
                             // setEachState(index+2)
@@ -144,7 +144,7 @@ const StateButton = (props) => {
                         setAnchorEl(null);
                         // console.log('들어왔다능2')
 
-                        // redirect('/');
+                        redirect('/');
 
                         setEachState(index);
                             // setEachState(index+2)

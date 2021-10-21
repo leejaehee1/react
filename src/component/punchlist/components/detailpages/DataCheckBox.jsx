@@ -132,7 +132,7 @@ const DataCheckBox = (props) => {
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={1} style={{marginRight:'5px', marginLeft: '-20px'}}>
+        <Grid item xs={1} style={{marginRight:'38px', marginLeft: '-38px'}}>
             {/* {JSON.stringify(checked)}
             {JSON.stringify(Boolean(String(checked)))}aa */}
           <Paper elevation={0} className={classes.rpaper}>
@@ -143,6 +143,7 @@ const DataCheckBox = (props) => {
               onMouseDown={handleDetailBox}
               checked={checked}
               color="default"
+              
               // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
             :
@@ -153,6 +154,7 @@ const DataCheckBox = (props) => {
               onMouseDown={handleDetailBox}
               checked={parseInt(props.dataOne?.designChgReq)}
               color="default"
+              
               // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
             </>
@@ -166,7 +168,10 @@ const DataCheckBox = (props) => {
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={1} style={{marginLeft:'-13px'}}>
+        <Grid item xs={1} 
+        style={{
+          marginLeft:'-38px'
+        }}>
           <Paper elevation={0} className={classes.rpaper}>
             {(String(checkedMaterial))?
             <Checkbox
@@ -174,6 +179,7 @@ const DataCheckBox = (props) => {
               onChange={handleDetailMaterial}
               checked={parseInt(checkedMaterial)}
               color="default"
+              
               // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
             :
@@ -182,6 +188,7 @@ const DataCheckBox = (props) => {
               onChange={handleDetailMaterial}
               checked={parseInt(props.dataOne?.materialReq)}
               color="default"
+              
               // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
             }
