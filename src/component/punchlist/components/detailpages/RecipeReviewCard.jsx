@@ -72,7 +72,7 @@ export default function RecipeReviewCard(props) {
   const [getPhotos, setGetPhotos] = useState([]);
   const [imagePathList, setImagePathList] = useState([]);
   const [imageUrl, setImageUrl] = useState('');
-  const urlPhotos = 'http://localhost:5000/punchlist/photos/?range=[0, 24]';
+  const urlPhotos = 'http://54.180.147.184:5000/punchlist/photos/?range=[0, 24]';
 
   useEffect(() => {
     axios.get(urlPhotos)
@@ -93,7 +93,7 @@ export default function RecipeReviewCard(props) {
     }, [getPhotos])
 
     useEffect(()=> {
-        setImageUrl(`http://localhost:5000/${imagePathList[0]?.imagePath.slice(7)}`)
+        setImageUrl(`http://54.180.147.184:5000/${imagePathList[0]?.imagePath.slice(7)}`)
     }, [imagePathList])
     
     // console.log(imagePathList)
@@ -102,7 +102,7 @@ export default function RecipeReviewCard(props) {
         // console.log(imagePathList)
         // for(var index in imagePathList){
         //     // console.log(imagePathList[index]["imagePath"])
-        //     axios.get(`http://localhost:5000/${imagePathList[index]["imagePath"].slice(7)}`)
+        //     axios.get(`http://54.180.147.184:5000/${imagePathList[index]["imagePath"].slice(7)}`)
         //         .then((res)=> {
         //             console.log(res);
         //             // console.log(imageValidationtarget)
@@ -126,7 +126,7 @@ export default function RecipeReviewCard(props) {
       <Card className={classes.root} onClick={handleOpen}>
         {/* <CardMedia
           className={classes.media}
-          image={`http://localhost:5000/${imagePathList[0]["imagePath"].slice(7)}`}
+          image={`http://54.180.147.184:5000/${imagePathList[0]["imagePath"].slice(7)}`}
           title="Paella dish"
         /> */}
         {/* {imageUrl} */}

@@ -69,7 +69,7 @@ export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
         console.log(username, password);
-        const request = new Request('http://localhost:5000/api/login/', {
+        const request = new Request('http://54.180.147.184:5000/api/login/', {
             method: 'POST',
             body: JSON.stringify({ userID : username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),

@@ -10,7 +10,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const AreaTable = () => {
     const [getArea, setGetArea] = useState();
-    const urlArea = 'http://localhost:5000/punchlist/area/?range=[0, 24]';
+    const urlArea = 'http://54.180.147.184:5000/punchlist/area/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

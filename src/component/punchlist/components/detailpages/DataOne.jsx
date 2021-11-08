@@ -22,14 +22,15 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   lpaper: {
-    padding: theme.spacing(1),
+    // padding: '0 0 0 8px'
+    padding: theme.spacing(0, 0, 0, 1),
     textAlign: 'left',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(2),
   },
   rpaper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(0, 0, 0, 0),
     textAlign: 'right',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
@@ -62,21 +63,21 @@ function DataOne(props) {
   const classes = useStyles();
   return (
     <>
-      <Grid container spacing={3}>
-        <Grid item xs={3}>
+      <Grid container spacing={1}>
+        <Grid item xs={3.1}>
           <Paper elevation={0} className={classes.lpaper}>
             <ThemeProvider theme={theme}>
 
             {/* <Typography variant="subtitle1">subtitle</Typography> */}
-              <Typography variant="h5">Issued Date</Typography>
-              <Typography variant="h5">Issued By</Typography>
-              <Typography variant="h5">Completed Data</Typography>
-              <Typography variant="h5">Completed By</Typography>
+              <Typography variant="h5" style={{padding: '0 0 0 8px'}}>Issued Date</Typography>
+              <Typography variant="h5" style={{padding: '0 0 0 8px'}}>Issued By</Typography>
+              <Typography variant="h5" style={{padding: '0 0 0 8px'}}>Completed Data</Typography>
+              <Typography variant="h5" style={{padding: '0 0 0 8px'}}>Completed By</Typography>
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper elevation={0} className={classes.rpaper}>
+        <Grid item xs={3.1}>
+          <Paper elevation={0} className={classes.rpaper} style={{padding: '0 0 0 5px'}}>
             <ThemeProvider theme={theme}>
               {(props.dataOne?.issuedDate)?
                 <Typography variant="h5"><b>{props.dataOne?.issuedDate.split('-')[0]}.{props.dataOne?.issuedDate.split('-')[1]}.{props.dataOne?.issuedDate.split('-')[2].slice(0,2)}</b>&nbsp;</Typography>
@@ -99,7 +100,7 @@ function DataOne(props) {
         {/* <Divider orientation="vertical" flexItem /> */}
         
         <Grid item xs={3}>
-          <Paper elevation={0} className={classes.lpaper}>
+          <Paper elevation={0} className={classes.lpaper} style={{padding: '0 0 0 16px'}}>
             <ThemeProvider theme={theme}>
               <Typography variant="h5">Closed Date</Typography>
               <Typography variant="h5">Closed By</Typography>
@@ -107,8 +108,8 @@ function DataOne(props) {
             </ThemeProvider>
           </Paper>
         </Grid>
-        <Grid item xs={3}>
-          <Paper elevation={0} className={classes.rpaper}>
+        <Grid item xs={2.5}>
+          <Paper elevation={0} className={classes.rpaper} style={{padding: '0 10px 0 0', width: '70px'}}>
             <ThemeProvider theme={theme}>
               {(props.dataOne?.closedDate)?
                 <Typography variant="h5"><b>{props.dataOne?.closedDate.split('-')[0]}.{props.dataOne?.closedDate.split('-')[1]}.{props.dataOne?.closedDate.split('-')[2].slice(0,2)}</b>&nbsp;</Typography>
@@ -117,6 +118,7 @@ function DataOne(props) {
               }
               <Typography variant="h5"><b>{props.dataOne?.closedBy}&nbsp;</b></Typography>
               <Typography variant="h5"><b>{props.dataOne?.raisedBy}&nbsp;</b></Typography>
+              {/* <Typography variant="h5"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></Typography> */}
             </ThemeProvider>
           </Paper>
         </Grid>

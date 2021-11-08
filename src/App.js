@@ -78,7 +78,7 @@ import StatusCreate from './component/code/codeComponent/StatusCreate';
 //   options.headers.set('Authorization', `Bearer ${token}`);
 //   return fetchUtils.fetchJson(url, options);
 // }
-// const dataProvider = simpleRestProvider('http://localhost:3000', httpClient);
+// const dataProvider = simpleRestProvider('http://54.180.147.184:3000', httpClient);
 
 
 

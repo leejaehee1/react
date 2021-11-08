@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const DisciplineTable = () => {
     const [getDiscipline, setGetDiscipline] = useState();
-    const urlDiscipline = 'http://localhost:5000/punchlist/discipline/?range=[0, 24]';
+    const urlDiscipline = 'http://54.180.147.184:5000/punchlist/discipline/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

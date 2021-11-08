@@ -89,12 +89,12 @@ function DataTime(props) {
 
     return (
         <>
-          <Grid container spacing={3} alignItems="center" style={{marginTop:'-30px'}}>
+          <Grid container spacing={3} alignItems="center" style={{marginTop:'-30px', padding: '0 15px 0 8px'}}>
             <Grid item xs={3}>
             {/* elevation={0} */}
               <Paper elevation={0} className={classes.lpaper}>
                 <ThemeProvider theme={theme}>
-                  <Typography variant="h5">Target Date</Typography>
+                  <Typography variant="h5" style={{padding: '10px 0 0 0'}}>Target Date</Typography>
                 </ThemeProvider>
               </Paper>
             </Grid>

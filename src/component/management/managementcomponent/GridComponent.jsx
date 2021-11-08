@@ -1403,10 +1403,15 @@ const GridComponent = () => {
                     </Drawer>
                 </React.Fragment>
             </div>
-            <MaterialTable style={{minHeight:'700px'}}
+            {/* backgroundColor:'E6E6E6' */}
+            <MaterialTable style={{
+                // minHeight:'700px', 
+                height: '0px',
+                backgroundColor:'E6E6E6'}}
                 title="Punchlist data" 
                 data={data} 
                 columns={colDefs} 
+                
 
                 onRowClick={(event, rowData)=> {
                     // 클릭 시 배경
@@ -1463,6 +1468,14 @@ const GridComponent = () => {
                     maxBodyHeight: '600px',
                     //paging
                     // paginationType: "stepped",
+                    // cellStyle: rowData => {
+                    //       return { color: "#E6E6E6" }
+                    //   },
+                      rowStyle: (rowData, index, level ) => ({
+                        backgroundColor: "#E6E6E6"
+                      }),
+                    
+                    backgroundColor:'E6E6E6',
                     paging: false,
                     columnsButton:true,
                     // https://material-table.com/#/docs/features/styling
@@ -1486,7 +1499,7 @@ const GridComponent = () => {
                 }}
                 components={{
                     Toolbar: props => (
-                      <div>
+                      <div style={{backgroundColor:'E6E6E6'}}>
                         <Collapse in={alertOpen}>
                             <Alert severity="error" onClose={() => {setAlertOpen(false)}}>Please check Column Mapping.</Alert>
                         </Collapse>

@@ -27,6 +27,25 @@ import StateButton from './board/StateButton';
 // import Button from '@mui/material/Button';
 
 const PunchBoard = (props) => {
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardData)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log(props.boardIds)
+    // console.log('props.boardData')
     const [timeFlag, setTimeFlag] = useState(false)
     const a = props?.boardData
     const b = props?.boardIds
@@ -35,8 +54,10 @@ const PunchBoard = (props) => {
     
     boardData.current = a  // 이걸 지우면 애러발생
 
-    const inputBoardData = props.boardData.length? props.boardData:boardData.current;
-    const inputBoardIds = props.boardIds.length? props.boardIds:boardIds.current;
+    // const inputBoardData = props.boardData.length? props.boardData:boardData.current;
+    const inputBoardData = props.boardData;
+    // const inputBoardIds = props.boardIds.length? props.boardIds:boardIds.current;
+    const inputBoardIds = props.boardIds;
 
     const [targetA, setTargetA] = useState('a');
 
@@ -110,9 +131,13 @@ const PunchBoard = (props) => {
     return (
         // <Card>
         <div onPointerLeave={outButton} style={{overflow: 'auto', height: '700px', maxWidth: '810px'}}>
-            {/* aaaaaaaaaaaa{JSON.stringify(currentPosts)} */}
+            {/* aaaaaaaaaaaa{JSON.stringify(inputBoardIds)}
+            aaaaaaaaaaaa{JSON.stringify(inputBoardData)}
+            aaaaaaaaaaaa{JSON.stringify(props.boardData)}
+            aaaaaaaaaaaa{JSON.stringify(props.boardIds)} */}
+            {/* const inputBoardData = props.boardData; */}
             <List dense={true}>
-                {inputBoardIds.map(id => {
+                {props.boardIds.map(id => {
                     // if (id!=='PC-2-00-MB-MBP-E-01-002'){ return <></>}
                     if (!currentPosts.includes(id)){ return <></>}
                     return (

@@ -1,12 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-// import { Box } from '@material-ui/core';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
-// import { AutorenewTwoTone } from '@material-ui/icons';
 
 
 
@@ -130,11 +124,6 @@ function DetailComponent() {
             margin: '10 10 0 0',
           }}
         >
-          {/* <span
-            style={{backgroundImage: `url(${image.url})`
-              
-            }}
-          /> */}
           <span
             className={classes.imageSrc}
             style={{
@@ -142,17 +131,6 @@ function DetailComponent() {
             }}
           />
           <span className={classes.imageBackdrop} />
-          {/* <span className={classes.imageButton}>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              className={classes.imageTitle}
-            >
-              {image.title}
-              <span className={classes.imageMarked} />
-            </Typography>
-          </span> */}
         </ButtonBase>
       ))}   
 

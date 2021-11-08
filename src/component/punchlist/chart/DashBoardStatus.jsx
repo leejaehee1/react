@@ -8,7 +8,7 @@ const DashBoardStatus = () => {
     const bgColor = '#b0bec5'
 
 
-    const url = 'http://localhost:5000/punchlist/progress/?range=[0, 24]';
+    const url = 'http://54.180.147.184:5000/punchlist/progress/?range=[0, 24]';
 
     const [proData, setProData] = useState("")
 

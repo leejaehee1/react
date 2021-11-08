@@ -1,95 +1,29 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
     List as RaList,
-    // ListProps,
-    // SimpleListLoading,
-    // ReferenceField,
-    // TextField,
     useListContext,
-    // ExportButton,
-    // SortButton,
     TopToolbar,
     CreateButton,
     ExportButton,
     Pagination,
-    // useGetIdentity,
-    // TextField,
-    // Button,
-    ListActions,
-    
-    useGetList,
-
-    // Datagrid,
 } from 'react-admin';
 
 import {
     List,
     ListItem,
-    
-    // ListItemAvatar,
     ListItemIcon,
     ListItemSecondaryAction,
     ListItemText,
     Checkbox,
     Typography,
-    Box,
-    styled,
     Button,
-    Grid,
-    Card,
-    // buttonUnstyledClasses,
-    // ButtonUnstyled,
-    // CustomButton,
 } from '@material-ui/core';
-// import ButtonUnstyled, { buttonUnstyledClasses } from '@mui/core/ButtonUnstyled';
-// import {Paper} from '@material-ui/core';
 
 
 
-
-import { cloneElement } from 'react';
 import IconEvent from '@material-ui/icons/Event';
 import StateButton from './board/StateButton';
-import { connect } from 'react-redux';
-// import Button from '@mui/material/Button';
 
-
-// const CustomButtonRoot = styled('span')(`
-//   background-color: #007fff;
-//   padding: 15px 20px;
-//   border-radius: 10px;
-//   color: #fff;
-//   font-weight: 600;
-//   font-family: Helvetica, Arial, sans-serif;
-//   font-size: 14px;
-//   transition: all 200ms ease;
-//   cursor: pointer;
-//   box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 0 rgba(0, 127, 255, 0);
-//   border: none;
-
-//   &:hover {
-//     background-color: #0059b2;
-//   }
-
-//   &.${buttonUnstyledClasses.active} {
-//     background-color: #004386;
-//   }
-
-//   &.${buttonUnstyledClasses.focusVisible} {
-//     box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1), 0 0 0 5px rgba(0, 127, 255, 0.5);
-//     outline: none;
-//   }
-
-//   &.${buttonUnstyledClasses.disabled} {
-//     opacity: 0.5;
-//     cursor: not-allowed;
-//     box-shadow: 0 0 0 0 rgba(0, 127, 255, 0);
-//   }
-// `);
-
-// function CustomButton(props) {
-//   return <ButtonUnstyled {...props} component={CustomButtonRoot} />;
-// }
 
 const PunchListContent = () => {
     const { data, ids, onToggleItem, } = useListContext();
@@ -193,44 +127,36 @@ const PunchListContent = () => {
 }
 
 const Punchs = props => {
-    // const [ boardData, setboardData] = useState("init data")
-    // useEffect(() => {
-    //     props.boardData(boardData)
-
-    // }, [boardData])
-    console.log(props)
-    console.log(props.abc)
     const ListActions = (props) => (
         <TopToolbar>
             {/* {cloneElement(props.filters, { context: 'button' })} */}
-            <CreateButton/>
-            <ExportButton/>
+            {/* <CreateButton/>
+            <ExportButton/> */}
             {/* Add your custom actions */}
-            <Button
+            {/* <Button
                 onClick={() => { alert('Your custom action'); }}
                 // label="Show calendar"
             >
                 <IconEvent/>
-            </Button>
-            <Button>test <br /> button</Button>
+            </Button> */}
+            {/* <Button>test <br /> button</Button> */}
             {/* <Grid spacing={2} direction="row">
                 <CustomButton>Button</CustomButton>
                 <CustomButton disabled>Disabled</CustomButton>
-            </Grid> */}
-            <button>test <br /> button</button>
-            <button>test <br /> button</button>
-            <button>test <br /> button</button>
-            <button>test <br /> button</button>
-            <button>test <br /> button</button>
-            <button>test <br /> button</button>
-            <Button
+            // </Grid> */}
+            {/* // <button>test <br /> button</button>
+            // <button>test <br /> button</button>
+            // <button>test <br /> button</button>
+            // <button>test <br /> button</button>
+            // <button>test <br /> button</button>
+            // <button>test <br /> button</button> */}
+            {/* <Button
                         type="submit"
                         variant="contained"
                         color="primary"
-                        // disabled={!text || loading}
                     >
                         Add this note
-            </Button>
+            </Button> */}
         </TopToolbar>
     );
     // console.dir(props);

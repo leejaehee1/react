@@ -80,7 +80,7 @@ function DetailPageComponent(props) {
 
 
   const handleDetailUpdate= () => {
-    alert('asdfasdf')
+    // alert('asdfasdf')
     const formData = new FormData();
     const data = {}
     if (targetDate==='' || targetDate===false){}else{
@@ -129,7 +129,7 @@ function DetailPageComponent(props) {
     }
     formData.append("punchID", props.downDetailData?.punchID);
 
-    const url = 'http://localhost:5000/punchlist/updateDetail';
+    const url = 'http://54.180.147.184:5000/punchlist/updateDetail';
     console.log(data)
     axios.post(url, formData, {
       headers: {
@@ -147,33 +147,11 @@ function DetailPageComponent(props) {
 
   }
 
-  // useState(() => {
-  //   props.setAbleUpdateDetailFlag(true)
-  // }, [props?.downDetailData])
-
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
       {/* {JSON.stringify(props.downDetailData)} */}
       <Paper style={{padding: '15px'}}>
-        <Typography variant="subtitle1" gutterBottom>
-            {/* Material-UI Grid: */}
-        </Typography>
-
-      {/* {JSON.stringify(props.downDetailData?.punchID)} <br />
-        DataTime: {JSON.stringify(targetDate)} <br />
-        designChgReq: {JSON.stringify(designChgReq)} <br />
-        materialReq: {JSON.stringify(materialReq)} <br />
-        scheduleImpact: {JSON.stringify(scheduleImpact)} <br />
-        costImpact: {JSON.stringify(costImpact)} <br />
-        keyword1: {JSON.stringify(keyword1)} <br />
-        keyword2: {JSON.stringify(keyword2)} <br />
-        keyword3: {JSON.stringify(keyword3)} <br />
-        keyword4: {JSON.stringify(keyword4)} <br />
-        issueDescription: {JSON.stringify(issueDescription)} <br />
-        completeComment: {JSON.stringify(completeComment)} <br /> */}
         <DataOne dataOne={props.downDetailData}  />
-
-
         <DataTime dataOne={props.downDetailData} disable={props?.ableUpdateDetailFlag} setTargetDate={setTargetDate} />
 
         <div style={{backgroundColor:'#f5f5f5', paddingLeft:'10px', marginTop:'2px', paddingRight:'10px', marginBottom:'-20px'}}>

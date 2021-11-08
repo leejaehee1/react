@@ -24,13 +24,13 @@ const ComponentToPrint = (props) => {
 
     let nowTime = JSON.stringify(new Date()).slice(1, 11)
     let nTime = new Date()
-    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
-    const urlDiscipline = 'http://localhost:5000/punchlist/discipline/?range=[0, 24]';
-    const urlDepartment = 'http://localhost:5000/punchlist/department/?range=[0, 24]';
-    const urlSystem = 'http://localhost:5000/punchlist/systems/?range=[0, 24]';
-    const urlSubSystem = 'http://localhost:5000/punchlist/subsystem/?range=[0, 24]';
-    const urlPhotos = 'http://localhost:5000/punchlist/photos/?range=[0, 24]';
-    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
+    const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
+    const urlDiscipline = 'http://54.180.147.184:5000/punchlist/discipline/?range=[0, 24]';
+    const urlDepartment = 'http://54.180.147.184:5000/punchlist/department/?range=[0, 24]';
+    const urlSystem = 'http://54.180.147.184:5000/punchlist/systems/?range=[0, 24]';
+    const urlSubSystem = 'http://54.180.147.184:5000/punchlist/subsystem/?range=[0, 24]';
+    const urlPhotos = 'http://54.180.147.184:5000/punchlist/photos/?range=[0, 24]';
+    const urlDrawing = 'http://54.180.147.184:5000/punchlist/drawing/?range=[0, 24]';
 
     useEffect(()=>{
         axios.get(urlDrawing)
@@ -98,13 +98,13 @@ const ComponentToPrint = (props) => {
     }, [getDrawing])
 
     useEffect(()=> {
-        setImageUrlB(`http://localhost:5000/${imagePathListB[0]?.imagePath.slice(7)}`)
-        setImageUrlA(`http://localhost:5000/${imagePathListA[0]?.imagePath.slice(7)}`)
+        setImageUrlB(`http://54.180.147.184:5000/${imagePathListB[0]?.imagePath.slice(7)}`)
+        setImageUrlA(`http://54.180.147.184:5000/${imagePathListA[0]?.imagePath.slice(7)}`)
     }, [imagePathListA, imagePathListB])
 
     const [drawingImage, setDrawingImage] = useState('');
     useEffect(()=> {
-        setDrawingImage(`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`)
+        setDrawingImage(`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`)
     }, [imageNameDB])
 
 
@@ -248,7 +248,7 @@ const ComponentToPrint = (props) => {
                     <div style={{width:"100%", height:'180px', borderRight:'1px solid',  borderTop:'1px solid', display:'flex', justifyContent:'center', alignItems:'center'}}>
                     {/* {drawingImage} */}
                     <img 
-                        src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} 
+                        src={`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`} 
                         alt="" 
                         // width="800px" 
                         height="100%" 
@@ -259,7 +259,7 @@ const ComponentToPrint = (props) => {
                     <div style={{width:"100%", height:'30px', display:'flex', justifyContent:'center', alignItems:'center'}}></div>
                     <div style={{maxWidth:"290px", maxHeight:'170px', borderTop:'1px solid', overflow:'hidden'}}>
                         <img 
-                            src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} 
+                            src={`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`} 
                             alt="" 
                             // style={{maxHeight: '2000px', marginTop: '-75%', marginLeft: '-100%'}}  // top 180, left 250
                             style={{tranform:'scale(5)', WebkitTransform:'scale(5)'}}

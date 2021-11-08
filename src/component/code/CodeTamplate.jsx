@@ -7,23 +7,10 @@ import { Resource, ListGuesser, Admin, EditGuesser} from 'react-admin';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Authority from './codeComponent/Authority';
-import Project from './codeComponent/Project';
-import Status from './codeComponent/Status';
-import StatusEdit from './codeComponent/StatusEdit';
-import Discipline from './codeComponent/Discipline';
-import Category from './codeComponent/Category';
-import Department from './codeComponent/Department';
-import System from './codeComponent/System';
-import Subsystem from './codeComponent/Subsystem';
-import UserCode from './codeComponent/UserCode';
-import Unit from './codeComponent/Unit';
-import Area from './codeComponent/Area';
 import Drawing from './codeComponent/Drawing';
 import DisciplineTable from './codeComponent/DisciplineTable';
 import AreaTable from './codeComponent/AreaTable';
@@ -82,7 +69,6 @@ function TabPanel(props) {
 
 
 
-{/* <Resource name="authority" list={ListGuesser} /> */}
 function CodeTamplate() {
     const classes = useStyles();
     const theme = useTheme();
@@ -99,7 +85,7 @@ function CodeTamplate() {
     };
   
     return (
-      <div className={classes.root}>
+      <div className={classes.root} style={{marginTop: '20px'}}>
         {/* <AppBar position="static" color="#ffffff"> */}
           <Tabs
           // style={{backgroundColor:'red'}}

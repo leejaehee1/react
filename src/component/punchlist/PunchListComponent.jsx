@@ -161,8 +161,7 @@ const PunchListComponent = () => {
         setStateShow(true);
     }
 
-    // const { data } = useGetList('list', );
-    // const inputData = React.useRef(data)
+
     
     const resetState = () => {
         setStateShow(true)
@@ -170,6 +169,24 @@ const PunchListComponent = () => {
     
     
     const { data, ids, loading, error } = useGetList('list', );
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
+    // console.log(data)
     
     // console.log(data)
     // if (loading) { return <p>Loading...</p>; }
@@ -188,8 +205,12 @@ const PunchListComponent = () => {
     
 
     const boardAllData = data;
-    const allIndex = ids.filter(id=> (data[id].status !== '1' && data[id].projectID===window.localStorage.getItem('projectName')));
-    const allOpenedIdx = ids.filter(id=> (data[id].status === '2' && data[id].projectID===window.localStorage.getItem('projectName')));
+    const allIndex = ids.filter(id=> (data[id].status !== '1' 
+    && data[id].projectID===window.localStorage.getItem('projectName')
+    ));
+    const allOpenedIdx = ids.filter(id=> (data[id].status === '2' 
+    && data[id].projectID===window.localStorage.getItem('projectName')
+    ));
     const allReadyForReviewIdx = ids.filter(id=> (data[id].status === '3' && data[id].projectID===window.localStorage.getItem('projectName')));
     const allRequestedForCloseIdx = ids.filter(id=> (data[id].status === '4' && data[id].projectID===window.localStorage.getItem('projectName')));
     const allNotAcceptedIdx = ids.filter(id=> (data[id].status === '5' && data[id].projectID===window.localStorage.getItem('projectName')));
@@ -676,9 +697,17 @@ const PunchListComponent = () => {
                         abc="abc"
                         // boardData={boardData} 
                     /> */}
+                    {/* {JSON.stringify(ids)}
+                    {JSON.stringify(boardIndexData.length)}
+                    {JSON.stringify(boardIndexData)}
+                    {JSON.stringify(allIndex)}
+                    {JSON.stringify(boardIndexData.length?boardIndexData:allIndex)} */}
+                    {/* {JSON.stringify(data)} */}
                     <PunchBoard 
                         boardData={boardData.length?boardData:boardAllData} 
+                        // boardData={data} 
                         boardIds={boardIndexData.length?boardIndexData:allIndex} 
+                        // boardIds={allIndex} 
                         setUpPunchBoardData={setUpPunchBoardData}
                         otherCheckBox={allCheckBox}
                         setAbleUpdateDetailFlag = {setAbleUpdateDetailFlag}

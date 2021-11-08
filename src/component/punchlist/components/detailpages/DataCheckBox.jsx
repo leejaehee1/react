@@ -143,7 +143,6 @@ const DataCheckBox = (props) => {
               onMouseDown={handleDetailBox}
               checked={checked}
               color="default"
-              
               // inputProps={{ 'aria-label': 'checkbox with default color' }}
             />
             :
