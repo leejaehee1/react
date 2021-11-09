@@ -63,8 +63,8 @@ const DiviedCodeData = (props) => {
     }
 
     useEffect(()=> {
-        console.log(2);
-        // console.log(upData);
+        // console.log(2);
+        // // console.log(upData);
         props.setUpUpdata(upData)
     }, [upData])
 
@@ -118,34 +118,34 @@ const DiviedCodeData = (props) => {
     useEffect(()=>{
         baseColumn.current = column
         for (var r of props.data){
-            // console.log(r[column])
+            // // console.log(r[column])
             selectedRowDataSet.add(r[column]?r[column]:"")
         }
         setInputRowDataBefore([...selectedRowDataSet])
-        // console.log(selectedRowDataSet)
+        // // console.log(selectedRowDataSet)
     }, [column])
     
     useEffect(()=> {
-        // console.log("upUpData")
-        // console.log(upUpData)
-        // console.log("inputRowData")
-        // console.log(inputRowData)
-        // console.log("column")
-        // console.log(column)
+        // // console.log("upUpData")
+        // // console.log(upUpData)
+        // // console.log("inputRowData")
+        // // console.log(inputRowData)
+        // // console.log("column")
+        // // console.log(column)
         var combineData = [column, inputRowData, upUpData]
         props.setUpUpUpDate(combineData)
     }, [upUpData])
 
     const handleChange = (event) => {
         setColumn(event.target.value);
-        // console.log(event.target.value)
+        // // console.log(event.target.value)
       };
       const handleChangeTwo = (event) => {
         setInputRowData(event.target.value);
-        // console.log(event.target.value)
+        // // console.log(event.target.value)
       };
     // console.dir(activeStep)
-    // console.log(props.selectedColumns)
+    // // console.log(props.selectedColumns)
     switch (props.activeStep) {
       case 0:
         return (
@@ -245,7 +245,7 @@ const GridComponentStepper = (props) => {
 
     const handleOldData = () => {
         if(upUpUpDate[0].length === 0 ){
-            console.log('GridComponentStepper 246 page :데이터 0로직')
+            // console.log('GridComponentStepper 246 page :데이터 0로직')
         }
         props.setUpdatedOldData(upUpUpDate)
     }

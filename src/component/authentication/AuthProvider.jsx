@@ -48,7 +48,7 @@ export default (type, params) => {
     // alll uset pass!!!!!
     // called when the user attempts to log in
     // if (type === AUTH_LOGIN) {
-    //     console.log(params)
+    //     // console.log(params)
     //     const { username, password } = params;
         // localStorage.setItem('username', username);
         // localStorage.setItem('password', password);
@@ -68,18 +68,18 @@ export default (type, params) => {
     */
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        console.log(username, password);
+        // console.log(username, password);
         const request = new Request('http://54.180.147.184:5000/api/login/', {
             method: 'POST',
             body: JSON.stringify({ userID : username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         })
-        console.log("post 요청 보냈다.")
+        // console.log("post 요청 보냈다.")
         return fetch(request)
             .then(response => {
-                console.log("response 받음---------")
-                console.log(response.body.locked)
-                console.log(response.status)
+                // console.log("response 받음---------")
+                // console.log(response.body.locked)
+                // console.log(response.status)
                 if (response.status < 200 || response.status >= 300) {
                     throw new Error(response.statusText);
                 }
@@ -87,19 +87,19 @@ export default (type, params) => {
             })
             // .then(({ token }) => {
             .then((auth) => {
-                console.log("token 받음")
-                console.log(auth)
-                console.log(auth.results)
-                console.log(auth.results.userID)
-                console.log(auth.results.password)
+                // console.log("token 받음")
+                // console.log(auth)
+                // console.log(auth.results)
+                // console.log(auth.results.userID)
+                // console.log(auth.results.password)
                 localStorage.setItem('auth', JSON.stringify(auth));
                 localStorage.setItem('username', auth.results.userID);
                 localStorage.setItem('password', auth.results.password);
                 if (auth.result) {
-                    console.log('성공')
+                    // console.log('성공')
                     return Promise.resolve();
                 } else {
-                    console.log('실패')
+                    // console.log('실패')
                     throw new Error('Network error')
                 }
                 // const decodedToken = decodeJwt(token);
@@ -131,8 +131,8 @@ export default (type, params) => {
     */
     // called when the API returns an error
     if (type === AUTH_ERROR) {
-        // console.log(params.status);
-        // console.log(params);
+        // // console.log(params.status);
+        // // console.log(params);
         const { status } = params;
         // const status  = params.status;
         if (status === 401 || status === 403) {

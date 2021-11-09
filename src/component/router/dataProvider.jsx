@@ -7,8 +7,8 @@ const httpClient = fetchUtils.fetchJson;
 
 export default {
     getList: (resource, params) => {
-        // console.log(params.pagination) // {page: 1, perPage: 10}
-        // console.log(params.sort) // {field: "id", order: "ASC"}
+        // // console.log(params.pagination) // {page: 1, perPage: 10}
+        // // console.log(params.sort) // {field: "id", order: "ASC"}
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
         const query = {
@@ -19,7 +19,7 @@ export default {
         const url = `${apiUrl}/${resource}?${stringify(query)}`;
         // GET_LIST => GET http://path.to.my.api/posts?sort=["title","ASC"]&range=[0, 24]&filter={"author_id":12}
         // const url = `${apiUrl}/${resource}`;
-        // console.log(url)
+        // // console.log(url)
         httpClient(url)
         .then(({ headers, json }) => {
             // console.dir(json.resultID)
@@ -37,12 +37,12 @@ export default {
     },
 
     getSimpleList: (resource, params) => {
-        // console.log(params.pagination) // {page: 1, perPage: 10}
-        // console.log(params.sort) // {field: "id", order: "ASC"}
+        // // console.log(params.pagination) // {page: 1, perPage: 10}
+        // // console.log(params.sort) // {field: "id", order: "ASC"}
         const url = `${apiUrl}/${resource}`;
         // GET_LIST => GET http://path.to.my.api/posts?sort=["title","ASC"]&range=[0, 24]&filter={"author_id":12}
         // const url = `${apiUrl}/${resource}`;
-        // console.log(url)
+        // // console.log(url)
         httpClient(url)
         .then(({ headers, json }) => {
             // console.dir(json.resultID)
@@ -60,12 +60,12 @@ export default {
     },
 
     // getOne: (resource, params) =>{
-    //     console.log(resource);
-    //     console.log(params);
+    //     // console.log(resource);
+    //     // console.log(params);
     //     if(params.id==='code'){
     //         params.id= 1
     //     }
-    //     console.log(params);
+    //     // console.log(params);
     //     // httpClient(`${apiUrl}/${resource}/${params.id}`)
     //     httpClient(`${apiUrl}/${resource}/${params.id}`)
     //     .then(({ headers, json }) => {
@@ -125,8 +125,8 @@ export default {
     },
 
     update: (resource, params) => {
-        console.log(resource);
-        console.log(params);
+        // console.log(resource);
+        // console.log(params);
         if (params.id.a){
             return httpClient(`${apiUrl}/${resource}/${params.id.a}`, {
                 method: 'PUT',
@@ -164,7 +164,7 @@ export default {
         })),
 
     delete: (resource, params) =>{
-        console.log(`${apiUrl}/${resource}/${params.id}`);
+        // console.log(`${apiUrl}/${resource}/${params.id}`);
         httpClient(`${apiUrl}/${resource}/${params.id}`, {
             method: 'DELETE',
         }).then(({ json }) => ({ 

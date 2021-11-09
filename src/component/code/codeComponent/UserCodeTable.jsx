@@ -27,23 +27,23 @@ const UserCodeTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlUserCode)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetUserCode(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getUserCode)
+        // // console.log(3)
+        // // console.log(getUserCode)
         let targetColumns = []
         if (getUserCode!==undefined){
             for (var r of Object.keys(getUserCode[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getUserCode)
         }
@@ -51,7 +51,7 @@ const UserCodeTable = () => {
     }, [getUserCode])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

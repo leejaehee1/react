@@ -54,7 +54,7 @@ const NavBar = () => {
             }
         })
         .catch(err => console.log(err))
-        console.log(urlUserProjectName)
+        // console.log(urlUserProjectName)
         axios.get(urlProjectID)
         .then((res)=> setApiProject(res.data.result))
         .catch(err => console.log(err))
@@ -67,12 +67,12 @@ const NavBar = () => {
 
             Object.keys(apiProject).map((i)=> {
                 if (apiUserProjectName.includes(apiProject[i]['projectID'])){
-                    // console.log(9)
-                    // console.log(9)
-                    // console.log(9)
-                    // console.log(9)
-                    // console.log(9)
-                    // console.log(data[i]['projectName'])
+                    // // console.log(9)
+                    // // console.log(9)
+                    // // console.log(9)
+                    // // console.log(9)
+                    // // console.log(9)
+                    // // console.log(data[i]['projectName'])
                     projectFilterID.push(apiProject[i]['projectID'])
                     projectFilter.push(apiProject[i]['projectName'])
                 }
@@ -84,11 +84,11 @@ const NavBar = () => {
     }, [apiProject])
 
     const handleUserToProject = (e) => {
-        // console.log(e.target.value)
+        // // console.log(e.target.value)
         setUserProjectName(e.target.value)
         Object.keys(apiProject).map((i)=> {
             if(apiProject[i]['projectName']===e.target.value){
-                // console.log(apiProject[i]['projectID'])
+                // // console.log(apiProject[i]['projectID'])
                 window.localStorage.setItem('projectName', apiProject[i]['projectID'])
             }
         })
@@ -99,7 +99,7 @@ const NavBar = () => {
     }
 
     useEffect(()=> {
-        // console.log(111)
+        // // console.log(111)
         console.log(
             window.localStorage.getItem('projectName')
         )        

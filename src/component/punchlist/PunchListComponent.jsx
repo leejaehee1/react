@@ -1,5 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
-// import * as React from "react";
+import React, {useEffect, useState} from 'react';
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -7,23 +6,17 @@ import Discipline from "./chart/Discipline";
 import PunchStatus from "./chart/PunchStatus";
 import Category from "./chart/Category";
 import { useAuthenticated } from 'react-admin';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import BeenhereIcon from '@material-ui/icons/Beenhere';
-import PageviewIcon from '@material-ui/icons/Pageview';
-import ViewStreamIcon from '@material-ui/icons/ViewStream';
-import ViewStreamTwoToneIcon from '@material-ui/icons/ViewStreamTwoTone';
-import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
-import { Alert, AlertTitle } from '@material-ui/lab';
+import { Alert } from '@material-ui/lab';
 import Collapse from '@material-ui/core/Collapse';
 
 
 //search
 import TuneIcon from '@material-ui/icons/Tune';
-import SearchIcon from '@material-ui/icons/Search';
 
 
 // import Card from '@material-ui/core/Card';
@@ -32,16 +25,11 @@ import SearchIcon from '@material-ui/icons/Search';
 
 
 
-import { Admin, Resource, useGetList } from 'react-admin';
-import { PostList } from "../../posts";
-import DetailComponent from "./components/DetailComponent";
+import { useGetList } from 'react-admin';
 import DetailSelector from "./components/DetailSelector";
 import DetailPageComponent from "./components/DetailPageComponent";
-import Punchs from "./Punchs.jsx";
 
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import PunchBoard from './PunchBoard.jsx';
 
 
@@ -169,30 +157,6 @@ const PunchListComponent = () => {
     
     
     const { data, ids, loading, error } = useGetList('list', );
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    // console.log(data)
-    
-    // console.log(data)
-    // if (loading) { return <p>Loading...</p>; }
-    
-    // const inputData = useRef(boardAllData)
-    // const [inputIds, setInputIds] = React.useState(ids)
     const [boardData, setBoardData] = useState([])
     const [boardIndexData, setBoardIndexData] = useState([])
     
@@ -497,6 +461,8 @@ const PunchListComponent = () => {
     useEffect(()=> {
         setAbleUpdateDetailFlag(true)
     }, [upPunchBoardData])
+
+
     return (
         <React.Fragment>
             <Collapse in={alertButton}>

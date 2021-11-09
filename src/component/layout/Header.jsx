@@ -34,16 +34,16 @@ const Header = () => {
     let a = window.localStorage.getItem('username')
 
     // useEffect(()=>{
-    //     console.log(a)
+    //     // console.log(a)
     //     setUserStorage(JSON.stringify(a))
     // }, [])
 
     const handleUserToProject = () => {
-        console.log('aa')
+        // console.log('aa')
     }
 
     const handleOptionTest = () =>{
-        console.log('abc')
+        // console.log('abc')
     }
 
     return (

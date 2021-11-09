@@ -3,7 +3,7 @@ import {
     Box,
 } from '@material-ui/core';
 
-const CustomBox = (props) => {
+const HistoryBox = (props) => {
     const [stateValue, setStateValue] = React.useState("")
     const [colorValue, setColorValue] = React.useState("")
     const [allData, setAllData] = React.useState(props.allData)
@@ -39,8 +39,8 @@ const CustomBox = (props) => {
                 height={props.heightData}
                 display="inline-block"
                 textAlign="center"
-                lineHeight="25px"
-                fontSize="12px"
+                lineHeight="36px"
+                fontSize="13px"
                 // fontWeight="bold"
                 verticalAlign="middle"
                 color="white"
@@ -52,4 +52,4 @@ const CustomBox = (props) => {
     )
 }
 
-export default CustomBox;
+export default HistoryBox;

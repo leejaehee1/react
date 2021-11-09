@@ -27,23 +27,23 @@ const DepartmentTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlDepartment)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetDepartment(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getDepartment)
+        // // console.log(3)
+        // // console.log(getDepartment)
         let targetColumns = []
         if (getDepartment!==undefined){
             for (var r of Object.keys(getDepartment[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getDepartment)
         }
@@ -51,7 +51,7 @@ const DepartmentTable = () => {
     }, [getDepartment])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

@@ -27,23 +27,23 @@ const SystemTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlSystem)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetSystem(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getSystem)
+        // // console.log(3)
+        // // console.log(getSystem)
         let targetColumns = []
         if (getSystem!==undefined){
             for (var r of Object.keys(getSystem[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getSystem)
         }
@@ -51,7 +51,7 @@ const SystemTable = () => {
     }, [getSystem])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

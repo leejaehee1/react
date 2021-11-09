@@ -31,7 +31,7 @@ const PunchListContent = () => {
     const [boardData, setBoardData] = useState("")
     const dataFlow = useRef("")
     
-    // console.log(boardData)
+    // // console.log(boardData)
     
     // const throwDataUp = () => {
     //     props.setboardData(dataFlow.current)
@@ -44,8 +44,8 @@ const PunchListContent = () => {
 
     useEffect(() => {
         dataFlow.current = boardData
-        // console.log(11)
-        // console.log(dataFlow.current)
+        // // console.log(11)
+        // // console.log(dataFlow.current)
         // throwDataUp()
     }, [boardData])
     return (
@@ -69,8 +69,8 @@ const PunchListContent = () => {
                                     // disableRipple
                                     onClick={e => {
                                         // e.stopPropagation();
-                                        console.log(e.target)
-                                        console.log(id)
+                                        // console.log(e.target)
+                                        // console.log(id)
                                         // onToggleItem(id);
                                     }}
                                 />

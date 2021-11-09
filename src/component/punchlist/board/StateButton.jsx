@@ -18,6 +18,20 @@ import TextField from '@material-ui/core/TextField';
 // css
 import './styles/StateButton.css'
 
+// loading
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    backgroundColor: 'rgba( 200, 200, 200, 0.07 )',
+    // opacity: '0.5',
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
+
 
 const options = [
     'Opened',
@@ -28,6 +42,7 @@ const options = [
   ];
 
 const StateButton = (props) => {
+    const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [selectedIndex, setSelectedIndex] = React.useState(props.eachState);
     const [eachState, setEachState] = React.useState(props.eachState);
@@ -40,6 +55,10 @@ const StateButton = (props) => {
     const refresh = useRefresh();
     const redirect = useRedirect();
 
+    const [loadingIcon, setLoadingIcon] = useState(false);
+    let localUsername = window.localStorage.getItem('username')
+
+
     //sendEmail
     const punchListIssuedBy = useRef();
     const punchListProjectID = useRef();
@@ -48,24 +67,25 @@ const StateButton = (props) => {
 
     const handleClickListItem = (event) => {
         // props.eachRowId
-        // console.log(props.allData['projectID'])
+        // // console.log(props.allData['projectID'])
         setAnchorEl(event.currentTarget);
     };
-
+    
     const handleMenuItemClick = (event, index) => {
+        setLoadingIcon(true)
         selectStatusIndex.current = index;
         // 주어진 버튼 눌렀을 때
         // console.dir(event.currentTarget.textContent)
         // setSelectedIndex(index);
         // setEachState(index+2);  // 이거하면 useEffect의 update 로직으로 간다.
-        // console.log(index===3)
-        // console.log(apiUsers)
-        // console.log(apiProjectUsers)
-        // console.log(props.allData)
+        // // console.log(index===3)
+        // // console.log(apiUsers)
+        // // console.log(apiProjectUsers)
+        // // console.log(props.allData)
         punchListIssuedBy.current = props.allData['issuedBy']
         punchListProjectID.current = props.allData['projectID']
-        // console.log(punchListIssuedBy.current)
-        // console.log(punchListProjectID.current)
+        // // console.log(punchListIssuedBy.current)
+        // // console.log(punchListProjectID.current)
         if (index===3 ){
             setAnchorEl(null);
             setOpenModal(true)
@@ -78,11 +98,11 @@ const StateButton = (props) => {
                 }
             }
             targetUsersSendEmail.push(punchListIssuedBy.current)
-            // console.log(targetUsersSendEmail)
+            // // console.log(targetUsersSendEmail)
             let targetUsersSendEmailSet = new Set(targetUsersSendEmail)
-            // console.log(targetUsersSendEmailSet)
+            // // console.log(targetUsersSendEmailSet)
             let targetUsersSendEmailSetArrays = Array.from(targetUsersSendEmailSet)
-            // console.log(targetUsersSendEmailSetArrays)
+            // // console.log(targetUsersSendEmailSetArrays)
 
             let targetSendEmail = []
             for (var targetUsersSendEmailSetArray of targetUsersSendEmailSetArrays){
@@ -91,7 +111,7 @@ const StateButton = (props) => {
                     targetSendEmail.push(apiUser['email'])
                 }}
             }
-            // console.log(targetSendEmail)
+            // // console.log(targetSendEmail)
             let postData = {
                 data:targetSendEmail,
                 punchID: props.allData['punchID'],
@@ -99,10 +119,10 @@ const StateButton = (props) => {
                 closedDate: props.allData['closedDate'],
                 issueDescription: props.allData['issueDescription']
             }
-            // console.log(postData)
+            // // console.log(postData)
             const urlMail = 'http://54.180.147.184:5000/punchlist/mail';
 
-            console.log(postData)
+            // console.log(postData)
 
 
             // turn off send mail under three line
@@ -110,21 +130,28 @@ const StateButton = (props) => {
             //     .then((res)=> console.log('success sendEmail'))
             //     .catch(err => console.log(err))
 
-
+            // setEachState(index);
             update('list', 
                 {a:updataPK},   // id
-                {status : index+2}, // data
+                {
+                    status : index+2,
+                    issuedBy : localUsername
+                }, // data
                 updataUpPK,
                 {
                     onSuccess: ()=> {
-                        // console.log('들어왔다능')
+                        
+                        // // console.log('들어왔다능')
+                        // // console.log('들어왔다능1')
+                        // setEachState(index);
+                        // setAnchorEl(null);
+                        // refresh()
+                        // redirect('/');
+
+
                         refresh()
-                        // console.log('들어왔다능1')
                         setAnchorEl(null);
-                        // console.log('들어왔다능2')
-
-                        redirect('/');
-
+                        setOpenModal(false);
                         setEachState(index);
                             // setEachState(index+2)
                             // setAnchorEl(null);
@@ -134,26 +161,30 @@ const StateButton = (props) => {
         }else {
             update('list', 
                 {a:updataPK},   // id
-                {status : index+2}, // data
+                {
+                    status : index+2,
+                    issuedBy : localUsername
+                }, // data
                 updataUpPK,
                 {
                     onSuccess: ()=> {
-                        // console.log('들어왔다능')
+                        
+                        // setEachState(index);
+                        // setAnchorEl(null);
+                        // refresh()
+                        // redirect('/');
+
                         refresh()
-                        // console.log('들어왔다능1')
                         setAnchorEl(null);
-                        // console.log('들어왔다능2')
-
-                        redirect('/');
-
+                        setOpenModal(false);
                         setEachState(index);
-                            // setEachState(index+2)
-                            // setAnchorEl(null);
-                        },
-                    })
 
-        }
-        
+                    },
+                })
+                
+            }
+            
+        setLoadingIcon(false)
     };
     
     const handleClose = () => {
@@ -191,7 +222,7 @@ const StateButton = (props) => {
     const [openModal, setOpenModal] = useState(false);
     const [modalTextArea, setModalTextArea] = useState("")
     const handelModalTextArea = (e) => {
-        // console.log(e.target.value)
+        // // console.log(e.target.value)
         setModalTextArea(e.target.value)
     }
     const handleModal = () => {
@@ -201,7 +232,7 @@ const StateButton = (props) => {
     const handelModalCancelButton = (e) => {
         // e.stopPropagation()
         // if (e.target !== e.currentTarget) return;
-        // console.log(11)
+        // // console.log(11)
         setAnchorEl(null);
         setOpenModal(false);
         // e.preventDefault()
@@ -212,15 +243,16 @@ const StateButton = (props) => {
     const handelModalApplyButton = (e) => {
         // e.stopImmediatePropagation()
         // e.stopPropagation()
-        // console.log(22)
+        // // console.log(22)
         // setOpenModal(false);
 
         update('listAccept', 
                 {a:updataPK},   // id
-                {status : 5, notAcceptedComment:modalTextArea, notAcceptedBy: 'testUser'}, // data
+                {status : 5, notAcceptedComment:modalTextArea, notAcceptedBy: 'testUser', issuedBy : localUsername}, // data
                 updataUpPK,
                 {
                     onSuccess: ()=> {
+                        
                         refresh()
                         setAnchorEl(null);
                         setOpenModal(false);
@@ -228,10 +260,11 @@ const StateButton = (props) => {
                         // redirect('/');
                         setEachState(5);
                         // setSelectedIndex(3);
-                        // console.log('들어왔다능1')
+                        // // console.log('들어왔다능1')
                         // setEachState(index+2)
-                        // console.log('들어왔다능2')
+                        // // console.log('들어왔다능2')
                         // setAnchorEl(null);
+                        setLoadingIcon(false)
                         },
         })
         
@@ -240,6 +273,9 @@ const StateButton = (props) => {
 
     return (
         <div>
+            <Backdrop className={classes.backdrop} open={loadingIcon} onClick={handleClose}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Button aria-controls="simple-menu" aria-haspopup="true" style={{textTransform:"none"}} onClick={handleClickListItem}>
 
                 <CustomBox stateData={eachState} allData={props.allData} />

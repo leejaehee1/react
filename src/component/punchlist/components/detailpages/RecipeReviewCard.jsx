@@ -96,29 +96,29 @@ export default function RecipeReviewCard(props) {
         setImageUrl(`http://54.180.147.184:5000/${imagePathList[0]?.imagePath.slice(7)}`)
     }, [imagePathList])
     
-    // console.log(imagePathList)
+    // // console.log(imagePathList)
     const [imageValidationtarget, setImageValidationtarget] = useState([])
     useEffect(()=> {
-        // console.log(imagePathList)
+        // // console.log(imagePathList)
         // for(var index in imagePathList){
-        //     // console.log(imagePathList[index]["imagePath"])
+        //     // // console.log(imagePathList[index]["imagePath"])
         //     axios.get(`http://54.180.147.184:5000/${imagePathList[index]["imagePath"].slice(7)}`)
         //         .then((res)=> {
-        //             console.log(res);
-        //             // console.log(imageValidationtarget)
+        //             // console.log(res);
+        //             // // console.log(imageValidationtarget)
         //             var imageValidationList = [...imageValidationtarget, 1]
         //             setImageValidationtarget(imageValidationList)
         //         })
         //         .catch(err => {
-        //             console.log(2);
+        //             // console.log(2);
         //             var imageValidationList = [...imageValidationtarget, 0]
         //             setImageValidationtarget(imageValidationList)
         //         })
         // }
-        // console.log(imagePathList)
+        // // console.log(imagePathList)
     }, [imagePathList])
-  // console.log(props.punchStep)
-  // console.log(props.rowData)
+  // // console.log(props.punchStep)
+  // // console.log(props.rowData)
   return (
     <>
     {/* {JSON.stringify(getPhotos)} */}

@@ -27,10 +27,10 @@ const ProjectTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlProject)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetProject(res.data.result)})
         .catch(err => console.log(err))
     }, [])
@@ -41,7 +41,7 @@ const ProjectTable = () => {
             for (var r of Object.keys(getProject[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getProject)
         }
@@ -49,7 +49,7 @@ const ProjectTable = () => {
     }, [getProject])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

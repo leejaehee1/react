@@ -27,25 +27,25 @@ import StateButton from './board/StateButton';
 // import Button from '@mui/material/Button';
 
 const PunchBoard = (props) => {
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardData)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log(props.boardIds)
-    // console.log('props.boardData')
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardData)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log(props.boardIds)
+    // // console.log('props.boardData')
     const [timeFlag, setTimeFlag] = useState(false)
     const a = props?.boardData
     const b = props?.boardIds
@@ -94,14 +94,14 @@ const PunchBoard = (props) => {
 
 
     const handlePagination = (e) => {
-        // console.log(e.target.value)
-        // console.log(e)
-        // console.log(e.target)
-        // console.log(e.target.outerText)
+        // // console.log(e.target.value)
+        // // console.log(e)
+        // // console.log(e.target)
+        // // console.log(e.target.outerText)
         setCurrentPage(e.target.outerText)
-        // console.log(e.target.elements)
-        // console.log(e.target.element)
-        // console.log(page)
+        // // console.log(e.target.elements)
+        // // console.log(e.target.element)
+        // // console.log(page)
     }
 
     const [detailPageUpdateButton, setDetailPageUpdateButton] = useState(false);
@@ -163,8 +163,8 @@ const PunchBoard = (props) => {
                                     // disableRipple
                                     onClick={e => {
                                         // e.stopPropagation();
-                                        console.log(e.target)
-                                        console.log(id)
+                                        // console.log(e.target)
+                                        // console.log(id)
                                         // onToggleItem(id);
                                     }}
                                 />
@@ -175,12 +175,7 @@ const PunchBoard = (props) => {
                                 style={{marginRight:'10px', marginTop:'0px', marginBottom:'0px', height:'50px'}}
                                 
                                 primary={
-                                    `${inputBoardData[id]?.punchID}, 
-                                    ${inputBoardData[id]?.category}, 
-                                    ${discipline?.data[inputBoardData[id]?.discipline]?.disciplineName},   
-                                    ${inputBoardData[id]?.tagNumber}, 
-                                    ${inputBoardData[id]?.unit}, 
-                                    ${inputBoardData[id]?.area}`
+                                    `${(inputBoardData[id]?.punchID)?inputBoardData[id]?.punchID:'EMPTY PUNCHID'}${inputBoardData[id]?.category?(`, ${inputBoardData[id]?.category}`):" "}${discipline?.data[inputBoardData[id]?.discipline]?.disciplineName}${(inputBoardData[id]?.tagNumber)?`, ${inputBoardData[id]?.tagNumber}`:" "}${(inputBoardData[id]?.unit)?`, ${inputBoardData[id]?.unit}`: ' '}${(inputBoardData[id]?.area)?`, ${inputBoardData[id]?.area}`: ' '}`
                                 }
                                 secondary={
                                     <>
@@ -190,9 +185,9 @@ const PunchBoard = (props) => {
                                                 textOverflow:"ellipsis", 
                                                 whiteSpace:"nowrap"}}
                                         >
-                                            {systemID?.data[inputBoardData[id]?.systemID]?.systemName}
+                                            {(systemID?.data[inputBoardData[id]?.systemID]?.systemName)?systemID?.data[inputBoardData[id]?.systemID]?.systemName:' '}
                                             <br />
-                                            {subSystem?.data[inputBoardData[id]?.subsystem]?.subsystemName}
+                                            {(subSystem?.data[inputBoardData[id]?.subsystem]?.subsystemName)?subSystem?.data[inputBoardData[id]?.subsystem]?.subsystemName:' '}
                                         </p>
                                     </>
                                 }

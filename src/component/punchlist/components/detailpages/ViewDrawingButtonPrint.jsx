@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const ComponentToPrint = (props) => {
-    // console.log(props.downDetailData)
+    // // console.log(props.downDetailData)
     const [getProjectID, setGetProjectID] = useState([]);
     const [getDiscipline, setGetDiscipline] = useState([]);
     const [getDepartment, setGetDepartment] = useState([]);
@@ -114,10 +114,10 @@ const ComponentToPrint = (props) => {
     const [SystemState, setSystemState] = useState(props.downDetailData.systemID)
     const [subSystemState, setSubSystemState] = useState(props.downDetailData.subsystem)
     useEffect(()=> {
-        // console.log(getProjectID)
+        // // console.log(getProjectID)
         for (var projectRow of getProjectID){
-            // console.log(projectRow)
-            // console.log()
+            // // console.log(projectRow)
+            // // console.log()
             if(projectRow['projectID']===props.downDetailData.projectID){
                 setProjectIDState(projectRow['projectName'])
             }

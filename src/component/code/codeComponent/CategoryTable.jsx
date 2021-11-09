@@ -27,23 +27,23 @@ const CategoryTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlCategory)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetCategory(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getCategory)
+        // // console.log(3)
+        // // console.log(getCategory)
         let targetColumns = []
         if (getCategory!==undefined){
             for (var r of Object.keys(getCategory[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getCategory)
         }
@@ -51,7 +51,7 @@ const CategoryTable = () => {
     }, [getCategory])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

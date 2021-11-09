@@ -104,11 +104,11 @@ const ColumnMappingButton = (props) => {
       // alert("neet to import excel : ColumnMappingButton 102")
       props.setAlertFirstOpen(true)
     }
-    // console.log("excelHook")
-    // console.log(excelHook)
+    // // console.log("excelHook")
+    // // console.log(excelHook)
     return () => {
-    // console.log("open :"+open)
-    // console.log("modalFlag :"+modalFlag)
+    // // console.log("open :"+open)
+    // // console.log("modalFlag :"+modalFlag)
   }
   };
 
@@ -116,12 +116,12 @@ const ColumnMappingButton = (props) => {
     setOpen(false);
     setModalFlag(true)
     setAlertOpen(false);
-    // console.log(open)
-    // console.log(modalFlag)
+    // // console.log(open)
+    // // console.log(modalFlag)
   };
 
   const handleCloseApply = () => {
-    console.log(excelChangedHook)
+    // console.log(excelChangedHook)
     if (!excelChangedHook.includes('projectID') || !excelChangedHook.includes('punchID')){
       // alert('PK 포함 안되어 있다. 아무 반응 없다.');
       setAlertOpen(true)
@@ -130,22 +130,22 @@ const ColumnMappingButton = (props) => {
     setOpen(false);
     setModalFlag(true);
     setAlertOpen(false);
-    // console.log(open)
-    // console.log(modalFlag)
-    // console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
-    // console.log(excelChangedHook)
+    // // console.log(open)
+    // // console.log(modalFlag)
+    // // console.log("ApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApplyApply")
+    // // console.log(excelChangedHook)
     props.onApply(excelChangedHook)
     
   };
 
   useEffect(() => {
 
-    // console.log("excelChangedHook")
-    // console.log(excelChangedHook)
+    // // console.log("excelChangedHook")
+    // // console.log(excelChangedHook)
     // if (modalFlag) {
-    //   console.log("끌때 들어와라")
+    //   // console.log("끌때 들어와라")
     //   props.onexcelChangedColumns(excelChangedHook)
-    //   console.log(excelChangedHook)
+    //   // console.log(excelChangedHook)
     // }
     props.onexcelChangedColumns(excelChangedHook)
   }, [modalFlag, excelChangedHook])
@@ -164,11 +164,11 @@ const ColumnMappingButton = (props) => {
 
   const changeColumn = (excelChangedup) => {
     setExcelChangedHook(excelChangedup)
-    // console.log("changedcolumn111111111111111111111111")
-    // console.log("excelChangedup")
-    // console.log(excelChangedup)
+    // // console.log("changedcolumn111111111111111111111111")
+    // // console.log("excelChangedup")
+    // // console.log(excelChangedup)
     // if (modalFlag) {
-    //   console.log("changedcolumn3333333333333333333333")
+    //   // console.log("changedcolumn3333333333333333333333")
     // }
     props.onexcelChangedColumns(excelChangedup)
     // setExcelChangedHook(excelChangedup)

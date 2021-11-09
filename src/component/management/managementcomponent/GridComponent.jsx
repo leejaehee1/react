@@ -266,124 +266,124 @@ const GridComponent = () => {
                 targetArray.push(tergetObject)
                 compareColumnsData.push(a)
             } else {
-                // console.log("없다")
+                // // console.log("없다")
             }
 
             // change datetime
             if(dateToData.includes(a)) {
-                // console.log("여기까지 왔다....")
-                // console.log(a)
+                // // console.log("여기까지 왔다....")
+                // // console.log(a)
                 for (var rD in data) {
 
                     if (a === 'issuedDate'){
 
                         var dateTypeData = (data[rD]['issuedDate'])?data[rD]['issuedDate']:data[rD]['IssuedDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['issuedDate']) {
                                 data[rD]['issuedDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['IssuedDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'targetDate'){
 
                         var dateTypeData = (data[rD]['targetDate'])?data[rD]['targetDate']:data[rD]['TargetDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['targetDate']) {
                                 data[rD]['targetDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['TargetDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'completedDate'){
 
                         var dateTypeData = (data[rD]['completedDate'])?data[rD]['completedDate']:data[rD]['CompletedDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['completedDate']) {
                                 data[rD]['completedDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['CompletedDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'confirmedDate'){
 
                         var dateTypeData = (data[rD]['confirmedDate'])?data[rD]['confirmedDate']:data[rD]['ConfirmedDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['confirmedDate']) {
                                 data[rD]['confirmedDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['ConfirmedDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'closedDate'){
 
                         var dateTypeData = (data[rD]['closedDate'])?data[rD]['closedDate']:data[rD]['ClosedDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['closedDate']) {
                                 data[rD]['closedDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['ClosedDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'scheStartDate'){
 
                         var dateTypeData = (data[rD]['scheStartDate'])?data[rD]['scheStartDate']:data[rD]['ScheStartDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['scheStartDate']) {
                                 data[rD]['scheStartDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['ScheStartDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
                     } else if (a === 'scheFinishDate'){
 
                         var dateTypeData = (data[rD]['scheStartDate'])?data[rD]['scheFinishDate']:data[rD]['ScheFinishDate'];
-                        // console.log(typeof(rD['IssuedDate']))
+                        // // console.log(typeof(rD['IssuedDate']))
                         if (typeof(dateTypeData)=== 'number'){
-                            // console.log('number 찍혔다.')
-                            // console.log(ExcelDateToJSDate(dateTypeData))
+                            // // console.log('number 찍혔다.')
+                            // // console.log(ExcelDateToJSDate(dateTypeData))
                             if(data[rD]['scheFinishDate']) {
                                 data[rD]['scheFinishDate'] = ExcelDateToJSDate(dateTypeData)
                             } else {
                                 data[rD]['ScheFinishDate'] = ExcelDateToJSDate(dateTypeData)
                             }
-                            // console.log(data[rD])
+                            // // console.log(data[rD])
                         }
 
 
@@ -408,27 +408,27 @@ const GridComponent = () => {
 
 
     const onApply = (applyData) => {
-        // console.log(10000000000000000000000000001)
-        // console.log(data)
+        // // console.log(10000000000000000000000000001)
+        // // console.log(data)
         // const baseComparing = Object.values(colDefs).map((ab) => ab.title ? ab.title.toLowerCase() : ab.title);
         let targetArray = []
         const compareColumnsData = []
 
 
-        // console.log("applyData")    // 변경된 값
-        // console.log(applyData)    // 변경된 값
-        // console.log("colDef.title")    // 변경된 값
-        // console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
+        // // console.log("applyData")    // 변경된 값
+        // // console.log(applyData)    // 변경된 값
+        // // console.log("colDef.title")    // 변경된 값
+        // // console.log(Object.values(colDefs).map((c) => c.title))  // 변경 전값
         const colDefTitle = Object.values(colDefs).map((c) => c.title)
 
         const updateApplyData = [] // 결국 로직에 포함되지 않음
         for (var i in applyData) {
-            // console.log(applyData[i])
+            // // console.log(applyData[i])
             updateApplyData.push(applyData[i] ? applyData[i].toLowerCase() : applyData[i])
         }
 
-        // console.log("updateApplyData") // 변경된 값에서 소문자로 변경된 배열
-        // console.log(updateApplyData) // 변경된 값에서 소문자로 변경된 배열
+        // // console.log("updateApplyData") // 변경된 값에서 소문자로 변경된 배열
+        // // console.log(updateApplyData) // 변경된 값에서 소문자로 변경된 배열
 
         // delete 로직
         for (const a of applyData) {
@@ -446,7 +446,7 @@ const GridComponent = () => {
                                                 },
                                         width: "20%"
                                         }
-                    console.log('asdfasfd')
+                    // console.log('asdfasfd')
                 }else {
                     var tergetObject = {title: a, field: a,
                                         cellStyle: {
@@ -466,18 +466,18 @@ const GridComponent = () => {
 
                 const applyDataF = {}
                 const fakeData = data
-                // console.log(fakeData[0])
+                // // console.log(fakeData[0])
                 // 둘의 인덱스가 같으면, 넘어간다.
                 // 둘의 인덱스가 다르면, applyData key value를 추가하고,  colDef.title을 제거한다. 
                 if (applyData[indexA] !== colDefTitle[indexA]) {
-                    // console.log("먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나")
-                    // console.log(applyData[indexA])
-                    // console.log(colDefTitle[indexA])
+                    // // console.log("먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나먹히나 안먹히나")
+                    // // console.log(applyData[indexA])
+                    // // console.log(colDefTitle[indexA])
 
                     // data는 배열이 아니고 객체다.
 
-                    // console.log(data[applyData[indexA]])  ///////////////////// data 가 안 잡힌다..
-                    // console.log(data[colDefTitle[indexA]])  ///////////////////////// data가 안 잡힌다.
+                    // // console.log(data[applyData[indexA]])  ///////////////////// data 가 안 잡힌다..
+                    // // console.log(data[colDefTitle[indexA]])  ///////////////////////// data가 안 잡힌다.
 
                     data.map((row) => {
                         row[applyData[indexA]] = row[colDefTitle[indexA]]
@@ -485,16 +485,16 @@ const GridComponent = () => {
                     })
 
                 }
-                // console.log(fakeData[0])
+                // // console.log(fakeData[0])
                 // setData(fakeData)
 
 
                 // for (let baseTar of Object.values(colDefs).map((c) => c.title)) {
 
-                //     console.log('conparing!!!!!!zx ')
-                //     console.log(baseTar)
-                //     console.log(a)
-                //     // console.log(data)
+                //     // console.log('conparing!!!!!!zx ')
+                //     // console.log(baseTar)
+                //     // console.log(a)
+                //     // // console.log(data)
 
 
                 //     if ( !updateApplyData.includes(baseTar.toLowerCase()) ) {
@@ -503,7 +503,7 @@ const GridComponent = () => {
 
                 //         const applyData = {}
                 //         const fakeData = data
-                //         console.log(fakeData[0])
+                //         // console.log(fakeData[0])
                 //         fakeData.map((row)=> {
                 //             for (var key in row) {
                 //                 if (key === targetDataF) {
@@ -513,7 +513,7 @@ const GridComponent = () => {
                 //                 }
                 //             }
                 //         })
-                //         console.log(fakeData[0])
+                //         // console.log(fakeData[0])
                 //         setData(fakeData)
                 //     }
                 // }
@@ -521,10 +521,10 @@ const GridComponent = () => {
 
 
             } else {
-                // console.log("없다")
+                // // console.log("없다")
                 if (a) {
 
-                    console.log("1")
+                    // console.log("1")
 
 
 
@@ -534,7 +534,7 @@ const GridComponent = () => {
                 }
             }
         }
-        console.log(targetArray)
+        // console.log(targetArray)
         setColDefs(targetArray)
         updateColDefs.current = targetArray
     }
@@ -554,13 +554,13 @@ const GridComponent = () => {
         // // if (event.type ==='keydown' && (event.key ==='Tab' || event.key === 'Shift')) {
         // //     return;
         // // }
-        // console.log("adfasdf-------------------------------------------")
-        // console.log(open)
-        // console.log(event.target)
-        // console.log(eachRowKeyData)
-        // console.log("toggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawer")
-        // console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
-        // console.log(eachRowValueData)
+        // // console.log("adfasdf-------------------------------------------")
+        // // console.log(open)
+        // // console.log(event.target)
+        // // console.log(eachRowKeyData)
+        // // console.log("toggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawertoggleDrawer")
+        // // console.log(eachRowKeyData)        // 여기가 닫을 때 로직입니다.
+        // // console.log(eachRowValueData)
         setRightDrawerState(open);
         setCodeMappingChecked(false)
     }
@@ -568,27 +568,9 @@ const GridComponent = () => {
     useEffect(() => {
     },[eachRowKeyData, eachRowValueData, eachRowData])
 
-    // const drawerDataLogin = () => {
-    //     let htmlKetArray = []
-    //     var htmlValueArray = []
-    //     for(var key in eachRowData){
-    //         htmlKetArray.push(key)
-    //         htmlValueArray.push(eachRowData[key])
-    //     }
-    //     console.log(htmlKetArray)
-    //     console.log(htmlValueArray)
-    //     setEachRowKeyData(()=>htmlKetArray)
-    //     setEachRowValueData(()=>htmlValueArray)
-    // }0316
-    // console.log(dataStatus)
-    // console.log(statusIds)
-
-    // change all projectID
     const [allProjectTargetData, setAllProjectTargetData] = useState("");
     useEffect(()=> {
-        // console.log("allProjectTargetData")
-        // console.log(allProjectTargetData)
-        // console.log(data)
+
         for (var d in data){
             data[d].projectID = allProjectTargetData
         }
@@ -609,24 +591,24 @@ const GridComponent = () => {
     // const [valDrawingNo, setDrawingNo] = useState([]);
 
     useEffect(() => {
-        console.log("valProjectID")
-        console.log(valProjectID)
-        console.log("valDiscipline")
-        console.log(valDiscipline)
-        console.log("valCategory")
-        console.log(valCategory)
-        console.log("valDepartment")
-        console.log(valDepartment)
-        console.log("valSystemID")
-        console.log(valSystemID)
-        console.log("valSubsystem")
-        console.log(valSubsystem)
-        console.log("valStatus")
-        console.log(valStatus)
-        console.log("valUnit")
-        console.log(valUnit)
-        console.log("valArea")
-        console.log(valArea)
+        // console.log("valProjectID")
+        // console.log(valProjectID)
+        // console.log("valDiscipline")
+        // console.log(valDiscipline)
+        // console.log("valCategory")
+        // console.log(valCategory)
+        // console.log("valDepartment")
+        // console.log(valDepartment)
+        // console.log("valSystemID")
+        // console.log(valSystemID)
+        // console.log("valSubsystem")
+        // console.log(valSubsystem)
+        // console.log("valStatus")
+        // console.log(valStatus)
+        // console.log("valUnit")
+        // console.log(valUnit)
+        // console.log("valArea")
+        // console.log(valArea)
       }, [valStatus])
 
     const detailUI =  {
@@ -1005,20 +987,20 @@ const GridComponent = () => {
         event.preventDefault()
         try {
             console.dir("-----------------------------------")
-            console.dir(event.target.elements)
-            console.dir(event.target)
-            console.dir(event.target.elements.closedDate.value) // 각 값들
+            // console.dir(event.target.elements)
+            // console.dir(event.target)
+            // console.dir(event.target.elements.closedDate.value) // 각 값들
         } catch (e) {
-            console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
+            // console.log("삐뽀삐뽀 에러 삐뽀삐뽀")
         }
 
 
         updateColDefs.current.map((a)=> {
                 try {
                     data[selectRowId][a.title] = event.target.elements[a.title]["value"];
-                    console.log(a.title, "은 table에 반영되었다.")
+                    // console.log(a.title, "은 table에 반영되었다.")
                 } catch (e) {
-                    console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
+                    // console.log(a.title, " 의 값에 value가 없다. 컬럼 수정이 필요하다.");
                 }
 
             }
@@ -1057,14 +1039,14 @@ const GridComponent = () => {
     // db columns는 column mapping 적용하면 생긴다. 
     const dbColumns = useRef("")
     const compareDbColumns = (data) => {
-        // console.log("data")
+        // // console.log("data")
         if(data.length){
-            // console.log("있다")
-            // console.log(data)
+            // // console.log("있다")
+            // // console.log(data)
             dbColumns.current = data
         } else {
-            // console.log("없다")
-            // console.log(data)
+            // // console.log("없다")
+            // // console.log(data)
         }
     }
 
@@ -1081,16 +1063,16 @@ const GridComponent = () => {
     const [errorResultData, setErrorResultData] = useState({});
     const handleVerifyButton = () => {
         // columns checking validation
-        // console.log("updateColDefs.current")
-        // console.log(updateColDefs.current)
-        // console.log("dbColumns.current")
-        // console.log(dbColumns.current)
+        // // console.log("updateColDefs.current")
+        // // console.log(updateColDefs.current)
+        // // console.log("dbColumns.current")
+        // // console.log(dbColumns.current)
 
         // excel import validation
         if(updateColDefs.current.length){
-            // console.log('s')
+            // // console.log('s')
         } else {
-            // console.log('f')
+            // // console.log('f')
             // alert => excel import을 넣어주세요
             setAlertImportOpen(true)
             return null
@@ -1099,7 +1081,7 @@ const GridComponent = () => {
 
         for (var updataVal of updateColDefs.current) {
             if(dbColumns.current.includes(updataVal.title)){
-                // console.log("있다.")
+                // // console.log("있다.")
             }else{
                 setAlertOpen(true)
                 return null
@@ -1129,13 +1111,13 @@ const GridComponent = () => {
         for (var tData of data) {
             var tArray = []
             for(var uData of updateColDefs.current){
-                // console.log(tData['punchID'])
+                // // console.log(tData['punchID'])
+                // // console.log(uData.title)
+                // // console.log(tData)
+                // console.log('ttttttttttttttttttttttttt')
+                // console.log(tData[uData.title])
                 // console.log(uData.title)
-                // console.log(tData)
-                console.log('ttttttttttttttttttttttttt')
-                console.log(tData[uData.title])
-                console.log(uData.title)
-                console.log(valProjectID)
+                // console.log(valProjectID)
                 // if (uData.title === 'projectID'){
                 //     if(valProjectID.includes(tData[uData.title])) {
 
@@ -1214,7 +1196,7 @@ const GridComponent = () => {
     const [codeMappingChecked, setCodeMappingChecked] = React.useState(false);
 
     const handleChangeCodeMapping = () => {
-        // console.log(prev)
+        // // console.log(prev)
         setCodeMappingChecked((prev) => !prev);
         
     };
@@ -1238,9 +1220,9 @@ const GridComponent = () => {
                 data[rowI][updatedOldData[0]] = updatedOldData[2]
             }
         }
-        // console.log(123)
-        // console.log(data)
-        // console.log(updatedOldData)
+        // // console.log(123)
+        // // console.log(data)
+        // // console.log(updatedOldData)
     }, [updatedOldData])
 
 
@@ -1252,7 +1234,7 @@ const GridComponent = () => {
     const handleSaveDatabase = () => {
         setOpenModal(true)
         
-        // console.log("찍힌다.")
+        // // console.log("찍힌다.")
 
     }
     const [alertFirstOpen, setAlertFirstOpen] = React.useState(false);
@@ -1268,7 +1250,7 @@ const GridComponent = () => {
             {
                 onSuccess: () => {
                     refresh()
-                    console.log("create 성공")
+                    // console.log("create 성공")
                 }
             }
         )
@@ -1347,17 +1329,11 @@ const GridComponent = () => {
                         >
                             <br />
                             <ListItem 
-                                // button 
                                 key="Inbox"
                             >
                                 <ListItemIcon> <InboxIcon /></ListItemIcon>
-                                {/* <ListItemText primary="Update Row" /> */}
                                 <ListItemText>
-                                    {/* <h3>Update row-data</h3> */}
                                 </ListItemText>
-                                {/* <button className="updateRowColumnCodeData"><FindInPageIcon/>CodeMapping</button> */}
-
-                                {/* codeMapping page */}
                                 <FormControlLabel
                                     control={<Switch 
                                                     checked={codeMappingChecked} 
@@ -1419,10 +1395,8 @@ const GridComponent = () => {
                     // console.dir(rowData)
 
                     setRightDrawerState(true)
-                    // console.log(1)
-                    // console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
-                    // console.log(2)
+                    // // console.log(rowData) // 빈값이 안들어온다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    // // console.log(rowData) // {Area: "Algeria RDPP", PunchID: "PC-2-00-MB-MBP-E-01-001", IssuedDate: 43069.375601851854, IssueDescription: "Le support de base du transformateur de 15 kVa dan… panel was bended and fixation bolt was corroded ", Discipline: "Elec", …}
                     //  빈컬럼 추가하는 로직이 필요  //  excelChangedArray
                     // console.dir(event)
                     // console.dir(rowData.tableData.id)
@@ -1431,20 +1405,19 @@ const GridComponent = () => {
 
                     const targetData = {}
 
-                    // console.log(33)
-                    // console.log(Object.keys(rowData))  // excel NaN값을 제외한 전체 값
-                    // console.log(excelChangedArray.current) // 화면상 보여지는 전체 columns
+                    // // console.log(Object.keys(rowData))  // excel NaN값을 제외한 전체 값
+                    // // console.log(excelChangedArray.current) // 화면상 보여지는 전체 columns
                     
                     const updatedData = Object.keys(rowData)  // excel NaN값을 제외한 전체 값
                     for (let columnName in excelChangedArray.current) { // index값이 나간다.
                         if (excelChangedArray.current[columnName]) {
-                            // console.log(updatedData)
-                            // console.log(excelChangedArray.current[columnName])
+                            // // console.log(updatedData)
+                            // // console.log(excelChangedArray.current[columnName])
                             if (updatedData.includes(excelChangedArray.current[columnName])) {
-                                // console.log("그대로 넣어준다.")
+                                // // console.log("그대로 넣어준다.")
                                 targetData[excelChangedArray.current[columnName]] = rowData[excelChangedArray.current[columnName]]
                             } else {
-                                // console.log("빈값으로 넣어준다.")
+                                // // console.log("빈값으로 넣어준다.")
                                 targetData[excelChangedArray.current[columnName]] = ""
                             }
                         }
@@ -1453,12 +1426,11 @@ const GridComponent = () => {
                     let htmlKetArray = []
                     var htmlValueArray = []
                     for(var key in eachRowData.current){
-                        // console.log(3)
                         htmlKetArray.push(key)
                         htmlValueArray.push(eachRowData.current[key])
                     }
-                    // console.log(htmlKetArray)
-                    // console.log(htmlValueArray)
+                    // // console.log(htmlKetArray)
+                    // // console.log(htmlValueArray)
                     eachRowKeyData.current = htmlKetArray
                     eachRowValueData.current = htmlValueArray
                     setEachRowKData(eachRowKeyData.current)

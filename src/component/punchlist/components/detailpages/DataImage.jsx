@@ -63,9 +63,9 @@ const theme = createTheme({
 
 function DataImage(props) {
   const classes = useStyles();
-  // console.log(props.rowData)
-  // console.log(props.rowData?.punchID)
-  // console.log(props.rowData?.punchID)
+  // // console.log(props.rowData)
+  // // console.log(props.rowData?.punchID)
+  // // console.log(props.rowData?.punchID)
   // photos 기준으로 punchStep를 기준으로 1과 2를 나눠 준다. 
   // 그리고 RecipeReviewCard 내부에서 seq를 순차적으로 이미지를 넣어준다.
   return (

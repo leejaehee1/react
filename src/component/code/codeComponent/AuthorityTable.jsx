@@ -27,23 +27,23 @@ const AuthorityTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlAuthority)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetAuthority(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getAuthority)
+        // // console.log(3)
+        // // console.log(getAuthority)
         let targetColumns = []
         if (getAuthority!==undefined){
             for (var r of Object.keys(getAuthority[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getAuthority)
         }
@@ -51,7 +51,7 @@ const AuthorityTable = () => {
     }, [getAuthority])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

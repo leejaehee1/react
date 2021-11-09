@@ -81,11 +81,11 @@ const ClosedDate = (props) => {
           alert("오늘 이 후의 날짜를 선택하세요");
           setSelectedDate(new Date());
         } else {
-          // console.log(date)  // Thu Jan 08 1970 09:00:00 GMT+0900 (한국 표준시)
+          // // console.log(date)  // Thu Jan 08 1970 09:00:00 GMT+0900 (한국 표준시)
           setSelectedDate(date);
         }
       } else {
-        // console.log(date)
+        // // console.log(date)
         setSelectedDate(date);
       }
     };

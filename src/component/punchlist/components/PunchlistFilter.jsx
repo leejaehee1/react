@@ -83,50 +83,50 @@ const PunchlistFilter = (props) => {
 
     const handleChange = (e) =>{
         const name = e.target.name
-        // console.log(name)
-        // console.log(e.target.value)
+        // // console.log(name)
+        // // console.log(e.target.value)
         if (name ==="filterProjectID") {
             setFilterProjectID(e.target.value)
-            // console.log(1)
+            // // console.log(1)
         } else if (name =="filterCategory"){
             setFilterCategory(e.target.value)
-            // console.log(2)
+            // // console.log(2)
         }else if (name =="filterDiscipline"){
             setFilterDiscipline(e.target.value)
-            // console.log(3)
+            // // console.log(3)
         }else if (name =="filterUnit"){
             setFilterUnit(e.target.value)
-            // console.log(4)
+            // // console.log(4)
         }else if (name =="filterArea"){
             setFilterArea(e.target.value)
-            // console.log(5)
+            // // console.log(5)
         }else if (name =="filterIssuedBy"){
             setFilterIssuedBy(e.target.value)
-            // console.log(6)
+            // // console.log(6)
         }else if (name =="filterDrawing"){
             setFilterDrawing(e.target.value)
-            // console.log(7)
+            // // console.log(7)
         }else if (name =="filterTag"){
             setFilterTag(e.target.value)
-            // console.log(8)
+            // // console.log(8)
         }else if (name =="difficultyB"){
             setDifficultyB(e.target.value)
-            // console.log(9)
+            // // console.log(9)
         }else if (name =="difficultyA"){
             setDifficultyA(e.target.value)
-            // console.log(10)
+            // // console.log(10)
         }else if (name =="scheduleImpactB"){
             setScheduleImpactB(e.target.value)
-            // console.log(11)
+            // // console.log(11)
         }else if (name =="scheduleImpactA"){
             setScheduleImpactA(e.target.value)
-            // console.log(12)
+            // // console.log(12)
         }else if (name =="costImpactB"){
             setCostImpactB(e.target.value)
-            // console.log(13)
+            // // console.log(13)
         }else if (name =="costImpactA"){
             setCostImpactA(e.target.value)
-            // console.log(14)
+            // // console.log(14)
         }
     }
 
@@ -141,7 +141,7 @@ const PunchlistFilter = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!content) return;
-        // console.log(e)
+        // // console.log(e)
 
         const keyword = {
             id: nextID.current,
@@ -156,9 +156,9 @@ const PunchlistFilter = (props) => {
 
     const handleFilter = (e) => {
         e.preventDefault()
-        // console.log(e)
-        // console.log(e.target.name)
-        // console.log(e.target.elements)
+        // // console.log(e)
+        // // console.log(e.target.name)
+        // // console.log(e.target.elements)
     }
     
 
@@ -187,7 +187,7 @@ const PunchlistFilter = (props) => {
         }
         props.setFilterOpen(false)
         props.setDataForFilter(filterData)
-        // console.log(filterData)
+        // // console.log(filterData)
     }
 
     // const [filterProjectID, setFilterProjectID] = useState("");

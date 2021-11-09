@@ -65,8 +65,8 @@ const StyledTableCell = withStyles((theme) => ({
 
 const ExcelColumns = (props) => {
     const classes = useStyles();
-    // console.log("--------------------------------------------------------")
-    // console.log(props)  // {excelColumns: Array(17), sqlHook: "unit"}
+    // // console.log("--------------------------------------------------------")
+    // // console.log(props)  // {excelColumns: Array(17), sqlHook: "unit"}
     // excel 클릭한거 useState에 넣기
     // sqlHook이랑 excel click 둘다 값이 있으면, excel columns에 넣기. 이때 가상 배열 하나 (excel 값들어올 때마다 추가) 만들어 두자
     const [excelColumnArray, setExcelColumnArray] = React.useState(props.excelColumns)
@@ -82,8 +82,8 @@ const ExcelColumns = (props) => {
     const eTargetId = useRef("")
     const [deleteAlertOpen, setDeleteAlertOpen] = useState(false)
 
-    // console.log(sqlColumnDatas)
-    // console.log(props.sqlHooks)
+    // // console.log(sqlColumnDatas)
+    // // console.log(props.sqlHooks)
 
 
     // dbcolumns logic
@@ -102,10 +102,10 @@ const ExcelColumns = (props) => {
 
     const deleteCheck= (e) => {
 
-        console.log(e.target.id)
+        // console.log(e.target.id)
         if (e.target.id) {
             eTargetId.current = e.target.id
-            console.log(1)
+            // console.log(1)
 
         } else {
             // alert('Please Click slowly. Loading...')
@@ -114,19 +114,19 @@ const ExcelColumns = (props) => {
 
         try{
             let deleteIdData = deleteArray.map((v, i) => {
-                // console.log(i);
+                // // console.log(i);
                 if(i===parseInt(eTargetId.current)){
                     // return !v
-                    // console.log("들어오니")
+                    // // console.log("들어오니")
                     return !v
                 }else{
                     return v
                 }});
-                // console.log(deleteIdData)
-                // console.log(deleteArray)
+                // // console.log(deleteIdData)
+                // // console.log(deleteArray)
                 setDeletArray(deleteIdData)
         }catch(e){console.log(deleteArray)}
-        // console.log(deleteArray)
+        // // console.log(deleteArray)
         return () => {
             setDeletId(false);
         }
@@ -140,9 +140,9 @@ const ExcelColumns = (props) => {
     // Jira TEST
     
     const accdd = () => {
-        // console.log("excelChangedInit.current111111111111111111111")
-        // console.log(excelChangedInit.current)
-        // console.log(beChangeArray)
+        // // console.log("excelChangedInit.current111111111111111111111")
+        // // console.log(excelChangedInit.current)
+        // // console.log(beChangeArray)
         // beChangeArray.map((b, index) => {
         //     if (b) {
         //         excelChangedInit.current[index] = b
@@ -164,10 +164,10 @@ const ExcelColumns = (props) => {
             } else {
                 // return v
             }
-            // console.log(1111111111111111111111111111111)
+            // // console.log(1111111111111111111111111111111)
         }
         )
-            // console.log(b)
+            // // console.log(b)
             excelChangedInit.current=b
         }
         accdd()
@@ -221,15 +221,15 @@ const ExcelColumns = (props) => {
 
     const searchMappingColumns = () => {
         alert("autoMapping을 시작합니다")
-        // console.log(dbColumnvalue)
-        // console.log(excelChangedInit.current)
+        // // console.log(dbColumnvalue)
+        // // console.log(excelChangedInit.current)
 
 
 
         let updateSampleData = []
         for (var excelCol of excelChangedInit.current) {
-            // console.log(excelCol.toLowerCase())
-            // console.log(excelCol)
+            // // console.log(excelCol.toLowerCase())
+            // // console.log(excelCol)
             for (var DbCol of dbColumnvalue) {
                 if (excelCol.toLowerCase() === DbCol.toLowerCase()){
                     updateSampleData.push(DbCol);
@@ -242,9 +242,9 @@ const ExcelColumns = (props) => {
                 }
             }
         }
-        // console.log(excelChangedInit.current)
+        // // console.log(excelChangedInit.current)
         excelChangedInit.current = updateSampleData
-        // console.log(excelChangedInit.current)
+        // // console.log(excelChangedInit.current)
         accdd()
         setExcelColumnArray(excelChangedInit.current)
         // return () => {

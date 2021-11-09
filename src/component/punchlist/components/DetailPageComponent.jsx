@@ -1,9 +1,8 @@
-import React, {useState, useRef} from 'react';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import  {useEffect, useState, } from 'react';
+import { makeStyles, createTheme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
 import DataOne from './detailpages/DataOne';
 import DataSlider from './detailpages/DataSlider';
 import DataCheckBox from './detailpages/DataCheckBox';
@@ -11,9 +10,7 @@ import DataTime from './detailpages/DataTime';
 import DataChipsArray from './detailpages/DataChipsArray';
 import DataDescription from './detailpages/DataDescription';
 import DataImage from './detailpages/DataImage';
-import ClosedDate from '../../management/managementcomponent/inputComponent/ClosedDate';
 import ViewDrawingButton from './detailpages/ViewDrawingButton';
-// import Button from '@material-ui/core/Button';
 
 import'./styles/DetailPageComponent.css'
 
@@ -44,48 +41,34 @@ const useStyles = makeStyles((theme) => ({
 const theme = createTheme({
   typography: {
     htmlFontSize: 33,
-    // subtitle1: {
-    //   fontSize: 5,
-    // },
-    // testbody: {
-    //   fontWeight: 500,
-    // },
-    // button: {
-    //   fontStyle: 'italic'
-    // },
-    // h5: {
-    //   fontStyle: 'italic'
-    // },
   },
 })
 
 
 function DetailPageComponent(props) {
-  // console.log("props.downDetailData")
-  // console.log(props.downDetailData)
   const classes = useStyles();
 
 
-  const [targetDate, setTargetDate] = useState('');
-  const [designChgReq, setDesignChgReq] = useState('');
-  const [materialReq, setMaterialReq] = useState('');
-  const [scheduleImpact, setScheduleImpact] = useState('');
-  const [costImpact, setCostImpact] = useState('');
-  const [keyword1, setKeyword1] = useState('');
-  const [keyword2, setKeyword2] = useState('');
-  const [keyword3, setKeyword3] = useState('');
-  const [keyword4, setKeyword4] = useState('');
-  const [issueDescription, setIssueDescription] = useState('');
-  const [completeComment, setCompleteComment] = useState('');
+  const [targetDate, setTargetDate] = useState(null);
+  const [designChgReq, setDesignChgReq] = useState(null);
+  const [materialReq, setMaterialReq] = useState(null);
+  const [scheduleImpact, setScheduleImpact] = useState(null);
+  const [costImpact, setCostImpact] = useState(null);
+  const [keyword1, setKeyword1] = useState(null);
+  const [keyword2, setKeyword2] = useState(null);
+  const [keyword3, setKeyword3] = useState(null);
+  const [keyword4, setKeyword4] = useState(null);
+  const [issueDescription, setIssueDescription] = useState(null);
+  const [completeComment, setCompleteComment] = useState(null);
 
 
   const handleDetailUpdate= () => {
-    // alert('asdfasdf')
     const formData = new FormData();
     const data = {}
     if (targetDate==='' || targetDate===false){}else{
       data.targetDate = targetDate
       formData.append("targetDate", targetDate);
+      console.log(formData)
     }
     if (designChgReq==='' || designChgReq===false){}else{
       data.designChgReq = designChgReq
@@ -128,24 +111,41 @@ function DetailPageComponent(props) {
       formData.append("completeComment", completeComment);
     }
     formData.append("punchID", props.downDetailData?.punchID);
+    data.punchID = props.downDetailData?.punchID
 
-    const url = 'http://54.180.147.184:5000/punchlist/updateDetail';
     console.log(data)
-    axios.post(url, formData, {
+    console.log(formData)
+
+    const url = 'http://54.180.147.184:5000/punchlist/updatedetail';
+    // axios.post(url, formData, {
+    axios.post(url, {
       headers: {
           'Content-Type' : 'multipart/form-data'
-      }
+      },
+      body: data
     })
     .then(res => {
-        console.log(res);
-        // refresh()
+
         alert("저장 완료");
     })
     .catch(err => {
-        console.log(err);
     });
 
   }
+
+  useEffect(()=> {
+    setTargetDate(null)
+    setDesignChgReq(null)
+    setMaterialReq(null)
+    setScheduleImpact(null)
+    setCostImpact(null)
+    setKeyword1(null)
+    setKeyword2(null)
+    setKeyword3(null)
+    setKeyword4(null)
+    setIssueDescription(null)
+    setCompleteComment(null)
+  }, [props.downDetailData])
 
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
@@ -170,12 +170,12 @@ function DetailPageComponent(props) {
 
         <br />
         <Divider className={classes.divider} />
-
+        {/* {JSON.stringify(props.downDetailData)} */}
         <DataChipsArray 
           keyOne={props.downDetailData?.keyword1} 
           keyTwo={props.downDetailData?.keyword2} 
-          KeyThree={props.downDetailData?.keyword3}
-          KeyFour={props.downDetailData?.keyword4}
+          keyThree={props.downDetailData?.keyword3}
+          keyFour={props.downDetailData?.keyword4}
           setKeyword1={setKeyword1}
           setKeyword2={setKeyword2}
           setKeyword3={setKeyword3}

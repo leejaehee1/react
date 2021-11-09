@@ -11,7 +11,7 @@ import { List, Datagrid} from 'react-admin';
 
 export const TestAuthority = (props) => {
     const { data, ids, } = useListContext();
-    console.log(data)
+    // console.log(data)
     return (
     <List {...props}>
         <Datagrid>

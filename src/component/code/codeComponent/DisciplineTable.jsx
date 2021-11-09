@@ -27,23 +27,23 @@ const DisciplineTable = () => {
       ]);
 
     useEffect(()=> {
-        // console.log(1)
+        // // console.log(1)
         axios.get(urlDiscipline)
         .then((res)=> {
-            // console.log(2);
+            // // console.log(2);
             setGetDiscipline(res.data.result)})
         .catch(err => console.log(err))
     }, [])
 
     useEffect(()=> {
-        // console.log(3)
-        // console.log(getDiscipline)
+        // // console.log(3)
+        // // console.log(getDiscipline)
         let targetColumns = []
         if (getDiscipline!==undefined){
             for (var r of Object.keys(getDiscipline[0])){
                 targetColumns.push({title:r, field:r})
             }
-            // console.log(targetColumns)
+            // // console.log(targetColumns)
             setColumns(targetColumns)
             setData(getDiscipline)
         }
@@ -51,7 +51,7 @@ const DisciplineTable = () => {
     }, [getDiscipline])
 
     useEffect(()=> {
-        console.log(data)
+        // console.log(data)
     }, [data])
 
     const [openModal, setOpenModal] = React.useState(false);

@@ -52,7 +52,13 @@ export default function DataChipsArray(props) {
     { key: 3, label: props.keyFour },
     // { key: 4, label: 'buildin' },
   ];
-  const [chipData, setChipData] = React.useState([]);
+  const [chipData, setChipData] = React.useState([
+    { key: 0, label: props.keyOne },
+    { key: 1, label: props.keyTwo },
+    { key: 2, label: props.keyThree },
+    { key: 3, label: props.keyFour },
+    // { key: 4, label: 'buildin' },
+  ]);
 
   const changeInput = (e) => {
     // setTypingKeyword(e.target.value)
@@ -79,21 +85,21 @@ export default function DataChipsArray(props) {
     // 있으면 통과 없으면 alert 후에 끝! 추가 불가.
     // => for문으로 0부터 하나씩 뽑는다.
     let chipKeys = chipData.map((d)=> d.key)
-    // console.log(chipKeys)
-    // console.log(Object.values(chipData))
+    // // console.log(chipKeys)
+    // // console.log(Object.values(chipData))
     for (var i of [0, 1, 2, 3]){
-      // console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
-      // console.log(i)
+      // // console.log('aaaaaaaaaaaaaaaaaaaaaaaa')
+      // // console.log(i)
       if(chipKeys.includes(i)){
-        // console.log('포함');
+        // // console.log('포함');
         // datachip하나씩 돌리다가 key부분이 같다면 label을 찾아보자.
         chipData.map((rD) => {
           // if(rD){}
-          // console.log(rD)
+          // // console.log(rD)
           if(rD['key']===i){
-            // console.log('1차들어옴')
+            // // console.log('1차들어옴')
             if(rD['label']){}else{
-              // console.log('드렁옴??')
+              // // console.log('드렁옴??')
               if (targetIdx===-1){
                 targetIdx = i;
               }
@@ -103,14 +109,14 @@ export default function DataChipsArray(props) {
         });
         // break;
       } else {
-        // console.log('불포함');
+        // // console.log('불포함');
         targetIdx = i;
         break
       }
     }
 
-    console.log('targetIdx')
-    console.log(targetIdx)
+    // console.log('targetIdx')
+    // console.log(targetIdx)
 
 
     var flag = false
@@ -140,16 +146,22 @@ export default function DataChipsArray(props) {
 
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
-    // console.log(chipData)
+    // // console.log(chipData)
   };
 
   useEffect(()=> {
-    // console.log(22)
-    setChipData(targetData)
-    props.setKeyword1('')
-    props.setKeyword2('')
-    props.setKeyword3('')
-    props.setKeyword4('')
+    // // console.log(22)
+    setChipData([
+      { key: 0, label: props.keyOne },
+      { key: 1, label: props.keyTwo },
+      { key: 2, label: props.keyThree },
+      { key: 3, label: props.keyFour },
+      // { key: 4, label: 'buildin' },
+    ])
+    // props.setKeyword1('')
+    // props.setKeyword2('')
+    // props.setKeyword3('')
+    // props.setKeyword4('')
   }, [props.keyOne, props.keyTwo, props.KeyThree, props.KeyFour])
   let icon = <AddCircleOutlineIcon />
 
@@ -159,7 +171,7 @@ export default function DataChipsArray(props) {
 
 
   useEffect(() => {
-    console.log('------------------')
+    // console.log('------------------')
     chipData.map(v => {
       if (v.key === 0){
         props.setKeyword1(v.label)
@@ -187,7 +199,7 @@ export default function DataChipsArray(props) {
       </ThemeProvider>
       <Paper elevation={0} component="ul" className={classes.root}>
         {/* {JSON.stringify(chipData)} */}
-        {chipData.map((data) => {
+        {chipData.map((data, i) => {
 
           // if (data.label === 'Punch Keyword') {
           //   icon = <TagFacesIcon />;
@@ -195,7 +207,7 @@ export default function DataChipsArray(props) {
           
           if (data.label) {
             return (
-              <li key={data.key}>
+              <li key={`${i}-${props.keyOne}-${props.keyTwo}-${props.KeyThree}-${props.KeyFour}`}>
                 <Chip
                   // variant="outlined"
                   disabled={props.disable}

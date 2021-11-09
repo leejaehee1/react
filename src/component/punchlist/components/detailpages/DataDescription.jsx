@@ -58,9 +58,9 @@ const theme = createTheme({
 function DataDescription(props) {
   const classes = useStyles();
 
-  const [textAreaValue, setTextAreaValue] = useState('');
+  const [textAreaValue, setTextAreaValue] = useState(props.dataOne);
   const handleTextarea = (e) => {
-    // console.log(e.target.value);
+    // // console.log(e.target.value);
     setTextAreaValue(e.target.value)
     if (props.comName==='issueDescription'){
       props.setIssueDescription(e.target.value)
@@ -76,6 +76,8 @@ function DataDescription(props) {
       props.setCompleteComment('')
     };
     setTextAreaValue(props.dataOne)
+
+    return ()=> (setTextAreaValue(null))
   }, [props.dataOne])
 
   return (
@@ -88,20 +90,36 @@ function DataDescription(props) {
       {/* <Paper variant="outlined" className={classes.lpaper} square>
         {props.dataOne}
       </Paper> */}
-
+      {(props.disable)? 
+        <TextField
+            style={{width: '350px', paddingLeft:'20px', paddingTop: '5px'}}
+            id="issueDescription"
+            // label="Multiline"
+            onChange={handleTextarea}
+            multiline
+            rows={4}
+            // color='gray'
+            color="default"
+            value={props.dataOne}
+            variant="outlined"
+            disabled={props.disable}
+        />
+      :
       <TextField
-                    style={{width: '350px', paddingLeft:'20px', paddingTop: '5px'}}
-                    id="issueDescription"
-                    // label="Multiline"
-                    onChange={handleTextarea}
-                    multiline
-                    rows={4}
-                    // color='gray'
-                    color="default"
-                    value={textAreaValue}
-                    variant="outlined"
-                    disabled={props.disable}
-                />
+          style={{width: '350px', paddingLeft:'20px', paddingTop: '5px'}}
+          id="issueDescription"
+          // label="Multiline"
+          onChange={handleTextarea}
+          multiline
+          rows={4}
+          // color='gray'
+          color="default"
+          value={textAreaValue}
+          variant="outlined"
+          disabled={props.disable}
+      />
+      }
+
         
       <br />
 

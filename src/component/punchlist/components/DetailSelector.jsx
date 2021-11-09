@@ -77,17 +77,17 @@ function DetailSelector(props) {
   let excelData = Object.values(props?.boardData)
   let fData = Object.keys(excelData[0]?excelData[0]:[])
 
-  // console.log(excelData[0].projectID)
-  // console.log(fData)
+  // // console.log(excelData[0].projectID)
+  // // console.log(fData)
   let headerData = []
   for(var i of fData){
     if(i!=='id'){
-    // console.log(i)
+    // // console.log(i)
     var sData = {label:i, key:i}
     headerData.push(sData)
     }
   }
-  // console.log(headerData)
+  // // console.log(headerData)
   function getFormatDate(date){
       var year = date.getFullYear();              //yyyy
       var month = (1 + date.getMonth());          //M
@@ -98,7 +98,7 @@ function DetailSelector(props) {
   }
   var nameDate = new Date();
   nameDate = getFormatDate(nameDate);
-  // console.log(date)
+  // // console.log(date)
   return (
     <div style={{display:'flex'}}>
       {issueState?

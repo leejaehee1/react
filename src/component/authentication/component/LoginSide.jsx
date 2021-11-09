@@ -68,16 +68,16 @@ export default function LoginSide() {
 
 
   const handleUsername = (event) => {
-    //   console.log(event.target.value)
+    //   // console.log(event.target.value)
     setUsername(event.target.value)
   }
   const handlePassword = (event) => {
-    //   console.log(event.target.value)
+    //   // console.log(event.target.value)
     setPassword(event.target.value)
   }
 
   const submit = (event) => {
-    console.log(event);
+    // console.log(event);
     event.preventDefault(); // 부모 tag로 이벤트 전파를 막아 준다. 화면 새로실행 막음. submit는 동작된다.
     login({ username, password }).catch(() =>
     notify('Invalid email or password')

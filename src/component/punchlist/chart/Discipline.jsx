@@ -6,10 +6,10 @@ import { Chart, Series,Grid, Title, Margin, Size, Legend, ArgumentAxis, Label, V
 // boardIds={boardIndexData.length?boardIndexData:allIndex} 
 
 const Discipline = (props) => {
-  // console.log(props.boardData[props.boardIds[0]])
+  // // console.log(props.boardData[props.boardIds[0]])
 
   // for(var i of props.boardIds) {
-  //   console.log(i)
+  //   // console.log(i)
   // }
 
 

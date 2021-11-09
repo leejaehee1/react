@@ -134,25 +134,25 @@ export default function RecipeReviewCardModal(props) {
             }
             setImagePathList(sampleImagePathList)
         }, [getPhotos])
-        //   console.log(props.punchStep)
-        //   console.log(props.rowData)
-        //   console.log(getPhotos)
-        //   console.log(imagePathList)
-        //   console.log(imagePathList[0]?.imagePath.slice(7))
+        //   // console.log(props.punchStep)
+        //   // console.log(props.rowData)
+        //   // console.log(getPhotos)
+        //   // console.log(imagePathList)
+        //   // console.log(imagePathList[0]?.imagePath.slice(7))
     const [imageValidationtarget, setImageValidationtarget] = useState([])
     useEffect(()=> {
-        // console.log(imagePathList)
+        // // console.log(imagePathList)
         for(var index in imagePathList){
-            // console.log(imagePathList[index]["imagePath"])
+            // // console.log(imagePathList[index]["imagePath"])
             axios.get(`http://54.180.147.184:5000/${imagePathList[index]["imagePath"].slice(7)}`)
                 .then((res)=> {
-                    // console.log(1);
-                    // console.log(imageValidationtarget)
+                    // // console.log(1);
+                    // // console.log(imageValidationtarget)
                     var imageValidationList = [...imageValidationtarget, 1]
                     setImageValidationtarget(imageValidationList)
                 })
                 .catch(err => {
-                    // console.log(2);
+                    // // console.log(2);
                     var imageValidationList = [...imageValidationtarget, 0]
                     setImageValidationtarget(imageValidationList)
                 })
@@ -160,8 +160,8 @@ export default function RecipeReviewCardModal(props) {
     }, [imagePathList])
 
     useEffect(()=> {
-        // console.log('imageValidationtarget');
-        // console.log(imageValidationtarget);
+        // // console.log('imageValidationtarget');
+        // // console.log(imageValidationtarget);
     }, [imageValidationtarget])
 
     const maxSteps = imagePathList.length;

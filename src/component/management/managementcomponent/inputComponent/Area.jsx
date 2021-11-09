@@ -19,8 +19,8 @@ const Area = (props) => {
 
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.area)
-    // console.log("props.stepValFlag")
-    // console.log(props.stepValFlag)
+    // // console.log("props.stepValFlag")
+    // // console.log(props.stepValFlag)
     if(props.stepValFlag==="verify"){
       props.setValArea(upValData)
     }

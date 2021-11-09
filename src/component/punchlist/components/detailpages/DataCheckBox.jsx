@@ -86,7 +86,7 @@ const DataCheckBox = (props) => {
       setCheckedMaterial('')
       props.setDesignChgReq(false);
       props.setMaterialReq(false);
-      console.log('2333333333333333333333333e')
+      // console.log('2333333333333333333333333e')
     }
   }, [props.dataOne])
 

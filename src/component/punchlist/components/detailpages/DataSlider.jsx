@@ -159,8 +159,8 @@ function DataSlider(props) {
   
 
   // function onChange(e, v) {
-  //   console.log(e) // event
-  //   console.log(v) // 숫자
+  //   // console.log(e) // event
+  //   // console.log(v) // 숫자
   // }
   const [value, setValue] = React.useState(props.dataOne);
 
@@ -194,7 +194,7 @@ function DataSlider(props) {
     }
   };
 
-  // console.log(props?.dataOne)
+  // // console.log(props?.dataOne)
   // const numValue = props?.dataOne
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
@@ -9,8 +9,6 @@ const images = [
     url: '/static/images/export-all.png',
     title: 'export-all',
     width: '100%'
-    // width: '100px',
-    // height: '10%'
   },
   {
     url: '/static/images/export-selected.png',
@@ -27,21 +25,12 @@ const images = [
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    // flexWrap: 'wrap',
-    // minWidth: 300,
-    // // width: '100%',
     justifyContent: 'center',
   },
   image: {
     position: 'relative',
     height: 30,
     margin: '10px 10px 20px 0',
-    // [theme.breakpoints.down('xs')]: {
-    //   // width: '100% !important', // Overrides inline-style
-    //   // height: 100,
-    //   // height: '100% !important', // Overrides inline-style
-    //   // width: 100,
-    // },
     '&:hover, &$focusVisible': {
       zIndex: 1,
       '& $imageBackdrop': {
@@ -57,24 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
   focusVisible: {},
   imageButton: {
-    // position: 'absolute',
-    // left: 0,
-    // right: 0,
-    // top: 0,
-    // bottom: 0,
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // color: theme.palette.common.white,
   },
   imageSrc: {
-    // position: 'absolute',
-    // left: 0,
-    // right: 0,
-    // top: 0,
-    // bottom: 0,
-    // backgroundSize: 'cover',
-    // backgroundPosition: 'center 40%',
     width: '130px',
     height: '30px',
     backgroundSize: 'cover',
@@ -92,8 +65,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
   },
   imageTitle: {
-    // position: 'relative',
-    // padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
   },
   imageMarked: {
     height: 3,

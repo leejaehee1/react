@@ -72,7 +72,7 @@ const ViewDrawingButton = (props) => {
 
     const [drawingImage, setDrawingImage] = useState('');
     useEffect(()=> {
-        console.log(imageNameDB)
+        // console.log(imageNameDB)
         setDrawingImage(`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`)
         refresh()
     }, [imageNameDB])

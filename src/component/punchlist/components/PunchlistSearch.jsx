@@ -7,7 +7,7 @@ const PunchlistSearch = (props) => {
     const [searchText, setSearchText] = useState("");
 
     const handeleSearchFilter = (e) => {
-        console.log(e.target.name);
+        // console.log(e.target.name);
         setSearchText(e.target.value)
     }  
 

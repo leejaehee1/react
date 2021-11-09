@@ -93,12 +93,12 @@ export const Drawing = (props) => {
             }
         })
         .then(res => {
-            console.log(res);
+            // console.log(res);
             refresh()
             alert("저장 완료");
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
         });
         setDrawingProjectID('')
         setDrawingSystem('')
@@ -151,15 +151,15 @@ export const Drawing = (props) => {
     // click table icon
     const handelViewDrawing = (e) => {
         e.preventDefault()
-        // console.log(e.target.innerText)
+        // // console.log(e.target.innerText)
         // a = `http://54.180.147.184:5000/drawings/pdfs/${e.target.innerText}.png`
         setImageNameDB(e.target.innerText)
 
         if(getDrawing.length){
             getDrawing.map(v=> {
-                console.log(v);
+                // console.log(v);
                 if(v.drawingNo===e.target.innerText){
-                    console.log('같다.');
+                    // console.log('같다.');
                     setViewDrawingProject(v.projectID);
                     setViewDrawingSystem(v.systemID);
                     setViewDrawingSubsystem(v.subsystem);
@@ -185,8 +185,8 @@ export const Drawing = (props) => {
     }
     const onSubmit= (e) => {
         // e.preventDefault()
-        // console.log(e.target.elements)
-        // console.log(e.element)
+        // // console.log(e.target.elements)
+        // // console.log(e.element)
     }
     return (
         <>  
