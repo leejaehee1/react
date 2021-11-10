@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {
     List as RaList,
-    useListContext,
     useGetList,
 } from 'react-admin';
 
@@ -16,36 +15,17 @@ import {
 
 } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+
 
 import './styles/PunchBoard.css'
 
 
-// import { cloneElement } from 'react';
-// import IconEvent from '@material-ui/icons/Event';
 import StateButton from './board/StateButton';
-// import { connect } from 'react-redux';
-// import Button from '@mui/material/Button';
+
 
 const PunchBoard = (props) => {
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardData)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log(props.boardIds)
-    // // console.log('props.boardData')
     const [timeFlag, setTimeFlag] = useState(false)
     const a = props?.boardData
     const b = props?.boardIds
@@ -81,7 +61,7 @@ const PunchBoard = (props) => {
     useEffect(()=> {
         setCheckedId(props.otherCheckBox);
 
-    }, [props])
+    }, [props.otherCheckBox])
 
     const pagenationAllData = inputBoardIds
     const [currentPage, setCurrentPage] = useState(1); // current page
@@ -91,17 +71,22 @@ const PunchBoard = (props) => {
     const currentPosts = pagenationAllData.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginationCount = parseInt(inputBoardIds.length / postsPerPage) + 1
+    const handleDownCount = () => {
+        if (parseInt(currentPage) > 1){
+            setCurrentPage((prev)=> parseInt(prev)-1)
+        }
+        // setCurrentPage(1)
+    }
+    const handleUpCount = () => {
+        if(parseInt(currentPage) < paginationCount){
+            setCurrentPage((prev)=> parseInt(prev)+1)
+        }
+        // setCurrentPage(1)
+    }
 
 
     const handlePagination = (e) => {
-        // // console.log(e.target.value)
-        // // console.log(e)
-        // // console.log(e.target)
-        // // console.log(e.target.outerText)
         setCurrentPage(e.target.outerText)
-        // // console.log(e.target.elements)
-        // // console.log(e.target.element)
-        // // console.log(page)
     }
 
     const [detailPageUpdateButton, setDetailPageUpdateButton] = useState(false);
@@ -112,66 +97,82 @@ const PunchBoard = (props) => {
         setDetailPageUpdateButton(true)
     }
     const outButton = () => {
-        // if (targetMouseOn !== id){
-        // }
-        // setDetailPageUpdateButton(false)
-        // setTargetMouseOn('')
-
-        // setTimeout(() => {
             setDetailPageUpdateButton(false)
-        // }, 5000)
     }
 
     const handleUpdateDetail = () => {
         props.setAbleUpdateDetailFlag(false)
     }
 
+    useEffect(()=> {
+        if(typeof(parseInt(props.boardIds))==='number'){
+            setCurrentPage(1)
+        }
+        // console.log(props.boardIds.length)
+    }, [props.boardIds])
+
 
     if (!boardIds) return null;
     return (
         // <Card>
         <div onPointerLeave={outButton} style={{overflow: 'auto', height: '700px', maxWidth: '810px'}}>
-            {/* aaaaaaaaaaaa{JSON.stringify(inputBoardIds)}
-            aaaaaaaaaaaa{JSON.stringify(inputBoardData)}
-            aaaaaaaaaaaa{JSON.stringify(props.boardData)}
-            aaaaaaaaaaaa{JSON.stringify(props.boardIds)} */}
-            {/* const inputBoardData = props.boardData; */}
             <List dense={true}>
                 {props.boardIds.map(id => {
-                    // if (id!=='PC-2-00-MB-MBP-E-01-002'){ return <></>}
                     if (!currentPosts.includes(id)){ return <></>}
+                    let cck = false;
                     return (
                         <>
                         <ListItem
                             button
                             key={id}
-                            onClick={(e)=> updateDetailPage(id, e)}
+                            // onClick={(e)=> updateDetailPage(id, e)}
                             onPointerEnter={()=>onButton(id)} 
-                            // onMouseOut={()=>outButton(id)}
-                            // onClick={()=> props.upPunchBoard(id)}
-                            // component={Link}
-                            // to={`/contacts/${id}/show`}
                         >
                             <ListItemIcon style={{marginRight:'-10px'}}>
-                                <Checkbox
-                                    edge="start"
-                                    size="small"
-                                    color="default"
-                                    checked={(targetA===id)?true:checkedId}
-                                    // checked={selectedIds.includes(id)}
-                                    // tabIndex={-1}
-                                    // disableRipple
-                                    onClick={e => {
-                                        // e.stopPropagation();
-                                        // console.log(e.target)
-                                        // console.log(id)
-                                        // onToggleItem(id);
-                                    }}
-                                />
+                                {(targetA===id)?
+                                    <div>
+                                        <Checkbox
+                                            id={`targetcheck-${id}`}
+    
+                                            edge="start"
+                                            size="small"
+                                            color="default"
+                                            checked={true}
+                                            onClick={e => {
+                                            }}
+                                        />
+                                    </div>
+                                :
+                                    ((checkedId)?
+                                        <div>
+                                        <Checkbox 
+                                            id={`allcheck-${id}`}
+                                            edge="start"
+                                            size="small"
+                                            color="default"
+                                            // checked={checkedId}
+                                            defaultChecked
+                                            // checked={(targetA===id)?true:checkedId}
+    
+                                        />
+                                        {/* &nbsp; */}
+                                        </div>
+                                        :
+                                        <>
+                                        <Checkbox 
+                                            id={`notallcheck-${id}`}
+                                            edge="start"
+                                            size="small"
+                                            color="default"
+                                            // checked={true}
+                                            // checked={(targetA===id)?true:checkedId}
+                                        />
+                                        </>
+                                    )
+                                }
                             </ListItemIcon>
-                            {/* aaa
-                            ${inputBoardData[id].punchID} */}
                             <ListItemText 
+                                onClick={(e)=> updateDetailPage(id, e)}
                                 style={{marginRight:'10px', marginTop:'0px', marginBottom:'0px', height:'50px'}}
                                 
                                 primary={
@@ -216,15 +217,31 @@ const PunchBoard = (props) => {
 
                 )
             }
-            <Pagination 
-            count={paginationCount} 
-            page={currentPage}
-            // boundaryCount={1}
-            // value={2}
-            defaultPage={1}
-            
-            onChange={handlePagination}
-             />
+            {/* {JSON.stringify(currentPage)} */}
+            <div style={{display:'flex'}}>
+                <div style={{marginTop:'5px', cursor: 'pointer'}} onClick={handleDownCount}>
+                    <ArrowBackIosIcon fontSize="small" color="action" />
+                </div>
+                <div>
+                    {/* {JSON.stringify(paginationCount)}
+                    {JSON.stringify(currentPage)} */}
+                    <Pagination 
+                        count={paginationCount} 
+                        page={parseInt(currentPage)}
+                        // boundaryCount={1}
+                        // value={2}
+                        // defaultPage={parseInt(currentPage)}
+                        
+                        onChange={handlePagination}
+                        hidePrevButton hideNextButton
+                        // showFirstButton showLastButton
+                    />
+                </div>
+                <div style={{marginTop:'5px', marginLeft: '5px', cursor: 'pointer'}} onClick={handleUpCount}>
+                    <ArrowForwardIosIcon fontSize="small" color="action" />
+                </div>
+            </div>
+             {/* <Pagination count={10} onClick={handlePagination} /> */}
             </List>
         </div>
         // </Card>

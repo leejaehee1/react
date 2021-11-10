@@ -289,10 +289,10 @@ const PunchListComponent = () => {
         setAllCheckBox(e.target.checked)
     }
 
-    useEffect(()=> {
-        setOtherCheckBox(otherCheckBox)
-        // console.log(allCheckBox)
-    },[allCheckBox])
+    // useEffect(()=> {
+    //     setOtherCheckBox(otherCheckBox)
+    //     // console.log(allCheckBox)
+    // },[allCheckBox])
 
     // filter Model 
     const [filterOpen, setFilterOpen] = useState(false);
@@ -441,18 +441,25 @@ const PunchListComponent = () => {
         setButtonFour(false);
         setButtonFive(false);
         setButtonSix(false);
-
+    
         var searchD = ids.filter(id => (
-                                        searchText===data[id].keyword1 
-                                        || searchText===data[id].keyword2
-                                        || searchText===data[id].keyword3
-                                        || searchText===data[id].keyword4
+                                        (searchText?searchText.toLowerCase():searchText)===(data[id].keyword1?data[id].keyword1.toLowerCase():data[id].keyword1)
+                                        || (searchText?searchText.toLowerCase():searchText)===(data[id].keyword2?data[id].keyword2.toLowerCase():data[id].keyword2)
+                                        || (searchText?searchText.toLowerCase():searchText)===(data[id].keyword3?data[id].keyword3.toLowerCase():data[id].keyword3)
+                                        || (searchText?searchText.toLowerCase():searchText)===(data[id].keyword4?data[id].keyword4.toLowerCase():data[id].keyword4)
                                         ));
+        if(!searchD.length && searchText.length){
+            setAlertFilterButton(true)
+            // console.log(2)
+        } else {
+            // console.log(3)
+        }
         setBoardIndexData(searchD);
     }, [searchText])
 
 
     const [alertButton, setAlertButton] = useState(false)
+    const [alertFilterButton, setAlertFilterButton] = useState(false)
     // const
 
     const [ableUpdateDetailFlag, setAbleUpdateDetailFlag] = useState(true);
@@ -467,6 +474,9 @@ const PunchListComponent = () => {
         <React.Fragment>
             <Collapse in={alertButton}>
                 <Alert severity="error" onClose={() => {setAlertButton(false)}}>Cannot find data by filter</Alert>
+            </Collapse>
+            <Collapse in={alertFilterButton}>
+                <Alert severity="error" onClose={() => {setAlertFilterButton(false)}}>Cannot find keyword by filter</Alert>
             </Collapse>
             <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
             {/* <div> */}

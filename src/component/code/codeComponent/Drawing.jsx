@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
-import { List, Datagrid, TextField, DateField, useRefresh,
-    useCreate, } from 'react-admin';
+import { List, Datagrid, TextField, DateField, useRefresh} from 'react-admin';
 import './styles/Drawing.css'
 
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 
 
@@ -192,8 +191,25 @@ export const Drawing = (props) => {
         <>  
             <div>
                 <button className='drawingButton' onClick={handleFileDetailSetting}>ADD Drawing</button>
-                <input type="file" 
-                onChange={handleFileChange}
+                <label htmlFor="inputFile"
+                    style={{
+                        display:"inline-block",
+                        padding: '6px 10px',
+                        fontSize: '13px',
+                        lineHeight: 'normal',
+                        verticalAlign: 'middle',
+                        backgroundColor: '#e0e0e0',
+                        cursor: 'pointer',
+                        border: '1px solid black',
+                        borderRadius: '3px'
+                    }}
+                >Upload a file</label>
+                <input type="text" value={(selectedFile)?selectedFile.name:'No file chosen'} disabled="disabled" style={{marginLeft:'10px', fontSize: '14px'}} />
+                <input 
+                    type="file" 
+                    id="inputFile"
+                    onChange={handleFileChange}
+                    style={{display:'none'}}
                 />
             </div>
             <List {...props} filterDefaultValues={{ is_published: true }}>

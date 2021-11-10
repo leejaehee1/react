@@ -11,6 +11,8 @@ import DataChipsArray from './detailpages/DataChipsArray';
 import DataDescription from './detailpages/DataDescription';
 import DataImage from './detailpages/DataImage';
 import ViewDrawingButton from './detailpages/ViewDrawingButton';
+import { Alert } from '@material-ui/lab';
+import Collapse from '@material-ui/core/Collapse';
 
 import'./styles/DetailPageComponent.css'
 
@@ -47,6 +49,8 @@ const theme = createTheme({
 
 function DetailPageComponent(props) {
   const classes = useStyles();
+
+  const [alertButton, setAlertButton] = useState(true)
 
 
   const [targetDate, setTargetDate] = useState(null);
@@ -113,8 +117,8 @@ function DetailPageComponent(props) {
     formData.append("punchID", props.downDetailData?.punchID);
     data.punchID = props.downDetailData?.punchID
 
-    console.log(data)
-    console.log(formData)
+    // console.log(data)
+    // console.log(formData)
 
     const url = 'http://54.180.147.184:5000/punchlist/updatedetail';
     // axios.post(url, formData, {
@@ -125,8 +129,11 @@ function DetailPageComponent(props) {
       body: data
     })
     .then(res => {
-
-        alert("저장 완료");
+        // console.dir(res.data)
+        if (res.data==="success"){
+          setAlertButton(true)
+        }
+        // alert("저장 완료");
     })
     .catch(err => {
     });
@@ -146,6 +153,7 @@ function DetailPageComponent(props) {
     setIssueDescription(null)
     setCompleteComment(null)
   }, [props.downDetailData])
+
 
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
@@ -207,6 +215,10 @@ function DetailPageComponent(props) {
         <Divider className={classes.divider} />
 
 
+              <Collapse in={alertButton}>
+                  <Alert severity="success" onClose={() => {setAlertButton(false)}}>Successfully saved!</Alert>
+                  <br />
+              </Collapse>
         <Grid container spacing={3}>
             <Grid item xs={6}>
             {/* <Paper className={classes.paper}>
