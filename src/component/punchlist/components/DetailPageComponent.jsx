@@ -50,7 +50,7 @@ const theme = createTheme({
 function DetailPageComponent(props) {
   const classes = useStyles();
 
-  const [alertButton, setAlertButton] = useState(true)
+  const [alertButton, setAlertButton] = useState(false)
 
 
   const [targetDate, setTargetDate] = useState(null);
