@@ -39,7 +39,7 @@ export default function Signin() {
                     <div className={styles.input_area}>
                         <input 
                             type="password" 
-                            // placeholder="Password"
+                            placeholder="Password"
                             autoComplete="current-password"
                             // name="email"
                             className={styles.input}
