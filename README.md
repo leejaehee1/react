@@ -18,7 +18,7 @@
 
 ## Features
 
-- /example/singin  :  [singin and logout](https://github.com/leejaehee1/react/tree/master/example/singin)
+- /example/singin  :  [singin and logout](https://github.com/leejaehee1/react/tree/master/example/signin)
 
 
 

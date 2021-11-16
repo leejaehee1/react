@@ -1,6 +1,15 @@
+import { useRef } from "react";
 import styles from "./Signin.module.css";
+import { LoginReqType } from "../types";
 
-export default function Signin() {
+interface SigninProps {
+    login: (reqData: LoginReqType) => void;
+}
+
+// export default function Signin() {
+const Signin: React.FC<SigninProps> = ({login}) => { 
+    const emailRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
     return (
         <div className={styles.container}>
             <div className={styles.signin_container}>
@@ -30,6 +39,7 @@ export default function Signin() {
                             autoComplete="email"
                             name="email"
                             className={styles.input}
+                            ref={emailRef}
                         />
                     </div>
                     <div className={styles.password_title}>
@@ -43,15 +53,25 @@ export default function Signin() {
                             autoComplete="current-password"
                             // name="email"
                             className={styles.input}
+                            ref={passwordRef}
                         />
                     </div>
                     <div className={styles.button_area}>
-                        <button className={styles.button}>
+                        <button className={styles.button}
+                            onClick={click}
+                        >
                             Sign In
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
+    function click() {
+        const email = emailRef.current!.value;
+        const password = passwordRef.current!.value;
+        login({email, password})
+    }
 }
+
+export default Signin;

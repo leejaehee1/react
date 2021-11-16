@@ -32,6 +32,8 @@ $ npm i connected-react-router
 - /src/components/Signin.module.css
 - /public/bg_signin.png
 
+##### http://localhost:3000/signin
+
 ![캡처](https://user-images.githubusercontent.com/60080224/141728382-3a58c14b-a74b-4097-b60e-50506b464b2c.PNG)
 
 
