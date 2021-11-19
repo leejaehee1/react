@@ -1,0 +1,294 @@
+button {
+    all: unset;
+    
+}
+button > p {
+    /* width: 30px; */
+    margin: 0px;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 6px;
+}
+
+
+
+button.beforeAll {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#808080 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeAll:hover {
+    background: linear-gradient(#808080 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterAll {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #808080;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeOpened {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#b28e59 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeOpened:hover {
+    background: linear-gradient(#b28e59 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterOpened {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #b28e59;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeReadyForReview {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#4e342e 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeReadyForReview:hover {
+    background: linear-gradient(#4e342e 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterReadyForReview {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #4e342e;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeRequestedForClose {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#7d6d99 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeRequestedForClose:hover {
+    background: linear-gradient(#7d6d99 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterRequestedForClose {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #7d6d99;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeNotAccepted {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#739574 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeNotAccepted:hover {
+    background: linear-gradient(#739574 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterNotAccepted {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #739574;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+button.beforeClosed {
+    width: 120px;
+    height: 50px;
+    color: #202020;
+    background: linear-gradient(#648dae 12%, #fff 0%);
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+  
+    /* font-weight:  */
+}
+
+button.beforeClosed:hover {
+    background: linear-gradient(#648dae 100%, #fff 0%);
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button.afterClosed {
+    width: 120px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #648dae;
+    box-sizing: border-box;
+    border: 0px solid transparent;
+    /* padding: 15px 50px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #a0a0a0;
+    /* font-weight:  */
+    cursor: pointer;
+  }
+
+
+
+
+input.searchFilterInput{
+    border: 1px solid black;
+}
+
+
+/* 
+lbutton: {
+    //   padding: theme.spacing(1.5),
+    // margin: theme.spacing(1),
+    // width: theme.spacing(16),
+    // height: theme.spacing(16),
+    textAlign: 'center',
+    width: '120px',
+    // color: theme.palette.text.disabled,
+    color: 'white',
+    backgroundColor: '#616161',
+    height: '30px',
+    textTransform: 'none',
+    fontSize: '14px',
+    
+    // background:'black',
+
+},
+rbutton: {
+    //   padding: theme.spacing(1.5),
+    // margin: theme.spacing(1),
+    // width: theme.spacing(16),
+    // height: theme.spacing(16),
+    textAlign: 'center',
+    width: '120px',
+    // color: theme.palette.text.disabled,
+    color: 'black',
+    backgroundColor: '#bdbdbd',
+    height: '30px',
+    textTransform: 'none',
+    fontSize: '14px',
+
+
+    // background:'black',
+
+}, */
+
+button.stateChartSelectButton{
+    width: 120px;
+    height: 30px;
+    background-color: #616161;
+    color: white;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    /* text-transform: none, */
+}
+button.stateStatusSelectButton{
+    width: 120px;
+    height: 30px;
+    background-color: #bdbdbd;
+    color: black;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}

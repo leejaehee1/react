@@ -1,36 +1,29 @@
-## :raising_hand_man:React Template
-
-> Jsoftware react template
+## :raising_hand_man:PLMS
 
 
 
 
-
-## What is this and who is if for
-
- You can start your project quickly.
-
-
-
-![install](https://user-images.githubusercontent.com/60080224/141707570-27b35e9d-514e-45ea-9e91-941a94489c5a.PNG)
+### Before starting
+```
+$ node -v
+$ npm -v
+$ npx -v
+```
 
 
+### Get started
 
-## Features
-
-- /example/singin  :  [singin and logout](https://github.com/leejaehee1/react/tree/master/example/signin)
-
-
-
-
-
-## Contributing
-
-Feel free to fork and maintain your own version.
+```
+$ npx create-react-app fd_react .
+$ npm i
+$ npm start
+```
 
 
+### API
+> Whenever react-admin needs to communicate with the API, it calls methods on the Data Provider object. Thanks to this adapter injection system, react-admin can communicate with any API, whether it uses REST, GraphQL, RPC, or even SOAP, regardless of the dialect it uses. The Data Provider is also the ideal place to add custom HTTP headers, authentication, etc.
 
-
+![](https://marmelab.com/react-admin/img/data-provider.png)
 
 
 ### Developer
