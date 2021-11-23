@@ -18,12 +18,12 @@ const PunchlistFilter = (props) => {
 
 
     
-    const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
-    const urlDiscipline = 'http://54.180.147.184:5000/punchlist/discipline/?range=[0, 24]';
-    const urlCategory = 'http://54.180.147.184:5000/punchlist/category/?range=[0, 24]';
-    const urlUnit = 'http://54.180.147.184:5000/punchlist/unit/?range=[0, 24]';
-    const urlArea = 'http://54.180.147.184:5000/punchlist/area/?range=[0, 24]';
-    const urlDrawing = 'http://54.180.147.184:5000/punchlist/drawing/?range=[0, 24]';
+    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
+    const urlDiscipline = 'http://localhost:5000/punchlist/discipline/?range=[0, 24]';
+    const urlCategory = 'http://localhost:5000/punchlist/category/?range=[0, 24]';
+    const urlUnit = 'http://localhost:5000/punchlist/unit/?range=[0, 24]';
+    const urlArea = 'http://localhost:5000/punchlist/area/?range=[0, 24]';
+    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
     
     const issuedByData = new Set();
     const tagNumberData = new Set();

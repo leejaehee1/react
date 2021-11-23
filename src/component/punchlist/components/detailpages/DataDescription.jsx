@@ -30,10 +30,10 @@ const theme = createTheme({
 function DataDescription(props) {
   // const classes = useStyles();
 
-  const [textAreaValue, setTextAreaValue] = useState(props.daltaOne);
+  // const [textAreaValue, setTextAreaValue] = useState(props.daltaOne);
   const handleTextarea = (e) => {
     // // console.log(e.target.value);
-    setTextAreaValue(e.target.value)
+    // setTextAreaValue(e.target.value)l
     if (props.comName==='issueDescription'){
       props.setIssueDescription(e.target.value)
     } else if(props.comName==='completeComment'){
@@ -47,9 +47,9 @@ function DataDescription(props) {
     } else if(props.comName==='completeComment'){
       props.setCompleteComment('')
     };
-    setTextAreaValue(props.dataOne)
+    // setTextAreaValue(props.dataOne)
 
-    return ()=> (setTextAreaValue(null))
+    // return ()=> (setTextAreaValue(null))
   }, [props.dataOne])
 
   return (
@@ -72,7 +72,7 @@ function DataDescription(props) {
             rows={4}
             // color='gray'
             color="default"
-            value={props.dataOne}
+            value={props.dataOne ? props.dataOne: " "}
             variant="outlined"
             disabled={props.disable}
         />
@@ -86,7 +86,7 @@ function DataDescription(props) {
           rows={4}
           // color='gray'
           color="default"
-          value={textAreaValue}
+          value={props.daltaOne}
           variant="outlined"
           disabled={props.disable}
       />

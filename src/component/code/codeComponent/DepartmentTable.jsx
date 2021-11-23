@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const DepartmentTable = () => {
     const [getDepartment, setGetDepartment] = useState();
-    const urlDepartment = 'http://54.180.147.184:5000/punchlist/department/?range=[0, 24]';
+    const urlDepartment = 'http://localhost:5000/punchlist/department/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

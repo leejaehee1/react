@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const AuthorityTable = () => {
     const [getAuthority, setGetAuthority] = useState();
-    const urlAuthority = 'http://54.180.147.184:5000/punchlist/authority/?range=[0, 24]';
+    const urlAuthority = 'http://localhost:5000/punchlist/authority/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

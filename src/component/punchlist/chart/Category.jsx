@@ -10,6 +10,7 @@ import PieChart, {
     AdaptiveLayout,
     Margin,
 } from 'devextreme-react/pie-chart';
+import { Loading } from 'react-admin';
  
 
 // import { useGetList } from 'react-admin';
@@ -71,6 +72,8 @@ const Category = (props) => {
         // // console.log(arg)
         return `${arg.pointName} (${target[arg.pointName]}%)`;
     }
+
+
     return (
         <PieChart 
             dataSource={pieData}

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Box } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+// import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Discipline from "./chart/Discipline";
 import PunchStatus from "./chart/PunchStatus";
 import Category from "./chart/Category";
@@ -134,8 +134,7 @@ const PunchListComponent = () => {
     
     
     const { data, ids } = useGetList('list', );
-    const [boardData] = useState([])
-    const [boardIndexData, setBoardIndexData] = useState([])
+    // const [boardData] = useState([])
     
     const [buttonOne, setButtonOne] = useState(true);
     const [buttonTwo, setButtonTwo] = useState(false);
@@ -144,7 +143,7 @@ const PunchListComponent = () => {
     const [buttonFive, setButtonFive] = useState(false);
     const [buttonSix, setButtonSix] = useState(false);
     
-
+    
     const boardAllData = data;
     const allIndex = ids.filter(id=> (data[id].status !== '1' 
     && data[id].projectID===window.localStorage.getItem('projectName')
@@ -157,7 +156,22 @@ const PunchListComponent = () => {
     const allNotAcceptedIdx = ids.filter(id=> (data[id].status === '5' && data[id].projectID===window.localStorage.getItem('projectName')));
     const allClosedIdx = ids.filter(id=> (data[id].status === '6' && data[id].projectID===window.localStorage.getItem('projectName')));
     
+    const [boardIndexData, setBoardIndexData] = useState(allIndex)
     const [upPunchBoardData, setUpPunchBoardData] = useState(0)
+
+
+    // const firstTarget = () => {
+    //     setButtonOne(true);
+    //     setButtonTwo(false);
+    //     setButtonThr(false);
+    //     setButtonFour(false);
+    //     setButtonFive(false);
+    //     setButtonSix(false);
+    //     setBoardIndexData(allIndex);
+    // }
+    // useEffect(()=> {
+    //     firstTarget()
+    // }, [])
 
     const changeState = (e) => {
         let targetClass = e.target.parentNode.classList.value;
@@ -288,6 +302,7 @@ const PunchListComponent = () => {
     // filter logic
     const [dataForFilter, setDataForFilter] = useState();
     useEffect(()=>{
+        
         // setButtonOne(true);
         setButtonOne(false);
         setButtonTwo(false);
@@ -453,7 +468,15 @@ const PunchListComponent = () => {
         setAbleUpdateDetailFlag(true)
     }, [upPunchBoardData])
 
+    if (!Object.keys(boardAllData).length) {
+        return null
+    }
 
+    // console.log('----------')
+    // console.log(boardAllData)
+    // console.log(Object.keys(boardAllData).length)
+    // console.log(boardIndexData.length)
+    // if (!boardIndexData.length) return null;
     return (
         <React.Fragment>
             <Collapse in={alertButton}>
@@ -462,7 +485,7 @@ const PunchListComponent = () => {
             <Collapse in={alertFilterButton}>
                 <Alert severity="error" onClose={() => {setAlertFilterButton(false)}}>Cannot find keyword by filter</Alert>
             </Collapse>
-            <ButtonGroup className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
+            <div className={classes.root} size="large" variant="text" color="primary" aria-label="large outlined primary button group">
             {/* <div> */}
             {show?(
             <>
@@ -477,7 +500,7 @@ const PunchListComponent = () => {
             )}
             {/* </div> */}
                 {/* <Button>Three</Button> */}
-            </ButtonGroup>
+            </div>
             { stateShow?(
                 show? (
                     <>
@@ -508,10 +531,7 @@ const PunchListComponent = () => {
                             <Box flex="4" p={0} m="1em">
                                 {/* <h3>&nbsp;&nbsp;&nbsp;Discipline</h3> */}
                                 <Discipline 
-                                    allData={boardData.length?boardData:boardAllData}
-                                    // show={show}
-                                    // boardData={boardData.length?boardData:boardAllData} 
-                                    // boardIds={boardIndexData.length?boardIndexData:allIndex} 
+                                    allData={boardAllData}
                                 />
                             </Box>
                         </Box>
@@ -567,7 +587,6 @@ const PunchListComponent = () => {
                     <SearchIcon fontSize="large" style={{ paddingTop: "10px", paddingBottom:'-5px' , height: "30px", margin:'0px' }} onClick={handleSearchClick} /> */}
                 </div>
             </div>
-            
             <Box display="flex" mt="2em">
                 <Box flex="3" mr="1em">
                     <div style={{display:'flex', width:'790px', justifyContent:'space-between'}}>
@@ -651,23 +670,19 @@ const PunchListComponent = () => {
                         }
                     </div>
                     
-                    {/* <Resource 
-                        name="list" 
-                        list={Punchs} 
-                        abc="abc"
-                        // boardData={boardData} 
-                    /> */}
+
                     {/* {JSON.stringify(ids)}
                     {JSON.stringify(boardIndexData.length)}
                     {JSON.stringify(boardIndexData)}
                     {JSON.stringify(allIndex)}
                     {JSON.stringify(boardIndexData.length?boardIndexData:allIndex)} */}
-                    {/* {JSON.stringify(data)} */}
+                    {JSON.stringify(boardIndexData)}
+                    {/* {JSON.stringify(boardAllDataC)} */}
+                    {JSON.stringify(allIndex)}
                     <PunchBoard 
-                        boardData={boardData.length?boardData:boardAllData} 
-                        // boardData={data} 
-                        boardIds={boardIndexData.length?boardIndexData:allIndex} 
-                        // boardIds={allIndex} 
+                        boardData={boardAllData} 
+                        boardIds={boardIndexData} 
+                        // boardIds={boardIndexData.length?boardIndexData:allIndex} 
                         setUpPunchBoardData={setUpPunchBoardData}
                         otherCheckBox={allCheckBox}
                         setAbleUpdateDetailFlag = {setAbleUpdateDetailFlag}
@@ -677,7 +692,7 @@ const PunchListComponent = () => {
                     <Box flex="1" mr="1em">
                         {/* <DetailComponent /> */}
                         <DetailSelector 
-                            boardData={boardData.length?boardData:boardAllData} 
+                            boardData={boardAllData} 
                             setIssueShow={setIssueShow} 
                             setHistoryShow={setHistoryShow} 
 
@@ -694,6 +709,7 @@ const PunchListComponent = () => {
                                     boardAllData[upPunchBoardData]
                                     ?boardAllData[upPunchBoardData]
                                     :boardAllData[allIndex[0]]}
+                                    upPunchBoardData={upPunchBoardData}
                             />
                         :
                             null

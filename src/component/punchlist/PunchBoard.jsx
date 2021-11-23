@@ -103,21 +103,29 @@ const PunchBoard = (props) => {
     const handleUpdateDetail = () => {
         props.setAbleUpdateDetailFlag(false)
     }
-
+    console.log('-----------------------------------')
     useEffect(()=> {
+        console.log(props.boardIds.length)
         if(typeof(parseInt(props.boardIds))==='number'){
-            setCurrentPage(1)
+            console.log('힐들어간다. 입벌려')
         }
+        // setCurrentPage(1)
         // console.log(props.boardIds.length)
     }, [props.boardIds])
 
 
-    if (!boardIds) return null;
+    if (!props.boardIds.length) return null;
+    {/* {JSON.stringify(paginationCount)}
+                    {JSON.stringify(currentPage)} */}
+    // console.log('---')
+    // console.log(paginationCount)
+    // console.log(currentPage)
+    // console.log(props.boardIds)
     return (
         // <Card>
         <div onPointerLeave={outButton} style={{overflow: 'auto', height: '700px', maxWidth: '810px'}}>
             <List dense={true}>
-                {props.boardIds.map(id => {
+                {props.boardIds.map((id, idx) => {
                     if (!currentPosts.includes(id)){ return <></>}
                     // let cck = false;
                     return (
@@ -225,9 +233,12 @@ const PunchBoard = (props) => {
                 <div>
                     {/* {JSON.stringify(paginationCount)}
                     {JSON.stringify(currentPage)} */}
+                    {JSON.stringify(props.boardIds)}
                     <Pagination 
-                        count={paginationCount} 
-                        page={parseInt(currentPage)}
+                        // count={parseInt(paginationCount)} 
+                        count={parseInt(paginationCount)} // 페이지내이션 숫자 수..
+                        // page={parseInt(currentPage)}
+                        page={parseInt(currentPage)} // 데이터 변경에 상관 없이 보이는거 바뀜
                         // boundaryCount={1}
                         // value={2}
                         // defaultPage={parseInt(currentPage)}

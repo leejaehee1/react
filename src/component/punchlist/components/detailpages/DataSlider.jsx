@@ -162,7 +162,7 @@ function DataSlider(props) {
   //   // console.log(e) // event
   //   // console.log(v) // 숫자
   // }
-  const [value, setValue] = React.useState(props.dataOne);
+  const [value, setValue] = React.useState('');
 
   useEffect(()=> {
     setValue(props.dataOne)
@@ -171,15 +171,17 @@ function DataSlider(props) {
     } else {
       props.setCostImpact(false)
     }
-  }, [props.dataOne, props])
+  }, [props.dataOne])
  
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
     if (props.comName==='scheduleImpact'){
       props.setScheduleImpact(newValue)
     } else {
       props.setCostImpact(newValue)
     }
+    console.log(typeof(newValue))
+    console.log(newValue)
+    setValue(newValue);
   };
 
 
@@ -201,6 +203,7 @@ function DataSlider(props) {
             <IOSSlider
                   // id="difficulty"
                 value={typeof value === 'number' ? value : parseInt(props.dataOne)}
+                // value={value}
                 onChange={handleSliderChange}
                 defaultValue={props.dataOne}
                 disabled={props.disable}
@@ -236,4 +239,6 @@ function DataSlider(props) {
   )
 }
 
-export default DataSlider;
+export default React.memo(DataSlider);
+
+// export default DataSlider;

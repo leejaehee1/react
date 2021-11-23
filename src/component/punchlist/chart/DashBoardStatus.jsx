@@ -8,7 +8,7 @@ const DashBoardStatus = () => {
     const bgColor = '#b0bec5'
 
 
-    const url = 'http://54.180.147.184:5000/punchlist/progress/?range=[0, 24]';
+    const url = 'http://localhost:5000/punchlist/progress/?range=[0, 24]';
 
     const [proData, setProData] = useState("")
 
@@ -48,10 +48,10 @@ const DashBoardStatus = () => {
                     >
                         <tbody>
                         <tr>
-                            <td rowspan="2" style={{backgroundColor:bgColor}}>Remained <br /> (Yesterday)</td>
-                            <td colspan="4" style={{backgroundColor:bgColor}}>Current Status</td>
-                            <td rowspan="2" style={{backgroundColor:bgColor, }}>Remained <br /> (Today)</td>
-                            <td rowspan="2" style={{backgroundColor:bgColor,                         
+                            <td rowSpan="2" style={{backgroundColor:bgColor}}>Remained <br /> (Yesterday)</td>
+                            <td colSpan="4" style={{backgroundColor:bgColor}}>Current Status</td>
+                            <td rowSpan="2" style={{backgroundColor:bgColor, }}>Remained <br /> (Today)</td>
+                            <td rowSpan="2" style={{backgroundColor:bgColor,                         
                                                     borderTopRightRadius: '5px',
                                                     borderStyle:'hidden',
                                                     borderLeft: "1px solid #ECECEC",
@@ -59,17 +59,17 @@ const DashBoardStatus = () => {
                                                     }}>Pending</td>
                         </tr>
                         <tr>
-                            <td colspan="2" style={{backgroundColor:bgColor}}>Issued</td>
-                            <td colspan="2" style={{backgroundColor:bgColor}}>Closed</td>
+                            <td colSpan="2" style={{backgroundColor:bgColor}}>Issued</td>
+                            <td colSpan="2" style={{backgroundColor:bgColor}}>Closed</td>
                         </tr>
                         <tr>
-                            <td rowspan="4">{proData[proData.length-1]?.RemainYday}</td>
+                            <td rowSpan="4">{proData[proData.length-1]?.RemainYday}</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
                             <td style={{backgroundColor:bgColor}}>Until.Yday</td>
                             <td style={{backgroundColor:bgColor}}>Today</td>
-                            <td rowspan="4">{proData[proData.length-1]?.RemainToday}</td>
-                            <td rowspan="4">{proData[proData.length-1]?.Pending}</td>
+                            <td rowSpan="4">{proData[proData.length-1]?.RemainToday}</td>
+                            <td rowSpan="4">{proData[proData.length-1]?.Pending}</td>
                         </tr>
                         <tr>
                             <td>{proData[proData.length-1]?.IssuedYday}</td>
@@ -78,12 +78,12 @@ const DashBoardStatus = () => {
                             <td>{proData[proData.length-1]?.ClosedToday}</td>
                         </tr>
                         <tr>
-                            <td colspan="2" style={{backgroundColor:bgColor}}>Total Issued</td>
-                            <td colspan="2" style={{backgroundColor:bgColor}}>Total Closed</td>
+                            <td colSpan="2" style={{backgroundColor:bgColor}}>Total Issued</td>
+                            <td colSpan="2" style={{backgroundColor:bgColor}}>Total Closed</td>
                         </tr>
                         <tr>
-                            <td colspan="2">{proData[proData.length-1]?.IssuedTotal}</td>
-                            <td colspan="2">{proData[proData.length-1]?.ClosedTotal}</td>
+                            <td colSpan="2">{proData[proData.length-1]?.IssuedTotal}</td>
+                            <td colSpan="2">{proData[proData.length-1]?.ClosedTotal}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -107,7 +107,7 @@ const DashBoardStatus = () => {
                         >
                             <tbody>
                             <tr>
-                                <td colspan="3" style={{backgroundColor:bgColor, borderTopLeftRadius: '5px',
+                                <td colSpan="3" style={{backgroundColor:bgColor, borderTopLeftRadius: '5px',
                                                     borderStyle:'hidden',border: "1px solid #e4e4e4"} }>Trend (avg of last week)</td>
                             </tr>
                             <tr>

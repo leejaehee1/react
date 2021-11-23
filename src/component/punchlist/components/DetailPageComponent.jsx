@@ -13,6 +13,9 @@ import DataImage from './detailpages/DataImage';
 import ViewDrawingButton from './detailpages/ViewDrawingButton';
 import { Alert } from '@material-ui/lab';
 import Collapse from '@material-ui/core/Collapse';
+import { useRefresh} from 'react-admin';
+import { useGetList } from 'react-admin';
+
 
 import'./styles/DetailPageComponent.css'
 
@@ -44,7 +47,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 function DetailPageComponent(props) {
+  // console.log(props.downDetailData)
   const classes = useStyles();
+  const { data, ids, refetch } = useGetList('list', );
+  const refresh = useRefresh();
+
 
   const [alertButton, setAlertButton] = useState(false)
 
@@ -63,12 +70,17 @@ function DetailPageComponent(props) {
 
 
   const handleDetailUpdate= () => {
+    console.log(scheduleImpact)
+    console.log(scheduleImpact)
+    console.log(scheduleImpact)
+    console.log(scheduleImpact)
+    console.log(scheduleImpact)
+    console.log(scheduleImpact)
     const formData = new FormData();
     const data = {}
     if (targetDate==='' || targetDate===false){}else{
       data.targetDate = targetDate
       formData.append("targetDate", targetDate);
-      console.log(formData)
     }
     if (designChgReq==='' || designChgReq===false){}else{
       data.designChgReq = designChgReq
@@ -112,11 +124,12 @@ function DetailPageComponent(props) {
     }
     formData.append("punchID", props.downDetailData?.punchID);
     data.punchID = props.downDetailData?.punchID
+    console.log(formData)
+    console.log(data)
 
-    // console.log(data)
     // console.log(formData)
 
-    const url = 'http://54.180.147.184:5000/punchlist/updatedetail';
+    const url = 'http://localhost:5000/punchlist/updatedetail';
     // axios.post(url, formData, {
     axios.post(url, {
       headers: {
@@ -129,6 +142,8 @@ function DetailPageComponent(props) {
         if (res.data==="success"){
           setAlertButton(true)
         }
+        // refresh()
+        refetch()
         // alert("저장 완료");
     })
     .catch(err => {
@@ -150,7 +165,14 @@ function DetailPageComponent(props) {
     setCompleteComment(null)
   }, [props.downDetailData])
 
+  // console.log(data[props.upPunchBoardData].issueDescription)
+  // console.log("==========================")
+  // console.log(props.downDetailData.issueDescription)
 
+
+  // console.log(props.downDetailData)
+  // console.log(props.downDetailData)
+  // console.log('---------------------------------------------------------')
   return (
     <div className={classes.root} style={{overflow: 'auto', height: '700px'}}>
       {/* {JSON.stringify(props.downDetailData)} */}
@@ -193,9 +215,11 @@ function DetailPageComponent(props) {
 
         <Divider className={classes.divider} />
 
-        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} />
+        {/* <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} /> */}
+        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={data[props.upPunchBoardData]?.issueDescription} columnName="Issue Description" comName='issueDescription' setIssueDescription={setIssueDescription} />
 
-        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} />
+        {/* <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={props.downDetailData?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} /> */}
+        <DataDescription disable={props?.ableUpdateDetailFlag} dataOne={data[props.upPunchBoardData]?.completeComment} columnName="Complete Description" comName='completeComment' setCompleteComment={setCompleteComment} />
 
         <Divider className={classes.divider} />
 

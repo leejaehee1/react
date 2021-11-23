@@ -183,7 +183,7 @@ const DataCheckBox = (props) => {
             />
             :
             <Checkbox
-              disabled={props.disable}s
+              disabled={props.disable}
               onChange={handleDetailMaterial}
               checked={parseInt(props.dataOne?.materialReq)}
               color="default"

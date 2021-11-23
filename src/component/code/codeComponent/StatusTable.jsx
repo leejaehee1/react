@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const StatusTable = () => {
     const [getStatus, setGetStatus] = useState();
-    const urlStatus = 'http://54.180.147.184:5000/punchlist/status/?range=[0, 24]';
+    const urlStatus = 'http://localhost:5000/punchlist/status/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

@@ -38,8 +38,8 @@ const NavBar = () => {
     const [apiProject, setApiProject] = useState([]);
     let localUsername = window.localStorage.getItem('username')
 
-    const urlUserProjectName = 'http://54.180.147.184:5000/punchlist/userprojectselect/?userid='+localUsername;
-    const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
+    const urlUserProjectName = 'http://localhost:5000/punchlist/userprojectselect/?userid='+localUsername;
+    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
 
     useEffect(()=> {
         axios.get(urlUserProjectName)
@@ -121,7 +121,7 @@ const NavBar = () => {
             </a>
             <select onChange={handleUserToProject}>
                 {(apiUserProjectName!==undefined && apiUserProjectName)? userProjectList.map((name)=>
-                    (<option value={name}>{name}</option>)
+                    (<option value={name} key={name}>{name}</option>)
                 ): null
             }
                 {/* { Object.keys(data).map((pj)=> 
@@ -134,35 +134,35 @@ const NavBar = () => {
             <nav id="gnb">
                 <ul>
                     {statePunch?
-                    <li className="on">
+                    <li className="on" key={1}>
                     <a href="/">Punch List</a>
                     </li>
                     :
-                    <li onClick={handlePunch}>
+                    <li onClick={handlePunch} key={2}>
                     <a href="/">Punch List</a>
                     </li>
                     }
                     {stateManagement?
-                    <li className="on">
+                    <li className="on" key={3}>
                     <a href="#/admin">Management</a>
                     </li>
                     :
-                    <li onClick={handleManagement}>
+                    <li onClick={handleManagement} key={4}>
                     <a href="#/admin">Management</a>
                     </li>
                     }
                     {stateCode?
-                    <li className="on">
+                    <li className="on" key={5}>
                     <a href="#/code">Code </a>
                     
                     </li>
                     :
-                    <li onClick={handleCode}>
+                    <li onClick={handleCode} key={6}>
                     <a href="#/code">Code</a>
                     </li>
                     }
-                    <li style={{width:'10px', padding:'0px', margin:'0px'}}>
-                    <UserMenu logout={<Logout button />} />
+                    <li style={{width:'10px', padding:'0px', margin:'0px'}} key={7}>
+                        <UserMenu logout={<Logout button />} />
                     </li>
                     {/* <Logout button /> */}
                 </ul>
