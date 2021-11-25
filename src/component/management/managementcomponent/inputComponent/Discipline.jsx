@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // textField
 // import TextField from '@material-ui/core/TextField';
 // import Input from '@material-ui/core/Input'; 
 // import InputLabel from '@material-ui/core/InputLabel'; 
 // import FormHelperText from '@material-ui/core/FormHelperText'; 
 import NativeSelect from '@material-ui/core/NativeSelect'; 
-// import MenuItem from '@material-ui/core/MenuItem';
-// import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 // get API
 import { useGetList } from 'react-admin';
 
 const Discipline = (props) => {
-  const { data } = useGetList("discipline", );
+  const { data, ids } = useGetList("discipline", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.discipline)
@@ -76,4 +76,4 @@ const Discipline = (props) => {
   )
 }
 
-export default React.memo(Discipline);
+export default Discipline;

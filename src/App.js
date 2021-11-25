@@ -35,6 +35,7 @@ import StatusCreate from './component/code/codeComponent/StatusCreate';
 // import frenchMessages from 'ra-language-french';
 // import englishMessages from 'ra-language-english';
 
+
 // const messages = {
 //   fr: frenchMessages,
 //   en: englishMessages,
@@ -64,6 +65,7 @@ import StatusCreate from './component/code/codeComponent/StatusCreate';
     configure the Data Provider as follows:
 */
 
+
 // const httpClient = (url, options = {}) => {
 //   if (!options.headers) {
 //       options.headers = new Headers({ Accept: 'application/json' });
@@ -73,7 +75,6 @@ import StatusCreate from './component/code/codeComponent/StatusCreate';
 //   return fetchUtils.fetchJson(url, options);
 // }
 // const dataProvider = simpleRestProvider('http://54.180.147.184:3000', httpClient);
-
 
 
 function App() {

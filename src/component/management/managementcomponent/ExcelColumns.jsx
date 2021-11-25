@@ -8,17 +8,23 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { PROPERTY_TYPES } from '@babel/types';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import IconButton from '@material-ui/core/IconButton';
 
+// search Icon
+import HttpsIcon from '@material-ui/icons/Https';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 import './styles/excelcolumns.css'
 
 
 //alert
-import { Alert } from '@material-ui/lab';
+import { Alert, AlertTitle } from '@material-ui/lab';
 import Collapse from '@material-ui/core/Collapse';
 
 
@@ -35,7 +41,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableCell);
   
-  const StyledTableRow = withStyles(() => ({
+  const StyledTableRow = withStyles((theme) => ({
     root: {
         // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     //   '&:nth-of-type(odd)': {
@@ -44,9 +50,9 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableRow);
   
-//   function createData(name, calories, fat, carbs, protein) {
-//     return { name, calories, fat, carbs, protein };
-//   }
+  function createData(name, calories, fat, carbs, protein) {
+    return { name, calories, fat, carbs, protein };
+  }
   
   const useStyles = makeStyles({
     table: {
@@ -59,13 +65,13 @@ const StyledTableCell = withStyles((theme) => ({
 
 const ExcelColumns = (props) => {
     const classes = useStyles();
-    // // console.log("--------------------------------------------------------")
-    // // console.log(props)  // {excelColumns: Array(17), sqlHook: "unit"}
+    // console.log("--------------------------------------------------------")
+    // console.log(props)  // {excelColumns: Array(17), sqlHook: "unit"}
     // excel 클릭한거 useState에 넣기
     // sqlHook이랑 excel click 둘다 값이 있으면, excel columns에 넣기. 이때 가상 배열 하나 (excel 값들어올 때마다 추가) 만들어 두자
     const [excelColumnArray, setExcelColumnArray] = React.useState(props.excelColumns)
     const [sqlColumnData, setSqlColumnData] = React.useState(props.sqlHook)
-    // const [sqlColumnDatas, setSqlColumnDatas] = React.useState(props.sqlHooks)
+    const [sqlColumnDatas, setSqlColumnDatas] = React.useState(props.sqlHooks)
     const dummyArray = new Array(props.excelColumns.length)
     const [beChangeArray, setBeChangeArray] = React.useState(dummyArray)
     const [targetId, setTargetId] = React.useState(false)
@@ -76,30 +82,30 @@ const ExcelColumns = (props) => {
     const eTargetId = useRef("")
     const [deleteAlertOpen, setDeleteAlertOpen] = useState(false)
 
-    // // console.log(sqlColumnDatas)
-    // // console.log(props.sqlHooks)
+    // console.log(sqlColumnDatas)
+    // console.log(props.sqlHooks)
 
 
     // dbcolumns logic
     var isEmpty = function(value){ 
-        if(  value == null || value === undefined){
+        if(  value == null || value == undefined){
             // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
             return true 
         }else{ 
             return false 
         } 
     }
-    const { data } = useGetList('list', );
+    const { data, ids } = useGetList('list', );
     const targetData = useRef(data? data : [])
     const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
 
 
     const deleteCheck= (e) => {
 
-        // console.log(e.target.id)
+        console.log(e.target.id)
         if (e.target.id) {
             eTargetId.current = e.target.id
-            // console.log(1)
+            console.log(1)
 
         } else {
             // alert('Please Click slowly. Loading...')
@@ -108,19 +114,19 @@ const ExcelColumns = (props) => {
 
         try{
             let deleteIdData = deleteArray.map((v, i) => {
-                // // console.log(i);
+                // console.log(i);
                 if(i===parseInt(eTargetId.current)){
                     // return !v
-                    // // console.log("들어오니")
+                    // console.log("들어오니")
                     return !v
                 }else{
                     return v
                 }});
-                // // console.log(deleteIdData)
-                // // console.log(deleteArray)
+                // console.log(deleteIdData)
+                // console.log(deleteArray)
                 setDeletArray(deleteIdData)
         }catch(e){console.log(deleteArray)}
-        // // console.log(deleteArray)
+        // console.log(deleteArray)
         return () => {
             setDeletId(false);
         }
@@ -134,9 +140,9 @@ const ExcelColumns = (props) => {
     // Jira TEST
     
     const accdd = () => {
-        // // console.log("excelChangedInit.current111111111111111111111")
-        // // console.log(excelChangedInit.current)
-        // // console.log(beChangeArray)
+        // console.log("excelChangedInit.current111111111111111111111")
+        // console.log(excelChangedInit.current)
+        // console.log(beChangeArray)
         // beChangeArray.map((b, index) => {
         //     if (b) {
         //         excelChangedInit.current[index] = b
@@ -148,7 +154,7 @@ const ExcelColumns = (props) => {
 
     useEffect(() => {         //////////////////////////////////////////////
         if (excelChangedInit){
-            const b = excelChangedInit.current.forEach((v, i) => 
+            const b = excelChangedInit.current.map((v, i) => 
             {if (deleteArray[i]) {
                 if (beChangeArray[i]) {
                     return beChangeArray[i]
@@ -158,10 +164,10 @@ const ExcelColumns = (props) => {
             } else {
                 // return v
             }
-            // // console.log(1111111111111111111111111111111)
+            // console.log(1111111111111111111111111111111)
         }
         )
-            // // console.log(b)
+            // console.log(b)
             excelChangedInit.current=b
         }
         accdd()
@@ -194,23 +200,36 @@ const ExcelColumns = (props) => {
         setSqlColumnData(props.sqlHook)
     }, [props.sqlHook])
 
+    // const { data, ids } = useGetList('list', );
+    // const targetData = useRef(data? data : [])
+    // const dbColumnvalue = (isEmpty(targetData.current))? [] : Object.keys(Object.values(targetData.current)[0]);
 
 
-
+    const [originalFlag, setOriginalFlag] = useState(false)
+    const handleOriginal = (props) => {
+        // setOriginalFlag(false)
+        // if (sqlColumnDatas.includes(props.row)) {
+    // }
+        return 
+            <>
+                안나와?
+            </>
+        
+    }
 
     // const [alertOpen, setAlertOpen] = useState(true);
 
     const searchMappingColumns = () => {
         alert("autoMapping을 시작합니다")
-        // // console.log(dbColumnvalue)
-        // // console.log(excelChangedInit.current)
+        // console.log(dbColumnvalue)
+        // console.log(excelChangedInit.current)
 
 
 
         let updateSampleData = []
         for (var excelCol of excelChangedInit.current) {
-            // // console.log(excelCol.toLowerCase())
-            // // console.log(excelCol)
+            // console.log(excelCol.toLowerCase())
+            // console.log(excelCol)
             for (var DbCol of dbColumnvalue) {
                 if (excelCol.toLowerCase() === DbCol.toLowerCase()){
                     updateSampleData.push(DbCol);
@@ -223,9 +242,9 @@ const ExcelColumns = (props) => {
                 }
             }
         }
-        // // console.log(excelChangedInit.current)
+        // console.log(excelChangedInit.current)
         excelChangedInit.current = updateSampleData
-        // // console.log(excelChangedInit.current)
+        // console.log(excelChangedInit.current)
         accdd()
         setExcelColumnArray(excelChangedInit.current)
         // return () => {
@@ -358,4 +377,4 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline'; */
 
 
 
-export default React.memo(ExcelColumns);
+export default ExcelColumns;

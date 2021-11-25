@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // textField
 // import TextField from '@material-ui/core/TextField';
 // import Input from '@material-ui/core/Input'; 
@@ -10,9 +10,9 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import { useGetList } from 'react-admin';
 
 const Department = (props) => {
-  const { data } = useGetList("department", );
+  const { data, ids } = useGetList("department", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
 
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.department)
@@ -67,4 +67,4 @@ const Department = (props) => {
   )
 }
 
-export default React.memo(Department);
+export default Department;

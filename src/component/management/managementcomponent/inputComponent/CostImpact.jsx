@@ -1,32 +1,41 @@
 import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
-// import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-// import Input from '@material-ui/core/Input';
-// import VolumeUp from '@material-ui/icons/VolumeUp';
+import Input from '@material-ui/core/Input';
+import VolumeUp from '@material-ui/icons/VolumeUp';
 
 
+const useStyles = makeStyles({
+    root: {
+      width: 400,
+    },
+    input: {
+      width: 30,
+    },
+  });
 
 
 const CostImpact = (props) => {
+    const classes = useStyles();
     const [value, setValue] = React.useState(props.static);
   
     const handleSliderChange = (event, newValue) => {
       setValue(newValue);
     };
   
-    // const handleInputChange = (event) => {
-    //   setValue(event.target.value === '' ? '' : Number(event.target.value));
-    // };
+    const handleInputChange = (event) => {
+      setValue(event.target.value === '' ? '' : Number(event.target.value));
+    };
   
-    // const handleBlur = () => {
-    //   if (value < 1) {
-    //     setValue(1);
-    //   } else if (value > 5) {
-    //     setValue(5);
-    //   }
-    // };
+    const handleBlur = () => {
+      if (value < 1) {
+        setValue(1);
+      } else if (value > 5) {
+        setValue(5);
+      }
+    };
 
     return (
       <div style={{display:'flex'}}>
@@ -71,4 +80,4 @@ const CostImpact = (props) => {
 }
 
 
-export default React.memo(CostImpact);
+export default CostImpact;

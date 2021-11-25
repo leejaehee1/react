@@ -1,13 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect'; 
+
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 // get API
 import { useGetList } from 'react-admin';
 
 const Subsystem = (props) => {
-  const { data } = useGetList("subsystem", );
+  const { data, ids } = useGetList("subsystem", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.subsystem)
@@ -62,4 +65,4 @@ const Subsystem = (props) => {
   )
 }
 
-export default React.memo(Subsystem);
+export default Subsystem;

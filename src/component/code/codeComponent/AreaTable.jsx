@@ -131,4 +131,4 @@ const AreaTable = () => {
 }
 
 
-export default AreaTable;
+export default React.memo(AreaTable);

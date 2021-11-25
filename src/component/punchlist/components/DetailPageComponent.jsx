@@ -70,12 +70,6 @@ function DetailPageComponent(props) {
 
 
   const handleDetailUpdate= () => {
-    console.log(scheduleImpact)
-    console.log(scheduleImpact)
-    console.log(scheduleImpact)
-    console.log(scheduleImpact)
-    console.log(scheduleImpact)
-    console.log(scheduleImpact)
     const formData = new FormData();
     const data = {}
     if (targetDate==='' || targetDate===false){}else{
@@ -124,8 +118,8 @@ function DetailPageComponent(props) {
     }
     formData.append("punchID", props.downDetailData?.punchID);
     data.punchID = props.downDetailData?.punchID
-    console.log(formData)
-    console.log(data)
+    // console.log(formData)
+    // console.log(data)
 
     // console.log(formData)
 

@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // textField
 // import TextField from '@material-ui/core/TextField';
 // import Input from '@material-ui/core/Input'; 
 // import InputLabel from '@material-ui/core/InputLabel'; 
 // import FormHelperText from '@material-ui/core/FormHelperText'; 
 import NativeSelect from '@material-ui/core/NativeSelect'; 
-// import MenuItem from '@material-ui/core/MenuItem';
-// import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 
 // get API
 import { useGetList } from 'react-admin';
-// import { Size } from 'devextreme-react/chart';
+import { Size } from 'devextreme-react/chart';
 
 const Area = (props) => {
-  const { data } = useGetList("area", );
+  const { data, ids } = useGetList("area", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
 
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.area)
-    // // console.log("props.stepValFlag")
-    // // console.log(props.stepValFlag)
+    // console.log("props.stepValFlag")
+    // console.log(props.stepValFlag)
     if(props.stepValFlag==="verify"){
       props.setValArea(upValData)
     }
@@ -73,4 +73,4 @@ const Area = (props) => {
   )
 }
 
-export default React.memo(Area);
+export default Area;

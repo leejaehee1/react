@@ -129,4 +129,4 @@ const UserCodeTable = () => {
 }
 
 
-export default UserCodeTable;
+export default React.memo(UserCodeTable);

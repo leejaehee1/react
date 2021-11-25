@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // textField
 // import TextField from '@material-ui/core/TextField';
 // import Input from '@material-ui/core/Input'; 
@@ -10,16 +10,16 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import { useGetList } from 'react-admin';
 
 const Category = (props) => {
-  const { data } = useGetList("category", );
+  const { data, ids } = useGetList("category", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.category)
     if(props.stepValFlag==="verify"){
       props.setValCategory(upValData)
     }
-  }, [data, props.stepValFlag])
+  }, [])
 
 
   const changeStatus = (event) =>{
@@ -72,4 +72,4 @@ const Category = (props) => {
   )
 }
 
-export default React.memo(Category);
+export default Category;

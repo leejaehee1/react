@@ -129,4 +129,4 @@ const StatusTable = () => {
 }
 
 
-export default StatusTable;
+export default React.memo(StatusTable);

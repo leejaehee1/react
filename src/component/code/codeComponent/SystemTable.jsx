@@ -129,4 +129,4 @@ const SystemTable = () => {
 }
 
 
-export default SystemTable;
+export default React.memo(SystemTable);

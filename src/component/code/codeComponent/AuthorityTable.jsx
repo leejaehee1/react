@@ -130,4 +130,4 @@ const AuthorityTable = () => {
 }
 
 
-export default AuthorityTable;
+export default React.memo(AuthorityTable);

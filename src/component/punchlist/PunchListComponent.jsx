@@ -425,6 +425,8 @@ const PunchListComponent = () => {
         if (keywordF.length ===0 && dataForFilter){
             setAlertButton(true)
         }
+        // console.log('keywordF')
+        // console.log(keywordF)
         setBoardIndexData(keywordF);
     }, [dataForFilter, data, ids])
 
@@ -447,14 +449,16 @@ const PunchListComponent = () => {
                                         || (searchText?searchText.toLowerCase():searchText)===(data[id].keyword3?data[id].keyword3.toLowerCase():data[id].keyword3)
                                         || (searchText?searchText.toLowerCase():searchText)===(data[id].keyword4?data[id].keyword4.toLowerCase():data[id].keyword4)
                                         ));
+        console.log('searchD')
+        console.log(searchD)
         if(!searchD.length && searchText.length){
             setAlertFilterButton(true)
-            // console.log(2)
         } else {
-            // console.log(3)
+            if(searchD.length){
+                setBoardIndexData(searchD);
+            }
         }
-        setBoardIndexData(searchD);
-    }, [searchText, data, ids])
+    }, [searchText])
 
 
     const [alertButton, setAlertButton] = useState(false)
@@ -601,71 +605,71 @@ const PunchListComponent = () => {
                         </div>
                         {buttonOne? 
                         <button className="afterAll" onMouseDown={changeState}>
-                            <p className="title">All</p>
-                            <p>{allIndex.length}</p>
+                            <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>All</p>
+                            <p style={{fontWeight: 'bold'}}>{allIndex.length}</p>
                         </button>
                         :
                         <button className="beforeAll" onMouseDown={changeState}>
-                            <p className="title">All</p>
-                            <p>{allIndex.length}</p>
+                            <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>All</p>
+                            <p style={{fontWeight: 'bold'}}>{allIndex.length}</p>
                         </button>
                         }
 
                         {buttonTwo?
                         <button className="afterOpened" onMouseDown={changeState}>
-                            <p className="title">Opened</p>
-                            <p>{allOpenedIdx.length}</p>
+                            <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Opened</p>
+                            <p style={{fontWeight: 'bold'}}>{allOpenedIdx.length}</p>
                         </button>
                         :
                         <button className="beforeOpened" onMouseDown={changeState}>
-                            <p className="title">Opened</p>
-                            <p>{allOpenedIdx.length}</p>
+                            <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Opened</p>
+                            <p style={{fontWeight: 'bold'}}>{allOpenedIdx.length}</p>
                         </button>
                         }
                         {buttonThr?
                             <button className="afterReadyForReview" onMouseDown={changeState}>
-                                <p className="title">Ready for Review</p>
-                                <p>{allReadyForReviewIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Ready for Review</p>
+                                <p style={{fontWeight: 'bold'}}>{allReadyForReviewIdx.length}</p>
                             </button>
                         :
                             <button className="beforeReadyForReview" onMouseDown={changeState}>
-                                <p className="title">Ready for Review</p>
-                                <p>{allReadyForReviewIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Ready for Review</p>
+                                <p style={{fontWeight: 'bold'}}>{allReadyForReviewIdx.length}</p>
                             </button>
                         }
                         {buttonFour?
                             <button className="afterRequestedForClose" onMouseDown={changeState}>
-                                <p className="title">Requested for Close</p>
-                                <p>{allRequestedForCloseIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Requested for Close</p>
+                                <p style={{fontWeight: 'bold'}}>{allRequestedForCloseIdx.length}</p>
                             </button>
                         :
                             <button className="beforeRequestedForClose" onMouseDown={changeState}>
-                                <p className="title">Requested for Close</p>
-                                <p>{allRequestedForCloseIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Requested for Close</p>
+                                <p style={{fontWeight: 'bold'}}>{allRequestedForCloseIdx.length}</p>
                             </button>
                         }
 
                         {buttonFive?
                             <button className="afterNotAccepted" onMouseDown={changeState}>
-                                <p className="title">Not Accepted</p>
-                                <p>{allNotAcceptedIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Not Accepted</p>
+                                <p style={{fontWeight: 'bold'}}>{allNotAcceptedIdx.length}</p>
                             </button>
                         :
                             <button className="beforeNotAccepted" onMouseDown={changeState}>
-                                <p className="title">Not Accepted</p>
-                                <p>{allNotAcceptedIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Not Accepted</p>
+                                <p style={{fontWeight: 'bold'}}>{allNotAcceptedIdx.length}</p>
                             </button>
                         }
 
                         {buttonSix?
                             <button className="afterClosed" onMouseDown={changeState}>
-                                <p className="title">Closed</p>
-                                <p>{allClosedIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Closed</p>
+                                <p style={{fontWeight: 'bold'}}>{allClosedIdx.length}</p>
                             </button>
                         :
                             <button className="beforeClosed" onMouseDown={changeState}>
-                                <p className="title">Closed</p>
-                                <p>{allClosedIdx.length}</p>
+                                <p className="title" style={{fontWeight: 'bold', fontSize: 11}}>Closed</p>
+                                <p style={{fontWeight: 'bold'}}>{allClosedIdx.length}</p>
                             </button>
                         }
                     </div>
@@ -676,9 +680,17 @@ const PunchListComponent = () => {
                     {JSON.stringify(boardIndexData)}
                     {JSON.stringify(allIndex)}
                     {JSON.stringify(boardIndexData.length?boardIndexData:allIndex)} */}
-                    {JSON.stringify(boardIndexData)}
+                    {/* {JSON.stringify(boardIndexData)} */}
                     {/* {JSON.stringify(boardAllDataC)} */}
+                    {/* <br />
+                    <br />
+                    <br />
                     {JSON.stringify(allIndex)}
+                    <br />
+                    <br />
+                    {JSON.stringify(boardIndexData)}
+                    <br />
+                    <br /> */}
                     <PunchBoard 
                         boardData={boardAllData} 
                         boardIds={boardIndexData} 

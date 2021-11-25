@@ -1,9 +1,9 @@
 import React from 'react';
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 // import Divider from '@material-ui/core/Divider';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 
 
 // 추가
@@ -13,7 +13,51 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+// css
+// import { createMuiTheme } from "@material-ui/core";
+// import { DateTimePicker } from "@material-ui/pickers";
 
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    padding: 15
+  },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridGap: theme.spacing(3),
+  },
+  paper: {
+    padding: theme.spacing(0),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  lpaper: {
+    padding: theme.spacing(1),
+    textAlign: 'left',
+    color: theme.palette.text.secondary,
+    whiteSpace: 'nowrap',
+    marginBottom: theme.spacing(1),
+  },
+  rpaper: {
+    padding: theme.spacing(0),
+    textAlign: 'right',
+    color: theme.palette.text.secondary,
+    whiteSpace: 'nowrap',
+    marginBottom: theme.spacing(0),
+  },
+  divider: {
+    margin: theme.spacing(2, 0),
+  },
+}));
+
+const theme = createTheme({
+  typography: {
+    htmlFontSize: 33,
+  },
+})
 
 
 
@@ -25,6 +69,7 @@ const defaultMaterialTheme = createTheme({
 
 
 const ClosedDate = (props) => {
+    const classes = useStyles();
 
     // const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [selectedDate, setSelectedDate] = React.useState(props.static?props.static:""); // 빈값으로 들어오면 빨강 값이 뜨게 한다.
@@ -36,11 +81,11 @@ const ClosedDate = (props) => {
           alert("오늘 이 후의 날짜를 선택하세요");
           setSelectedDate(new Date());
         } else {
-          // // console.log(date)  // Thu Jan 08 1970 09:00:00 GMT+0900 (한국 표준시)
+          // console.log(date)  // Thu Jan 08 1970 09:00:00 GMT+0900 (한국 표준시)
           setSelectedDate(date);
         }
       } else {
-        // // console.log(date)
+        // console.log(date)
         setSelectedDate(date);
       }
     };
@@ -110,4 +155,4 @@ const ClosedDate = (props) => {
           //   </Grid>
           // </Grid>
 
-export default React.memo(ClosedDate);
+export default ClosedDate;

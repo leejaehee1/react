@@ -130,4 +130,4 @@ const CategoryTable = () => {
 }
 
 
-export default CategoryTable;
+export default React.memo(CategoryTable);

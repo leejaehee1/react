@@ -101,7 +101,7 @@ const NavBar = () => {
     useEffect(()=> {
         // // console.log(111)
         console.log(
-            window.localStorage.getItem('projectName')
+            window.localStorage.getItem('projectname')
         )        
     }, [userProjectName])
 

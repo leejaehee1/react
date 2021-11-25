@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
     // List as RaList,
     useGetList,
@@ -63,14 +63,14 @@ const PunchBoard = (props) => {
 
     }, [props.otherCheckBox])
 
-    const pagenationAllData = inputBoardIds
+    const pagenationAllData = props.boardIds
     const [currentPage, setCurrentPage] = useState(1); // current page
     const [postsPerPage] = useState(12);  // count per page
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = pagenationAllData.slice(indexOfFirstPost, indexOfLastPost);
 
-    const paginationCount = parseInt(inputBoardIds.length / postsPerPage) + 1
+    const paginationCount = parseInt(props.boardIds.length / postsPerPage) + 1
     const handleDownCount = () => {
         if (parseInt(currentPage) > 1){
             setCurrentPage((prev)=> parseInt(prev)-1)
@@ -103,15 +103,25 @@ const PunchBoard = (props) => {
     const handleUpdateDetail = () => {
         props.setAbleUpdateDetailFlag(false)
     }
-    console.log('-----------------------------------')
+    
+    const preventEventHandler = useCallback(()=>
+        setCurrentPage(1)
+    , [props.boardIds])
+
     useEffect(()=> {
-        console.log(props.boardIds.length)
-        if(typeof(parseInt(props.boardIds))==='number'){
-            console.log('힐들어간다. 입벌려')
-        }
+        preventEventHandler()
+    }, [props.boardIds])
+
+
+    // console.log('-----------------------------------')
+    // useEffect(()=> {
+    //     console.log(props.boardIds.length)
+    //     if(typeof(parseInt(props.boardIds))==='number'){
+    //         console.log('힐들어간다. 입벌려')
+    //     }
         // setCurrentPage(1)
         // console.log(props.boardIds.length)
-    }, [props.boardIds])
+    // }, [props.boardIds])
 
 
     if (!props.boardIds.length) return null;
@@ -123,7 +133,10 @@ const PunchBoard = (props) => {
     // console.log(props.boardIds)
     return (
         // <Card>
+        
         <div onPointerLeave={outButton} style={{overflow: 'auto', height: '700px', maxWidth: '810px'}}>
+            {/* {JSON.stringify(props.boardIds)} */}
+            {/* {JSON.stringify(inputBoardData)} */}
             <List dense={true}>
                 {props.boardIds.map((id, idx) => {
                     if (!currentPosts.includes(id)){ return <></>}
@@ -233,7 +246,7 @@ const PunchBoard = (props) => {
                 <div>
                     {/* {JSON.stringify(paginationCount)}
                     {JSON.stringify(currentPage)} */}
-                    {JSON.stringify(props.boardIds)}
+                    {/* {JSON.stringify(props.boardIds)} */}
                     <Pagination 
                         // count={parseInt(paginationCount)} 
                         count={parseInt(paginationCount)} // 페이지내이션 숫자 수..

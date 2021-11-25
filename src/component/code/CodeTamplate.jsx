@@ -117,16 +117,12 @@ function CodeTamplate() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            {/* <Resource name="project" list={Project} /> */}
             <ProjectTable />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <StatusTable />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
-            {/* <Resource name="discipline" list={Discipline} 
-            // edit={EditGuesser} 
-            /> */}
             <DisciplineTable />
           </TabPanel>
           <TabPanel value={value} index={3} dir={theme.direction}>
@@ -151,7 +147,6 @@ function CodeTamplate() {
             <UnitTable />
           </TabPanel>
           <TabPanel value={value} index={10} dir={theme.direction}>
-            {/* <Resource name="area" list={Area} /> */}
             <AreaTable />
           </TabPanel>
           <TabPanel value={value} index={11} dir={theme.direction}>

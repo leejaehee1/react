@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect'; 
 
 // get API
 import { useGetList } from 'react-admin';
 
 const Unit = (props) => {
-  const { data } = useGetList("unit", );
+  const { data, ids } = useGetList("unit", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.unit)
@@ -63,4 +63,4 @@ const Unit = (props) => {
   )
 }
 
-export default React.memo(Unit);
+export default Unit;

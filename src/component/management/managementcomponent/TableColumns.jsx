@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { useGetList } from 'react-admin';
-// import { PROPERTY_TYPES } from '@babel/types';
+import { PROPERTY_TYPES } from '@babel/types';
 
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
@@ -48,7 +48,7 @@ const TableColumns = (props) => {
     
     const [checkTableColumn, setCheckTableColumn] = React.useState("")
 
-    const { data } = useGetList('list', );
+    const { data, ids } = useGetList('list', );
     // const [ targetData, setTargetData ] = useState(data)
     const targetData = useRef(data? data : [])
     const [ dbColumns, setDbColumns ] = useState([])
@@ -57,7 +57,7 @@ const TableColumns = (props) => {
   
 
     var isEmpty = function(value){ 
-        if(  value === null || value === undefined){
+        if(  value == null || value == undefined){
             // || ( value != null && typeof value == "object" && !Object.keys(value).length )  
             return true 
         }else{ 
@@ -73,7 +73,7 @@ const TableColumns = (props) => {
         // if(props.checkExcelToTable){
         //     setCheckTableColumn("")
         // }
-    }, [dbColumnvalue])
+    }, [])
 
     useEffect(() => {
         setCheckTableColumn("")
@@ -86,7 +86,7 @@ const TableColumns = (props) => {
                 Object.keys(Object.values(dbColumnvalue)[0])
             }
         })
-    }, [data, targetData, dbColumnvalue])
+    }, [data, targetData])
 
     function checka(e) {
         // setCheckTableColumn(() => {
@@ -103,7 +103,7 @@ const TableColumns = (props) => {
     useEffect(() => {
         props.onTable(checkTableColumn)
         props.onTables(dbColumnvalue)
-    }, [checkTableColumn, dbColumnvalue])
+    }, [checkTableColumn])
 
     return (
         <>
@@ -178,4 +178,4 @@ const TableColumns = (props) => {
     )
 }
 
-export default React.memo(TableColumns);
+export default TableColumns;

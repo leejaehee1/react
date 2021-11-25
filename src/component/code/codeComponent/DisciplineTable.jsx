@@ -131,4 +131,4 @@ const DisciplineTable = () => {
 }
 
 
-export default DisciplineTable;
+export default React.memo(DisciplineTable);

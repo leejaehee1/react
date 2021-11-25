@@ -126,4 +126,4 @@ const ProjectTable = () => {
 }
 
 
-export default ProjectTable;
+export default React.memo(ProjectTable);

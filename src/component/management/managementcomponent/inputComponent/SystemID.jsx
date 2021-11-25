@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import NativeSelect from '@material-ui/core/NativeSelect'; 
-// import MenuItem from '@material-ui/core/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 // get API
 import { useGetList } from 'react-admin';
 
 const SystemID = (props) => {
-  const { data } = useGetList("systems", );
+  const { data, ids } = useGetList("systems", );
   const [ state, setState ] = useState("");
-  // const [ select, setSelect ] = useState(false);
+  const [ select, setSelect ] = useState(false);
   
   useEffect(() => {
     const upValData = Object.values(data).map(a => a.systemID)
@@ -72,4 +72,4 @@ const SystemID = (props) => {
   )
 }
 
-export default React.memo(SystemID);
+export default SystemID;

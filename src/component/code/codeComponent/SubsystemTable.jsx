@@ -128,4 +128,4 @@ const SubsystemTable = () => {
 }
 
 
-export default SubsystemTable;
+export default React.memo(SubsystemTable);

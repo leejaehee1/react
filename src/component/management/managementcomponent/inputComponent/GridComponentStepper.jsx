@@ -5,7 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import {useGetList} from 'react-admin';
+import {useGetList} from 'react-admin';
 
 // form
 import InputLabel from '@material-ui/core/InputLabel';
@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
-// import Input from '@material-ui/core/Input'; 
+import Input from '@material-ui/core/Input'; 
 
 
 // import code data
@@ -27,10 +27,10 @@ import SystemID from './SystemID';
 import Subsystem from './Subsystem';
 import Area from './Area';
 import Department from './Department';
-// import Difficulty from './Difficulty';
-// import ScheduleImpact from './ScheduleImpact';
-// import CostImpact from './CostImpact';
-// import ClosedDate from './ClosedDate';
+import Difficulty from './Difficulty';
+import ScheduleImpact from './ScheduleImpact';
+import CostImpact from './CostImpact';
+import ClosedDate from './ClosedDate';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,8 +63,8 @@ const DiviedCodeData = (props) => {
     }
 
     useEffect(()=> {
-        // console.log(2);
-        // // console.log(upData);
+        console.log(2);
+        // console.log(upData);
         props.setUpUpdata(upData)
     }, [upData])
 
@@ -110,7 +110,7 @@ const DiviedCodeData = (props) => {
     const [inputRowData, setInputRowData] = React.useState(''); // 2 step
     const baseColumn = React.useRef(""); // 3 step before
     const [upUpData, setUpUpdata] = useState(""); // 3 step after
-    // const baseColumnAfter = React.useRef(""); // 3 step after
+    const baseColumnAfter = React.useRef(""); // 3 step after
     //   const { dataa, ids } = useGetList('list', );
       
     const selectedRowDataSet = new Set()
@@ -118,34 +118,34 @@ const DiviedCodeData = (props) => {
     useEffect(()=>{
         baseColumn.current = column
         for (var r of props.data){
-            // // console.log(r[column])
+            // console.log(r[column])
             selectedRowDataSet.add(r[column]?r[column]:"")
         }
         setInputRowDataBefore([...selectedRowDataSet])
-        // // console.log(selectedRowDataSet)
+        // console.log(selectedRowDataSet)
     }, [column])
     
     useEffect(()=> {
-        // // console.log("upUpData")
-        // // console.log(upUpData)
-        // // console.log("inputRowData")
-        // // console.log(inputRowData)
-        // // console.log("column")
-        // // console.log(column)
+        // console.log("upUpData")
+        // console.log(upUpData)
+        // console.log("inputRowData")
+        // console.log(inputRowData)
+        // console.log("column")
+        // console.log(column)
         var combineData = [column, inputRowData, upUpData]
         props.setUpUpUpDate(combineData)
     }, [upUpData])
 
     const handleChange = (event) => {
         setColumn(event.target.value);
-        // // console.log(event.target.value)
+        // console.log(event.target.value)
       };
       const handleChangeTwo = (event) => {
         setInputRowData(event.target.value);
-        // // console.log(event.target.value)
+        // console.log(event.target.value)
       };
     // console.dir(activeStep)
-    // // console.log(props.selectedColumns)
+    // console.log(props.selectedColumns)
     switch (props.activeStep) {
       case 0:
         return (
@@ -245,7 +245,7 @@ const GridComponentStepper = (props) => {
 
     const handleOldData = () => {
         if(upUpUpDate[0].length === 0 ){
-            // console.log('GridComponentStepper 246 page :데이터 0로직')
+            console.log('GridComponentStepper 246 page :데이터 0로직')
         }
         props.setUpdatedOldData(upUpUpDate)
     }
@@ -316,4 +316,4 @@ const GridComponentStepper = (props) => {
     );
 }
 
-export default React.memo(GridComponentStepper);
+export default GridComponentStepper;
