@@ -91,7 +91,7 @@ function DataImage(props) {
 
 
       {/* <div style={{display:'flex', width:'850px', justifyContent:'center'}}>
-          <img src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
+          <img src={`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
       </div> */}
 
 

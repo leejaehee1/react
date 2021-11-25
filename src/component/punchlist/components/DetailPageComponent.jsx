@@ -123,7 +123,7 @@ function DetailPageComponent(props) {
 
     // console.log(formData)
 
-    const url = 'http://localhost:5000/punchlist/updatedetail';
+    const url = 'http://54.180.147.184:5000/punchlist/updatedetail';
     // axios.post(url, formData, {
     axios.post(url, {
       headers: {

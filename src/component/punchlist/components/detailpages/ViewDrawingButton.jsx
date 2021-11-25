@@ -13,7 +13,7 @@ const ViewDrawingButton = (props) => {
     const [getPunchloc, setGetPunchloc] = useState([]);
     const [xPix, setXpix] = useState([]);
     const [yPix, setYpix] = useState([]);
-    const urlPunchloc = 'http://localhost:5000/punchlist/punchlic/?range=[0, 24]';
+    const urlPunchloc = 'http://54.180.147.184:5000/punchlist/punchlic/?range=[0, 24]';
 
     useEffect(()=> {
         var targetX = ''
@@ -48,7 +48,7 @@ const ViewDrawingButton = (props) => {
     const [imageNameDB, setImageNameDB] = useState('');
     const [getDrawing, setGetDrawing] = useState([]);
 
-    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
+    const urlDrawing = 'http://54.180.147.184:5000/punchlist/drawing/?range=[0, 24]';
 
     useEffect(()=> {
         axios.get(urlPunchloc)
@@ -73,7 +73,7 @@ const ViewDrawingButton = (props) => {
     const [drawingImage, setDrawingImage] = useState('');
     useEffect(()=> {
         // console.log(imageNameDB)
-        setDrawingImage(`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`)
+        setDrawingImage(`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`)
         refresh()
     }, [imageNameDB, refresh])
 
@@ -103,7 +103,7 @@ const ViewDrawingButton = (props) => {
                         </div>
                         {/* <p style={{position:'absolute', left:'50%'}}>aaa</p> */}
                         <img 
-                        // src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} 
+                        // src={`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`} 
                         style={{}}
                         src={drawingImage} 
                         alt="" width="100%" height="500px" />

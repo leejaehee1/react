@@ -9,7 +9,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 const CategoryTable = () => {
     const [getCategory, setGetCategory] = useState();
-    const urlCategory = 'http://localhost:5000/punchlist/category/?range=[0, 24]';
+    const urlCategory = 'http://54.180.147.184:5000/punchlist/category/?range=[0, 24]';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },

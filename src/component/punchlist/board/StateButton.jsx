@@ -120,7 +120,7 @@ const StateButton = (props) => {
             //     issueDescription: props.allData['issueDescription']
             // }
             // // console.log(postData)
-            // const urlMail = 'http://localhost:5000/punchlist/mail';
+            // const urlMail = 'http://54.180.147.184:5000/punchlist/mail';
 
             // console.log(postData)
 
@@ -194,14 +194,14 @@ const StateButton = (props) => {
     };
 
     
-    // const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
-    // const urlDiscipline = 'http://localhost:5000/punchlist/discipline/?range=[0, 24]';
-    // const urlCategory = 'http://localhost:5000/punchlist/category/?range=[0, 24]';
-    // const urlUnit = 'http://localhost:5000/punchlist/unit/?range=[0, 24]';
-    // const urlArea = 'http://localhost:5000/punchlist/area/?range=[0, 24]';
-    // const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
-    const urlProjectUser = 'http://localhost:5000/punchlist/projectuser/?range=[0, 24]';
-    const urlUserCode = 'http://localhost:5000/punchlist/usercode/?range=[0, 24]';
+    // const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
+    // const urlDiscipline = 'http://54.180.147.184:5000/punchlist/discipline/?range=[0, 24]';
+    // const urlCategory = 'http://54.180.147.184:5000/punchlist/category/?range=[0, 24]';
+    // const urlUnit = 'http://54.180.147.184:5000/punchlist/unit/?range=[0, 24]';
+    // const urlArea = 'http://54.180.147.184:5000/punchlist/area/?range=[0, 24]';
+    // const urlDrawing = 'http://54.180.147.184:5000/punchlist/drawing/?range=[0, 24]';
+    const urlProjectUser = 'http://54.180.147.184:5000/punchlist/projectuser/?range=[0, 24]';
+    const urlUserCode = 'http://54.180.147.184:5000/punchlist/usercode/?range=[0, 24]';
 
     // const [apiUsers, setApiUsers] = useState();
     // const [apiProjectUsers, setApiProjectUsers] = useState();

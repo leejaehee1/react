@@ -38,8 +38,8 @@ const NavBar = () => {
     const [apiProject, setApiProject] = useState([]);
     let localUsername = window.localStorage.getItem('username')
 
-    const urlUserProjectName = 'http://localhost:5000/punchlist/userprojectselect/?userid='+localUsername;
-    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
+    const urlUserProjectName = 'http://54.180.147.184:5000/punchlist/userprojectselect/?userid='+localUsername;
+    const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
 
     useEffect(()=> {
         axios.get(urlUserProjectName)

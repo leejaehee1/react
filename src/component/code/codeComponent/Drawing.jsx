@@ -18,10 +18,10 @@ export const Drawing = (props) => {
     const [getSystem, setGetSystem] = useState([]);
     const [getSubSystem, setGetSubSystem] = useState([]);
     const [getDrawing, setGetDrawing] = useState([]);
-    const urlProjectID = 'http://localhost:5000/punchlist/project/?range=[0, 24]';
-    const urlSystems = 'http://localhost:5000/punchlist/systems/?range=[0, 24]';
-    const urlSubSystem = 'http://localhost:5000/punchlist/subsystem/?range=[0, 24]';
-    const urlDrawing = 'http://localhost:5000/punchlist/drawing/?range=[0, 24]';
+    const urlProjectID = 'http://54.180.147.184:5000/punchlist/project/?range=[0, 24]';
+    const urlSystems = 'http://54.180.147.184:5000/punchlist/systems/?range=[0, 24]';
+    const urlSubSystem = 'http://54.180.147.184:5000/punchlist/subsystem/?range=[0, 24]';
+    const urlDrawing = 'http://54.180.147.184:5000/punchlist/drawing/?range=[0, 24]';
 
     // DB image name
     const [imageNameDB, setImageNameDB] = useState('');
@@ -55,7 +55,7 @@ export const Drawing = (props) => {
     const [fileUploadOpen, setFileUploadOpen] = useState(false)
     const [fileDetailOpen, setFileDetailOpen] = useState(false)
 
-    const url = 'http://localhost:5000/punchlist/uploadfile';
+    const url = 'http://54.180.147.184:5000/punchlist/uploadfile';
     
     const handleFileChange = (event) => {
         setSelectedFile(event.target.files[0]);
@@ -151,7 +151,7 @@ export const Drawing = (props) => {
     const handelViewDrawing = (e) => {
         e.preventDefault()
         // // console.log(e.target.innerText)
-        // a = `http://localhost:5000/drawings/pdfs/${e.target.innerText}.png`
+        // a = `http://54.180.147.184:5000/drawings/pdfs/${e.target.innerText}.png`
         setImageNameDB(e.target.innerText)
 
         if(getDrawing.length){
@@ -283,7 +283,7 @@ export const Drawing = (props) => {
                         </div>
                     </div>
                     <div style={{display:'flex', width:'850px', justifyContent:'center'}}>
-                        <img src={`http://localhost:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
+                        <img src={`http://54.180.147.184:5000/drawings/pdfs/${imageNameDB}.png`} alt="" width="800px" height="500px" />
                     </div>
                     <div style={{display:'flex'}}>
                         <div style={{width: '70%', margin:'10px'}} 

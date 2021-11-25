@@ -14,7 +14,7 @@ const DetailHistoryComponent = (props) => {
     const [historyData, setHistoryData] = useState(null);
 
 
-    const url = `http://localhost:5000/punchlist/punchlistlog?projectid=${props.downDetailData?.projectID}&punchid=${props.downDetailData?.punchID}`;
+    const url = `http://54.180.147.184:5000/punchlist/punchlistlog?projectid=${props.downDetailData?.projectID}&punchid=${props.downDetailData?.punchID}`;
 
     useEffect(() => {
       axios.get(url)

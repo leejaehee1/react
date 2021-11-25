@@ -1,8 +1,8 @@
 import { fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-// const apiUrl = 'http://localhost:5000/api';
-const apiUrl = 'http://localhost:5000/punchlist';
+// const apiUrl = 'http://54.180.147.184:5000/api';
+const apiUrl = 'http://54.180.147.184:5000/punchlist';
 const httpClient = fetchUtils.fetchJson;
 
 export default {

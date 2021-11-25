@@ -64,7 +64,7 @@ export default function RecipeReviewCardModal(props) {
   const classes = useStyles();
 
   const [getPhotos, setGetPhotos] = useState([]);
-  const urlPhotos = 'http://localhost:5000/punchlist/photos/?range=[0, 24]';
+  const urlPhotos = 'http://54.180.147.184:5000/punchlist/photos/?range=[0, 24]';
 
 
   const [modalStyle] = React.useState(getModalStyle);
@@ -115,7 +115,7 @@ export default function RecipeReviewCardModal(props) {
         // // console.log(imagePathList)
         for(var index in imagePathList){
             // // console.log(imagePathList[index]["imagePath"])
-            axios.get(`http://localhost:5000/${imagePathList[index]["imagePath"].slice(7)}`)
+            axios.get(`http://54.180.147.184:5000/${imagePathList[index]["imagePath"].slice(7)}`)
                 .then((res)=> {
                     // // console.log(1);
                     // // console.log(imageValidationtarget)
@@ -146,7 +146,7 @@ export default function RecipeReviewCardModal(props) {
           <h3>{props.imageName}</h3> 
           {/* <p>{JSON.stringify(imagePathList[0]?.imagePath)}</p> */}
           {/* {JSON.stringify(imageValidationtarget)} */}
-          {/* {(`http://localhost:5000/${imagePathList[activeStep]?.imagePath.slice(7)}`)?<>aaaaaaaaa</>:<>bbbbbbbbbbbbb</>} */}
+          {/* {(`http://54.180.147.184:5000/${imagePathList[activeStep]?.imagePath.slice(7)}`)?<>aaaaaaaaa</>:<>bbbbbbbbbbbbb</>} */}
         </div>
         <div>
           <CancelIcon style={{cursor: 'pointer'}} onClick={clickCancel} />
@@ -156,7 +156,7 @@ export default function RecipeReviewCardModal(props) {
       <img
         className={classes.img}
         // src={tutorialSteps[activeStep].imgPath}
-        src={`http://localhost:5000/${imagePathList[activeStep]?.imagePath.slice(7)}`}
+        src={`http://54.180.147.184:5000/${imagePathList[activeStep]?.imagePath.slice(7)}`}
         // alt={tutorialSteps[activeStep].label}
         alt={imagePathList?.label}
         />

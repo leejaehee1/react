@@ -6,7 +6,7 @@ import './styles/Drawing.css'
 
 const UnitTable = () => {
     const [getUnit, setGetUnit] = useState();
-    const urlUnit = 'http://localhost:5000/punchlist/unit';
+    const urlUnit = 'http://54.180.147.184:5000/punchlist/unit';
     const [columns, setColumns] = useState([
         { title: 'Name', field: 'name' },
         { title: 'Surname', field: 'surname', initialEditValue: 'initial edit value' },
